@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './News.module.css'
+import FormattedDate from '../../components/date/FormattedDate'
 
 const NewsDetails = () => {
   const { newsId } = useParams()
@@ -43,7 +44,8 @@ const NewsDetails = () => {
                 Data de publicação
               </span>
               <span style={{ display: 'inline-block' }}>
-                {news.createdAt.split('T')[0]}
+                {/* {news.createdAt.split('T')[0]} */}
+                <FormattedDate date={news.createdAt} />
               </span>
             </p>
             {!!news.pdf && (

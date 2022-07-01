@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import FormattedDate from '../../components/date/FormattedDate'
 
 import styles from './Projects.module.css'
 
@@ -21,8 +22,10 @@ const SingleProject = ({ project }) => {
             {project.title}
           </Link>
         )}
-        <span>Início do Projecto: {project.startDate.split('T')[0]}</span>
-        <span>Fim do Projecto: {project.endDate.split('T')[0]}</span>
+        {/* <span>Início do Projecto: {project.startDate.split('T')[0]}</span> */}
+        <span>Início do Projecto: <FormattedDate date={project.startDate} /></span>
+        {/* <span>Fim do Projecto: {project.endDate.split('T')[0]}</span> */}
+        <span>Fim do Projecto: <FormattedDate date={project.endDate} /></span>
         <p>
           {project.content.length < 300
             ? project.content

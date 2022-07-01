@@ -160,8 +160,16 @@ const Header = () => {
           </div>
 
           <div className={styles.actions}>
-            <p style={{ color: '#146F12', fontSize: '0.9rem', display: 'inline-block', marginRight: '1rem' }}>
-              info@med.uem.mz &nbsp;|&nbsp; Av. Salvador Allende nº 702
+            <p
+              style={{
+                color: '#146F12',
+                fontSize: '0.9rem',
+                display: 'inline-block',
+                marginRight: '1rem'
+              }}
+            >
+              {/* info@med.uem.mz &nbsp;|&nbsp;  */}
+              Av. Salvador Allende nº 702
             </p>
             <button>
               <Link to='/signin'>

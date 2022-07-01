@@ -24,6 +24,7 @@ import LastPageIcon from '@mui/icons-material/LastPage'
 
 import { deleteNews, fetchNews } from './newsSlice'
 import styles from './News.module.css'
+import FormattedDate from '../../components/date/FormattedDate'
 
 const theme = createTheme({
   typography: {
@@ -155,7 +156,8 @@ const NewsTable = () => {
                     </TableCell>
 
                     <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {news.createdAt.split('T')[0]}
+                      {/* {news.createdAt.split('T')[0]} */}
+                      <FormattedDate date={news.createdAt} />
                     </TableCell>
 
                     <TableCell sx={{ fontSize: '0.8rem' }}>

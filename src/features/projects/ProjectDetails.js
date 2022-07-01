@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { Navigate, useParams } from 'react-router-dom'
+import FormattedDate from '../../components/date/FormattedDate'
 import HorizontalScroll from './HorizontalScroll'
 
 import styles from './Projects.module.css'
@@ -39,7 +40,8 @@ const ProjectDetails = () => {
                 Duração do Projecto
               </span>
               <span style={{ display: 'inline-block' }}>
-                {project.startDate.split('T')[0]}&nbsp;&nbsp;à&nbsp;&nbsp;{project.endDate.split('T')[0]}
+                {/* {project.startDate.split('T')[0]}&nbsp;&nbsp;à&nbsp;&nbsp;{project.endDate.split('T')[0]} */}
+                {<FormattedDate date={project.startDate} />}&nbsp;&nbsp;à&nbsp;&nbsp;{<FormattedDate date={project.endDate} />}
               </span>
             </p>
             <p>
