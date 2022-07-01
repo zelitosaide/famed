@@ -35,6 +35,9 @@ const theme = createTheme({
 
 const UserTable = () => {
   const users = useSelector(state => state.users.users)
+
+  const orderedUsers = users.slice().reverse()
+
   const status = useSelector(state => state.users.status)
   const dispatch = useDispatch()
 
@@ -50,7 +53,7 @@ const UserTable = () => {
     setPage(0)
   }
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - users.length) : 0
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - orderedUsers.length) : 0
 
 
   useEffect(() => {
@@ -134,10 +137,10 @@ const UserTable = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {!!users.length && (
+                {!!orderedUsers.length && (
                   rowsPerPage > 0
-                    ? users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    : users
+                    ? orderedUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    : orderedUsers
                 ).map(user => {
                   const roles = Object.entries(user.roles).map(
                     ([name, value]) => value ? name : null
@@ -201,7 +204,7 @@ const UserTable = () => {
                   <TablePagination
                     rowsPerPageOptions={[8, 9]}
                     colSpan={4}
-                    count={users.length}
+                    count={orderedUsers.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     SelectProps={{

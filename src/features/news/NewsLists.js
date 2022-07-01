@@ -12,6 +12,8 @@ const NewsLists = () => {
     news => news.flags.published
   ))
 
+  const orderedNews = news.slice().reverse()
+
   const [range, setRange] = useState(10)
   const [loading, setLoading] = useState(false)
 
@@ -24,14 +26,14 @@ const NewsLists = () => {
     }, 1000)
   }
 
-  return !!news.length && (
+  return !!orderedNews.length && (
     <div className={`${styles.newsList} ${styles.responsive}`}>
       <div className={styles.gap}></div>
       {/* <div style={{ paddingTop: '7rem' }} className='row'></div> */}
       {/* <div style={{ paddingTop: '11rem' }} className='row'></div> */}
 
       <div className='row'>
-        {news.slice(0, range).map(news => (
+        {orderedNews.slice(0, range).map(news => (
           <div key={news._id} className='col'>
             <SingleNews news={news} />
           </div>
@@ -39,7 +41,7 @@ const NewsLists = () => {
       </div>
 
       <div style={{ paddingTop: '1.5rem' }} className='row'>
-        {!loading && range < news.length && <button onClick={onLoadMore}>Load more News</button>}
+        {!loading && range < orderedNews.length && <button onClick={onLoadMore}>Load more News</button>}
         {loading &&
           <div style={{ position: 'relative', width: '100%', background: 'red' }}>
             <Sentry

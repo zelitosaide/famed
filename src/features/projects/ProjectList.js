@@ -11,6 +11,8 @@ const ProjectList = () => {
     project => project.flags.published
   ))
 
+  const orderedProjects = projects.slice().sort((a, b) => b.startDate.localeCompare(a.startDate))
+
   const [range, setRange] = useState(10)
   const [loading, setLoading] = useState(false)
 
@@ -23,14 +25,14 @@ const ProjectList = () => {
     }, 1000)
   }
 
-  return !!projects.length && (
+  return !!orderedProjects.length && (
     <div className={`${styles.projectList} ${styles.responsive}`}>
       <div className={styles.gap}></div>
       {/* <div style={{ paddingTop: '7rem' }} className='row'></div> */}
       {/* <div style={{ paddingTop: '11rem' }} className='row'></div> */}
 
       <div className='row'>
-        {projects.slice(0, range).map(project => (
+        {orderedProjects.slice(0, range).map(project => (
           <div key={project._id} className='col'>
             <SingleProject project={project} />
           </div>
@@ -38,7 +40,7 @@ const ProjectList = () => {
       </div>
 
       <div style={{ paddingTop: '1.5rem' }} className='row'>
-        {!loading && range < projects.length && <button onClick={onLoadMore}>Load more Projects</button>}
+        {!loading && range < orderedProjects.length && <button onClick={onLoadMore}>Load more Projects</button>}
         {loading &&
           <div style={{ position: 'relative', width: '100%' }}>
             <Sentry

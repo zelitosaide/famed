@@ -14,9 +14,13 @@ const Home = () => {
     project => project.flags.home && project.flags.published
   ).slice(0, 3))
 
+  const orderedProjects = projects.slice().sort((a, b) => b.startDate.localeCompare(a.startDate))
+
   const news = useSelector(state => state.news.news.filter(
     news => news.flags.home && news.flags.published
   ).slice(0, 12))
+
+  const orderedNews = news.slice().reverse()
 
   const users = useSelector(state => state.users.users.filter(user => user.roles.teacher))
   const curriculums = useSelector(state => state.curriculums.curriculums)
@@ -30,7 +34,7 @@ const Home = () => {
   return (
     <div className={styles.home}>
       {/* Carousel */}
-      <Carousel news={news} />
+      <Carousel news={orderedNews} />
 
       {/* Courses Grid */}
       <div className='row'>
@@ -52,7 +56,7 @@ const Home = () => {
       </div>
 
       <div className='row'>
-        <Projects projects={projects} />
+        <Projects projects={orderedProjects} />
       </div>
     </div>
   )

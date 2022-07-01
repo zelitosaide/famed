@@ -12,6 +12,8 @@ const PublicationList = () => {
     publication => publication.flags.published
   ))
 
+  const orderedPublications = publications.slice().reverse()
+
   const [range, setRange] = useState(10)
   const [loading, setLoading] = useState(false)
 
@@ -24,14 +26,14 @@ const PublicationList = () => {
     }, 1000)
   }
 
-  return !!publications.length && (
+  return !!orderedPublications.length && (
     <div className={`${styles.publicationList} ${styles.responsive}`}>
       <div className={styles.gap}></div>
       {/* <div style={{ paddingTop: '7rem' }} className='row'></div> */}
       {/* <div style={{ paddingTop: '11rem' }} className='row'></div> */}
 
       <div className='row'>
-        {publications.slice(0, range).map(publication => (
+        {orderedPublications.slice(0, range).map(publication => (
           <div key={publication._id} className='col'>
             <SinglePublication publication={publication} />
           </div>
@@ -39,7 +41,7 @@ const PublicationList = () => {
       </div>
 
       <div style={{ paddingTop: '1.5rem' }} className='row'>
-        {!loading && range < publications.length &&
+        {!loading && range < orderedPublications.length &&
           <button onClick={onLoadMore}>Load more Publications</button>
         }
         {loading &&

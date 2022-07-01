@@ -36,6 +36,8 @@ const NewsTable = () => {
   const canDelete = currentUser.user.roles.admin
 
   const news = useSelector(state => state.news.news)
+  const orderedNews = news.slice().reverse()
+
   // const news = useSelector(state => {
   //   if (canDelete) {
   //     return state.news.news
@@ -57,7 +59,7 @@ const NewsTable = () => {
     setPage(0)
   }
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - news.length) : 0
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - orderedNews.length) : 0
 
   const status = useSelector(state => state.news.status)
   const dispatch = useDispatch()
@@ -139,10 +141,10 @@ const NewsTable = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {!!news.length ? (
+                {!!orderedNews.length ? (
                   rowsPerPage > 0
-                    ? news.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    : news
+                    ? orderedNews.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    : orderedNews
                 ).map(news => (
                   <TableRow key={news._id}>
                     <TableCell sx={{ fontSize: '0.8rem' }}>
@@ -209,7 +211,7 @@ const NewsTable = () => {
                   <TablePagination
                     rowsPerPageOptions={[8, 9]}
                     colSpan={5}
-                    count={news.length}
+                    count={orderedNews.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     SelectProps={{

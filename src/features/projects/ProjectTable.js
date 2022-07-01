@@ -36,6 +36,9 @@ const ProjectTable = () => {
   const canDelete = currentUser.user.roles.admin
 
   const projects = useSelector(state => state.projects.projects)
+
+  const orderedProjects = projects.slice().sort((a, b) => b.startDate.localeCompare(a.startDate))
+  
   // const projects = useSelector(state => {
   //   if (canDelete) {
   //     return state.projects.projects
@@ -57,7 +60,7 @@ const ProjectTable = () => {
     setPage(0)
   }
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - projects.length) : 0
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - orderedProjects.length) : 0
 
 
 
@@ -145,10 +148,10 @@ const ProjectTable = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {!!projects.length ? (
+                {!!orderedProjects.length ? (
                   rowsPerPage > 0
-                    ? projects.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    : projects
+                    ? orderedProjects.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    : orderedProjects
                 ).map(project => (
                   <TableRow key={project._id}>
                     <TableCell sx={{ fontSize: '0.8rem' }}>
@@ -219,7 +222,7 @@ const ProjectTable = () => {
                   <TablePagination
                     rowsPerPageOptions={[8, 9]}
                     colSpan={5}
-                    count={projects.length}
+                    count={orderedProjects.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     SelectProps={{

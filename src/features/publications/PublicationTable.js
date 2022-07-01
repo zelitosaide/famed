@@ -36,6 +36,9 @@ const PublicationTable = () => {
   const canDelete = currentUser.user.roles.admin
 
   const publications = useSelector(state => state.publications.publications)
+
+  const orderedPublications = publications.slice().reverse()
+
   // const publications = useSelector(state => {
   //   if (canDelete) {
   //     return state.publications.publications
@@ -57,7 +60,7 @@ const PublicationTable = () => {
     setPage(0)
   }
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - publications.length) : 0
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - orderedPublications.length) : 0
 
   const status = useSelector(state => state.publications.status)
   const dispatch = useDispatch()
@@ -144,10 +147,10 @@ const PublicationTable = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {!!publications.length ? (
+                {!!orderedPublications.length ? (
                   rowsPerPage > 0
-                    ? publications.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    : publications
+                    ? orderedPublications.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    : orderedPublications
                 ).map(publication => (
                   <TableRow key={publication._id}>
                     <TableCell sx={{ fontSize: '0.8rem' }}>
@@ -221,7 +224,7 @@ const PublicationTable = () => {
                   <TablePagination
                     rowsPerPageOptions={[8, 9]}
                     colSpan={5}
-                    count={publications.length}
+                    count={orderedPublications.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     SelectProps={{
