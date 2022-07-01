@@ -1,0 +1,52 @@
+.header {
+  position: fixed;
+  background: var(--white-color);
+  height: 3.5rem;
+  z-index: 300;
+  width: 100%;
+  padding-left: 16rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.avatar {
+  border: none;
+  outline: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: block;
+  border-radius: 1.1rem;
+  cursor: pointer;
+  color: var(--white-color);
+  background: var(--main-color);
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.__slideDown[data-reach-menu-list],
+.__slideDown[data-reach-menu-items] {
+  border-radius: 0.2rem;
+  animation: slideDown 0.2s ease;
+  margin-top: 0.1rem;
+  min-width: 150px;
+  border: thin solid #ddd;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.menuItem[data-reach-menu-item][data-selected] {
+  background: var(--second-main-color);
+}
+
+[data-reach-menu-list] {
+  z-index: 10000;
+  position: relative;
+}

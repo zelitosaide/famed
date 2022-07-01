@@ -1,0 +1,88 @@
+.footer .desktop {
+  background-color: var(--footer-bg-color);
+  padding-bottom: 3rem;
+  display: none;
+  margin-top: 3rem;
+}
+
+.desktop .row::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.desktop .row .column {
+  float: left;
+  width: 33.33%;
+  margin-top: 2rem;
+}
+
+.desktop .row .column h1 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white-color);
+}
+
+.desktop .row .column h2 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--white-color);
+}
+
+/* Faculdade de medicina, UEM */
+.desktop .row .column .socialNetworks ul::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.desktop .row .column .coptRight {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--second-white-color);
+}
+
+.desktop .row .column .socialNetworks ul li {
+  float: left;
+  margin-right: 1.25rem;
+}
+
+.desktop .row .column .socialNetworks ul li a {
+  font-size: 1.125rem;
+  color: var(--second-white-color);
+}
+
+.desktop .row .column .socialNetworks ul li a:hover {
+  color: var(--second-white-color);
+}
+
+
+/* Links uteis e contacto */
+.desktop .row .column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.desktop .row .column ul li span {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--second-white-color);
+}
+
+.desktop .row .column ul li span:hover {
+  text-decoration: underline;
+}
+
+.desktop .row .column:nth-child(3) {
+  padding-left: 2.5rem;
+}
+
+.desktop .row .column:nth-child(3) ul li span:hover {
+  text-decoration: none;
+}
+
+
+@media only screen and (min-width: 808px) {
+  .footer .desktop {
+    display: block;
+  }
+}

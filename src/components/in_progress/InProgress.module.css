@@ -1,0 +1,21 @@
+.title {
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: var(--main-color);
+}
+
+.ul a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--main-color);
+  padding-left: 1rem;
+}
+
+.ul a:hover {
+  color: var(--main-color) !important;
+  text-decoration-color: var(--black-color);
+}

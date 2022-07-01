@@ -1,0 +1,14 @@
+.dashboard {
+  height: 100vh;
+  background: #F3F4F6;
+}
+
+.dashboard .cards {
+  margin-top: 2rem;
+}
+
+.dashboard .cards::after {
+  content: '';
+  display: table;
+  clear: both;
+}

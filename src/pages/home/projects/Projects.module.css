@@ -1,0 +1,57 @@
+.projects div .project {
+  margin-top: 2.5rem;
+}
+
+.projects div .project img {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.projects .content {
+  line-height: 1.75rem;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.projects .project a span{
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--black-color);
+  padding-bottom: 0.5rem;
+}
+
+
+.projects .project a svg {
+  opacity: 0;
+}
+
+.projects .project span:hover>svg {
+  opacity: 1;
+}
+
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .projects.responsive div .project img {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .projects.responsive div .project {
+    box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.3);
+    margin-right: 1.4rem;
+    padding-bottom: 2rem;
+  }
+
+  .projects.responsive div:nth-child(2) .project {
+    margin-left: 0.7rem;
+    margin-right: 0.5rem;
+  }
+
+  .projects.responsive div:last-child .project {
+    margin-left: 1.4rem;
+    margin-right: 0;
+  }
+}

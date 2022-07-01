@@ -1,0 +1,17 @@
+/* .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.react-horizontal-scrolling-menu--scroll-container {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+} */
+
+/* First item margin */
+.react-horizontal-scrolling-menu--item {
+  margin: 0 10px;
+}
+
+.react-horizontal-scrolling-menu--item:first-child {
+  margin-left: 0;
+}

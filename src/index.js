@@ -1,17 +1,50 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+
+import './index.css'
+import App from './App'
+import ScrollToTop from './ScrollToTop'
+
+import store from './app/store'
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  // <React.StrictMode>
+  <BrowserRouter>
+    <ScrollToTop>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ScrollToTop>
+  </BrowserRouter>
+  // </React.StrictMode>
+)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// https://pt.finalsite.com/school-websites/custom-design-portfolio
+// https://mui.com/pt/material-ui/react-drawer/
+// https://www.aism.co.mz/
+
+
+
+
+
+// navegacao (programaticamente ativa/desativar link)
+// error handling
+// Dr. Jahit request
+
+// can delete only his CV -----------------------------
+// password automatic update problema  ------------------------------------
+// form validation ----------------------------- (falta users)
+
+
+
+
+// footer
+// Team grid
+// 'Not found'
+// Dr. Jahit request
+
+// Heruko
