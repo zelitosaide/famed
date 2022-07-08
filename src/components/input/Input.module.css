@@ -106,6 +106,7 @@
 .input input[type=password]:disabled {
   cursor: no-drop;
   opacity: 0.5;
+  background: #E9E9ED;
 }
 
 

@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+
+import { Column } from '../../components/column/Column'
+import { Fieldset } from '../../components/fieldset/Fieldset'
+import { Input } from '../../components/input/Input'
+import { Row } from '../../components/row/Row'
 
 import styles from './Users.module.css'
 
 import { updateUser } from './usersSlice'
 
 const UpdateUser = () => {
-  const { userId } = useParams()
   const [status, setStatus] = useState('idle')
 
+  const { userId } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -17,7 +23,12 @@ const UpdateUser = () => {
     state.users.users.find(user => user._id === userId)
   )
 
-  const [formData, setFormData] = useState({ ...user, password: ''})
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    defaultValues: { ...user, password: '' }
+  })
+
+  const password = useRef({})
+  password.current = watch('password')
 
   if (!user) {
     return <Navigate to='/dashboard/users' replace />
@@ -27,12 +38,11 @@ const UpdateUser = () => {
   const isAdmin = currentUser.user.roles.admin
   const canCreate = isAdmin || currentUser.user._id === user._id
 
-  const onUpdate = async () => {
+  const onSubmit = async (data) => {
     try {
       setStatus('pending')
-      const response = await dispatch(updateUser(formData)).unwrap()
-
-      const updatedUser = { ...currentUser, user: response}
+      const response = await dispatch(updateUser(data)).unwrap()
+      const updatedUser = { ...currentUser, user: response }
 
       if (currentUser.user._id === user._id) {
         localStorage.setItem('famedv1_user', JSON.stringify(updatedUser))
@@ -40,132 +50,152 @@ const UpdateUser = () => {
 
       navigate('/dashboard/users')
     } catch (error) {
-      console.log('FROM Update User', error)
+      console.log(error.message)
     } finally {
       setStatus('idle')
     }
   }
 
-  const onCancel = () => {
-    navigate(-1, { replace: true })
-  }
-  
   return (
-    <div
-      style={{ paddingTop: '3.5rem', paddingLeft: '16rem' }}
-      className={`${styles.updateUser} ${styles.responsive}`}
-    >
+    <div className={`${styles.updateUser} ${styles.responsive}`}>
       <div style={{ padding: '2rem' }}>
-        <p>{user.firstName}&nbsp;{user.lastName}</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Row>
+            <Column style={{ width: '50%' }}>
+              <Fieldset legend='Atualização de Usuário'>
+                <Row>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='Primeiro Nome' error={errors.firstName?.message} required>
+                      <input
+                        type='text'
+                        id='Primeiro Nome'
+                        disabled={!canCreate}
+                        {...register('firstName', {
+                          required: 'This field is required'
+                        })}
+                      />
+                    </Input>
+                  </Column>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='Apelido' error={errors.lastName?.message} required>
+                      <input
+                        type='text'
+                        id='Apelido'
+                        disabled={!canCreate}
+                        {...register('lastName', {
+                          required: 'This field is required'
+                        })}
+                      />
+                    </Input>
+                  </Column>
+                </Row>
 
-        <div className={styles.formGroup}>
-          <div style={{ float: 'left', width: '49%' }}>
-            <label htmlFor='firstName'>
-              First Name&nbsp;<span style={{ color: 'red' }}>*</span>
-            </label>
-            <input
-              type='text'
-              id='firstName'
-              disabled={!canCreate}
-              value={formData.firstName}
-              onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-            />
-          </div>
+                <Row>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='Senha' error={errors.password?.message} required>
+                      <input
+                        type='password'
+                        id='Senha'
+                        disabled={!canCreate}
+                        {...register('password')}
+                      />
+                    </Input>
+                  </Column>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='Confirmar Senha' error={errors.confirmPassword?.message} required>
+                      <input
+                        type='password'
+                        id='Confirmar Senha'
+                        disabled={!canCreate}
+                        {...register('confirmPassword', {
+                          validate: (value) => {
+                            return value === password.current || 'The passwords do not match'
+                          }
+                        })}
+                      />
+                    </Input>
+                  </Column>
+                </Row>
 
-          <div style={{ float: 'right', width: '49%' }}>
-            <label htmlFor='lastName'>Last Name&nbsp;<span style={{ color: 'red' }}>*</span></label>
-            <input
-              type='text'
-              id='lastName'
-              disabled={!canCreate}
-              value={formData.lastName}
-              onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-            />
-          </div>
-        </div>
+                <Input label='Email' error={errors.email?.message} required>
+                  <input
+                    type='email'
+                    id='Email'
+                    disabled
+                    {...register('email', {
+                      required: 'This field is required',
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Invalid email address'
+                      }
+                    })}
+                  />
+                </Input>
 
+                <Fieldset
+                  legend='Funções do usuário'
+                  style={{ border: 'none', padding: 0, margin: 0 }}
+                  legendStyle={{
+                    background: '#fff',
+                    fontWeight: 'var(--bold-font-weight)',
+                    fontSize: 'var(--main-font-size)',
+                    color: 'var(--main-font-color)',
+                    paddingBottom: 'calc(0.26rem * 0.9)',
+                  }}
+                >
+                  <Input label='Normal'>
+                    <input
+                      type='checkbox'
+                      id='Normal'
+                      disabled={!isAdmin}
+                      {...register('roles.normal')}
+                    />
+                  </Input>
 
-        <label htmlFor='email'>Email&nbsp;<span style={{ color: 'red' }}>*</span></label>
-        <input
-          type='email'
-          id='email'
-          disabled
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        />
-        <label htmlFor='password'>Password&nbsp;<span style={{ color: 'red' }}>*</span></label>
-        <input
-          type='password'
-          id='password'
-          disabled={!canCreate}
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-        />
+                  <Input label='Admin' style={{ paddingBottom: 0, paddingTop: 0 }}>
+                    <input
+                      type='checkbox'
+                      id='Admin'
+                      disabled={!isAdmin}
+                      {...register('roles.admin')}
+                    />
+                  </Input>
 
-        <label>Funções do usuário&nbsp;<span style={{ color: 'red' }}>*</span></label>
-        <div>
-          <input
-            type='checkbox'
-            name='roles'
-            id='normal'
-            disabled={!isAdmin}
-            checked={formData.roles.normal}
-            onChange={() => setFormData({
-              ...formData,
-              roles: {
-                ...formData.roles,
-                normal: !formData.roles.normal
-              }
-            })}
-          />
-          <label htmlFor='normal' style={{ display: 'inline-block', paddingLeft: '0.6rem' }}>Normal</label>
-        </div>
+                  <Input label='Teacher'>
+                    <input
+                      type='checkbox'
+                      id='Teacher'
+                      disabled={!isAdmin}
+                      {...register('roles.teacher')}
+                    />
+                  </Input>
+                </Fieldset>
 
-        <div>
-          <input
-            type='checkbox'
-            name='roles'
-            id='admin'
-            disabled={!isAdmin}
-            checked={formData.roles.admin}
-            onChange={() => setFormData({
-              ...formData,
-              roles: {
-                ...formData.roles,
-                admin: !formData.roles.admin
-              }
-            })}
-          />
-          <label htmlFor='admin' style={{ display: 'inline-block', paddingLeft: '0.6rem' }}>Admin</label>
-        </div>
+                <Input style={{ display: 'inline-block' }}>
+                  <button disabled={status === 'pending' || !canCreate} type='submit'>
+                    {status === 'pending' ? 'Atualizando...' : 'Atualizar'}
+                  </button>
+                </Input>
 
-        <div style={{ marginBottom: '1rem' }}>
-          <input
-            type='checkbox'
-            name='roles'
-            id='teacher'
-            disabled={!isAdmin}
-            checked={formData.roles.teacher}
-            onChange={() => setFormData({
-              ...formData,
-              roles: {
-                ...formData.roles,
-                teacher: !formData.roles.teacher
-              }
-            })}
-          />
-          <label htmlFor='admin' style={{ display: 'inline-block', paddingLeft: '0.6rem' }}>Teacher</label>
-        </div>
-
-        <button onClick={onUpdate} disabled={status === 'pending' || !canCreate}>
-          {status === 'pending' ? 'Updating...' : 'Update'}
-        </button>
-        <button style={{
-          marginLeft: '1rem',
-          background: '#C66518'
-        }} onClick={onCancel} disabled={status === 'pending'}>
-          Cancelar
-        </button>
+                <Input
+                  style={{
+                    display: 'inline-block',
+                    '--bg-color': 'rgb(252, 88, 50)',
+                    '--bg-hover': 'rgb(252, 70, 29)',
+                    '--bg-active': 'rgb(252, 88, 50)',
+                    '--outline-color': 'rgb(253, 152, 129)',
+                  }}
+                >
+                  <button disabled={status === 'pending'} type='button'
+                    onClick={() => navigate(-1, { replace: true })}
+                  >
+                    Cancelar
+                  </button>
+                </Input>
+              </Fieldset>
+            </Column>
+          </Row>
+        </form>
       </div>
     </div>
   )

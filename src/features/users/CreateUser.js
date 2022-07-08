@@ -187,7 +187,7 @@ const CreateUser = () => {
                       type='checkbox'
                       id='Teacher'
                       disabled={!canCreate}
-                      {...register('roles.teacher ')}
+                      {...register('roles.teacher')}
                     />
                   </Input>
                 </Fieldset>
