@@ -8,9 +8,13 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   return response.data
 })
 
-export const createUser = createAsyncThunk('users/createUser', async (user) => {
-  const response = await API.post('/users', user)
-  return response.data
+export const createUser = createAsyncThunk('users/createUser', async (user, { rejectWithValue }) => {
+  try {
+    const response = await API.post('/users', user)
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.response.data)
+  }
 })
 
 export const updateUser = createAsyncThunk('users/updateUser', async (user) => {

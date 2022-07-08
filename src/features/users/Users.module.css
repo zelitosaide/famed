@@ -1,90 +1,13 @@
 .updateUser {
-  height: 100vh;
+  min-height: 100vh;
   background: #F3F4F6;
-}
-
-.updateUser p {
-  margin-top: 0;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--main-color);
-}
-
-.updateUser label {
-  display: block;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-}
-
-.updateUser input[type=password],
-.updateUser input[type=text],
-.updateUser input[type=email] {
-  display: block;
-  width: 100%;
-  border-radius: 0.3rem;
-  height: 2.2rem;
-  /* border: 1px solid #DDDEE0; */
-  border: 1px solid #D1D5DB;
-  outline: none;
-  margin-bottom: 1.2rem;
-  font-size: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  background: var(--white-color);
-}
-
-.updateUser input[type=password] {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  letter-spacing: 0.125rem;
-}
-
-.updateUser input[type=password]:focus,
-.updateUser input[type=text]:focus,
-.updateUser input[type=email]:focus {
-  border: 1px solid var(--hover-color);
-  outline: 1px solid var(--hover-color);
-  box-shadow: 0 0 3px 0 var(--hover-color);
-}
-
-.updateUser input[type=email]:disabled,
-.updateUser input[type=password]:disabled,
-.updateUser input[type=text]:disabled {
-  cursor: no-drop;
-  opacity: 0.5;
-}
-
-.updateUser input[type=checkbox]:disabled {
-  cursor: no-drop;
-  opacity: 0.5;
-}
-
-.updateUser button {
-  border: none;
-  outline: none;
-  padding: 0.5rem;
-  background: var(--main-color);
-  color: var(--white-color);
-  font-size: 0.875rem;
-  cursor: pointer;
-  border-radius: 0.3rem;
-  min-width: 6rem;
-}
-
-.updateUser button:disabled {
-  cursor: no-drop;
-  opacity: 0.7;
-}
-
-
-.formGroup::after {
-  content: '';
-  display: table;
-  clear: both;
+  padding-top: 3.5rem; 
+  padding-left: 16rem;
 }
 
 /* User Table */
 .userTable {
-  height: 100vh;
+  min-height: 100vh;
   background: #F3F4F6;
 }
 

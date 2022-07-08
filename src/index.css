@@ -1,6 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 :root {
@@ -21,6 +22,57 @@
   --red-color: #FC5832;
   --second-red-color: #fc2f00;
   --border-bottom-navbar: #428C41;
+
+
+  --scale: 0.9;
+
+
+  /* Border Radius */
+  --border-radius-small: calc(0.375rem * var(--scale)); /* buttons, small thing*/
+  --border-radius-large: calc(0.5rem * var(--scale));
+  /* End */
+
+  /* Font Size */
+  --main-font-size: calc(0.8125rem * var(--scale));
+  --small-font-size: calc(0.6875rem * var(--scale));
+  /* End */
+
+  /* Font Weight */
+  --main-font-weight: 400;
+  --bold-font-weight: 500; /* buttons, titulos */
+  --semibold-font-weight: 600;
+  /* End */
+
+  /* font-family */
+  --font-family: 'Montserrat', sans-serif;
+
+  /* Font Color */
+  --main-white-color: rgb(255, 255, 255);
+  --main-font-color: rgb(51, 65, 85);
+  --bold-font-color: rgb(15, 23, 42);
+  --placeholder-font-color: rgb(148, 163, 184);
+  --sub-bold-font-color: rgb(100, 116, 139);
+  /* End */
+
+  /* Icon stroke color */
+  --main-stroke-svg-color: rgb(148, 163, 184);
+  --bold-stroke-svg-color: rgb(100, 116, 139);
+  /* End */
+
+  /* Border Color */
+  --main-border-color: rgba(51, 65, 85, 0.1); /* incluindo buttons and containers */
+  --divider-border-color: rgb(229, 231, 235);
+  --icon-button-border-color: rgba(15, 23, 42, 0.1); /* only */
+  /* border: 0 solid #e5e7eb; */
+
+  /* Box Shadow */
+  --box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .05), 0 8px 10px -6px rgba(0, 0, 0, .05);
+
+  /* Paddings */
+  --btn-padding-left: calc(0.75rem * var(--scale));
+  --btn-padding-right: calc(0.75rem * var(--scale));
+  --btn-padding-bottom: calc(0.5rem * var(--scale));
+  --btn-padding-top: calc(0.5rem * var(--scale));
 }
 
 * {
