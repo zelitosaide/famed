@@ -1,4 +1,4 @@
-.updateUser {
+.updateUser, .userTable {
   min-height: 100vh;
   background: #F3F4F6;
   padding-top: 3.5rem; 
@@ -6,35 +6,26 @@
 }
 
 /* User Table */
-.userTable {
-  min-height: 100vh;
-  background: #F3F4F6;
+.userTable .addbtn {
+  position: relative;
+  padding-left: 1.5rem;
 }
 
-.userTable .title {
-  margin-top: 0;
+.userTable .addbtn::before {
+  content: '\002B';
   font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--main-color);
+  font-weight: var(--main-font-weight);
+  position: absolute;
+  top: 0;
+  left: 0.4rem;
 }
 
-.userTable button {
-  cursor: pointer;
-}
-
-.userTable button:hover {
+.userTable .deleteBtn:hover,
+.userTable .editBtn:hover {
   text-decoration: underline;
 }
 
-.userTable button:disabled:hover {
+.userTable .deleteBtn:disabled:hover,
+.userTable .editBtn:disabled:hover {
   text-decoration: none;
-}
-
-.userTable button:disabled {
-  cursor: no-drop;
-  opacity: 0.4;
-}
-
-.userTable a:hover {
-  text-decoration: underline;
 }

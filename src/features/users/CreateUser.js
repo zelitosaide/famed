@@ -3,9 +3,8 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import { createUser } from './usersSlice'
-
 import styles from './Users.module.css'
+import { createUser } from './usersSlice'
 import { Row } from '../../components/row/Row'
 import { Column } from '../../components/column/Column'
 import { Input } from '../../components/input/Input'

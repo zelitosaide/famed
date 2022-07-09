@@ -14,7 +14,6 @@ import { updateUser } from './usersSlice'
 
 const UpdateUser = () => {
   const [status, setStatus] = useState('idle')
-
   const { userId } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()

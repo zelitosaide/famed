@@ -17,14 +17,22 @@ export const createUser = createAsyncThunk('users/createUser', async (user, { re
   }
 })
 
-export const updateUser = createAsyncThunk('users/updateUser', async (user) => {
-  const response = await API.patch(`/users/${user._id}`, user)
-  return response.data
+export const updateUser = createAsyncThunk('users/updateUser', async (user, { rejectWithValue }) => {
+  try {
+    const response = await API.patch(`/users/${user._id}`, user)
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.response.data)
+  }
 })
 
-export const deleteUser = createAsyncThunk('users/deleteUser', async (userId) => {
-  const response = await API.delete(`/users/${userId}`)
-  return response.data
+export const deleteUser = createAsyncThunk('users/deleteUser', async (userId, { rejectWithValue }) => {
+  try {
+    const response = await API.delete(`/users/${userId}`)
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.response.data)
+  }
 })
 
 const initialState = {

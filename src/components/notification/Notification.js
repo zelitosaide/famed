@@ -6,12 +6,13 @@ import { Section } from '../section/Section'
 
 export const Notification = ({ visible, setVisible, type, text, title }) => {
   return (
-    <Alert setVisible={setVisible} visible={visible} style={{ top: '4rem', right: '1rem' }}>
+    <Alert setVisible={setVisible} visible={visible} style={{ top: '3rem', right: '0.6rem' }}>
       <Section
         style={{
           background: 'var(--main-white-color)',
           borderRadius: 'var(--border-radius-large)',
-          width: '21rem'
+          width: '21rem',
+          boxShadow: 'rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px'
         }}
       >
         <Row>
