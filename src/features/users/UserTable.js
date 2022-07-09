@@ -295,7 +295,7 @@ const UserTable = () => {
                   })}
 
                   {emptyRows > 0 && (
-                    <TableRow style={{ height: 29.5 * emptyRows }}>
+                    <TableRow style={{ height: 29.7 * emptyRows }}>
                       <TableCell colSpan={6} />
                     </TableRow>
                   )}
@@ -303,12 +303,13 @@ const UserTable = () => {
 
                 <TableFooter>
                   <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                    
-                    <Input style={{ paddingTop: '0.8rem' }}>
-                      <button className={styles.addbtn} onClick={() => navigate('/dashboard/users/create')}>
-                        Adicionar Usuário
-                      </button>
-                    </Input>
+                    <TableCell style={{ paddingLeft: 0 }}>
+                      <Input style={{ paddingTop: '0.8rem', paddingLeft: 0, display: 'inline-block' }}>
+                        <button className={styles.addbtn} onClick={() => navigate('/dashboard/users/create')}>
+                          Adicionar Usuário
+                        </button>
+                      </Input>
+                    </TableCell>
 
                     <TablePagination
                       rowsPerPageOptions={[8, 9]}

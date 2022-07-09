@@ -9,11 +9,13 @@ import { Input } from '../../components/input/Input'
 import { Row } from '../../components/row/Row'
 
 import styles from './Users.module.css'
-
 import { updateUser } from './usersSlice'
+import { Notification } from '../../components/notification/Notification'
 
 const UpdateUser = () => {
   const [status, setStatus] = useState('idle')
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const { userId } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -40,6 +42,7 @@ const UpdateUser = () => {
   const onSubmit = async (data) => {
     try {
       setStatus('pending')
+      setOpenErrorNotification(false)
       const response = await dispatch(updateUser(data)).unwrap()
       const updatedUser = { ...currentUser, user: response }
 
@@ -49,7 +52,8 @@ const UpdateUser = () => {
 
       navigate('/dashboard/users')
     } catch (error) {
-      console.log(error.message)
+      setErrorMessage(error.message)
+      setOpenErrorNotification(true)
     } finally {
       setStatus('idle')
     }
@@ -59,6 +63,14 @@ const UpdateUser = () => {
     <div className={`${styles.updateUser} ${styles.responsive}`}>
       <div style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <Notification
+            visible={openErrorNotification}
+            setVisible={setOpenErrorNotification}
+            text={errorMessage}
+            title='Erro de atualização'
+            type='Error'
+          />
+
           <Row>
             <Column style={{ width: '50%' }}>
               <Fieldset legend='Atualização de Usuário'>

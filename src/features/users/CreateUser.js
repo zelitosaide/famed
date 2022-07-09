@@ -73,7 +73,7 @@ const CreateUser = () => {
             visible={openErrorNotification}
             setVisible={setOpenErrorNotification}
             text={errorMessage}
-            title='Algo deu errado'
+            title='Erro de cadastro'
             type='Error'
           />
 
