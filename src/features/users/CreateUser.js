@@ -79,7 +79,7 @@ const CreateUser = () => {
 
           <Row>
             <Column style={{ width: '50%' }}>
-              <Fieldset legend='Cadastro de Usuário'>
+              <Fieldset legend='Cadastro de Usuário' style={{ minHeight: '26rem' }}>
                 <Row>
                   <Column style={{ width: '50%' }}>
                     <Input label='Primeiro Nome' error={errors.firstName?.message} required>

@@ -1,8 +1,8 @@
 import styles from './Input.module.css'
 
-export const Input = ({ children, label, error, ...props }) => {
+export const Input = ({ children, label, error, reorder, ...props }) => {
   const type = children?.props?.type
-  
+
   const bgColor = props?.style?.['--bg-color'] || 'rgb(27, 154, 25)'
   const bgHover = props?.style?.['--bg-hover'] || 'rgb(23, 132, 21)'
   const bgActive = props?.style?.['--bg-active'] || 'rgb(27, 154, 25)'
@@ -22,10 +22,18 @@ export const Input = ({ children, label, error, ...props }) => {
     >
       {type === 'checkbox' ? (
         <>
+          {!!reorder && !!label && (
+            <label style={{ paddingRight: '0.5rem' }} className={styles.checkboxlabel} htmlFor={label}>
+              {label}
+            </label>
+          )}
+
           <span className={styles.checkbox}>{children}</span>
-          {!!label && (
+
+          {!reorder && !!label && (
             <label className={styles.checkboxlabel} htmlFor={label}>{label}</label>
           )}
+
           {!!error && (
             <div style={{ paddingLeft: '1.65rem' }} className={styles.error}>{error}</div>
           )}

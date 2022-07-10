@@ -73,7 +73,7 @@ const UpdateUser = () => {
 
           <Row>
             <Column style={{ width: '50%' }}>
-              <Fieldset legend='Atualização de Usuário'>
+              <Fieldset legend='Atualização de Usuário' style={{ minHeight: '26rem' }}>
                 <Row>
                   <Column style={{ width: '50%' }}>
                     <Input label='Primeiro Nome' error={errors.firstName?.message} required>

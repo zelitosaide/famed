@@ -74,26 +74,52 @@
 .input input[type=email],
 .input input[type=date],
 .input input[type=number],
-.input input[type=password] {
+.input input[type=password],
+.input input[type=url],
+.input input[type=file],
+.input textarea {
   box-sizing: border-box;
   border-radius: var(--border-radius-small);
   border: 1px solid #D1D5DB;
   outline: none;
-  padding: 0 calc(0.5rem * var(--scale));
+  padding: 0.5rem calc(0.5rem * var(--scale));
   font-size: var(--main-font-size);
   color: var(--main-font-color);
   font-weight: var(--main-font-weight);
-  height: calc(2.2rem * var(--scale));
   width: 100%;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   font-family: var(--font-family);
+}
+
+.input input[type=file] {
+  padding: initial;
+  cursor: pointer;
+}
+
+.input input[type=file]::file-selector-button {
+  padding: 0.5rem;
+  border: none;
+  border-right: 1px solid #D1D5DB;
+  font-size: var(--main-font-size);
+  color: var(--main-font-color);
+  font-weight: var(--main-font-weight);
+  font-family: var(--font-family);
+  cursor: pointer;
+}
+
+.input textarea {
+  min-height: 5.42rem;
+  padding: calc(0.5rem * var(--scale))
 }
 
 .input input[type=text]:focus,
 .input input[type=email]:focus,
 .input input[type=date]:focus,
 .input input[type=number]:focus,
-.input input[type=password]:focus {
+.input input[type=password]:focus,
+.input input[type=url]:focus,
+.input input[type=file]:focus,
+.input textarea:focus {
   background: #FFFCC8 !important;
   box-shadow: 0 0 0 .25rem rgba(20, 111, 18, 0.15);
   border: 1px solid rgba(20, 111, 18, .5) !important;
@@ -103,7 +129,10 @@
 .input input[type=email]:disabled,
 .input input[type=date]:disabled,
 .input input[type=number]:disabled,
-.input input[type=password]:disabled {
+.input input[type=password]:disabled,
+.input input[type=url]:disabled,
+.input input[type=file]:disabled,
+.input textarea:disabled {
   cursor: no-drop;
   opacity: 0.5;
   background: #E9E9ED;
