@@ -39,13 +39,17 @@ export const DialogOverlay = ({ children, visible, setVisible, backdrop, ...prop
                 }}
               >
                 <button
+                  type='button'
                   style={{
                     padding: 1,
                     width: '1.4rem',
                     height: '1.4rem',
                     color: 'var(--main-stroke-svg-color)'
                   }}
-                  onClick={() => setVisible(false)}
+                  onClick={() => {
+                    setVisible(false)
+                    !!props?.callback && props.callback()
+                  }}
                 >
                   <TimesIcon />
                 </button>
