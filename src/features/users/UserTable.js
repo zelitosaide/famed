@@ -136,7 +136,7 @@ const UserTable = () => {
       <div style={{ padding: '2rem' }}>
         <Fieldset legend='Tabela de Usuários' style={{ marginRight: 0 }}>
           <Modal
-            setVisible={setOpenModal}
+            setVisible={() => setOpenModal(false)}
             visible={openModal}
             handleRemove={handleRemove}
             title='Remover usuário'

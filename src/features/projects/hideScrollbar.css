@@ -4,8 +4,8 @@
 
 .react-horizontal-scrolling-menu--scroll-container {
   -ms-overflow-style: none; 
-  /* scrollbar-width: none;  */
-  scrollbar-width: thin; 
+  scrollbar-width: none; 
+  /* scrollbar-width: thin;  */
 }
 
 /* First item margin */

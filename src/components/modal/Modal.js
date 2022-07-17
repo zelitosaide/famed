@@ -56,7 +56,7 @@ export const Modal = ({ visible, setVisible, handleRemove, type, text, title, ..
               </Input>
 
               <Input style={{ display: 'inline-block' }}>
-                <button onClick={() => setVisible(false)}>Cancel</button>
+                <button onClick={setVisible}>Cancel</button>
               </Input>
             </div>
           </Column>

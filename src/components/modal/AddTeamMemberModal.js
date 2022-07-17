@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { Column } from '../column/Column'
@@ -7,17 +7,30 @@ import { Input } from '../input/Input'
 import { Row } from '../row/Row'
 import { Section } from '../section/Section'
 
-export const AddTeamMemberModal = ({ visible, setVisible }) => {
+export const AddTeamMemberModal = (props) => {
+  const { visible, setVisible, counter, setCounter, isEdit, setIsEdit, previousTeamMember } = props
   const { register, watch, setValue, trigger, formState: { errors } } = useFormContext()
-  const [counter, setCounter] = useState(0)
   const team = watch('team')
 
   return (
     <DialogOverlay
       style={{ marginTop: 94, overflow: 'hidden' }}
-      visible={visible} setVisible={setVisible}
-      callback={() => {
-        setValue(`team.${counter}`, { name: '', role: '', image: '' })
+      visible={visible}
+      setVisible={() => {
+        setVisible()
+        if (!isEdit) {
+          setValue(`team.${counter}`, { name: '', role: '', image: '' })
+        } else {
+          if (previousTeamMember.name !== team[counter].name
+            || previousTeamMember.role !== team[counter].role
+            || previousTeamMember.image[0].name !== team[counter].image[0].name
+          ) {
+            setValue(`team.${counter}`, previousTeamMember)
+          }
+          setCounter(team.length - 1)
+          setValue(`team.${team.length - 1}`, { name: '', role: '', image: '' })
+          setIsEdit(false)
+        }
       }}
     >
       <div style={{ borderBottom: '1px solid #D1D5DB' }}>
@@ -37,7 +50,7 @@ export const AddTeamMemberModal = ({ visible, setVisible }) => {
         <Row>
           <Column style={{ width: '50%' }}>
             <Input label='Nome do colaborador' style={{ paddingLeft: 0 }}
-              error={!!errors.team && errors.team[counter]?.name?.message}
+              error={errors.team && errors.team[counter]?.name?.message}
             >
               <input
                 type='text'
@@ -53,7 +66,7 @@ export const AddTeamMemberModal = ({ visible, setVisible }) => {
           </Column>
           <Column style={{ width: '50%' }}>
             <Input label='Função do colaborador' style={{ paddingRight: 0 }}
-              error={!!errors.team && errors?.team[counter]?.role?.message}
+              error={errors.team && errors?.team[counter]?.role?.message}
             >
               <input
                 type='text'
@@ -70,7 +83,7 @@ export const AddTeamMemberModal = ({ visible, setVisible }) => {
         </Row>
 
         <Input label='Foto do colaborador' style={{ paddingLeft: 0, paddingRight: 0 }}
-          error={!!errors.team && errors?.team[counter]?.image?.message}
+          error={errors.team && errors?.team[counter]?.image?.message}
         >
           <input
             type='file'
@@ -79,6 +92,12 @@ export const AddTeamMemberModal = ({ visible, setVisible }) => {
               required: {
                 value: visible,
                 message: 'This field is required'
+              },
+              validate: (value) => {
+                if (!!value) {
+                  const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+                  return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                }
               }
             })}
           />
@@ -98,9 +117,15 @@ export const AddTeamMemberModal = ({ visible, setVisible }) => {
                 })
 
                 if (canSave) {
-                  setVisible(false)
-                  setCounter(team.length)
-                  setValue(`team.${team.length}`, { name: '', role: '', image: '' })
+                  if (isEdit) {
+                    setCounter(team.length - 1)
+                    setValue(`team.${team.length - 1}`, { name: '', role: '', image: '' })
+                    setIsEdit(false)
+                  } else {
+                    setCounter(team.length)
+                    setValue(`team.${team.length}`, { name: '', role: '', image: '' })
+                  }
+                  setVisible()
                 }
               }}
             >
@@ -119,8 +144,20 @@ export const AddTeamMemberModal = ({ visible, setVisible }) => {
           >
             <button type='button'
               onClick={() => {
-                setVisible(false)
-                setValue(`team.${counter}`, { name: '', role: '', image: '' })
+                setVisible()
+                if (!isEdit) {
+                  setValue(`team.${counter}`, { name: '', role: '', image: '' })
+                } else {
+                  if (previousTeamMember.name !== team[counter].name
+                    || previousTeamMember.role !== team[counter].role
+                    || previousTeamMember.image[0].name !== team[counter].image[0].name
+                  ) {
+                    setValue(`team.${counter}`, previousTeamMember)
+                  }
+                  setCounter(team.length - 1)
+                  setValue(`team.${team.length - 1}`, { name: '', role: '', image: '' })
+                  setIsEdit(false)
+                }
               }}
             >
               Cancelar

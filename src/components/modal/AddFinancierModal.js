@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { DialogOverlay } from '../dialog_overlay/DialogOverlay'
@@ -6,18 +5,30 @@ import { Input } from '../input/Input'
 import { Row } from '../row/Row'
 import { Section } from '../section/Section'
 
-export const AddFinancierModal = ({ visible, setVisible }) => {
+export const AddFinancierModal = (props) => {
+  const { visible, setVisible, counter, setCounter, isEdit, setIsEdit, previousFinancier } = props
   const { register, watch, setValue, trigger, formState: { errors } } = useFormContext()
-  const [counter, setCounter] = useState(0)
-  const name = watch('financier.name')
+  const financiers = watch('financiers')
 
   return (
     <DialogOverlay
-      callback={() => {
-        setValue(`financier.name.${counter}`, '')
-      }}
       style={{ marginTop: 94, overflow: 'hidden' }}
-      visible={visible} setVisible={setVisible}
+      visible={visible}
+      setVisible={() => {
+        setVisible()
+        if (!isEdit) {
+          setValue(`financiers.${counter}`, { name: '', websiteUrl: '' })
+        } else {
+          if (previousFinancier.name !== financiers[counter].name ||
+            previousFinancier.websiteUrl !== financiers[counter].websiteUrl
+          ) {
+            setValue(`financiers.${counter}`, previousFinancier)
+          }
+          setCounter(financiers.length - 1)
+          setValue(`financiers.${financiers.length - 1}`, { name: '', websiteUrl: '' })
+          setIsEdit(false)
+        }
+      }}
     >
       <div style={{ borderBottom: '1px solid #D1D5DB' }}>
         <Section style={{ background: '#fff' }}>
@@ -34,17 +45,36 @@ export const AddFinancierModal = ({ visible, setVisible }) => {
 
       <Section style={{ paddingTop: '0.5rem', background: '#fff' }}>
         <Input label='Nome do Financiador' style={{ paddingLeft: 0, paddingRight: 0 }}
-          error={errors.financier?.name[counter]?.message}
+          error={errors.financiers && errors.financiers[counter]?.name?.message}
         >
           <input
             type='text'
             id='Nome do Financiador'
-            {...register(`financier.name.${counter}`, {
-              validate: visible
-                ? (value) => {
-                  return !!value || 'This field is required'
-                }
-                : null
+            {...register(`financiers.${counter}.name`, {
+              required: {
+                value: visible,
+                message: 'This field is required'
+              }
+            })}
+          />
+        </Input>
+
+        <Input label='Website do Financiador' style={{ paddingLeft: 0, paddingRight: 0 }}
+          error={errors.financiers && errors.financiers[counter]?.websiteUrl?.message}
+        >
+          <input
+            type='url'
+            id='Website do Financiador'
+            placeholder='https://example.com'
+            {...register(`financiers.${counter}.websiteUrl`, {
+              required: {
+                value: visible,
+                message: 'This field is required'
+              },
+              pattern: visible && {
+                value: /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
+                message: 'Please provide a valid URL, (Example: https://example.com)'
+              }
             })}
           />
         </Input>
@@ -54,12 +84,23 @@ export const AddFinancierModal = ({ visible, setVisible }) => {
             <button
               type='button'
               onClick={async () => {
-                const canSave = await trigger(`financier.name.${counter}`, { shouldFocus: true })
+                const canSave = await trigger([
+                  `financiers.${counter}.name`,
+                  `financiers.${counter}.websiteUrl`
+                ], {
+                  shouldFocus: true
+                })
 
                 if (canSave) {
-                  setVisible(false)
-                  setCounter(name.length)
-                  setValue(`financier.name.${name.length}`, '')
+                  if (isEdit) {
+                    setCounter(financiers.length - 1)
+                    setValue(`financiers.${financiers.length - 1}`, { name: '', websiteUrl: '' })
+                    setIsEdit(false)
+                  } else {
+                    setCounter(financiers.length)
+                    setValue(`financiers.${financiers.length}`, { name: '', websiteUrl: '' })
+                  }
+                  setVisible()
                 }
               }}
             >
@@ -78,8 +119,19 @@ export const AddFinancierModal = ({ visible, setVisible }) => {
           >
             <button type='button'
               onClick={() => {
-                setVisible(false)
-                setValue(`financier.name.${counter}`, '')
+                setVisible()
+                if (!isEdit) {
+                  setValue(`financiers.${counter}`, { name: '', websiteUrl: '' })
+                } else {
+                  if (previousFinancier.name !== financiers[counter].name ||
+                    previousFinancier.websiteUrl !== financiers[counter].websiteUrl
+                  ) {
+                    setValue(`financiers.${counter}`, previousFinancier)
+                  }
+                  setCounter(financiers.length - 1)
+                  setValue(`financiers.${financiers.length - 1}`, { name: '', websiteUrl: '' })
+                  setIsEdit(false)
+                }
               }}
             >
               Cancelar

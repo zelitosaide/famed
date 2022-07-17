@@ -8,7 +8,7 @@ export const DialogOverlay = ({ children, visible, setVisible, backdrop, ...prop
       {visible && (
         <motion.div
           style={dialogOverlay}
-          onClick={() => !!backdrop && setVisible(false)}
+          onClick={() => !!backdrop && setVisible()}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -46,10 +46,7 @@ export const DialogOverlay = ({ children, visible, setVisible, backdrop, ...prop
                     height: '1.4rem',
                     color: 'var(--main-stroke-svg-color)'
                   }}
-                  onClick={() => {
-                    setVisible(false)
-                    !!props?.callback && props.callback()
-                  }}
+                  onClick={setVisible}
                 >
                   <TimesIcon />
                 </button>

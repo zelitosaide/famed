@@ -60,8 +60,10 @@
   /* End */
 
   /* Border Color */
-  --main-border-color: rgba(51, 65, 85, 0.1); /* incluindo buttons and containers */
-  --divider-border-color: rgb(229, 231, 235);
+  /* --main-border-color: rgba(51, 65, 85, 0.1); incluindo buttons and containers */
+  --main-border-color: rgba(51, 65, 85, 0.15); /* incluindo buttons and containers */
+  /* --divider-border-color: rgb(229, 231, 235); */
+  --divider-border-color: rgba(229, 231, 235, 0.8);
   --icon-button-border-color: rgba(15, 23, 42, 0.1); /* only */
   /* border: 0 solid #e5e7eb; */
 
