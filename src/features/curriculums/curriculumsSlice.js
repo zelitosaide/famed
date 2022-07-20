@@ -10,23 +10,35 @@ export const fetchCurriculums = createAsyncThunk('curriculums/fetchCurriculums',
 )
 
 export const createCurriculum = createAsyncThunk('curriculums/createCurriculum',
-  async (curriculum) => {
-    const response = await API.post('/curriculums', curriculum)
-    return response.data
+  async (curriculum, { rejectWithValue }) => {
+    try {
+      const response = await API.post('/curriculums', curriculum)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
   }
 )
 
 export const deleteCurriculum = createAsyncThunk('curriculums/deleteCurriculum',
-  async (curriculumId) => {
-    const response = await API.delete(`/curriculums/${curriculumId}`)
-    return response.data
+  async (curriculumId, { rejectWithValue }) => {
+    try {
+      const response = await API.delete(`/curriculums/${curriculumId}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
   }
 )
 
 export const updateCurriculum = createAsyncThunk('curriculums/updateCurriculum',
-  async (curriculum) => {
-    const response = await API.patch(`/curriculums/${curriculum._id}`, curriculum)
-    return response.data
+  async (curriculum, { rejectWithValue }) => {
+    try {
+      const response = await API.patch(`/curriculums/${curriculum._id}`, curriculum)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
   }
 )
 

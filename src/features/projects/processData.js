@@ -6,7 +6,11 @@ export const processArray = async (team) => {
   const promises = []
 
   newTeam.forEach(value => {
-    promises.push(convert2base64(value.image))
+    if (typeof value.image.base64Image !== 'string') {
+      promises.push(convert2base64(value.image.base64Image[0]))
+    } else {
+      promises.push(value.image.base64Image)
+    }
   })
 
   return await Promise.all(promises)

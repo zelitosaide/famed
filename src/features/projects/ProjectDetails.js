@@ -19,12 +19,10 @@ const ProjectDetails = () => {
   return (
     <div className={`${styles.projectDetails} ${styles.responsive}`}>
       <div className={styles.gap2}></div>
-      {/* <div style={{ paddingTop: '7rem' }} className='row'></div> */}
-      {/* <div style={{ paddingTop: '9.5rem' }} className='row'></div> */}
 
       <div className='row'>
         <div className={styles.container}>
-          <img className={styles.__image} src={project.image} alt='' />
+          <img className={styles.__image} src={project.image.base64Image} alt='' />
 
           <div className={styles.info}>
             <p>{project.title}</p>
@@ -40,7 +38,6 @@ const ProjectDetails = () => {
                 Duração do Projecto
               </span>
               <span style={{ display: 'inline-block' }}>
-                {/* {project.startDate.split('T')[0]}&nbsp;&nbsp;à&nbsp;&nbsp;{project.endDate.split('T')[0]} */}
                 {<FormattedDate date={project.startDate} />}&nbsp;&nbsp;à&nbsp;&nbsp;{<FormattedDate date={project.endDate} />}
               </span>
             </p>
@@ -56,7 +53,7 @@ const ProjectDetails = () => {
                 Financiador
               </span>
               <span style={{ display: 'inline-block' }}>
-                {project.financier.name}
+                {project.financiers && project.financiers[0].name}
               </span>
             </p>
             <p>{project.content}</p>

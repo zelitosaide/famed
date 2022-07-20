@@ -6,12 +6,20 @@ import { useForm } from 'react-hook-form'
 import { createNews } from './newsSlice'
 import styles from './News.module.css'
 import { convert2base64 } from '../projects/processData'
+import { Row } from '../../components/row/Row'
+import { Column } from '../../components/column/Column'
+import { Fieldset } from '../../components/fieldset/Fieldset'
+import { Input } from '../../components/input/Input'
+import { Notification } from '../../components/notification/Notification'
 
 const CreateNews = () => {
+  const [openNotification, setOpenNotification] = useState(false)
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [status, setStatus] = useState('idle')
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: {
       title: '',
       content: '',
@@ -30,111 +38,129 @@ const CreateNews = () => {
   const onSubmit = async (data) => {
     try {
       setStatus('pending')
-      const image = await convert2base64(data.image[0])
+      setOpenErrorNotification(false)
+      const base64Image = await convert2base64(data.image[0])
+      const imageName = data.image[0].name
+      const image = { imageName, base64Image }
 
       if (!!data.pdf) {
-        const pdf = await convert2base64(data.pdf[0])
+        const base64PDF = await convert2base64(data.pdf[0])
+        const pdfName = data.pdf[0].name
+        const pdf = { pdfName, base64PDF }
         await dispatch(createNews({ ...data, image, pdf, userId: currentUser.user._id })).unwrap()
       } else {
-        await dispatch(createNews({ ...data, image, userId: currentUser.user._id })).unwrap()
+        await dispatch(createNews({
+          ...data, image, pdf: {
+            pdfName: '',
+            base64PDF: ''
+          }, userId: currentUser.user._id
+        })).unwrap()
       }
-
-      // console.log({...data, image, pdf, userId: currentUser.user._id })
-
-      // await dispatch(createNews({ ...data, image, pdf, userId: currentUser.user._id })).unwrap()
-      navigate('/dashboard/news')
+      openAndAutoClose()
+      reset()
     } catch (error) {
-      console.log('FROM Create News', error)
+      setErrorMessage(error.message)
+      setOpenErrorNotification(true)
     } finally {
       setStatus('idle')
     }
   }
 
-  const onCancel = () => {
-    navigate(-1, { replace: true })
+  const openAndAutoClose = () => {
+    setOpenNotification(true)
+    setTimeout(() => {
+      setOpenNotification(false)
+    }, 14000)
   }
 
   return (
-    <div
-      style={{ paddingTop: '3.5rem', paddingLeft: '16rem' }}
-      className={`${styles.createNews} ${styles.responsive}`}
-    >
+    <div className={`${styles.createNews} ${styles.responsive}`}>
       <div style={{ padding: '2rem' }}>
-        <p className={styles.title}>Criar nova Notícia</p>
-
-        {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div style={{ marginBottom: '1.2rem' }}>
-            <label htmlFor='title'>
-              Título da Notícia&nbsp;<span style={{ color: 'red' }}>*</span>
-            </label>
-            <input id='title' type='text' disabled={!canCreate}
-              {...register('title', { required: 'This field is riquired' })}
-              style={{
-                border: !!errors.title && 'none',
-                outline: !!errors.title && '1px solid #FC5832',
-                boxShadow: !!errors.title && '0 0 3px 0 #FC5832',
-              }}
-            />
-            <p className={styles.error}>{errors.title?.message}</p>
-          </div>
+          <Notification
+            visible={openNotification}
+            setVisible={setOpenNotification}
+            text='Notícia criada com sucesso!'
+            title='Salvo com sucesso!'
+          />
 
-          <div style={{ marginBottom: '1.2rem' }}>
-            <label htmlFor='content'>
-              Resumo da Notícia&nbsp;<span style={{ color: 'red' }}>*</span>
-            </label>
-            <textarea
-              id='content'
-              disabled={!canCreate}
-              {...register('content', { required: 'This field is riquired' })}
-              style={{
-                border: !!errors.content && 'none',
-                outline: !!errors.content && '1px solid #FC5832',
-                boxShadow: !!errors.content && '0 0 3px 0 #FC5832',
-              }}
-            ></textarea>
-            <p className={styles.error}>{errors.content?.message}</p>
-          </div>
+          <Notification
+            visible={openErrorNotification}
+            setVisible={setOpenErrorNotification}
+            text={errorMessage}
+            title='Erro de cadastro'
+            type='Error'
+          />
 
-          <div style={{ marginBottom: '1.2rem' }} className={styles.formGroup}>
-            <div style={{ float: 'left', width: '49%' }}>
-              <label htmlFor='image'>
-                Image da Notícia&nbsp;<span style={{ color: 'red' }}>*</span>
-              </label>
-              <input type='file' id='image' disabled={!canCreate}
-                {...register('image', { required: 'This field is riquired' })}
-                style={{
-                  border: !!errors.image && 'none',
-                  outline: !!errors.image && '1px solid #FC5832',
-                  boxShadow: !!errors.image && '0 0 3px 0 #FC5832'
-                }}
-              />
-              <p className={styles.error}>{errors.image?.message}</p>
-            </div>
+          <Row>
+            <Column style={{ width: '50%' }}>
+              <Fieldset legend='Criar nova Notícia' style={{ minHeight: '26rem' }}>
+                <Input label='Título da Notícia' required error={errors.title?.message}>
+                  <input type='text' id='Título da Notícia' disabled={!canCreate}
+                    {...register('title', { required: 'This field is riquired' })}
+                  />
+                </Input>
 
-            <div style={{ float: 'right', width: '49%' }}>
-              <label htmlFor='pdf'>PDF</label>
-              <input type='file' id='pdf' disabled={!canCreate}
-                {...register('pdf')}
-              />
-            </div>
-          </div>
+                <Input label='Resumo da Notícia' required error={errors.content?.message}>
+                  <textarea id='Resumo da Notícia' disabled={!canCreate}
+                    {...register('content', { required: 'This field is riquired' })}
+                  />
+                </Input>
 
+                <Input label='Image da Notícia' required error={errors.image?.message}>
+                  <input type='file' id='Image da Notícia' disabled={!canCreate}
+                    {...register('image', {
+                      required: 'This field is riquired',
+                      validate: (value) => {
+                        if (!!value) {
+                          const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+                          return !!allowedExtensions.exec(value[0]?.name) || 'Invalid file type'
+                        }
+                      }
+                    })}
+                  />
+                </Input>
 
+                <Input label='PDF' error={errors.pdf?.message}>
+                  <input type='file' id='PDF' disabled={!canCreate}
+                    {...register('pdf', {
+                      validate: (value) => {
+                        if (!!value) {
+                          const allowedExtensions = /\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd$/i
+                          return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                        }
+                      }
+                    })}
+                  />
+                </Input>
 
-          <button type='submit' disabled={status === 'pending' || !canCreate}>
-            {status === 'pending' ? 'Save...' : 'Save'}
-          </button>
+                <Input style={{ display: 'inline-block' }}>
+                  <button type='submit' disabled={status === 'pending' || !canCreate}>
+                    {status === 'pending' ? 'Salvando...' : 'Salvar'}
+                  </button>
+                </Input>
 
-          <button type='button' style={{
-            marginLeft: '1rem',
-            background: '#C66518'
-          }} onClick={onCancel} disabled={status === 'pending'}>
-            Cancelar
-          </button>
+                <Input
+                  style={{
+                    display: 'inline-block',
+                    '--bg-color': 'rgb(252, 88, 50)',
+                    '--bg-hover': 'rgb(252, 70, 29)',
+                    '--bg-active': 'rgb(252, 88, 50)',
+                    '--outline-color': 'rgb(253, 152, 129)',
+                  }}
+                >
+                  <button type='button' disabled={status === 'pending'}
+                    onClick={() => navigate(-1, { replace: true })}
+                  >
+                    Cancelar
+                  </button>
+                </Input>
+              </Fieldset>
+            </Column>
+          </Row>
         </form>
       </div>
-    </div>
+    </div >
   )
 }
 

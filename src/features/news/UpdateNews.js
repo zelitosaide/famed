@@ -1,15 +1,22 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import { updateNews } from './newsSlice'
 import styles from './News.module.css'
+import { updateNews } from './newsSlice'
 import { convert2base64 } from '../projects/processData'
+import { Row } from '../../components/row/Row'
+import { Column } from '../../components/column/Column'
+import { Fieldset } from '../../components/fieldset/Fieldset'
+import { Input } from '../../components/input/Input'
+import { FileInput } from '../../components/input/FileInput'
+import { Notification } from '../../components/notification/Notification'
 
 const UpdateNews = () => {
   const { newsId } = useParams()
-
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [status, setStatus] = useState('idle')
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,16 +25,12 @@ const UpdateNews = () => {
     state.news.news.find(news => news._id === newsId)
   )
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-      ...news,
-      image: '',
-      pdf: '',
-      home: news.flags.home,
-      published: news.flags.published
-    }
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    defaultValues: news
   })
 
+  const image = watch('image')
+  const pdf = watch('pdf')
 
   if (!news) {
     return <Navigate to='/dashboard/news' replace />
@@ -41,152 +44,158 @@ const UpdateNews = () => {
   const onSubmit = async (data) => {
     try {
       setStatus('pending')
+      setOpenErrorNotification(false)
 
-      let image, pdf
+      let base64Image, imageName, base64PDF, pdfName
 
-      if (!!data.image) {
-        image = await convert2base64(data.image[0])
+      if (typeof data.image.base64Image !== 'string') {
+        base64Image = await convert2base64(data.image.base64Image[0])
+        imageName = data.image.base64Image[0].name
       } else {
-        image = news.image
+        base64Image = news.image.base64Image
+        imageName = news.image.imageName
       }
 
-      if (!!data.pdf) {
-        pdf = await convert2base64(data.pdf[0])
+      if (typeof data.pdf.base64PDF !== 'string') {
+        base64PDF = await convert2base64(data.pdf.base64PDF[0])
+        pdfName = data.pdf.base64PDF[0].name
       } else {
-        pdf = news.pdf
+        base64PDF = news.pdf.base64PDF
+        pdfName = news.pdf.pdfName
       }
-
 
       await dispatch(updateNews({
-        ...data,
-        image,
-        pdf,
-        flags: { home: data.home, published: data.published }
+        ...data, image: { imageName, base64Image }, pdf: {
+          pdfName, base64PDF
+        }
       })).unwrap()
-
 
       navigate('/dashboard/news')
     } catch (error) {
-      console.log('FROM Update News', error)
+      setErrorMessage(error.message)
+      setOpenErrorNotification(true)
     } finally {
       setStatus('idle')
     }
   }
 
-  const onCancel = () => {
-    navigate(-1, { replace: true })
-  }
-
   return (
-    <div
-      style={{ paddingTop: '3.5rem', paddingLeft: '16rem' }}
-      className={`${styles.createNews} ${styles.responsive}`}
-    >
+    <div className={`${styles.createNews} ${styles.responsive}`}>
       <div style={{ padding: '2rem' }}>
-        <p className={styles.title}>Editar Notícia</p>
-
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div style={{ marginBottom: '1.2rem' }}>
-            <label htmlFor='title'>
-              Título da Notícia&nbsp;<span style={{ color: 'red' }}>*</span>
-            </label>
-            <input id='title' type='text' disabled={!canUpdate}
-              {...register('title', { required: 'This field is riquired' })}
-              style={{
-                border: !!errors.title && 'none',
-                outline: !!errors.title && '1px solid #FC5832',
-                boxShadow: !!errors.title && '0 0 3px 0 #FC5832',
-              }}
-            />
-            <p className={styles.error}>{errors.title?.message}</p>
-          </div>
+          <Notification
+            visible={openErrorNotification}
+            setVisible={setOpenErrorNotification}
+            text={errorMessage}
+            title='Erro de atualização'
+            type='Error'
+          />
 
-          <div style={{ marginBottom: '1.2rem' }}>
-            <label htmlFor='content'>
-              Resumo da Notícia&nbsp;<span style={{ color: 'red' }}>*</span>
-            </label>
-            <textarea
-              id='content'
-              disabled={!canUpdate}
-              {...register('content', { required: 'This field is riquired' })}
-              style={{
-                border: !!errors.content && 'none',
-                outline: !!errors.content && '1px solid #FC5832',
-                boxShadow: !!errors.content && '0 0 3px 0 #FC5832',
-              }}
-            ></textarea>
-            <p className={styles.error}>{errors.content?.message}</p>
-          </div>
+          <Row>
+            <Column style={{ width: '50%' }}>
+              <Fieldset legend='Editar Notícia'>
+                <Input label='Título da Notícia' required error={errors.title?.message}>
+                  <input type='text' id='Título da Notícia' disabled={!canUpdate}
+                    {...register('title', { required: 'This field is riquired' })}
+                  />
+                </Input>
 
-          {/* <div style={{ marginBottom: '1.2rem' }}>
-            <label htmlFor='image'>
-              Image da Notícia&nbsp;<span style={{ color: 'red' }}>*</span>
-            </label>
-            <input type='file' id='image' disabled={!canUpdate}
-              {...register('image')}
-            />
-          </div> */}
+                <Input label='Resumo da Notícia' required error={errors.content?.message}>
+                  <textarea id='Resumo da Notícia' disabled={!canUpdate}
+                    {...register('content', { required: 'This field is riquired' })}
+                  />
+                </Input>
 
+                <Row>
+                  <Column style={{ width: '50%' }}>
+                    <FileInput label='Image da Notícia' required error={errors.image?.base64Image.message}
+                      fileName={
+                        typeof image?.base64Image === 'string' ? image.imageName : image?.base64Image[0].name
+                      }
+                      disabled={!canUpdate}
+                    >
+                      <input id='Image da Notícia' type='file' style={{ display: 'none' }}
+                        {...register('image.base64Image', {
+                          validate: (value) => {
+                            if (!!value) {
+                              if (typeof value !== 'string') {
+                                const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+                                return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                              }
+                            }
+                          }
+                        })}
+                      />
+                    </FileInput>
+                  </Column>
+                  <Column style={{ width: '50%' }}>
+                    <FileInput label='PDF' required disabled={!canUpdate} error={errors.pdf?.base64PDF.message}
+                      fileName={typeof pdf?.base64PDF === 'string' ? !!pdf.pdfName ? pdf.pdfName : 'Nenhum ficheiro' : pdf?.base64PDF[0].name}
+                    >
+                      <input id='PDF' type='file' style={{ display: 'none' }}
+                        {...register('pdf.base64PDF', {
+                          validate: (value) => {
+                            if (!!value && typeof value !== 'string') {
+                              if (!!value.length) {
+                                const allowedExtensions = /\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd$/i
+                                return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                              }
+                            }
+                          }
+                        })}
+                      />
+                    </FileInput>
+                  </Column>
+                </Row>
 
+                {/* Mudancas sobre permissoes */}
+                {admin && (
+                  <Fieldset legend='Estado da Notícia'
+                    style={{ border: 'none', padding: 0, margin: '0.5rem 0 0' }}
+                    legendStyle={{
+                      background: '#fff',
+                      fontWeight: 'var(--bold-font-weight)',
+                      fontSize: 'var(--main-font-size)',
+                      color: 'var(--main-font-color)',
+                    }}
+                  >
+                    <Input label='Publicar Notícia no Site' style={{ paddingBottom: 0, paddingTop: 0 }}>
+                      <input type='checkbox' id='Publicar Notícia no Site'
+                        {...register('flags.published')}
+                      />
+                    </Input>
 
+                    <Input label='Mover para Página Inicial'>
+                      <input type='checkbox' id='Mover para Página Inicial' {...register('flags.home')} />
+                    </Input>
+                  </Fieldset>
+                )}
 
-          <div style={{ marginBottom: '1.2rem' }} className={styles.formGroup}>
-            <div style={{ float: 'left', width: '49%' }}>
-              <label htmlFor='image'>
-                Image da Notícia&nbsp;<span style={{ color: 'red' }}>*</span>
-              </label>
-              <input type='file' id='image' disabled={!canUpdate}
-                {...register('image')}
-              />
-            </div>
+                <Input style={{ display: 'inline-block' }}>
+                  <button type='submit' disabled={status === 'pending' || !canUpdate}>
+                    {status === 'pending' ? 'Atualizando...' : 'Atualizar'}
+                  </button>
+                </Input>
 
-            <div style={{ float: 'right', width: '49%' }}>
-              <label htmlFor='pdf'>PDF</label>
-              <input type='file' id='pdf' disabled={!canUpdate}
-                {...register('pdf')}
-              />
-            </div>
-          </div>
-
-
-
-
-          {/* Mudancas sobre permissoes */}
-          {admin && (
-            <div style={{ marginBottom: '0.5rem' }}>
-              <label htmlFor='estado'>
-                Estado da Notícia&nbsp;<span style={{ color: 'red' }}>*</span>
-              </label>
-
-              <div>
-                <input type='checkbox' id='published' {...register('published')} />
-                <label htmlFor='published' style={{ display: 'inline-block', paddingLeft: '0.5rem' }}>
-                  Publicar Notícia no Site
-                </label>
-              </div>
-
-              <div>
-                <input type='checkbox' id='home' {...register('home')} />
-                <label htmlFor='home' style={{ display: 'inline-block', paddingLeft: '0.5rem' }}>
-                  Mover para Página Inicial
-                </label>
-              </div>
-            </div>
-          )}
-
-          <button type='submit' disabled={status === 'pending' || !canUpdate}>
-            {status === 'pending' ? 'Updating...' : 'Update'}
-          </button>
-
-          <button type='button' style={{
-            marginLeft: '1rem',
-            background: '#C66518'
-          }} onClick={onCancel} disabled={status === 'pending'}>
-            Cancelar
-          </button>
+                <Input
+                  style={{
+                    display: 'inline-block',
+                    '--bg-color': 'rgb(252, 88, 50)',
+                    '--bg-hover': 'rgb(252, 70, 29)',
+                    '--bg-active': 'rgb(252, 88, 50)',
+                    '--outline-color': 'rgb(253, 152, 129)',
+                  }}
+                >
+                  <button type='button' disabled={status === 'pending'}
+                    onClick={() => navigate(-1, { replace: true })}
+                  >Cancelar</button>
+                </Input>
+              </Fieldset>
+            </Column>
+          </Row>
         </form>
       </div>
-    </div>
+    </div >
   )
 }
 

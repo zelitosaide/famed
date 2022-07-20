@@ -36,7 +36,6 @@ const Carousel = ({ news }) => {
 export default Carousel
 
 
-
 const Content = ({ activeIndex, news }) => {
   return (
     <div className={styles.content}>
@@ -56,7 +55,12 @@ const Content = ({ activeIndex, news }) => {
               }
             </p>
           </div>
-          <img className={styles.slideImage} src={value.image} alt='' />
+
+          {typeof value.image === 'string' ? (
+            <img className={styles.slideImage} src={value.image} alt='' />
+          ) : (
+            <img className={styles.slideImage} src={value.image.base64Image} alt='' />
+          )}
         </div>
       ))}
     </div>

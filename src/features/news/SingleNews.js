@@ -5,7 +5,13 @@ import styles from './News.module.css'
 const SingleNews = ({ news }) => {
   return (
     <div className={styles.singleNews}>
-      <img src={news.image} alt='' />
+      
+      {typeof news.image === 'string' ? (
+        <img src={news.image} alt='' />
+      ) : (
+        <img src={news.image.base64Image} alt='' />
+      )}
+      
       <div className={styles.content}>
         <Link to={`/news/${news._id}`}>{news.title}</Link>
         <p>

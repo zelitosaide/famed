@@ -45,8 +45,7 @@ const CreateUser = () => {
     } catch (error) {
       setErrorMessage(error.message)
       setOpenErrorNotification(true)
-    }
-    finally {
+    } finally {
       setStatus('idle')
     }
   }

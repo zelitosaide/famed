@@ -28,8 +28,6 @@ const ProjectList = () => {
   return !!orderedProjects.length && (
     <div className={`${styles.projectList} ${styles.responsive}`}>
       <div className={styles.gap}></div>
-      {/* <div style={{ paddingTop: '7rem' }} className='row'></div> */}
-      {/* <div style={{ paddingTop: '11rem' }} className='row'></div> */}
 
       <div className='row'>
         {orderedProjects.slice(0, range).map(project => (

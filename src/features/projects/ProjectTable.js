@@ -38,7 +38,7 @@ const ProjectTable = () => {
   const projects = useSelector(state => state.projects.projects)
 
   const orderedProjects = projects.slice().sort((a, b) => b.startDate.localeCompare(a.startDate))
-  
+
   // const projects = useSelector(state => {
   //   if (canDelete) {
   //     return state.projects.projects
@@ -61,8 +61,6 @@ const ProjectTable = () => {
   }
 
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - orderedProjects.length) : 0
-
-
 
   const status = useSelector(state => state.projects.status)
   const dispatch = useDispatch()
@@ -170,10 +168,15 @@ const ProjectTable = () => {
                     </TableCell>
 
                     <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {project.financier.name.length > 25 
-                        ? `${project.financier.name.substring(0, 25)} ...`
-                        : project.financier.name
-                      }
+                      {project.financier ? (
+                        project.financier.name.length > 25
+                          ? `${project.financier.name.substring(0, 25)} ...`
+                          : project.financier.name
+                      ) : (
+                        project.financiers[0].name.length > 25
+                          ? `${project.financiers[0].name.substring(0, 25)} ...`
+                          : project.financiers[0].name
+                      )}
                     </TableCell>
 
                     <TableCell sx={{ fontSize: '0.8rem' }} align='right'>

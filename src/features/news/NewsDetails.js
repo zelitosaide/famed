@@ -22,13 +22,15 @@ const NewsDetails = () => {
   return (
     <div className={`${styles.newsDetails} ${styles.responsive}`}>
       <div className={styles.gap2}></div>
-      {/* <div style={{ paddingTop: '7rem' }} className='row'></div> */}
-      {/* <div style={{ paddingTop: '9.5rem' }} className='row'></div> */}
-
 
       <div className='row'>
         <div className={styles.container}>
-          <img src={news.image} alt='' />
+
+          {typeof news.image === 'string' ? (
+            <img src={news.image} alt='' />
+          ) : (
+            <img src={news.image.base64Image} alt='' />
+          )}
 
           <div className={styles.info}>
             <p>{news.title}</p>
@@ -44,14 +46,13 @@ const NewsDetails = () => {
                 Data de publicação
               </span>
               <span style={{ display: 'inline-block' }}>
-                {/* {news.createdAt.split('T')[0]} */}
                 <FormattedDate date={news.createdAt} />
               </span>
             </p>
-            {!!news.pdf && (
+            {!!news.pdf.base64PDF && (
               <div style={{ paddingTop: '1rem' }}>
                 <Base64Downloader
-                  base64={news.pdf}
+                  base64={news.pdf.base64PDF}
                   downloadName={news.title}
                 >
                   <FontAwesomeIcon icon={faFilePdf}></FontAwesomeIcon>&nbsp;Download

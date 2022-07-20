@@ -4,7 +4,11 @@ const Member = ({ member }) => {
   return (
     <div tabIndex={0} className={styles.member}>
       <div className={styles.image}>
-        <img src={member.image} alt='' />
+        {typeof member.image !== 'string' ? (
+          <img src={member.image.base64Image} alt='' />
+        ) : (
+          <img src={member.image} alt='' />
+        )}
       </div>
       <div className={styles.memberInfo}>
         <p className={styles.name}>{member.name}</p>

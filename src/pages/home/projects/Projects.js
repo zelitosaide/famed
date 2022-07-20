@@ -20,15 +20,15 @@ const Projects = ({ projects }) => {
       {projects.map(project => (
         <div key={project._id} className='col col-768-4'>
           <div className={styles.project}>
-            <img src={project.image} alt='' width='100%' />
+            <img src={project.image.base64Image} alt='' width='100%' />
             <p className={styles.content}>
               {project.content.length < 180
                 ? project.content
                 : `${project.content.substring(0, 180)}...`
               }
             </p>
-            {!!project.financier.websiteUrl ? (
-              <a target='_blank' href={project.financier.websiteUrl} rel='noreferrer'>
+            {!!project.financiers[0].websiteUrl ? (
+              <a target='_blank' href={project.financiers[0].websiteUrl} rel='noreferrer'>
                 <motion.span
                   style={{ display: 'inline-block' }}
                   variants={spanVariants}

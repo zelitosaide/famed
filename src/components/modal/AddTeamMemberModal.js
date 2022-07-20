@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { Column } from '../column/Column'
 import { DialogOverlay } from '../dialog_overlay/DialogOverlay'
+import { FileInput } from '../input/FileInput'
 import { Input } from '../input/Input'
 import { Row } from '../row/Row'
 import { Section } from '../section/Section'
@@ -12,6 +12,8 @@ export const AddTeamMemberModal = (props) => {
   const { register, watch, setValue, trigger, formState: { errors } } = useFormContext()
   const team = watch('team')
 
+  console.log('previousTeamMember', previousTeamMember)
+
   return (
     <DialogOverlay
       style={{ marginTop: 94, overflow: 'hidden' }}
@@ -19,16 +21,24 @@ export const AddTeamMemberModal = (props) => {
       setVisible={() => {
         setVisible()
         if (!isEdit) {
-          setValue(`team.${counter}`, { name: '', role: '', image: '' })
+          setValue(`team.${counter}`, {
+            name: '', role: '', image: {
+              base64Image: '', imageName: ''
+            }
+          })
         } else {
           if (previousTeamMember.name !== team[counter].name
             || previousTeamMember.role !== team[counter].role
-            || previousTeamMember.image[0].name !== team[counter].image[0].name
+            || previousTeamMember.image.imageName !== team[counter].image.imageName
           ) {
             setValue(`team.${counter}`, previousTeamMember)
           }
           setCounter(team.length - 1)
-          setValue(`team.${team.length - 1}`, { name: '', role: '', image: '' })
+          setValue(`team.${team.length - 1}`, {
+            name: '', role: '', image: {
+              base64Image: '', imageName: ''
+            }
+          })
           setIsEdit(false)
         }
       }}
@@ -82,27 +92,33 @@ export const AddTeamMemberModal = (props) => {
           </Column>
         </Row>
 
-        <Input label='Foto do colaborador' style={{ paddingLeft: 0, paddingRight: 0 }}
-          error={errors.team && errors?.team[counter]?.image?.message}
+
+        <FileInput label='Foto do colaborador' style={{ paddingLeft: 0, paddingRight: 0 }}
+          error={errors.team && errors?.team[counter]?.image?.base64Image?.message}
+          fileName={
+            !!team[counter]?.image?.imageName ? team[counter]?.image?.imageName : 'Nenhum ficheiro selecionado.'
+          }
         >
           <input
             type='file'
-            id='Foto do colaborador'
-            {...register(`team.${counter}.image`, {
+            id='Foto do colaborador' style={{ display: 'none' }}
+            {...register(`team.${counter}.image.base64Image`, {
               required: {
-                value: visible,
+                value: visible && !isEdit,
                 message: 'This field is required'
               },
               validate: (value) => {
                 if (!!value) {
-                  const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
-                  return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                  if (typeof value !== 'string') {
+                    const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+                    setValue(`team.${counter}.image.imageName`, value[0].name)
+                    return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                  }
                 }
               }
             })}
           />
-        </Input>
-
+        </FileInput>
 
         <Row>
           <Input style={{ display: 'inline-block', float: 'right', paddingRight: 0 }}>
@@ -111,7 +127,7 @@ export const AddTeamMemberModal = (props) => {
                 const canSave = await trigger([
                   `team.${counter}.name`,
                   `team.${counter}.role`,
-                  `team.${counter}.image`
+                  `team.${counter}.image.base64Image`
                 ], {
                   shouldFocus: true
                 })
@@ -119,11 +135,19 @@ export const AddTeamMemberModal = (props) => {
                 if (canSave) {
                   if (isEdit) {
                     setCounter(team.length - 1)
-                    setValue(`team.${team.length - 1}`, { name: '', role: '', image: '' })
+                    setValue(`team.${team.length - 1}`, {
+                      name: '', role: '', image: {
+                        base64Image: '', imageName: ''
+                      }
+                    })
                     setIsEdit(false)
                   } else {
                     setCounter(team.length)
-                    setValue(`team.${team.length}`, { name: '', role: '', image: '' })
+                    setValue(`team.${team.length}`, {
+                      name: '', role: '', image: {
+                        base64Image: '', imageName: ''
+                      }
+                    })
                   }
                   setVisible()
                 }
@@ -146,16 +170,24 @@ export const AddTeamMemberModal = (props) => {
               onClick={() => {
                 setVisible()
                 if (!isEdit) {
-                  setValue(`team.${counter}`, { name: '', role: '', image: '' })
+                  setValue(`team.${counter}`, {
+                    name: '', role: '', image: {
+                      base64Image: '', imageName: ''
+                    }
+                  })
                 } else {
                   if (previousTeamMember.name !== team[counter].name
                     || previousTeamMember.role !== team[counter].role
-                    || previousTeamMember.image[0].name !== team[counter].image[0].name
+                    || previousTeamMember.image.imageName !== team[counter].image.imageName
                   ) {
                     setValue(`team.${counter}`, previousTeamMember)
                   }
                   setCounter(team.length - 1)
-                  setValue(`team.${team.length - 1}`, { name: '', role: '', image: '' })
+                  setValue(`team.${team.length - 1}`, {
+                    name: '', role: '', image: {
+                      base64Image: '', imageName: ''
+                    }
+                  })
                   setIsEdit(false)
                 }
               }}

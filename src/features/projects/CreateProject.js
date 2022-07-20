@@ -19,6 +19,7 @@ import { AddFinancierModal } from '../../components/modal/AddFinancierModal'
 import { AddTeamMemberModal } from '../../components/modal/AddTeamMemberModal'
 import { Chip } from '../../components/chip/Chip'
 import { LeftArrow, RightArrow } from './arrows'
+import { Notification } from '../../components/notification/Notification'
 
 const CreateProject = () => {
   const methods = useForm({
@@ -45,6 +46,9 @@ const CreateProject = () => {
   const financiers = methods.watch('financiers')
   const team = methods.watch('team')
 
+  const [openNotification, setOpenNotification] = useState(false)
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [openFinancierModal, setOpenFinancierModal] = useState(false)
   const [openTeamModal, setOpenTeamModal] = useState(false)
   const [step, setStep] = useState(1)
@@ -58,43 +62,51 @@ const CreateProject = () => {
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
   const canCreate = currentUser.user.roles.teacher || currentUser.user.roles.admin
 
-
-
-
-
-
   const navigate = useNavigate()
   const [status, setStatus] = useState('idle')
   const dispatch = useDispatch()
-  
 
   const onSubmit = async (data) => {
-    console.log(data)
+    try {
+      setStatus('pending')
+      setOpenErrorNotification(false)
+      const base64team = await processArray(data.team)
+      const base64Image = await convert2base64(data.image[0])
+      const imageName = data.image[0].name
+      const image = { imageName, base64Image }
 
-    // if (activeStep === 4) {
-    //   try {
-    //     setStatus('pending')
-    //     const base64team = await processArray(data.team)
-    //     const image = await convert2base64(data.image[0])
-    //     const team = data.team
-    //       .map(value => value.name && value.role && value.image ? value : null)
-    //       .filter(value => value)
+      const team = data.team
+        .map(value => value.name && value.role && value.image ? value : null)
+        .filter(value => value)
+      const financiers = data.financiers
+        .map(value => value.name && value.websiteUrl ? value : null)
+        .filter(value => value)
 
-    //     for (let i = 0; i < base64team.length; i++) {
-    //       team[i].image = base64team[i]
-    //     }
+      for (let i = 0; i < base64team.length; i++) {
+        team[i].image = { ...team[i].image, base64Image: base64team[i] }
+      }
 
-    //     await dispatch(createProject({
-    //       ...data, image, team, userId: currentUser.user._id
-    //     })).unwrap()
-    //     navigate('/dashboard/projects')
-    //   } catch (error) {
-    //     console.log('FROM Create Project', error)
-    //     setActiveStep(0)
-    //   } finally {
-    //     setStatus('idle')
-    //   }
-    // }
+      await dispatch(createProject({
+        ...data, image, team, financiers, userId: currentUser.user._id
+      })).unwrap()
+
+      openAndAutoClose()
+      setCounterFinancier(0)
+      setCounterTeamMember(0)
+      methods.reset()
+    } catch (error) {
+      setErrorMessage(error.message)
+      setOpenErrorNotification(true)
+    } finally {
+      setStatus('idle')
+    }
+  }
+
+  const openAndAutoClose = () => {
+    setOpenNotification(true)
+    setTimeout(() => {
+      setOpenNotification(false)
+    }, 14000)
   }
 
   return (
@@ -102,6 +114,21 @@ const CreateProject = () => {
       <div style={{ padding: '2rem' }}>
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <Notification
+              visible={openNotification}
+              setVisible={setOpenNotification}
+              text='Cadastro efectuado com sucesso!'
+              title='Salvo com sucesso!'
+            />
+
+            <Notification
+              visible={openErrorNotification}
+              setVisible={setOpenErrorNotification}
+              text={errorMessage}
+              title='Erro de cadastro'
+              type='Error'
+            />
+
             <AddFinancierModal
               setVisible={() => setOpenFinancierModal(false)}
               visible={openFinancierModal}
@@ -251,7 +278,8 @@ const CreateProject = () => {
                   ref={fieldset}
                 >
                   <Input label='Image do projecto' required error={methods?.formState?.errors?.image?.message}>
-                    <input type='file' id='Image do projecto' disabled={step === 1 || !canCreate}
+                    <input type='file' id='Image do projecto'
+                      disabled={step === 1 || !canCreate || status === 'pending'}
                       style={{ border: '1px solid var(--main-border-color)' }}
                       {...methods.register('image', {
                         required: {
@@ -303,7 +331,7 @@ const CreateProject = () => {
 
                       <Input>
                         <button
-                          disabled={step === 1 || !canCreate}
+                          disabled={step === 1 || !canCreate || status === 'pending'}
                           type='button'
                           className={styles.addFinancierBtn}
                           style={{ padding: '0.2rem', borderRadius: '1rem' }}
@@ -328,7 +356,7 @@ const CreateProject = () => {
                           LeftArrow={LeftArrow}
                           RightArrow={RightArrow}
                           onWheel={onWheel}
-                          // apiRef={apiRef}
+                        // apiRef={apiRef}
                         >
                           {financiers.map((value, index) => (
                             value.name &&
@@ -347,7 +375,7 @@ const CreateProject = () => {
                                 setCounterFinancier(prevState => prevState - 1)
                               }}
                               text={value.name}
-                              disabled={step === 1}
+                              disabled={step === 1 || status === 'pending'}
                             />
                           ))}
                         </ScrollMenu>
@@ -398,7 +426,7 @@ const CreateProject = () => {
                               fontWeight: 'var(--bold-font-weight)'
                             }}
                             type='button'
-                            disabled={step === 1 || !canCreate}
+                            disabled={step === 1 || !canCreate || status === 'pending'}
                           >
                             Ver todos
                           </button>
@@ -443,7 +471,7 @@ const CreateProject = () => {
                       </span>
                       <Input>
                         <button
-                          disabled={step === 1 || !canCreate}
+                          disabled={step === 1 || !canCreate || status === 'pending'}
                           type='button'
                           className={styles.addFinancierBtn}
                           style={{ padding: '0.2rem', borderRadius: '1rem' }}
@@ -468,7 +496,7 @@ const CreateProject = () => {
                           LeftArrow={LeftArrow}
                           RightArrow={RightArrow}
                           onWheel={onWheel}
-                          // apiRef={apiRef}
+                        // apiRef={apiRef}
                         >
                           {team.map((value, index) => (
                             value.name &&
@@ -487,7 +515,7 @@ const CreateProject = () => {
                                 setCounterTeamMember(prevState => prevState - 1)
                               }}
                               text={value.name}
-                              disabled={step === 1}
+                              disabled={step === 1 || status === 'pending'}
                             />
                           ))}
                         </ScrollMenu>
@@ -538,7 +566,7 @@ const CreateProject = () => {
                               fontWeight: 'var(--bold-font-weight)'
                             }}
                             type='button'
-                            disabled={step === 1 || !canCreate}
+                            disabled={step === 1 || !canCreate || status === 'pending'}
                           >
                             Ver todos
                           </button>

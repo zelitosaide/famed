@@ -7,19 +7,31 @@ export const fetchNews = createAsyncThunk('news/fetchNews', async () => {
   return response.data
 })
 
-export const createNews = createAsyncThunk('news/createNews', async (news) => {
-  const response = await API.post('/news', news)
-  return response.data
+export const createNews = createAsyncThunk('news/createNews', async (news, { rejectWithValue }) => {
+  try {
+    const response = await API.post('/news', news)
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.response.data)
+  }
 })
 
-export const deleteNews = createAsyncThunk('news/deleteNews', async (newsId) => {
-  const response = await API.delete(`/news/${newsId}`)
-  return response.data
+export const deleteNews = createAsyncThunk('news/deleteNews', async (newsId, { rejectWithValue }) => {
+  try {
+    const response = await API.delete(`/news/${newsId}`)
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.response.data)
+  }
 })
 
-export const updateNews = createAsyncThunk('news/updateNews', async (news) => {
-  const response = await API.patch(`/news/${news._id}`, news)
-  return response.data
+export const updateNews = createAsyncThunk('news/updateNews', async (news, { rejectWithValue }) => {
+  try {
+    const response = await API.patch(`/news/${news._id}`, news)
+    return response.data
+  } catch (error) {
+    return rejectWithValue(error.response.data)
+  }
 })
 
 const initialState = {

@@ -7,20 +7,38 @@ export const fetchProjects = createAsyncThunk('projects/fetchProjects', async ()
   return response.data
 })
 
-export const createProject = createAsyncThunk('projects/createProject', async (project) => {
-  const response = await API.post('/projects', project)
-  return response.data
-})
+export const createProject = createAsyncThunk('projects/createProject',
+  async (project, { rejectWithValue }) => {
+    try {
+      const response = await API.post('/projects', project)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 
-export const deleteProject = createAsyncThunk('projects/deleteProject', async (projectId) => {
-  const response = await API.delete(`/projects/${projectId}`)
-  return response.data
-})
+export const deleteProject = createAsyncThunk('projects/deleteProject',
+  async (projectId, { rejectWithValue }) => {
+    try {
+      const response = await API.delete(`/projects/${projectId}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 
-export const updateProject = createAsyncThunk('projects/updateProject', async (project) => {
-  const response = await API.patch(`/projects/${project._id}`, project)
-  return response.data
-})
+export const updateProject = createAsyncThunk('projects/updateProject',
+  async (project, { rejectWithValue }) => {
+    try {
+      const response = await API.patch(`/projects/${project._id}`, project)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
+  }
+)
 
 const initialState = {
   projects: [],

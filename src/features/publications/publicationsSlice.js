@@ -8,23 +8,35 @@ export const fetchPublications = createAsyncThunk('publications/fetchPublication
 })
 
 export const createPublication = createAsyncThunk('publications/createPublication',
-  async (publication) => {
-    const response = await API.post('/publications', publication)
-    return response.data
+  async (publication, { rejectWithValue }) => {
+    try {
+      const response = await API.post('/publications', publication)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
   }
 )
 
 export const deletePublication = createAsyncThunk('publications/deletePublication',
-  async (publicationsId) => {
-    const response = await API.delete(`/publications/${publicationsId}`)
-    return response.data
+  async (publicationsId, { rejectWithValue }) => {
+    try {
+      const response = await API.delete(`/publications/${publicationsId}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
   }
 )
 
 export const updatePublication = createAsyncThunk('publications/updatePublication',
-  async (publication) => {
-    const response = await API.patch(`/publications/${publication._id}`, publication)
-    return response.data
+  async (publication, { rejectWithValue }) => {
+    try {
+      const response = await API.patch(`/publications/${publication._id}`, publication)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.response.data)
+    }
   }
 )
 

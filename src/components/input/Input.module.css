@@ -80,7 +80,7 @@
 .input textarea {
   box-sizing: border-box;
   border-radius: var(--border-radius-small);
-  border: 1px solid #D1D5DB;
+  border: 1px solid var(--main-border-color);
   outline: none;
   padding: 0.5rem calc(0.5rem * var(--scale));
   font-size: var(--main-font-size);
@@ -99,7 +99,7 @@
 .input input[type=file]::file-selector-button {
   padding: 0.5rem;
   border: none;
-  border-right: 1px solid #D1D5DB;
+  border-right: 1px solid var(--divider-border-color);
   font-size: var(--main-font-size);
   color: var(--main-font-color);
   font-weight: var(--main-font-weight);
@@ -109,7 +109,8 @@
 
 .input textarea {
   min-height: 5.42rem;
-  padding: calc(0.5rem * var(--scale))
+  padding: calc(0.5rem * var(--scale));
+  scrollbar-width: thin;
 }
 
 .input input[type=text]:focus,
@@ -166,7 +167,6 @@
   opacity: 0.5;
 }
 
-
 .checkbox input[type=checkbox]::before {
   content: '';
   position: absolute;
@@ -219,8 +219,6 @@
 
 
 
-
-
 /* radio */
 .radio input[type=radio] {
   -webkit-appearance: none;
@@ -234,14 +232,19 @@
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   color: green;
-  vertical-align: -2.5px;
+  vertical-align: -3.5px;
   cursor: pointer;
 }
 
 .radio input[type=radio]:focus {
   box-shadow: none;
-  outline: 2px solid #f58e56;
+  outline: 2px solid var(--main-outline-color);
   outline-offset: 2px;
+}
+
+.radio input[type=radio]:disabled {
+  cursor: no-drop;
+  opacity: 0.5;
 }
 
 
@@ -255,7 +258,7 @@
   height: 1rem;
   border-radius: 0.5rem;
   visibility: hidden;
-  background: #f3722c;
+  background: var(--main-background-color);
 }
 
 .radio input[type=radio]::after {
@@ -272,7 +275,7 @@
 }
 
 .radio input[type=radio]:checked {
-  border: 1px solid #f3722c;
+  border: 1px solid var(--main-background-color);
 }
 
 .radio input[type=radio]:checked::after {
@@ -284,8 +287,9 @@
 }
 
 .radiolabel {
-  font-size: 0.95rem;
-  color: #555;
+  font-size: var(--main-font-size);
+  color: var(--main-font-color);
+  font-weight: var(--main-font-weight);
   padding-left: 0.6rem;
   cursor: pointer;
 }
