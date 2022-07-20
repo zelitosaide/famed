@@ -12,8 +12,6 @@ export const AddTeamMemberModal = (props) => {
   const { register, watch, setValue, trigger, formState: { errors } } = useFormContext()
   const team = watch('team')
 
-  console.log('previousTeamMember', previousTeamMember)
-
   return (
     <DialogOverlay
       style={{ marginTop: 94, overflow: 'hidden' }}
