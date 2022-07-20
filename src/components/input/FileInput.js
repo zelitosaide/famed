@@ -18,7 +18,7 @@ export const FileInput = ({ error, fileName, label, children, disabled, ...props
         style={{
           boxSizing: 'border-box',
           borderRadius: 'var(--border-radius-small)',
-          border: '1px solid #D1D5DB',
+          border: '1px solid var(--main-border-color)',
           fontSize: 'var(--main-font-size)',
           overflow: 'hidden',
           display: 'flex',
@@ -34,7 +34,7 @@ export const FileInput = ({ error, fileName, label, children, disabled, ...props
         <span className={styles.fileSelectorButton} style={{
           background: '#E9E9ED',
           padding: '0.5rem calc(0.5rem * 0.9)',
-          borderRight: '1px solid #D1D5DB'
+          borderRight: '1px solid var(--divider-border-color)'
         }}>Explorar...</span>
         <span style={{ paddingLeft: '0.3rem', display: 'flex', flexDirection: 'row', gap: 2 }}>
           {fileName?.split(' ' || '-').map((value, i) => (

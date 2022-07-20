@@ -47,7 +47,11 @@ const Teachers = ({ teachers }) => {
                 state={{ name: teacher.name }}
               >
                 <div className={styles.teacher}>
-                  <img src={teacher.image} alt='' />
+                  {typeof teacher.image === 'string' ? (
+                    <img src={teacher.image} alt='' width='100%' />
+                  ) : (
+                    <img src={teacher.image.base64Image} alt='' width='100%' />
+                  )}
                   <div className={styles.content}>
                     <p>{teacher.name}</p>
                     <span>{teacher.title}</span>

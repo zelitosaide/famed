@@ -129,7 +129,7 @@ const CreateCurriculum = () => {
                 <Fieldset
                   error={errors.title?.message}
                   legend='Categoria Académica'
-                  style={{ border: 'none', padding: 0, margin: 0 }}
+                  style={{ border: 'none', padding: 0, margin: 0, boxShadow: 'none' }}
                   legendStyle={{
                     background: '#fff',
                     fontWeight: 'var(--bold-font-weight)',

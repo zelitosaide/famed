@@ -6,9 +6,17 @@ import { useForm } from 'react-hook-form'
 import styles from './Curriculums.module.css'
 import { updateCurriculum } from './curriculumsSlice'
 import { convert2base64 } from '../projects/processData'
+import { Row } from '../../components/row/Row'
+import { Column } from '../../components/column/Column'
+import { Fieldset } from '../../components/fieldset/Fieldset'
+import { FileInput } from '../../components/input/FileInput'
+import { Input } from '../../components/input/Input'
+import { Notification } from '../../components/notification/Notification'
 
 const UpdateCurriculum = () => {
   const [status, setStatus] = useState('idle')
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -19,11 +27,19 @@ const UpdateCurriculum = () => {
     state.curriculums.curriculums.find(curriculum => curriculum._id === curriculumId)
   )
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
     defaultValues: {
       ...curriculum,
-      pdf: '', image: ''
-    }
+      pdf: typeof curriculum.pdf === 'string' ? {
+        base64PDF: curriculum.pdf,
+        pdfName: ''
+      } : curriculum.pdf,
+      image: typeof curriculum.image === 'string' ? {
+        base64Image: curriculum.image,
+        imageName: ''
+      } : curriculum.image
+    },
+    mode: 'onChange'
   })
 
   if (!curriculum) {
@@ -38,141 +54,181 @@ const UpdateCurriculum = () => {
     try {
       setStatus('pending')
 
-      let pdf, image
+      setOpenErrorNotification(false)
 
-      if (!!data.image) {
-        image = await convert2base64(data.image[0])
+      let base64Image, imageName, base64PDF, pdfName
+
+      if (typeof data.image.base64Image !== 'string') {
+        base64Image = await convert2base64(data.image.base64Image[0])
+        imageName = data.image.base64Image[0].name
       } else {
-        image = curriculum.image
+        base64Image = curriculum.image.base64Image
+        imageName = curriculum.image.imageName
       }
 
-      if (!!data.pdf) {
-        pdf = await convert2base64(data.pdf[0])
+      if (typeof data.pdf.base64PDF !== 'string') {
+        base64PDF = await convert2base64(data.pdf.base64PDF[0])
+        pdfName = data.pdf.base64PDF[0].name
       } else {
-        pdf = curriculum.pdf
+        base64PDF = curriculum.pdf.base64PDF
+        pdfName = curriculum.pdf.pdfName
       }
 
-      await dispatch(updateCurriculum({ ...data, pdf, image })).unwrap()
+      await dispatch(updateCurriculum({
+        ...data,
+        image: {
+          imageName, base64Image
+        },
+        pdf: {
+          pdfName, base64PDF
+        }
+      })).unwrap()
+
       navigate('/dashboard/curriculums')
     } catch (error) {
-      console.log('FROM Update Curriculum', error)
+      setErrorMessage(error.message)
+      setOpenErrorNotification(true)
     } finally {
       setStatus('idle')
     }
   }
 
-  const onCancel = () => {
-    navigate(-1, { replace: true })
-  }
+  const pdf = watch('pdf')
+  const image = watch('image')
 
   return (
-    <div
-      style={{ paddingTop: '3.5rem', paddingLeft: '16rem' }}
-      className={`${styles.createCurriculum} ${styles.responsive}`}
-    >
+    <div className={`${styles.createCurriculum} ${styles.responsive}`}>
       <div style={{ padding: '2rem' }}>
-        <p className={styles.title}>Editar Curriculum Vitae (CV)</p>
-
         <form onSubmit={handleSubmit(onSubmit)}>
+          <Notification
+            visible={openErrorNotification}
+            setVisible={setOpenErrorNotification}
+            text={errorMessage}
+            title='Erro de atualização'
+            type='Error'
+          />
 
-          <div style={{ marginBottom: '0.8rem' }} className={styles.formGroup}>
-            <div style={{ float: 'left', width: '49%' }}>
-              <label htmlFor='pdf'>
-                PDF&nbsp;<span style={{ color: 'red' }}>*</span>
-              </label>
-              <input type='file' id='pdf' disabled={!canCreate} {...register('pdf')} />
-            </div>
+          <Row>
+            <Column style={{ width: '50%' }}>
+              <Fieldset legend='Editar Curriculum Vitae (CV)'>
+                <Row>
+                  <Column style={{ width: '50%' }}>
+                    <FileInput label='PDF' required disabled={!canCreate}
+                      error={errors.pdf?.base64PDF.message}
+                      fileName={
+                        typeof pdf?.base64PDF === 'string' ? !!pdf.pdfName ? pdf.pdfName : 'Nenhum ficheiro' : pdf?.base64PDF[0].name
+                      }
+                    >
+                      <input id='PDF' type='file' style={{ display: 'none' }}
+                        {...register('pdf.base64PDF', {
+                          validate: (value) => {
+                            if (!!value && typeof value !== 'string') {
+                              if (!!value.length) {
+                                const allowedExtensions = /\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd$/i
+                                return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                              }
+                            }
+                          }
+                        })}
+                      />
+                    </FileInput>
+                  </Column>
+                  <Column style={{ width: '50%' }}>
+                    <FileInput label='Image do Professor' required disabled={!canCreate}
+                      error={errors.image?.base64Image.message}
+                      fileName={
+                        typeof image?.base64Image === 'string' ? !!image.imageName ? image.imageName : 'Nenhum ficheiro' : image?.base64Image[0].name
+                      }
+                    >
+                      <input id='Image do Professor' type='file' style={{ display: 'none' }}
+                        {...register('image.base64Image', {
+                          validate: (value) => {
+                            if (!!value && typeof value !== 'string') {
+                              if (!!value.length) {
+                                const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+                                return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                              }
+                            }
+                          }
+                        })}
+                      />
+                    </FileInput>
+                  </Column>
+                </Row>
 
-            <div style={{ float: 'right', width: '49%' }}>
-              <label htmlFor='image'>
-                Image do Professor&nbsp;<span style={{ color: 'red' }}>*</span>
-              </label>
-              <input type='file' id='image' disabled={!canCreate} {...register('image')} />
-            </div>
-          </div>
+                <Input label='Resumo do Curriculum' required error={errors.content?.message}>
+                  <textarea id='Resumo do Curriculum' disabled={!canCreate}
+                    {...register('content', { required: 'This field is riquired' })}
+                  />
+                </Input>
 
-          <div style={{ marginBottom: '1.2rem' }}>
-            <label htmlFor='content'>
-              Resumo do Curriculum&nbsp;<span style={{ color: 'red' }}>*</span>
-            </label>
-            <textarea id='content' disabled={!canCreate}
-              {...register('content', { required: 'This field is riquired' })}
-              style={{
-                border: !!errors.content && 'none',
-                outline: !!errors.content && '1px solid #FC5832',
-                boxShadow: !!errors.content && '0 0 3px 0 #FC5832',
-              }}
-            ></textarea>
-            <p className={styles.error}>{errors.content?.message}</p>
-          </div>
+                <Fieldset
+                  error={errors.title?.message}
+                  legend='Categoria Académica'
+                  style={{ border: 'none', padding: 0, margin: 0, boxShadow: 'none' }}
+                  legendStyle={{
+                    background: '#fff',
+                    fontWeight: 'var(--bold-font-weight)',
+                    fontSize: 'var(--main-font-size)',
+                    color: 'var(--main-font-color)',
+                    paddingBottom: 'calc(0.26rem * 0.9)',
+                  }}
+                >
+                  <Input label='Professor Catedrático' style={{ paddingBottom: 0 }}>
+                    <input type='radio' id='Professor Catedrático' value='Professor Catedratico'
+                      disabled={!canCreate}
+                      {...register('title', { required: 'This field is riquired' })}
+                    />
+                  </Input>
 
+                  <Input label='Professor Associado' style={{ paddingBottom: 0 }}>
+                    <input type='radio' id='Professor Associado' value='Professor Associado' disabled={!canCreate}
+                      {...register('title', { required: 'This field is riquired' })}
+                    />
+                  </Input>
 
-          <div style={{ marginBottom: '0.8rem' }}>
-            <label htmlFor='title'>
-              Categoria Académica&nbsp;<span style={{ color: 'red' }}>*</span>
-              &nbsp;&nbsp;<span style={{ fontSize: '0.8rem', color: '#FC5832' }}>{errors.title?.message}</span>
-            </label>
+                  <Input label='Professor Auxiliar' style={{ paddingBottom: 0 }}>
+                    <input type='radio' id='Professor Auxiliar' value='Professor Auxiliar' disabled={!canCreate}
+                      {...register('title', { required: 'This field is riquired' })}
+                    />
+                  </Input>
 
-            <div>
-              <input type='radio' id='professor_doutor' value='Professor Catedratico' disabled={!canCreate}
-                {...register('title', { required: 'This field is riquired' })}
-              />
-              <label htmlFor='professor_doutor' style={{ display: 'inline-block', paddingLeft: '0.6rem' }}>
-                Professor Catedrático
-              </label>
-            </div>
+                  <Input label='Assistente' style={{ paddingBottom: 0 }}>
+                    <input type='radio' id='Assistente' value='Assistente' disabled={!canCreate}
+                      {...register('title', { required: 'This field is riquired' })}
+                    />
+                  </Input>
 
+                  <Input label='Assistente Estagiário'>
+                    <input type='radio' id='Assistente Estagiário' value='Assistente Estagiario'
+                      disabled={!canCreate}
+                      {...register('title', { required: 'This field is riquired' })}
+                    />
+                  </Input>
+                </Fieldset>
 
-            <div>
-              <input type='radio' id='prof_doutor' value='Professor Associado' disabled={!canCreate}
-                {...register('title', { required: 'This field is riquired' })}
-              />
-              <label htmlFor='prof_doutor' style={{ display: 'inline-block', paddingLeft: '0.6rem' }}>
-                Professor Associado
-              </label>
-            </div>
+                <Input style={{ display: 'inline-block' }}>
+                  <button type='submit' disabled={status === 'pending' || !canCreate}>
+                    {status === 'pending' ? 'Atualizando...' : 'Atualizar'}
+                  </button>
+                </Input>
 
-
-            <div>
-              <input type='radio' id='prof_doutor_aux' value='Professor Auxiliar' disabled={!canCreate}
-                {...register('title', { required: 'This field is riquired' })}
-              />
-              <label htmlFor='prof_doutor_aux' style={{ display: 'inline-block', paddingLeft: '0.6rem' }}>
-                Professor Auxiliar
-              </label>
-            </div>
-
-
-            <div>
-              <input type='radio' id='assistente' value='Assistente' disabled={!canCreate}
-                {...register('title', { required: 'This field is riquired' })}
-              />
-              <label htmlFor='assistente' style={{ display: 'inline-block', paddingLeft: '0.6rem' }}>
-                Assistente
-              </label>
-            </div>
-
-
-            <div>
-              <input type='radio' id='assistente_estag' value='Assistente Estagiario' disabled={!canCreate}
-                {...register('title', { required: 'This field is riquired' })}
-              />
-              <label htmlFor='assistente_estag' style={{ display: 'inline-block', paddingLeft: '0.6rem' }}>
-                Assistente Estagiário
-              </label>
-            </div>
-          </div>
-
-          <button type='submit' disabled={status === 'pending' || !canCreate}>
-            {status === 'pending' ? 'Updating...' : 'Update'}
-          </button>
-
-          <button type='button' style={{
-            marginLeft: '1rem',
-            background: '#C66518'
-          }} onClick={onCancel} disabled={status === 'pending'}>
-            Cancelar
-          </button>
+                <Input
+                  style={{
+                    display: 'inline-block',
+                    '--bg-color': 'rgb(252, 88, 50)',
+                    '--bg-hover': 'rgb(252, 70, 29)',
+                    '--bg-active': 'rgb(252, 88, 50)',
+                    '--outline-color': 'rgb(253, 152, 129)',
+                  }}
+                >
+                  <button type='button' disabled={status === 'pending'}
+                    onClick={() => navigate(-1, { replace: true })}
+                  >Cancelar</button>
+                </Input>
+              </Fieldset>
+            </Column>
+          </Row>
         </form>
       </div>
     </div>
