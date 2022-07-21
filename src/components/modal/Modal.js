@@ -38,7 +38,7 @@ export const Modal = ({ visible, setVisible, handleRemove, type, text, title, ..
                 {title}
               </h3>
 
-              <p style={{ color: 'var(--main-font-color)', fontSize: 'var(--main-font-size)' }}>
+              <p style={{ color: 'var(--main-font-color)', fontSize: 'var(--main-font-size)', lineHeight: 1.5 }}>
                 {text}
               </p>
 

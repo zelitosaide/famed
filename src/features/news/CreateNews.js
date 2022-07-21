@@ -25,6 +25,7 @@ const CreateNews = () => {
       content: '',
       image: '',
       pdf: '',
+      department: '',
       flags: {
         home: false,
         published: true
@@ -107,19 +108,30 @@ const CreateNews = () => {
                   />
                 </Input>
 
-                <Input label='Image da Notícia' required error={errors.image?.message}>
-                  <input type='file' id='Image da Notícia' disabled={!canCreate}
-                    {...register('image', {
-                      required: 'This field is riquired',
-                      validate: (value) => {
-                        if (!!value) {
-                          const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
-                          return !!allowedExtensions.exec(value[0]?.name) || 'Invalid file type'
-                        }
-                      }
-                    })}
-                  />
-                </Input>
+                <Row>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='Departamento' required error={errors.department?.message}>
+                      <input type='text' id='Departamento' disabled={!canCreate}
+                        {...register('department', { required: 'This field is riquired' })}
+                      />
+                    </Input>
+                  </Column>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='Image da Notícia' required error={errors.image?.message}>
+                      <input type='file' id='Image da Notícia' disabled={!canCreate}
+                        {...register('image', {
+                          required: 'This field is riquired',
+                          validate: (value) => {
+                            if (!!value) {
+                              const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+                              return !!allowedExtensions.exec(value[0]?.name) || 'Invalid file type'
+                            }
+                          }
+                        })}
+                      />
+                    </Input>
+                  </Column>
+                </Row>
 
                 <Input label='PDF' error={errors.pdf?.message}>
                   <input type='file' id='PDF' disabled={!canCreate}

@@ -26,7 +26,7 @@ const UpdateNews = () => {
   )
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    defaultValues: news
+    defaultValues: { ...news, department: news.department ? news.department : '' }
   })
 
   const image = watch('image')
@@ -101,12 +101,19 @@ const UpdateNews = () => {
                 </Input>
 
                 <Input label='Resumo da Notícia' required error={errors.content?.message}>
-                  <textarea id='Resumo da Notícia' disabled={!canUpdate}
+                  <textarea id='Resumo da Notícia' disabled={!canUpdate} style={{ minHeight: 30 }}
                     {...register('content', { required: 'This field is riquired' })}
                   />
                 </Input>
 
                 <Row>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='Departamento' required error={errors.department?.message}>
+                      <input type='text' id='Departamento' disabled={!canUpdate}
+                        {...register('department', { required: 'This field is riquired' })}
+                      />
+                    </Input>
+                  </Column>
                   <Column style={{ width: '50%' }}>
                     <FileInput label='Image da Notícia' required error={errors.image?.base64Image.message}
                       fileName={
@@ -128,30 +135,29 @@ const UpdateNews = () => {
                       />
                     </FileInput>
                   </Column>
-                  <Column style={{ width: '50%' }}>
-                    <FileInput label='PDF' required disabled={!canUpdate} error={errors.pdf?.base64PDF.message}
-                      fileName={typeof pdf?.base64PDF === 'string' ? !!pdf.pdfName ? pdf.pdfName : 'Nenhum ficheiro' : pdf?.base64PDF[0].name}
-                    >
-                      <input id='PDF' type='file' style={{ display: 'none' }}
-                        {...register('pdf.base64PDF', {
-                          validate: (value) => {
-                            if (!!value && typeof value !== 'string') {
-                              if (!!value.length) {
-                                const allowedExtensions = /\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd$/i
-                                return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
-                              }
-                            }
-                          }
-                        })}
-                      />
-                    </FileInput>
-                  </Column>
                 </Row>
+
+                <FileInput label='PDF' disabled={!canUpdate} error={errors.pdf?.base64PDF.message}
+                  fileName={typeof pdf?.base64PDF === 'string' ? !!pdf.pdfName ? pdf.pdfName : 'Nenhum ficheiro' : pdf?.base64PDF[0].name}
+                >
+                  <input id='PDF' type='file' style={{ display: 'none' }}
+                    {...register('pdf.base64PDF', {
+                      validate: (value) => {
+                        if (!!value && typeof value !== 'string') {
+                          if (!!value.length) {
+                            const allowedExtensions = /\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd$/i
+                            return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                          }
+                        }
+                      }
+                    })}
+                  />
+                </FileInput>
 
                 {/* Mudancas sobre permissoes */}
                 {admin && (
                   <Fieldset legend='Estado da Notícia'
-                    style={{ border: 'none', padding: 0, margin: '0.5rem 0 0' }}
+                    style={{ border: 'none', padding: 0, margin: '0.5rem 0 0', boxShadow: 'none' }}
                     legendStyle={{
                       background: '#fff',
                       fontWeight: 'var(--bold-font-weight)',

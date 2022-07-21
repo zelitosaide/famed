@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import TableContainer from '@mui/material/TableContainer'
-import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
@@ -22,16 +21,58 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 import LastPageIcon from '@mui/icons-material/LastPage'
 
-import { deleteProject, fetchProjects } from './projectsSlice'
 import styles from './Projects.module.css'
+import { deleteProject, fetchProjects } from './projectsSlice'
+import { Input } from '../../components/input/Input'
+import { Fieldset } from '../../components/fieldset/Fieldset'
+import { Modal } from '../../components/modal/Modal'
+import { Notification } from '../../components/notification/Notification'
 
 const theme = createTheme({
   typography: {
     fontFamily: ['Montserrat'].join(',')
   },
+  components: {
+    MuiTablePagination: {
+      styleOverrides: {
+        root: {
+          fontSize: 'var(--main-font-size)',
+          color: 'var(--main-font-color)',
+        },
+        selectLabel: {
+          fontSize: 'var(--main-font-size)',
+          color: 'var(--main-font-color)',
+        },
+        displayedRows: {
+          fontSize: 'var(--main-font-size)',
+          color: 'var(--main-font-color)'
+        },
+        selectIcon: {
+          fontSize: '1.2rem',
+          color: 'var(--main-font-color)',
+        },
+        menuItem: {
+          fontSize: 'var(--main-font-size)',
+          color: 'var(--main-font-color)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        },
+        select: {
+          paddingLeft: 0
+        }
+      }
+    }
+  }
 })
 
 const ProjectTable = () => {
+  const [openModal, setOpenModal] = useState(false)
+  const [selectedId, setSelectedId] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [openSuccessNotification, setOpenSuccessNotification] = useState(false)
+
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
   const canDelete = currentUser.user.roles.admin
 
@@ -64,6 +105,7 @@ const ProjectTable = () => {
 
   const status = useSelector(state => state.projects.status)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (status === 'idle') dispatch(fetchProjects())
@@ -72,203 +114,266 @@ const ProjectTable = () => {
   const [deleteStatus, setDeleteStatus] = useState('idle')
   const [selectedProject, setSelectedProject] = useState('')
 
-  const onDelete = async (projectId) => {
+  const handleRemove = async () => {
+    setOpenModal(false)
+
     if (canDelete) {
       try {
-        setSelectedProject(projectId)
+        setSelectedProject(selectedId)
         setDeleteStatus('pending')
-        await dispatch(deleteProject(projectId)).unwrap()
+        setOpenErrorNotification(false)
+        await dispatch(deleteProject(selectedId)).unwrap()
+        openAndAutoClose()
       } catch (error) {
-        console.log('FROM Project Table', error)
+        setErrorMessage(error.message)
+        setOpenErrorNotification(true)
       } finally {
         setDeleteStatus('idle')
       }
-    } else {
-      alert('Nao tem permissao para deletar projecto')
     }
   }
 
+  const openAndAutoClose = () => {
+    setOpenSuccessNotification(true)
+    setTimeout(() => {
+      setOpenSuccessNotification(false)
+    }, 14000)
+  }
+
   return (
-    <div
-      style={{ paddingTop: '3.5rem', paddingLeft: '16rem' }}
-      className={`${styles.projectTable} ${styles.responsive}`}
-    >
+    <div className={`${styles.projectTable} ${styles.responsive}`}>
       <div style={{ padding: '2rem' }}>
-        <div style={{ position: 'relative' }}>
-          <p className={styles.title}>Tabela de Projectos</p>
-          <Link
-            to='/dashboard/projects/create'
-            style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              background: '#146F12',
-              color: 'white',
-              fontSize: '0.875rem',
-              padding: '0.5rem 0.6rem',
-              textDecoration: 'none',
-              borderRadius: '0.3rem'
-            }}
-          >Adicionar Projecto</Link>
-        </div>
+        <Fieldset legend='Tabela de Projectos' style={{ marginRight: 0 }}>
+          <Modal
+            setVisible={() => setOpenModal(false)}
+            visible={openModal}
+            handleRemove={handleRemove}
+            title='Remover Projecto'
+            text='Tem certeza de que deseja remover o Projecto? Todos os dados serão removidos permanentemente. Essa ação não pode ser desfeita.'
+          />
 
-        <ThemeProvider theme={theme}>
-          <TableContainer
-            sx={{ fontFamily: 'Montserrat', fontSize: '14px' }} variant='outlined' component={Paper}
-          >
-            <Table size='small'>
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '20rem' }}
-                  >Título do Projecto</TableCell>
+          <Notification
+            visible={openErrorNotification}
+            setVisible={setOpenErrorNotification}
+            text={errorMessage}
+            title='Erro de remoção'
+            type='Error'
+          />
 
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '8.5rem' }}
-                  >Data de Início</TableCell>
+          <Notification
+            visible={openSuccessNotification}
+            setVisible={setOpenSuccessNotification}
+            text='O Projecto foi excluído com sucesso.'
+            title='Excluído com sucesso!'
+          />
 
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '8rem' }}
-                  >Data de Fim</TableCell>
-
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                  >Financiador</TableCell>
-
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '9rem' }}
-                    align='right'
-                  >Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {!!orderedProjects.length ? (
-                  rowsPerPage > 0
-                    ? orderedProjects.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    : orderedProjects
-                ).map(project => (
-                  <TableRow key={project._id}>
-                    <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {project.title.length > 40
-                        ? `${project.title.substring(0, 40)} ...`
-                        : project.title
-                      }
-                    </TableCell>
-
-                    <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {project.startDate.split('T')[0]}
-                    </TableCell>
-
-                    <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {project.endDate.split('T')[0]}
-                    </TableCell>
-
-                    <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {project.financier ? (
-                        project.financier.name.length > 25
-                          ? `${project.financier.name.substring(0, 25)} ...`
-                          : project.financier.name
-                      ) : (
-                        project.financiers[0].name.length > 25
-                          ? `${project.financiers[0].name.substring(0, 25)} ...`
-                          : project.financiers[0].name
-                      )}
-                    </TableCell>
-
-                    <TableCell sx={{ fontSize: '0.8rem' }} align='right'>
-                      <Link
-                        to={`/dashboard/projects/edit/${project._id}`}
-                        style={{ color: '#146F12' }}
-                      >Edit</Link>
-
-                      <button
-                        style={{
-                          fontSize: '0.8rem',
-                          border: 'none',
-                          outline: 'none',
-                          background: 'none',
-                          padding: 0,
-                          marginLeft: '0.5rem',
-                          color: 'red',
-                        }}
-                        onClick={() => onDelete(project._id)}
-                        disabled={!canDelete || deleteStatus === 'pending'}
-                      >
-                        {selectedProject === project._id && deleteStatus === 'pending'
-                          ? 'Deleting...'
-                          : 'Delete'
-                        }
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                )) : (
+          <ThemeProvider theme={theme}>
+            <TableContainer sx={{ fontFamily: 'Montserrat', fontSize: '14px' }} variant='outlined'>
+              <Table size='small'>
+                <TableHead>
                   <TableRow>
-                    <TableCell rowSpan={5}>
-                      No Project to show
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '20rem' }}
+                    >Título do Projecto</TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '8.5rem' }}
+                    >Data de Início</TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '8rem' }}
+                    >Data de Fim</TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                    >Financiador</TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '9rem' }}
+                      align='right'
+                    >Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {!!orderedProjects.length ? (
+                    rowsPerPage > 0
+                      ? orderedProjects.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      : orderedProjects
+                  ).map(project => (
+                    <TableRow key={project._id}>
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                      >
+                        {project.title.length > 40
+                          ? `${project.title.substring(0, 40)} ...`
+                          : project.title
+                        }
+                      </TableCell>
+
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                      >
+                        {project.startDate.split('T')[0]}
+                      </TableCell>
+
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                      >
+                        {project.endDate.split('T')[0]}
+                      </TableCell>
+
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                      >
+                        {project.financier ? (
+                          project.financier.name.length > 25
+                            ? `${project.financier.name.substring(0, 25)} ...`
+                            : project.financier.name
+                        ) : (
+                          project.financiers[0].name.length > 25
+                            ? `${project.financiers[0].name.substring(0, 25)} ...`
+                            : project.financiers[0].name
+                        )}
+                      </TableCell>
+
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                        align='right'>
+
+                        <Input style={{ display: 'inline-block', padding: 0, '--outline-color': '#fff' }}>
+                          <button
+                            style={{
+                              padding: 0,
+                              marginLeft: '0.5rem',
+                              background: 'none',
+                              border: 'none',
+                              color: '#146F12',
+                              fontWeight: 'var(--main-font-weight)'
+                            }}
+                            className={styles.editBtn}
+                            onClick={() => navigate(`/dashboard/projects/edit/${project._id}`)}
+                            disabled={deleteStatus === 'pending'}
+                          >
+                            Edit
+                          </button>
+                        </Input>
+
+                        <Input style={{ display: 'inline-block', padding: 0, '--outline-color': '#fff' }}>
+                          <button
+                            style={{
+                              padding: 0,
+                              marginLeft: '0.5rem',
+                              background: 'none',
+                              border: 'none',
+                              color: 'rgb(252, 88, 50)',
+                              fontWeight: 'var(--main-font-weight)'
+                            }}
+                            className={styles.deleteBtn}
+                            onClick={() => { setOpenModal(true); setSelectedId(project._id) }}
+                            disabled={!canDelete || deleteStatus === 'pending'}
+                          >
+                            {selectedProject === project._id && deleteStatus === 'pending'
+                              ? 'Deleting...'
+                              : 'Delete'
+                            }
+                          </button>
+                        </Input>
+                      </TableCell>
+                    </TableRow>
+                  )) : (
+                    <TableRow>
+                      <TableCell rowSpan={5}>
+                        No Project to show
+                      </TableCell>
+                    </TableRow>
+                  )}
+
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 31 * emptyRows }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
+
+                <TableFooter>
+                  <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    <TableCell style={{ paddingLeft: 10 }}>
+                      <Input style={{ paddingTop: '0.8rem', paddingLeft: 0, display: 'inline-block' }}>
+                        <button className={styles.addbtn} onClick={() => navigate('/dashboard/projects/create')}
+                          disabled={deleteStatus === 'pending'}
+                        >
+                          Adicionar Projecto
+                        </button>
+                      </Input>
                     </TableCell>
+
+                    <TablePagination
+                      rowsPerPageOptions={[8, 9]}
+                      colSpan={5}
+                      count={orderedProjects.length}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      SelectProps={{ inputProps: { 'aria-label': 'rows per page' } }}
+                      onPageChange={handleChangePage}
+                      onRowsPerPageChange={handleChangeRowsPerPage}
+                      ActionsComponent={TablePaginationActions}
+                    />
                   </TableRow>
-                )}
-
-                {emptyRows > 0 && (
-                  <TableRow style={{ height: 31 * emptyRows }}>
-                    <TableCell colSpan={6} />
-                  </TableRow>
-                )}
-              </TableBody>
-
-              <TableFooter>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TablePagination
-                    rowsPerPageOptions={[8, 9]}
-                    colSpan={5}
-                    count={orderedProjects.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    SelectProps={{
-                      inputProps: {
-                        'aria-label': 'rows per page',
-                      },
-                      // native: true,
-                    }}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                    ActionsComponent={TablePaginationActions}
-                  />
-                </TableRow>
-              </TableFooter>
-            </Table>
-          </TableContainer>
-        </ThemeProvider>
-
-        {/* {!!projects.length && projects.map(project => (
-          <div key={project._id}>
-            <h4>{project.title}</h4>
-            <Link to={`/dashboard/projects/edit/${project._id}`}>Edit Project</Link>
-            <button
-              disabled={selectedProject === project._id && deleteStatus === 'pending'}
-              onClick={() => onDelete(project._id)}
-            >
-              {selectedProject === project._id && deleteStatus === 'pending'
-                ? 'Deleting Project...'
-                : 'Delete Project'
-              }
-            </button>
-          </div>
-        ))} */}
+                </TableFooter>
+              </Table>
+            </TableContainer>
+          </ThemeProvider>
+        </Fieldset>
       </div>
     </div>
   )
 }
 
 export default ProjectTable
-
-
-
-
 
 const TablePaginationActions = (props) => {
   const theme = useTheme()
@@ -297,9 +402,20 @@ const TablePaginationActions = (props) => {
         disabled={page === 0}
         aria-label='first page'
       >
-        {theme.direction === 'rtl'
-          ? <LastPageIcon style={{ fontSize: '1rem' }} />
-          : <FirstPageIcon style={{ fontSize: '1rem' }} />
+        {theme.direction === 'rtl' ?
+          <LastPageIcon
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
+          :
+          <FirstPageIcon
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
         }
       </IconButton>
       <IconButton
@@ -307,9 +423,20 @@ const TablePaginationActions = (props) => {
         disabled={page === 0}
         aria-label='previous page'
       >
-        {theme.direction === 'rtl'
-          ? <KeyboardArrowRight style={{ fontSize: '1rem' }} />
-          : <KeyboardArrowLeft style={{ fontSize: '1rem' }} />
+        {theme.direction === 'rtl' ?
+          <KeyboardArrowRight
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
+          :
+          <KeyboardArrowLeft
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
         }
       </IconButton>
       <IconButton
@@ -317,9 +444,20 @@ const TablePaginationActions = (props) => {
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label='next page'
       >
-        {theme.direction === 'rtl'
-          ? <KeyboardArrowLeft style={{ fontSize: '1rem' }} />
-          : <KeyboardArrowRight style={{ fontSize: '1rem' }} />
+        {theme.direction === 'rtl' ?
+          <KeyboardArrowLeft
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
+          :
+          <KeyboardArrowRight
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
         }
       </IconButton>
       <IconButton
@@ -327,9 +465,20 @@ const TablePaginationActions = (props) => {
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label='last page'
       >
-        {theme.direction === 'rtl'
-          ? <FirstPageIcon style={{ fontSize: '1rem' }} />
-          : <LastPageIcon style={{ fontSize: '1rem' }} />
+        {theme.direction === 'rtl' ?
+          <FirstPageIcon
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
+          :
+          <LastPageIcon
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
         }
       </IconButton>
     </Box>

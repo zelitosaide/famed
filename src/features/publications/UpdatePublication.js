@@ -33,7 +33,10 @@ const UpdatePublication = () => {
   const [counterAuthor, setCounterAuthor] = useState(publication.authors.length)
 
   const methods = useForm({
-    defaultValues: { ...publication, pubDate: formatDate(publication.pubDate) }
+    defaultValues: {
+      ...publication, pubDate: formatDate(publication.pubDate),
+      department: publication.department ? publication.department : ''
+    }
   })
 
   if (!publication) {
@@ -62,7 +65,6 @@ const UpdatePublication = () => {
   }
 
   const authors = methods.watch('authors')
-  // console.log('Publication', publication);
 
   return (
     <div className={`${styles.createPublication} ${styles.responsive}`}>
@@ -122,17 +124,31 @@ const UpdatePublication = () => {
                     </Column>
                   </Row>
 
-                  <Input label='Link da publicação' required error={methods.formState.errors.url?.message}>
-                    <input type='url' id='Link da publicação' disabled={!canUpdate}
-                      {...methods.register('url', {
-                        required: 'This field is riquired',
-                        pattern: {
-                          value: /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
-                          message: 'Please provide a valid URL, (Example: https://example.com)'
-                        }
-                      })}
-                    />
-                  </Input>
+                  <Row>
+                    <Column style={{ width: '50%' }}>
+                      <Input label='Departamento' required
+                        error={methods.formState.errors.department?.message}
+                      >
+                        <input type='text' id='Departamento' disabled={!canUpdate}
+                          {...methods.register('department', { required: 'This field is riquired' })}
+                        />
+                      </Input>
+                    </Column>
+                    <Column style={{ width: '50%' }}>
+                      <Input label='Link da publicação' required error={methods.formState.errors.url?.message}>
+                        <input type='url' id='Link da publicação' disabled={!canUpdate}
+                          placeholder='https://example.com'
+                          {...methods.register('url', {
+                            required: 'This field is riquired',
+                            pattern: {
+                              value: /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
+                              message: 'Please provide a valid URL (Example: https://example.com)'
+                            }
+                          })}
+                        />
+                      </Input>
+                    </Column>
+                  </Row>
 
                   <div
                     style={{

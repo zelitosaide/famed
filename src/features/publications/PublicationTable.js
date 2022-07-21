@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import TableContainer from '@mui/material/TableContainer'
-import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
@@ -22,16 +21,58 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
 import LastPageIcon from '@mui/icons-material/LastPage'
 
-import { deletePublication, fetchPublications } from './publicationsSlice'
 import styles from './Publications.module.css'
+import { deletePublication, fetchPublications } from './publicationsSlice'
+import { Input } from '../../components/input/Input'
+import { Fieldset } from '../../components/fieldset/Fieldset'
+import { Modal } from '../../components/modal/Modal'
+import { Notification } from '../../components/notification/Notification'
 
 const theme = createTheme({
   typography: {
     fontFamily: ['Montserrat'].join(',')
   },
+  components: {
+    MuiTablePagination: {
+      styleOverrides: {
+        root: {
+          fontSize: 'var(--main-font-size)',
+          color: 'var(--main-font-color)',
+        },
+        selectLabel: {
+          fontSize: 'var(--main-font-size)',
+          color: 'var(--main-font-color)',
+        },
+        displayedRows: {
+          fontSize: 'var(--main-font-size)',
+          color: 'var(--main-font-color)'
+        },
+        selectIcon: {
+          fontSize: '1.2rem',
+          color: 'var(--main-font-color)',
+        },
+        menuItem: {
+          fontSize: 'var(--main-font-size)',
+          color: 'var(--main-font-color)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        },
+        select: {
+          paddingLeft: 0
+        }
+      }
+    }
+  }
 })
 
 const PublicationTable = () => {
+  const [openModal, setOpenModal] = useState(false)
+  const [selectedId, setSelectedId] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [openSuccessNotification, setOpenSuccessNotification] = useState(false)
+
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
   const canDelete = currentUser.user.roles.admin
 
@@ -64,6 +105,7 @@ const PublicationTable = () => {
 
   const status = useSelector(state => state.publications.status)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (status === 'idle') dispatch(fetchPublications())
@@ -72,186 +114,265 @@ const PublicationTable = () => {
   const [deleteStatus, setDeleteStatus] = useState('idle')
   const [selectedPublication, setSelectedPublication] = useState('')
 
-  const onDelete = async (publicationId) => {
+  const handleRemove = async () => {
+    setOpenModal(false)
+
     if (canDelete) {
       try {
-        setSelectedPublication(publicationId)
+        setSelectedPublication(selectedId)
         setDeleteStatus('pending')
-        await dispatch(deletePublication(publicationId)).unwrap()
+        setOpenErrorNotification(false)
+        await dispatch(deletePublication(selectedId)).unwrap()
+        openAndAutoClose()
       } catch (error) {
-        console.log('FROM Publiaction Table', error)
+        setErrorMessage(error.message)
+        setOpenErrorNotification(true)
       } finally {
         setDeleteStatus('idle')
       }
-    } else {
-      alert('Nao tem permissao para deletar Publicacao')
     }
   }
 
+  const openAndAutoClose = () => {
+    setOpenSuccessNotification(true)
+    setTimeout(() => {
+      setOpenSuccessNotification(false)
+    }, 14000)
+  }
+
   return (
-    <div
-      style={{ paddingTop: '3.5rem', paddingLeft: '16rem' }}
-      className={`${styles.publicationTable} ${styles.responsive}`}
-    >
+    <div className={`${styles.publicationTable} ${styles.responsive}`}>
       <div style={{ padding: '2rem' }}>
-        <div style={{ position: 'relative' }}>
-          <p className={styles.title}>Tabela de Publicações</p>
-          <Link
-            to='/dashboard/publications/create'
-            style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              background: '#146F12',
-              color: 'white',
-              fontSize: '0.875rem',
-              padding: '0.5rem 0.6rem',
-              textDecoration: 'none',
-              borderRadius: '0.3rem'
-            }}
-          >Adicionar Publicação</Link>
-        </div>
+        <Fieldset legend='Tabela de Publicações' style={{ marginRight: 0 }}>
+          <Modal
+            setVisible={() => setOpenModal(false)}
+            visible={openModal}
+            handleRemove={handleRemove}
+            title='Remover Publicação'
+            text='Tem certeza de que deseja remover a Publicação? Todos os dados serão removidos permanentemente. Essa ação não pode ser desfeita.'
+          />
 
-        <ThemeProvider theme={theme}>
-          <TableContainer
-            sx={{ fontFamily: 'Montserrat', fontSize: '14px' }} variant='outlined' component={Paper}
-          >
-            <Table size='small'>
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '20rem' }}
-                  >Título da publicação</TableCell>
+          <Notification
+            visible={openErrorNotification}
+            setVisible={setOpenErrorNotification}
+            text={errorMessage}
+            title='Erro de remoção'
+            type='Error'
+          />
 
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '7rem' }}
-                  >PMID</TableCell>
+          <Notification
+            visible={openSuccessNotification}
+            setVisible={setOpenSuccessNotification}
+            text='A publicação foi excluída com sucesso.'
+            title='Excluída com sucesso!'
+          />
 
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '9rem' }}
-                  >Revista</TableCell>
-
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '12rem' }}
-                  >Link da publicação</TableCell>
-
-                  <TableCell
-                    sx={{ color: '#146F12', fontSize: '0.876rem', fontWeight: '600' }}
-                    style={{ width: '9rem' }}
-                    align='right'
-                  >Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {!!orderedPublications.length ? (
-                  rowsPerPage > 0
-                    ? orderedPublications.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    : orderedPublications
-                ).map(publication => (
-                  <TableRow key={publication._id}>
-                    <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {publication.title.length > 40
-                        ? `${publication.title.substring(0, 40)} ...`
-                        : publication.title
-                      }
-                    </TableCell>
-
-                    <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {publication.pmid}
-                    </TableCell>
-
-                    <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {publication.review.length > 12
-                        ? `${publication.review.substring(0, 12)} ...`
-                        : publication.review
-                      }
-                    </TableCell>
-
-                    <TableCell sx={{ fontSize: '0.8rem' }}>
-                      {publication.url.length > 20
-                        ? `${publication.url.substring(0, 20)} ...`
-                        : publication.url
-                      }
-                    </TableCell>
-
-                    <TableCell sx={{ fontSize: '0.8rem' }} align='right'>
-                      <Link
-                        to={`/dashboard/publications/edit/${publication._id}`}
-                        style={{ color: '#146F12' }}
-                      >Edit</Link>
-
-                      <button
-                        style={{
-                          fontSize: '0.8rem',
-                          border: 'none',
-                          outline: 'none',
-                          background: 'none',
-                          padding: 0,
-                          marginLeft: '0.5rem',
-                          color: 'red',
-                        }}
-                        onClick={() => onDelete(publication._id)}
-                        disabled={!canDelete || deleteStatus === 'pending'}
-                      >
-                        {selectedPublication === publication._id && deleteStatus === 'pending'
-                          ? 'Deleting...'
-                          : 'Delete'
-                        }
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                )) : (
+          <ThemeProvider theme={theme}>
+            <TableContainer sx={{ fontFamily: 'Montserrat', fontSize: '14px' }} variant='outlined'>
+              <Table size='small'>
+                <TableHead>
                   <TableRow>
-                    <TableCell rowSpan={5}>
-                      No Publication to show
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '20rem' }}
+                    >Título da publicação</TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '7rem' }}
+                    >PMID</TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '9rem' }}
+                    >Revista</TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '12rem' }}
+                    >Link da publicação</TableCell>
+
+                    <TableCell
+                      sx={{
+                        color: 'var(--main-font-color)',
+                        fontSize: 'var(--main-font-size)',
+                        fontWeight: 'var(--bold-font-weight)'
+                      }}
+                      style={{ width: '9rem' }}
+                      align='right'
+                    >Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {!!orderedPublications.length ? (
+                    rowsPerPage > 0
+                      ? orderedPublications.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      : orderedPublications
+                  ).map(publication => (
+                    <TableRow key={publication._id}>
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                      >
+                        {publication.title.length > 40
+                          ? `${publication.title.substring(0, 40)} ...`
+                          : publication.title
+                        }
+                      </TableCell>
+
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                      >
+                        {publication.pmid}
+                      </TableCell>
+
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                      >
+                        {publication.review.length > 12
+                          ? `${publication.review.substring(0, 12)} ...`
+                          : publication.review
+                        }
+                      </TableCell>
+
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                      >
+                        {publication.url.length > 20
+                          ? `${publication.url.substring(0, 20)} ...`
+                          : publication.url
+                        }
+                      </TableCell>
+
+                      <TableCell
+                        sx={{
+                          color: 'var(--main-font-color)',
+                          fontSize: 'var(--main-font-size)',
+                          fontWeight: 'var(--main-font-weight)'
+                        }}
+                        align='right'>
+
+                        <Input style={{ display: 'inline-block', padding: 0, '--outline-color': '#fff' }}>
+                          <button
+                            style={{
+                              padding: 0,
+                              marginLeft: '0.5rem',
+                              background: 'none',
+                              border: 'none',
+                              color: '#146F12',
+                              fontWeight: 'var(--main-font-weight)'
+                            }}
+                            className={styles.editBtn}
+                            onClick={() => navigate(`/dashboard/publications/edit/${publication._id}`)}
+                            disabled={deleteStatus === 'pending'}
+                          >
+                            Edit
+                          </button>
+                        </Input>
+
+                        <Input style={{ display: 'inline-block', padding: 0, '--outline-color': '#fff' }}>
+                          <button
+                            style={{
+                              padding: 0,
+                              marginLeft: '0.5rem',
+                              background: 'none',
+                              border: 'none',
+                              color: 'rgb(252, 88, 50)',
+                              fontWeight: 'var(--main-font-weight)'
+                            }}
+                            className={styles.deleteBtn}
+                            onClick={() => { setOpenModal(true); setSelectedId(publication._id) }}
+                            disabled={!canDelete || deleteStatus === 'pending'}
+                          >
+                            {selectedPublication === publication._id && deleteStatus === 'pending'
+                              ? 'Deleting...'
+                              : 'Delete'
+                            }
+                          </button>
+                        </Input>
+                      </TableCell>
+                    </TableRow>
+                  )) : (
+                    <TableRow>
+                      <TableCell rowSpan={5}>
+                        No Publication to show
+                      </TableCell>
+                    </TableRow>
+                  )}
+
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 31 * emptyRows }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
+
+                <TableFooter>
+                  <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    <TableCell style={{ paddingLeft: 10 }}>
+                      <Input style={{ paddingTop: '0.8rem', paddingLeft: 0, display: 'inline-block' }}>
+                        <button className={styles.addbtn} onClick={() => navigate('/dashboard/publications/create')}
+                          disabled={deleteStatus === 'pending'}
+                        >
+                          Adicionar Publicação
+                        </button>
+                      </Input>
                     </TableCell>
-                  </TableRow>
-                )}
 
-                {emptyRows > 0 && (
-                  <TableRow style={{ height: 31 * emptyRows }}>
-                    <TableCell colSpan={6} />
+                    <TablePagination
+                      rowsPerPageOptions={[8, 9]}
+                      colSpan={5}
+                      count={orderedPublications.length}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      SelectProps={{ inputProps: { 'aria-label': 'rows per page' } }}
+                      onPageChange={handleChangePage}
+                      onRowsPerPageChange={handleChangeRowsPerPage}
+                      ActionsComponent={TablePaginationActions}
+                    />
                   </TableRow>
-                )}
-              </TableBody>
-
-              <TableFooter>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TablePagination
-                    rowsPerPageOptions={[8, 9]}
-                    colSpan={5}
-                    count={orderedPublications.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    SelectProps={{
-                      inputProps: {
-                        'aria-label': 'rows per page',
-                      },
-                      // native: true,
-                    }}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                    ActionsComponent={TablePaginationActions}
-                  />
-                </TableRow>
-              </TableFooter>
-            </Table>
-          </TableContainer>
-        </ThemeProvider>
+                </TableFooter>
+              </Table>
+            </TableContainer>
+          </ThemeProvider>
+        </Fieldset>
       </div>
     </div>
   )
 }
 
 export default PublicationTable
-
-
-
-
 
 const TablePaginationActions = (props) => {
   const theme = useTheme()
@@ -280,9 +401,20 @@ const TablePaginationActions = (props) => {
         disabled={page === 0}
         aria-label='first page'
       >
-        {theme.direction === 'rtl'
-          ? <LastPageIcon style={{ fontSize: '1rem' }} />
-          : <FirstPageIcon style={{ fontSize: '1rem' }} />
+        {theme.direction === 'rtl' ?
+          <LastPageIcon
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
+          :
+          <FirstPageIcon
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
         }
       </IconButton>
       <IconButton
@@ -290,9 +422,20 @@ const TablePaginationActions = (props) => {
         disabled={page === 0}
         aria-label='previous page'
       >
-        {theme.direction === 'rtl'
-          ? <KeyboardArrowRight style={{ fontSize: '1rem' }} />
-          : <KeyboardArrowLeft style={{ fontSize: '1rem' }} />
+        {theme.direction === 'rtl' ?
+          <KeyboardArrowRight
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
+          :
+          <KeyboardArrowLeft
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
         }
       </IconButton>
       <IconButton
@@ -300,9 +443,20 @@ const TablePaginationActions = (props) => {
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label='next page'
       >
-        {theme.direction === 'rtl'
-          ? <KeyboardArrowLeft style={{ fontSize: '1rem' }} />
-          : <KeyboardArrowRight style={{ fontSize: '1rem' }} />
+        {theme.direction === 'rtl' ?
+          <KeyboardArrowLeft
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
+          :
+          <KeyboardArrowRight
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
         }
       </IconButton>
       <IconButton
@@ -310,9 +464,20 @@ const TablePaginationActions = (props) => {
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label='last page'
       >
-        {theme.direction === 'rtl'
-          ? <FirstPageIcon style={{ fontSize: '1rem' }} />
-          : <LastPageIcon style={{ fontSize: '1rem' }} />
+        {theme.direction === 'rtl' ?
+          <FirstPageIcon
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
+          :
+          <LastPageIcon
+            style={{
+              fontSize: 'var(--main-font-size)',
+              color: 'var(--main-font-color)',
+            }}
+          />
         }
       </IconButton>
     </Box>

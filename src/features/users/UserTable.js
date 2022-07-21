@@ -305,7 +305,9 @@ const UserTable = () => {
                   <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     <TableCell style={{ paddingLeft: 10 }}>
                       <Input style={{ paddingTop: '0.8rem', paddingLeft: 0, display: 'inline-block' }}>
-                        <button className={styles.addbtn} onClick={() => navigate('/dashboard/users/create')}>
+                        <button className={styles.addbtn} onClick={() => navigate('/dashboard/users/create')}
+                          disabled={deleteStatus === 'pending'}
+                        >
                           Adicionar Usuário
                         </button>
                       </Input>
