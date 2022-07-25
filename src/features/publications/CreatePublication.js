@@ -151,9 +151,19 @@ const CreatePublication = () => {
                       <Input label='Departamento' required
                         error={methods.formState.errors.department?.message}
                       >
-                        <input type='text' id='Departamento' disabled={!canCreate}
+                        <select id='Departamento' disabled={!canCreate}
                           {...methods.register('department', { required: 'This field is riquired' })}
-                        />
+                        >
+                          <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option>
+                          <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
+                          <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
+                          <option value='Dep. Patologia'>Dep. Patologia</option>
+                          <option value='Dep. Saúde da Comunidade'>Dep. Saúde da Comunidade</option>
+                          <option value='Dep. Pediatria'>Dep. Pediatria</option>
+                          <option value='Dep. Medicina'>Dep. Medicina</option>
+                          <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
+                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                        </select>
                       </Input>
                     </Column>
                     <Column style={{ width: '50%' }}>

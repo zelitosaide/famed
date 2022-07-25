@@ -77,7 +77,8 @@
 .input input[type=password],
 .input input[type=url],
 .input input[type=file],
-.input textarea {
+.input textarea,
+.input select {
   box-sizing: border-box;
   border-radius: var(--border-radius-small);
   border: 1px solid var(--main-border-color);
@@ -89,6 +90,10 @@
   width: 100%;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   font-family: var(--font-family);
+}
+
+.input select {
+  background: var(--main-white-color);
 }
 
 .input input[type=file] {
@@ -120,7 +125,8 @@
 .input input[type=password]:focus,
 .input input[type=url]:focus,
 .input input[type=file]:focus,
-.input textarea:focus {
+.input textarea:focus,
+.input select:focus {
   background: #FFFCC8 !important;
   box-shadow: 0 0 0 .25rem rgba(20, 111, 18, 0.15);
   border: 1px solid rgba(20, 111, 18, .5) !important;
@@ -133,7 +139,8 @@
 .input input[type=password]:disabled,
 .input input[type=url]:disabled,
 .input input[type=file]:disabled,
-.input textarea:disabled {
+.input textarea:disabled,
+.input select:disabled {
   cursor: no-drop;
   opacity: 0.7;
   background: #E9E9ED;

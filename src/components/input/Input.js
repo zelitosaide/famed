@@ -2,6 +2,7 @@ import styles from './Input.module.css'
 
 export const Input = ({ children, label, error, reorder, ...props }) => {
   const type = children?.props?.type
+  const isSelect = children.type === 'select'
 
   const bgColor = props?.style?.['--bg-color'] || 'rgb(27, 154, 25)'
   const bgHover = props?.style?.['--bg-hover'] || 'rgb(23, 132, 21)'
@@ -47,6 +48,17 @@ export const Input = ({ children, label, error, reorder, ...props }) => {
           {!!error && (
             <div style={{ paddingLeft: '1.65rem' }} className={styles.error}>{error}</div>
           )}
+        </>
+      ) : isSelect ? (
+        <>
+          {!!label && (
+            <label htmlFor={label} className={styles.label}>
+              {label}
+              {props?.required && <span style={{ color: 'rgb(252, 88, 50)' }}>&nbsp;*</span>}
+            </label>
+          )}
+          {children}
+          {!!error && <div className={styles.error}>{error}</div>}
         </>
       ) : (
         <>

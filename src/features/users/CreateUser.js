@@ -207,9 +207,7 @@ const CreateUser = () => {
                 >
                   <button disabled={status === 'pending'} type='button'
                     onClick={() => navigate(-1, { replace: true })}
-                  >
-                    Cancelar
-                  </button>
+                  >Cancelar</button>
                 </Input>
               </Fieldset>
             </Column>

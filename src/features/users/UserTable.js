@@ -185,7 +185,7 @@ const UserTable = () => {
                         fontSize: 'var(--main-font-size)',
                         fontWeight: 'var(--bold-font-weight)'
                       }}
-                      style={{ width: '10rem' }}
+                      style={{ width: '13rem' }}
                     >Roles</TableCell>
 
                     <TableCell
@@ -240,7 +240,7 @@ const UserTable = () => {
                             fontWeight: 'var(--main-font-weight)'
                           }}
                         >
-                          {roles.toString()}
+                          {roles.join(', ')}
                         </TableCell>
 
                         <TableCell

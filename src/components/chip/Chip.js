@@ -5,7 +5,7 @@ export const Chip = ({ handleClick, handleDelete, text, ...props }) => {
   return (
     <button type='button' {...props} className={styles.chip} {...props} onClick={handleClick}>
       <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}>
-        {text.split(' ').map((t, index) => (
+        {text.split(/\s|-/).map((t, index) => (
           <span key={index}
             style={{ marginLeft: '0.3rem', fontSize: 'var(--main-font-size)', color: 'var(--main-font-color)' }}
           >{t}</span>

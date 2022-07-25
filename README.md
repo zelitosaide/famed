@@ -1,6 +1,9 @@
 # Getting Started with Create React App
 
 (`famed-4cv0u2afw-zelitosaide.vercel.app`)
+<!-- https://www.youtube.com/watch?v=8YWrmZoUYGs&list=PLFsfg2xP7cbI1U7BZJwmJwTVs4D0pqX1F&index=2 -->
+<!-- https://www.youtube.com/watch?v=xNRJwmlRBNU -->
+<!-- https://www.youtube.com/watch?v=_nBlN9yp9R8 -->
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

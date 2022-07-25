@@ -153,7 +153,7 @@ const CreateProject = () => {
               <Column style={{ width: '50%' }}>
                 <Fieldset legend='Criação de Projecto'
                   style={{
-                    minHeight: '26rem',
+                    minHeight: '27rem',
                     border: '1px solid var(--main-border-color)',
                     boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
                     position: 'relative',
@@ -164,7 +164,6 @@ const CreateProject = () => {
                 >
                   <Input label='Titulo do Projecto' required error={methods?.formState?.errors?.title?.message}>
                     <input type='text' id='Titulo do Projecto' disabled={!canCreate}
-                      style={{ border: '1px solid var(--main-border-color)' }}
                       {...methods.register('title', { required: 'This field is required' })}
                     />
                   </Input>
@@ -173,17 +172,25 @@ const CreateProject = () => {
                       <Input label='Nº de Aprovação Ética'
                         required error={methods?.formState?.errors?.regNumBioethic?.message}>
                         <input type='text' id='Nº de Aprovação Ética' disabled={!canCreate}
-                          style={{ border: '1px solid var(--main-border-color)' }}
                           {...methods.register('regNumBioethic', { required: 'This field is required' })}
                         />
                       </Input>
                     </Column>
                     <Column style={{ width: '50%' }}>
                       <Input label='Departamento' required error={methods?.formState?.errors?.department?.message}>
-                        <input type='text' id='Departamento' disabled={!canCreate}
-                          style={{ border: '1px solid var(--main-border-color)' }}
+                        <select id='Departamento' disabled={!canCreate}
                           {...methods.register('department', { required: 'This field is required' })}
-                        />
+                        >
+                          <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option>
+                          <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
+                          <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
+                          <option value='Dep. Patologia'>Dep. Patologia</option>
+                          <option value='Dep. Saúde da Comunidade'>Dep. Saúde da Comunidade</option>
+                          <option value='Dep. Pediatria'>Dep. Pediatria</option>
+                          <option value='Dep. Medicina'>Dep. Medicina</option>
+                          <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
+                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                        </select>
                       </Input>
                     </Column>
                   </Row>
@@ -192,7 +199,6 @@ const CreateProject = () => {
                       <Input label='Data de Aprov. Ética'
                         required error={methods?.formState?.errors?.approvalDate?.message}>
                         <input type='date' id='Data de Aprov. Ética' disabled={!canCreate}
-                          style={{ border: '1px solid var(--main-border-color)' }}
                           {...methods.register('approvalDate', { required: 'This field is required' })}
                         />
                       </Input>
@@ -201,7 +207,6 @@ const CreateProject = () => {
                       <Input label='Início do Projecto'
                         required error={methods?.formState?.errors?.startDate?.message}>
                         <input type='date' id='Início do Projecto' disabled={!canCreate}
-                          style={{ border: '1px solid var(--main-border-color)' }}
                           {...methods.register('startDate', { required: 'This field is required' })}
                         />
                       </Input>
@@ -209,7 +214,6 @@ const CreateProject = () => {
                     <Column style={{ width: '33.33%' }}>
                       <Input label='Fim do Projecto' required error={methods?.formState?.errors?.endDate?.message}>
                         <input type='date' id='Fim do Projecto' disabled={!canCreate}
-                          style={{ border: '1px solid var(--main-border-color)' }}
                           {...methods.register('endDate', { required: 'This field is required' })}
                         />
                       </Input>
@@ -217,7 +221,6 @@ const CreateProject = () => {
                   </Row>
                   <Input label='Resumo do Projecto' required error={methods?.formState?.errors?.content?.message}>
                     <textarea id='Resumo do Projecto' disabled={!canCreate}
-                      style={{ border: '1px solid var(--main-border-color)' }}
                       {...methods.register('content', { required: 'This field is required' })}
                     />
                   </Input>
@@ -265,7 +268,7 @@ const CreateProject = () => {
               <Column style={{ width: '50%' }}>
                 <Fieldset legend='Criação de Projecto'
                   style={{
-                    minHeight: '26rem',
+                    minHeight: '27rem',
                     position: 'relative',
                     border: '1px solid var(--main-border-color)',
                     boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
@@ -280,7 +283,6 @@ const CreateProject = () => {
                   <Input label='Image do projecto' required error={methods?.formState?.errors?.image?.message}>
                     <input type='file' id='Image do projecto'
                       disabled={step === 1 || !canCreate || status === 'pending'}
-                      style={{ border: '1px solid var(--main-border-color)' }}
                       {...methods.register('image', {
                         required: {
                           value: step === 2,

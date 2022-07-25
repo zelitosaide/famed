@@ -141,7 +141,7 @@ const UpdateProject = () => {
               <Column style={{ width: '50%' }}>
                 <Fieldset legend='Editar Projecto'
                   style={{
-                    minHeight: '26rem',
+                    minHeight: '27rem',
                     border: '1px solid var(--main-border-color)',
                     boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
                     position: 'relative',
@@ -169,10 +169,19 @@ const UpdateProject = () => {
                     </Column>
                     <Column style={{ width: '50%' }}>
                       <Input label='Departamento' required error={methods?.formState?.errors?.department?.message}>
-                        <input type='text' id='Departamento' disabled={!canUpdate}
-                          style={{ border: '1px solid var(--main-border-color)' }}
+                        <select id='Departamento' disabled={!canUpdate}
                           {...methods.register('department', { required: 'This field is required' })}
-                        />
+                        >
+                          <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option>
+                          <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
+                          <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
+                          <option value='Dep. Patologia'>Dep. Patologia</option>
+                          <option value='Dep. Saúde da Comunidade'>Dep. Saúde da Comunidade</option>
+                          <option value='Dep. Pediatria'>Dep. Pediatria</option>
+                          <option value='Dep. Medicina'>Dep. Medicina</option>
+                          <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
+                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                        </select>
                       </Input>
                     </Column>
                   </Row>
@@ -252,7 +261,7 @@ const UpdateProject = () => {
               <Column style={{ width: '50%' }}>
                 <Fieldset legend='Editar Projecto'
                   style={{
-                    minHeight: '26rem',
+                    minHeight: '27rem',
                     position: 'relative',
                     border: '1px solid var(--main-border-color)',
                     boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
