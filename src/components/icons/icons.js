@@ -108,4 +108,44 @@ export const ChevronLeftIcon = ({ ...props }) => (
   </svg>
 )
 
+export const LightningBolt = ({ ...props }) => (
+  <svg
+    {...props}
+    style={{ ...props.style }}
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none" viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+  </svg>
+)
+
+export const ClockOutline = ({ ...props }) => (
+  <svg
+    {...props}
+    style={{ ...props.style }}
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none" viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+)
+
+export const Clock = ({ ...props }) => (
+  <svg
+    {...props}
+    style={{ ...props.style }}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+  >
+    <path
+      fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"
+    />
+  </svg>
+)
+
 

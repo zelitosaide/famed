@@ -20,7 +20,6 @@ import Home from './pages/home/Home'
 import SiteLayout from './pages/site_layout/SiteLayout'
 import Graduation from './pages/graduation/Graduation'
 import Postgraduate from './pages/postgraduate/Postgraduate'
-import Minicourse from './pages/minicourse/Minicourse'
 import About from './pages/about/About'
 import Protocols from './pages/protocols/Protocols'
 import Extension from './pages/extension/Extension'
@@ -50,6 +49,12 @@ import CurriculumDetails from './features/curriculums/CurriculumDetails'
 import InProgress from './components/in_progress/InProgress'
 import ProtocolsLayout from './pages/protocols/ProtocolsLayout'
 
+import { CourseTable } from './features/courses/CourseTable'
+import { UpdateCourse } from './features/courses/UpdateCourse'
+import { CreateCourse } from './features/courses/CreateCourse'
+import { CourseList } from './features/courses/CourseList'
+import { fetchCourses } from './features/courses/coursesSlice'
+import { CourseDetails } from './features/courses/CourseDetails'
 
 const App = () => {
   const projectStatus = useSelector(state => state.projects.status)
@@ -57,6 +62,7 @@ const App = () => {
   const usersStatus = useSelector(state => state.users.status)
   const curriculumsStatus = useSelector(state => state.curriculums.status)
   const publicationsStatus = useSelector(state => state.publications.status)
+  const coursesStatus = useSelector(state => state.courses.status)
 
   const dispatch = useDispatch()
 
@@ -80,6 +86,10 @@ const App = () => {
     if (publicationsStatus === 'idle') dispatch(fetchPublications())
   }, [publicationsStatus, dispatch])
 
+  useEffect(() => {
+    if (coursesStatus === 'idle') dispatch(fetchCourses())
+  }, [coursesStatus, dispatch])
+
   if (
     projectStatus === 'pending'
     || newsStatus === 'pending'
@@ -99,7 +109,6 @@ const App = () => {
   ) {
     return (
       <Routes>
-
         <Route path='/' element={<SiteLayout />}>
           <Route index element={<Home />} />
           <Route path='projects'>
@@ -112,10 +121,13 @@ const App = () => {
           </Route>
           <Route path='publications' element={<PublicationList />} />
           <Route path='about' element={<About />} />
+          <Route path='minicourse'>
+            <Route index element={<CourseList />} />
+            <Route path=':courseId' element={<CourseDetails />} />
+          </Route>
 
           {/* <Route path='graduation' element={<Graduation />} />
           <Route path='postgraduate' element={<Postgraduate />} />
-          <Route path='minicourse' element={<Minicourse />} />
           <Route path='protocols' element={<Protocols />} />
           <Route path='extension' element={<Extension />} />
           <Route path='departments' element={<Departments />} /> */}
@@ -123,7 +135,6 @@ const App = () => {
           {/* Temporarias */}
           <Route path='graduation' element={<InProgress />} />
           <Route path='postgraduate' element={<InProgress />} />
-          <Route path='minicourse' element={<InProgress />} />
           {/* <Route path='about' element={<InProgress />} /> */}
           {/* <Route path='protocols' element={<InProgress />} /> */}
           <Route path='extension' element={<InProgress />} />
@@ -165,6 +176,11 @@ const App = () => {
             <Route index element={<RequireAuth><CurriculumTable /></RequireAuth>} />
             <Route path='edit/:curriculumId' element={<RequireAuth><UpdateCurriculum /></RequireAuth>} />
             <Route path='create' element={<RequireAuth><CreateCurriculum /></RequireAuth>} />
+          </Route>
+          <Route path='courses'>
+            <Route index element={<RequireAuth><CourseTable /></RequireAuth>} />
+            <Route path='edit/:courseId' element={<RequireAuth><UpdateCourse /></RequireAuth>} />
+            <Route path='create' element={<RequireAuth><CreateCourse /></RequireAuth>} />
           </Route>
         </Route>
       </Routes>

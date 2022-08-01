@@ -46,7 +46,6 @@ const Header = () => {
         <DrawerList list={navlinks} closeDrawer={closeDrawer} />
       </Drawer>
 
-
       {/* Responsive Navbar (width: 1040) */}
       <ul className={styles.responsive}>
         <li>
@@ -76,77 +75,6 @@ const Header = () => {
       </ul>
 
       {/* width: 1280 */}
-      {/* <div className={styles.blocks}>
-        <div>
-          <NavLink to='/'><img src={Logo} alt='' /></NavLink>
-        </div>
-
-        <div>
-          <ul>
-            <li>
-              <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/about'>
-                Sobre nós
-              </NavLink>
-            </li>
-            <li>
-              <Menu>
-                <MenuButton>Ensino <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
-                <MenuList className={styles.slideDown}>
-                  <MenuLink as={Link} to='/graduation'>Graduação</MenuLink>
-                  <MenuLink as={Link} to='/postgraduate'>Pós-Graduação</MenuLink>
-                  <MenuLink as={Link} to='/minicourse'>Cursos de Verão</MenuLink>
-                </MenuList>
-              </Menu>
-            </li>
-            <li>
-              <Menu>
-                <MenuButton>Investigação <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
-                <MenuList className={styles.slideDown}>
-                  <MenuLink as={Link} to='/projects'>Projectos de Pesquisa</MenuLink>
-                  <MenuLink as={Link} to='/publications'>Publicações</MenuLink>
-                </MenuList>
-              </Menu>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/protocols'>
-                Submissão de Protocolos
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/extension'>
-                Extensão
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/departments'>
-                Departamentos
-              </NavLink>
-            </li>
-            <li>
-              <Menu>
-                <MenuButton>Links úteis <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
-                <MenuList className={styles.slideDown}>
-                  {anchors.map(value => (
-                    <MenuLink key={value.name} as='a' target='_blank' href={value.href}>
-                      {value.name}
-                    </MenuLink>
-                  ))}
-                </MenuList>
-              </Menu>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/news'>
-                Notícias
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/signin'>
-                Sign In
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-      </div> */}
       <div className={styles.blocks}>
         <div className={styles.heading}>
           <div className={styles.image}>
@@ -198,7 +126,7 @@ const Header = () => {
                   <MenuList className={styles.slideDown}>
                     <MenuLink as={Link} to='/graduation'>Graduação</MenuLink>
                     <MenuLink as={Link} to='/postgraduate'>Pós-Graduação</MenuLink>
-                    <MenuLink as={Link} to='/minicourse'>Cursos de Verão</MenuLink>
+                    <MenuLink as={Link} to='/minicourse'>Cursos de curta duração</MenuLink>
                   </MenuList>
                 </Menu>
               </li>

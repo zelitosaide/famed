@@ -272,64 +272,6 @@
 
 
 
-
-
-
-/* 
-
-.table {
-  background: var(--pale-bg-color);
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table tr {
-  border: 1px solid #D1D5DB;
-}
-
-.table td:last-child {
-  width: 8rem;
-}
-
-.table button {
-  color: var(--main-color);
-  cursor: pointer;
-  border-radius: 0.1rem;
-  border: 1px solid var(--main-color);
-  background-color: var(--white-color);
-  padding: 0.1rem 0.6rem;
-  font-size: 0.8rem;
-  min-width: 0rem;
-}
-
-.table button:hover {
-  color: var(--white-color);
-  border: 1px solid var(--main-color);
-  background-color: var(--main-color);
-}
-
-.table button:disabled:hover {
-  color: var(--main-color);
-  background: var(--white-color);
-}
-
-.table button:last-child {
-  color: var(--red-color);
-  border: 1px solid var(--red-color);
-}
-
-.table button:last-child:hover {
-  color: var(--white-color);
-  background: var(--red-color);
-}
-
-.table button:last-child:disabled:hover {
-  color: var(--red-color);
-  background: var(--white-color);
-} */
-
-
-
 /* Project Table */
 .projectTable .addbtn {
   position: relative;

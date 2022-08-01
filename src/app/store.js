@@ -6,6 +6,7 @@ import authReducer from '../features/auth/authSlice'
 import usersReducer from '../features/users/usersSlice'
 import publicationsReducer from '../features/publications/publicationsSlice'
 import curriculumsRecuder from '../features/curriculums/curriculumsSlice'
+import coursesReducer from '../features/courses/coursesSlice'
 
 const store = configureStore({
   reducer: {
@@ -14,7 +15,8 @@ const store = configureStore({
     projects: projectsReducer,
     news: newsReducer,
     publications: publicationsReducer,
-    curriculums: curriculumsRecuder
+    curriculums: curriculumsRecuder,
+    courses: coursesReducer
   }
 })
 

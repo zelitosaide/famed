@@ -36,7 +36,7 @@ const SidebarItem = ({ item, clickedItem, setClickedItem }) => {
           top: '50%',
           transform: 'translateY(-60%)',
           paddingLeft: '2.1rem',
-          fontSize: '0.85rem',
+          fontSize: 'var(--main-font-size)',
           fontWeight: '500',
           color: '#CFE1CF'
         }}>{item.name}</span>
@@ -49,6 +49,7 @@ const SidebarItem = ({ item, clickedItem, setClickedItem }) => {
             key={index}
             className={`${clickedItem === value.name ? styles.active : null}`}
             onClick={() => setClickedItem(value.name)}
+            style={{ fontSize: 'var(--main-font-size)', }}
           >
             {value.name}
           </NavLink>
@@ -78,7 +79,7 @@ const SidebarItem = ({ item, clickedItem, setClickedItem }) => {
         top: '50%',
         transform: 'translateY(-60%)',
         paddingLeft: '2.1rem',
-        fontSize: '0.85rem',
+        fontSize: 'var(--main-font-size)',
         fontWeight: '500',
         color: '#CFE1CF'
       }}>{item.name}</span>

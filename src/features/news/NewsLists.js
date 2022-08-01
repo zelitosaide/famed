@@ -29,8 +29,6 @@ const NewsLists = () => {
   return !!orderedNews.length && (
     <div className={`${styles.newsList} ${styles.responsive}`}>
       <div className={styles.gap}></div>
-      {/* <div style={{ paddingTop: '7rem' }} className='row'></div> */}
-      {/* <div style={{ paddingTop: '11rem' }} className='row'></div> */}
 
       <div className='row'>
         {orderedNews.slice(0, range).map(news => (
