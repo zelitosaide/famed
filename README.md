@@ -5,6 +5,8 @@
 <!-- https://www.youtube.com/watch?v=xNRJwmlRBNU -->
 <!-- https://www.youtube.com/watch?v=_nBlN9yp9R8 -->
 
+<!-- https://codesandbox.io/s/4obox?file=/src/_services/front_slider.service.js -->
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

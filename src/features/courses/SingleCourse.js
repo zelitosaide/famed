@@ -8,8 +8,6 @@ import styles from './Courses.module.css'
 export const SingleCourse = ({ course }) => {
   const { title, description, duration, _id: courseId } = course
 
-  console.log('courseId', courseId)
-
   const navigate = useNavigate()
 
   return (

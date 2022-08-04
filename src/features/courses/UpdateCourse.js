@@ -71,16 +71,29 @@ export const UpdateCourse = () => {
                 </Input>
 
                 <Input label='Descrição do Curso' required error={methods.formState.errors.description?.message}>
-                  <input type='text' id='Descrição do Curso' disabled={!canUpdate}
+                  <textarea id='Descrição do Curso' disabled={!canUpdate}
                     {...methods.register('description', { required: 'This field is riquired' })}
                   />
                 </Input>
 
+                <Input label='Duração do Curso' required error={methods.formState.errors.duration?.message}>
+                  <input type='text' id='Duração do Curso' disabled={!canUpdate}
+                    {...methods.register('duration', { required: 'This field is riquired' })}
+                  />
+                </Input>
+
                 <Row>
-                  <Column style={{ width: '33.33%' }}>
-                    <Input label='Duração do Curso' required error={methods.formState.errors.duration?.message}>
-                      <input type='text' id='Duração do Curso' disabled={!canUpdate}
-                        {...methods.register('duration', { required: 'This field is riquired' })}
+                  <Column style={{ width: '50%' }}>
+                    <Input label='PlayList ID'>
+                      <input type='text' id='PlayList ID' disabled={!canUpdate}
+                        {...methods.register('playlistId')}
+                      />
+                    </Input>
+                  </Column>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='YouTube API KEY'>
+                      <input type='text' id='YouTube API KEY' disabled={!canUpdate}
+                        {...methods.register('youtubeApiKey')}
                       />
                     </Input>
                   </Column>

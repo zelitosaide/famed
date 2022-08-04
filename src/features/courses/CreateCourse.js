@@ -24,6 +24,8 @@ export const CreateCourse = () => {
       title: '',
       description: '',
       duration: '',
+      playlistId: '',
+      youtubeApiKey: ''
     }
   })
 
@@ -73,7 +75,7 @@ export const CreateCourse = () => {
 
           <Row>
             <Column style={{ width: '50%' }}>
-              <Fieldset legend='Criar curso de curta duração' style={{ minHeight: '26rem' }}>
+              <Fieldset legend='Criar curso de curta duração' style={{ minHeight: '27rem' }}>
                 <Input label='Título do Curso' required error={methods.formState.errors.title?.message}>
                   <input type='text' id='Título do Curso' disabled={!canCreate}
                     {...methods.register('title', { required: 'This field is riquired' })}
@@ -81,16 +83,29 @@ export const CreateCourse = () => {
                 </Input>
 
                 <Input label='Descrição do Curso' required error={methods.formState.errors.description?.message}>
-                  <input type='text' id='Descrição do Curso' disabled={!canCreate}
+                  <textarea type='text' id='Descrição do Curso' disabled={!canCreate}
                     {...methods.register('description', { required: 'This field is riquired' })}
                   />
                 </Input>
 
+                <Input label='Duração do Curso' required error={methods.formState.errors.duration?.message}>
+                  <input type='text' id='Duração do Curso' disabled={!canCreate}
+                    {...methods.register('duration', { required: 'This field is riquired' })}
+                  />
+                </Input>
+
                 <Row>
-                  <Column style={{ width: '33.33%' }}>
-                    <Input label='Duração do Curso' required error={methods.formState.errors.duration?.message}>
-                      <input type='text' id='Duração do Curso' disabled={!canCreate}
-                        {...methods.register('duration', { required: 'This field is riquired' })}
+                  <Column style={{ width: '50%' }}>
+                    <Input label='PlayList ID'>
+                      <input type='text' id='PlayList ID' disabled={!canCreate}
+                        {...methods.register('playlistId')}
+                      />
+                    </Input>
+                  </Column>
+                  <Column style={{ width: '50%' }}>
+                    <Input label='YouTube API KEY'>
+                      <input type='text' id='YouTube API KEY' disabled={!canCreate}
+                        {...methods.register('youtubeApiKey')}
                       />
                     </Input>
                   </Column>
@@ -118,7 +133,9 @@ export const CreateCourse = () => {
               </Fieldset>
             </Column>
             <Column style={{ width: '50%' }}>
+              <Fieldset legend='Criar curso de curta duração' style={{ minHeight: '27rem' }}>
 
+              </Fieldset>
             </Column>
           </Row>
         </form>
