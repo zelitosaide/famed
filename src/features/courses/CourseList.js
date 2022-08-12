@@ -25,6 +25,8 @@ export const CourseList = () => {
           ))}
         </Row>
       </div>
+
+      <div style={{ paddingBottom: 26 }} />
     </div>
   )
 }

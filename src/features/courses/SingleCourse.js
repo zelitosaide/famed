@@ -29,8 +29,9 @@ export const SingleCourse = ({ course }) => {
       <p style={{
         fontSize: 'var(--main-font-size)',
         color: '#555',
+        lineHeight: 1.3
       }}>
-        {description}
+        {description.length > 100 ? `${description.slice(0, 100)}...` : description}
       </p>
 
       <div style={{

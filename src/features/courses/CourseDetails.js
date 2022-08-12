@@ -24,6 +24,7 @@ import { Row } from '../../components/row/Row'
 import { Column } from '../../components/column/Column'
 import { SidebarItem } from './SidebarItem'
 import { Input } from '../../components/input/Input'
+import { Chat, Info } from '../../components/icons/icons'
 
 export const CourseDetails = () => {
   const [videoId, setVideoId] = useState('')
@@ -297,25 +298,42 @@ export const CourseDetails = () => {
         <Column style={{ width: '14rem', position: 'sticky', top: '8rem' }}>
           <aside className={styles.rightAside}>
             <ul style={{ background: '#E6EFE6', height: '16rem' }}>
-              <li>Lorem Ipsum is simply</li>
-              <li>Lorem Ipsum is simply</li>
-              <li>Lorem Ipsum is simply</li>
-              <li>Lorem Ipsum is simply</li>
-              <li>Lorem Ipsum is simply</li>
-              <li>Lorem Ipsum is simply</li>
-              <li>
+              <li
+                style={{
+                  background: '#CFE1CF',
+                  padding: '0.3rem 0.5rem',
+                  fontSize: '0.8rem',
+                  color: 'var(--main-color)',
+                  fontWeight: 500,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6
+                }}
+              >
+                <Chat style={{ width: '1.3rem', color: '#178415' }} />
+                Duvidas
+              </li>
+              <li style={{ paddingBottom: 80 }}></li>
+              <li
+                style={{
+                  background: '#CFE1CF',
+                  padding: '0.45rem 0.5rem',
+                  fontSize: '0.8rem',
+                  color: 'var(--main-color)',
+                  fontWeight: 500,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6
+                }}
+              >
+                <Info style={{ width: '1rem', color: '#178415' }} />
+                Detalhes do Curso
+              </li>
+              {/* <li>
                 <Input>
                   <button type='button'>Envie Duvidas por Aqui</button>
                 </Input>
-              </li>
-              <li>Lorem Ipsum is simply</li>
-              <li>Lorem Ipsum is simply</li>
-              <li>Lorem Ipsum is simply</li>
-              <li>
-                <i class="fa-solid fa-messages"></i>
-              </li>
-              <li>Lorem Ipsum is simply</li>
-              <li>Lorem Ipsum is simply</li>
+              </li> */}
             </ul>
           </aside>
         </Column>
