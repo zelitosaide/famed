@@ -6,7 +6,8 @@ import { Row } from '../../components/row/Row'
 
 import styles from './Courses.module.css'
 
-export const SidebarItem = ({ item, clickedItem, setClickedItem, setVideoId, setTitle }) => {
+export const SidebarItem = (props) => {
+  const { item, clickedItem, setClickedItem, setVideoId, setTitle, setTogglePlaylistContent } = props
   const [clicked, setClicked] = useState(true)
 
   return !!item.subMenu ? (
@@ -48,6 +49,7 @@ export const SidebarItem = ({ item, clickedItem, setClickedItem, setVideoId, set
                 setClickedItem(title)
                 setVideoId(videoId)
                 setTitle(title)
+                setTogglePlaylistContent(false)
               }}
             >
               <Row>
@@ -63,10 +65,13 @@ export const SidebarItem = ({ item, clickedItem, setClickedItem, setVideoId, set
         })}
       </div>
     </>
-  ) : (
+  ) : item.name !== 'Lista de vídeos do curso' ? (
     <div
       className={`${styles.sidebarItem} ${clickedItem === item.name ? styles.__active : null}`}
-      onClick={() => setClickedItem(item.name)}
+      onClick={() => {
+        setClickedItem(item.name)
+        setTogglePlaylistContent(true)
+      }}
       style={{
         fontSize: '0.875rem',
         color: 'var(--main-color)',
@@ -80,29 +85,5 @@ export const SidebarItem = ({ item, clickedItem, setClickedItem, setVideoId, set
     >
       {item.name}
     </div>
-  )
+  ) : null
 }
-
-
-
-{/* <a href={`https://www.youtube.com/watch?v=${videoId}`}>
-                      <img width={medium.width} height={medium.height} src={medium.url} alt='' />
-                      <h3>
-                        {title}
-                      </h3>
-                    </a> */}
-
-
-{/* <p style={{
-              lineHeight: '1.6rem',
-              fontSize: '0.875rem',
-            }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since the
-              1500s, when an unknown printer took a galley of type and scrambled it to
-              make a type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of Letraset
-              sheets containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p> */}

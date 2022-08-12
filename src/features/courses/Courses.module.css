@@ -17,6 +17,27 @@
   overflow-y: auto;
   scrollbar-width: thin;
   margin-left: 1.3rem;
+  scrollbar-color: #CFE1CF transparent;
+}
+
+.courseDetails .leftAside:hover {
+  scrollbar-color: #c0d8c0 transparent;
+}
+
+.leftAside::-webkit-scrollbar {
+  width: 8px;
+}
+
+.leftAside::-webkit-scrollbar-thumb {
+  background: #CFE1CF;
+}
+
+.leftAside:hover::-webkit-scrollbar-thumb {
+  background: #c0d8c0;
+}
+
+.leftAside::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .courseDetails .leftAside ul {
@@ -31,7 +52,7 @@
   background: var(--main-color);
   position: relative;
   height: 380px;
-  width: 750px;
+  width: 720px;
 }
 
 .courseDetails .main iframe {
@@ -93,3 +114,22 @@
   border-left: 2px solid #178415;
 }
 
+.sidebarItem.__active {
+  background: #CFE1CF;
+  border-left: 2px solid #178415;
+}
+
+/* User Table */
+.add {
+  position: relative;
+  padding-left: 1.4rem !important;
+}
+
+.add::before {
+  content: '\002B';
+  font-size: 1.3rem;
+  font-weight: var(--main-font-weight);
+  position: absolute;
+  top: -2px;
+  left: 0.4rem;
+}
