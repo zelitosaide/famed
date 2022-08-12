@@ -10,6 +10,7 @@ import {
   faFileExcel,
   faFilePowerpoint,
   faGripVertical,
+  faMessage,
   faPencil
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -22,6 +23,7 @@ import styles from './Courses.module.css'
 import { Row } from '../../components/row/Row'
 import { Column } from '../../components/column/Column'
 import { SidebarItem } from './SidebarItem'
+import { Input } from '../../components/input/Input'
 
 export const CourseDetails = () => {
   const [videoId, setVideoId] = useState('')
@@ -292,10 +294,28 @@ export const CourseDetails = () => {
           )}
         </Column>
 
-        <Column style={{ width: '14rem' }}>
+        <Column style={{ width: '14rem', position: 'sticky', top: '8rem' }}>
           <aside className={styles.rightAside}>
-            <ul>
-              {/* hjb */}
+            <ul style={{ background: '#E6EFE6', height: '16rem' }}>
+              <li>Lorem Ipsum is simply</li>
+              <li>Lorem Ipsum is simply</li>
+              <li>Lorem Ipsum is simply</li>
+              <li>Lorem Ipsum is simply</li>
+              <li>Lorem Ipsum is simply</li>
+              <li>Lorem Ipsum is simply</li>
+              <li>
+                <Input>
+                  <button type='button'>Envie Duvidas por Aqui</button>
+                </Input>
+              </li>
+              <li>Lorem Ipsum is simply</li>
+              <li>Lorem Ipsum is simply</li>
+              <li>Lorem Ipsum is simply</li>
+              <li>
+                <i class="fa-solid fa-messages"></i>
+              </li>
+              <li>Lorem Ipsum is simply</li>
+              <li>Lorem Ipsum is simply</li>
             </ul>
           </aside>
         </Column>
