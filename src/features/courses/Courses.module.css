@@ -133,3 +133,12 @@
   top: -2px;
   left: 0.4rem;
 }
+
+/* main svg icon */
+.main svg {
+  font-size: 16px;
+}
+
+.main .files:hover {
+  color: var(--main-color);
+}

@@ -7,6 +7,11 @@
 
 <!-- https://codesandbox.io/s/4obox?file=/src/_services/front_slider.service.js -->
 
+
+<!-- https://icons8.com/icon/set/microsoft-word/color -->
+
+<!-- Bpv -->
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -2,6 +2,17 @@ import { useEffect, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFilePdf,
+  faArrowUpRightFromSquare,
+  faFileWord,
+  faFileExcel,
+  faFilePowerpoint,
+  faGripVertical,
+  faPencil
+} from '@fortawesome/free-solid-svg-icons'
+
 import Dots from 'react-activity/dist/Dots'
 import YouTube from 'react-youtube'
 import 'react-activity/dist/Dots.css'
@@ -52,7 +63,7 @@ export const CourseDetails = () => {
           return setPlayList(data.items)
         })
     } else {
-      setClickedItem('Material e Conteúdo do curso') 
+      setClickedItem('Material e Conteúdo do curso')
       setTogglePlaylistContent(true)
     }
   }, [])
@@ -134,49 +145,149 @@ export const CourseDetails = () => {
               >
                 Material e Conteúdo do curso
               </p>
-              <p style={{ fontSize: '0.875rem', lineHeight: '2rem' }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the
-                1500s, when an unknown printer took a galley of type and scrambled it to
-                make a type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially
-                unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
 
-              <p style={{ fontSize: '0.875rem', lineHeight: '2rem' }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the
-                1500s, when an unknown printer took a galley of type and scrambled it to
-                make a type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially
-                unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
+              <p
+                style={{
+                  fontSize: '0.875rem',
+                  background: '#F6F9F6',
+                  padding: 6,
+                  boxShadow: '0 1px 1px 0 rgba(20, 111, 18, .5)',
+                  borderRadius: 2,
+                  fontWeight: 500,
+                  color: 'var(--main-color)',
+                }}
+              >Inferência estatística - 1</p>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  marginBottom: 12,
+                  marginLeft: 10,
+                  background: '#F6F9F6',
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: 4,
+                  cursor: 'pointer'
+                }}
+                className={styles.files}
+              >
+                <FontAwesomeIcon color='#2D92D4' icon={faFileWord}></FontAwesomeIcon>
+                &nbsp;&nbsp;<span style={{
+                  textDecoration: 'underline',
+                  textDecorationColor: 'var(--main-color)',
+                }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+              </div>
 
-              <p style={{ fontSize: '0.875rem', lineHeight: '2rem' }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the
-                1500s, when an unknown printer took a galley of type and scrambled it to
-                make a type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially
-                unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  marginBottom: 12,
+                  marginLeft: 10,
+                  background: '#F6F9F6',
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: 4,
+                  cursor: 'pointer',
+                }}
+                className={styles.files}
+              >
+                <FontAwesomeIcon color='rgb(27, 154, 25)' icon={faFileExcel}></FontAwesomeIcon>
+                &nbsp;&nbsp;<span style={{
+                  textDecoration: 'underline',
+                  textDecorationColor: 'var(--main-color)',
+                }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+              </div>
 
-              <p style={{ fontSize: '0.875rem', lineHeight: '2rem' }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the
-                1500s, when an unknown printer took a galley of type and scrambled it to
-                make a type specimen book. It has survived not only five centuries, but
-                also the leap into electronic typesetting, remaining essentially
-                unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              </p>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  marginBottom: 12,
+                  marginLeft: 10,
+                  background: '#F6F9F6',
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: 4,
+                  cursor: 'pointer'
+                }}
+                className={styles.files}
+              >
+                <FontAwesomeIcon color='#E64B48' icon={faFilePdf}></FontAwesomeIcon>
+                &nbsp;&nbsp;<span style={{
+                  textDecoration: 'underline',
+                  textDecorationColor: 'var(--main-color)',
+                }}>Livro: Introduction to R</span>
+              </div>
+
+
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  marginBottom: 12,
+                  marginLeft: 10,
+                  background: '#F6F9F6',
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: 4,
+                  cursor: 'pointer'
+                }}
+                className={styles.files}
+              >
+                <FontAwesomeIcon color='#0090D3' icon={faArrowUpRightFromSquare}></FontAwesomeIcon>
+                &nbsp;&nbsp;<span style={{
+                  textDecoration: 'underline',
+                  textDecorationColor: 'var(--main-color)',
+                }}>Grupos para atividade final</span>
+              </div>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  marginBottom: 12,
+                  marginLeft: 10,
+                  background: '#F6F9F6',
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: 4,
+                  cursor: 'pointer'
+                }}
+                className={styles.files}
+              >
+                <FontAwesomeIcon color='#FF6D00' icon={faFilePowerpoint}></FontAwesomeIcon>
+                &nbsp;&nbsp;<span style={{
+                  textDecoration: 'underline',
+                  textDecorationColor: 'var(--main-color)',
+                }}>Introdução à bioestatística</span>
+              </div>
+
+              <p
+                style={{
+                  fontSize: '0.875rem',
+                  background: '#F6F9F6',
+                  padding: 6,
+                  boxShadow: '0 1px 1px 0 rgba(20, 111, 18, .5)',
+                  borderRadius: 2,
+                  fontWeight: 500,
+                  color: 'var(--main-color)',
+                  marginTop: 30
+                }}
+              >Inferência estatística - 2</p>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  marginBottom: 12,
+                  marginLeft: 10,
+                  background: '#F6F9F6',
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: 4,
+                  cursor: 'pointer'
+                }}
+                className={styles.files}
+              >
+                <FontAwesomeIcon color='#2D92D4' icon={faFileWord}></FontAwesomeIcon>
+                &nbsp;&nbsp;<span style={{
+                  textDecoration: 'underline',
+                  textDecorationColor: 'var(--main-color)',
+                }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+              </div>
             </main>
           )}
         </Column>
