@@ -14,7 +14,7 @@ export const DialogOverlay = ({ children, visible, setVisible, backdrop, ...prop
           exit={{ opacity: 0 }}
         >
           <motion.div
-            style={{ marginLeft: '13rem' }}
+            style={{ marginLeft: !!props.center ? 0 : '13rem' }} 
             initial={{ y: -10 }}
             animate={{ y: 0 }}
             exit={{ y: 10 }}
