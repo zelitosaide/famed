@@ -10,6 +10,15 @@
   padding-left: 16rem;
 }
 
+/* Create Course */
+.createCourse .pencil:hover {
+  color: rgb(27, 154, 25);
+}
+
+.createCourse .trash:hover {
+  color: rgb(252, 88, 50);
+}
+
 /* Course Details */
 .courseDetails .leftAside {
   height: calc(100vh - 8rem);

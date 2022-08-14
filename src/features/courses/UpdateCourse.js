@@ -11,7 +11,8 @@ import {
   faFileExcel,
   faFilePowerpoint,
   faGripVertical,
-  faPencil
+  faPencil,
+  faTrash
 } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './Courses.module.css'
@@ -132,107 +133,364 @@ export const UpdateCourse = () => {
             </Column>
             <Column style={{ width: '50%' }}>
               <Fieldset legend='Criar curso de curta duração' style={{ minHeight: '27rem' }}>
-                <p
+                <div
                   style={{
                     fontSize: 'var(--main-font-size)',
                     margin: 'calc(0.5rem * 0.9 * 1.5) calc(0.5rem * 0.9)',
                     background: '#F6F9F6',
                     border: '1px dashed var(--main-stroke-svg-color)',
                     borderRadius: 'var(--border-radius-small)',
-                    paddingTop: 4,
-                    paddingBottom: 4,
-                    paddingLeft: 6,
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingLeft: 8,
                     paddingRight: 6,
                     color: 'var(--main-font-color)',
                     fontWeight: 'var(--bold-font-weight)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
                   }}
                 >
-                  Inferência estatística - 1
-                </p>
-
-                <div
-                  style={{
-                    fontSize: 'var(--main-font-size)',
-                    color: 'var(--main-font-color)',
-                    margin: 'calc(0.5rem * 0.9) calc(2 * 0.5rem * 0.9)'
-                  }}
-                >
-                  <FontAwesomeIcon color='var(--bold-stroke-svg-color)' icon={faFilePdf}></FontAwesomeIcon>&nbsp;Livro: Introduction to R
+                  <FontAwesomeIcon
+                    style={{
+                      fontSize: '0.9rem',
+                      cursor: 'move'
+                    }}
+                    icon={faGripVertical}
+                    color='var(--bold-stroke-svg-color)'
+                  />
+                  <span>Inferência estatística - 1</span>
+                  <div style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ cursor: 'pointer' }}
+                      className={styles.pencil}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ marginRight: 6, cursor: 'pointer' }}
+                      className={styles.trash}
+                    />
+                  </div>
                 </div>
 
                 <div
                   style={{
                     fontSize: 'var(--main-font-size)',
                     color: 'var(--main-font-color)',
-                    margin: 'calc(0.5rem * 0.9) calc(2 * 0.5rem * 0.9)'
+                    margin: 'calc(0.5rem * 0.9 * 1.5) calc(0.5rem * 0.9) calc(0.5rem * 0.9 * 1.5) 1rem',
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingLeft: 8,
+                    paddingRight: 6,
+                    background: '#F6F9F6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4
                   }}
                 >
-                  <FontAwesomeIcon color='var(--bold-stroke-svg-color)' icon={faArrowUpRightFromSquare}></FontAwesomeIcon>&nbsp;Grupos para atividade final
+                  <FontAwesomeIcon
+                    style={{
+                      fontSize: '0.9rem',
+                      cursor: 'move',
+                      marginRight: 8
+                    }}
+                    icon={faGripVertical}
+                    color='var(--bold-stroke-svg-color)'
+                  />
+                  <FontAwesomeIcon color='#E64B48' icon={faFilePdf}></FontAwesomeIcon>
+                  <span>Livro: Introduction to R</span>
+
+                  <div style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ cursor: 'pointer' }}
+                      className={styles.pencil}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ marginRight: 6, cursor: 'pointer' }}
+                      className={styles.trash}
+                    />
+                  </div>
                 </div>
 
                 <div
                   style={{
                     fontSize: 'var(--main-font-size)',
                     color: 'var(--main-font-color)',
-                    margin: 'calc(0.5rem * 0.9) calc(2 * 0.5rem * 0.9)'
+                    margin: 'calc(0.5rem * 0.9 * 1.5) calc(0.5rem * 0.9) calc(0.5rem * 0.9 * 1.5) 1rem',
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingLeft: 8,
+                    paddingRight: 6,
+                    background: '#F6F9F6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4
                   }}
                 >
-                  <FontAwesomeIcon color='var(--bold-stroke-svg-color)' icon={faFileWord}></FontAwesomeIcon>&nbsp;Codigos de R usados no curso
+                  <FontAwesomeIcon
+                    style={{
+                      fontSize: '0.9rem',
+                      cursor: 'move',
+                      marginRight: 8
+                    }}
+                    icon={faGripVertical}
+                    color='var(--bold-stroke-svg-color)'
+                  />
+                  <FontAwesomeIcon color='#0090D3' icon={faArrowUpRightFromSquare} />
+                  <span>Grupos para atividade final</span>
+
+                  <div style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ cursor: 'pointer' }}
+                      className={styles.pencil}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ marginRight: 6, cursor: 'pointer' }}
+                      className={styles.trash}
+                    />
+                  </div>
                 </div>
 
                 <div
                   style={{
                     fontSize: 'var(--main-font-size)',
                     color: 'var(--main-font-color)',
-                    margin: 'calc(0.5rem * 0.9) calc(2 * 0.5rem * 0.9)'
+                    margin: 'calc(0.5rem * 0.9 * 1.5) calc(0.5rem * 0.9) calc(0.5rem * 0.9 * 1.5) 1rem',
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingLeft: 8,
+                    paddingRight: 6,
+                    background: '#F6F9F6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4
                   }}
                 >
-                  <FontAwesomeIcon color='var(--bold-stroke-svg-color)' icon={faFileExcel}></FontAwesomeIcon>&nbsp;Monografia
+                  <FontAwesomeIcon
+                    style={{
+                      fontSize: '0.9rem',
+                      cursor: 'move',
+                      marginRight: 8
+                    }}
+                    icon={faGripVertical}
+                    color='var(--bold-stroke-svg-color)'
+                  />
+                  <FontAwesomeIcon color='#2D92D4' icon={faFileWord} />
+                  <span>Codigos de R usados no curso</span>
+
+                  <div style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ cursor: 'pointer' }}
+                      className={styles.pencil}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ marginRight: 6, cursor: 'pointer' }}
+                      className={styles.trash}
+                    />
+                  </div>
                 </div>
 
-                <Input>
-                  <button style={{ fontWeight: 'normal', padding: 4, marginLeft: 'calc(0.5rem * 0.9)' }} type='button'  className={styles.add}>
+                <div
+                  style={{
+                    fontSize: 'var(--main-font-size)',
+                    color: 'var(--main-font-color)',
+                    margin: 'calc(0.5rem * 0.9 * 1.5) calc(0.5rem * 0.9) calc(0.5rem * 0.9 * 1.5) 1rem',
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingLeft: 8,
+                    paddingRight: 6,
+                    background: '#F6F9F6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4
+                  }}
+                >
+                  <FontAwesomeIcon
+                    style={{
+                      fontSize: '0.9rem',
+                      cursor: 'move',
+                      marginRight: 8
+                    }}
+                    icon={faGripVertical}
+                    color='var(--bold-stroke-svg-color)'
+                  />
+                  <FontAwesomeIcon color='rgb(27, 154, 25)' icon={faFileExcel} />
+                  <span>Trabalho de Licenciatura</span>
+
+                  <div style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ cursor: 'pointer' }}
+                      className={styles.pencil}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ marginRight: 6, cursor: 'pointer' }}
+                      className={styles.trash}
+                    />
+                  </div>
+                </div>
+
+                <Input style={{ marginLeft: '1rem' }}>
+                  <button style={{ fontWeight: 'normal', padding: 4 }} type='button' className={styles.add}>
                     Adicionar Recurso
                   </button>
                 </Input>
 
-                <p
+                <div
                   style={{
                     fontSize: 'var(--main-font-size)',
                     margin: 'calc(0.5rem * 0.9 * 1.5) calc(0.5rem * 0.9)',
                     background: '#F6F9F6',
                     border: '1px dashed var(--main-stroke-svg-color)',
                     borderRadius: 'var(--border-radius-small)',
-                    paddingTop: 4,
-                    paddingBottom: 4,
-                    paddingLeft: 6,
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingLeft: 8,
                     paddingRight: 6,
                     color: 'var(--main-font-color)',
                     fontWeight: 'var(--bold-font-weight)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6
                   }}
                 >
-                  Inferência estatística - 2
-                </p>
+                  <FontAwesomeIcon
+                    style={{
+                      fontSize: '0.9rem',
+                      cursor: 'move'
+                    }}
+                    icon={faGripVertical}
+                    color='var(--bold-stroke-svg-color)'
+                  />
+                  <span>Inferência estatística - 2</span>
+                  <div style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ cursor: 'pointer' }}
+                      className={styles.pencil}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ marginRight: 6, cursor: 'pointer' }}
+                      className={styles.trash}
+                    />
+                  </div>
+                </div>
 
                 <div
                   style={{
                     fontSize: 'var(--main-font-size)',
                     color: 'var(--main-font-color)',
-                    margin: 'calc(0.5rem * 0.9) calc(2 * 0.5rem * 0.9)'
+                    margin: 'calc(0.5rem * 0.9 * 1.5) calc(0.5rem * 0.9) calc(0.5rem * 0.9 * 1.5) 1rem',
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingLeft: 8,
+                    paddingRight: 6,
+                    background: '#F6F9F6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4
                   }}
                 >
-                  <FontAwesomeIcon color='var(--bold-stroke-svg-color)' icon={faFilePowerpoint}></FontAwesomeIcon>&nbsp;Introdução à bioestatística
+                  <FontAwesomeIcon
+                    style={{
+                      fontSize: '0.9rem',
+                      cursor: 'move',
+                      marginRight: 8
+                    }}
+                    icon={faGripVertical}
+                    color='var(--bold-stroke-svg-color)'
+                  />
+                  <FontAwesomeIcon color='#FF6D00' icon={faFilePowerpoint} />
+                  <span>Introdução à bioestatística</span>
+
+                  <div style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ cursor: 'pointer' }}
+                      className={styles.pencil}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ marginRight: 6, cursor: 'pointer' }}
+                      className={styles.trash}
+                    />
+                  </div>
                 </div>
 
+                <div
+                  style={{
+                    fontSize: 'var(--main-font-size)',
+                    color: 'var(--main-font-color)',
+                    margin: 'calc(0.5rem * 0.9 * 1.5) calc(0.5rem * 0.9) calc(0.5rem * 0.9 * 1.5) 1rem',
+                    paddingTop: 5,
+                    paddingBottom: 5,
+                    paddingLeft: 8,
+                    paddingRight: 6,
+                    background: '#F6F9F6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4
+                  }}
+                >
+                  <FontAwesomeIcon
+                    style={{
+                      fontSize: '0.9rem',
+                      cursor: 'move',
+                      marginRight: 8,
+                    }}
+                    icon={faGripVertical}
+                    color='var(--bold-stroke-svg-color)'
+                  />
+                  <FontAwesomeIcon color='#FF6D00' icon={faFilePowerpoint} />
+                  <span>Introdução à bioestatística</span>
 
-                <Input>
-                  <button style={{ fontWeight: 'normal', padding: 4, marginLeft: 'calc(0.5rem * 0.9)' }} type='button' className={styles.add}>
+                  <div style={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+                    <FontAwesomeIcon
+                      icon={faPencil}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ cursor: 'pointer' }}
+                      className={styles.pencil}
+                    />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color='var(--bold-stroke-svg-color)'
+                      style={{ marginRight: 6, cursor: 'pointer' }}
+                      className={styles.trash}
+                    />
+                  </div>
+                </div>
+
+                <Input style={{ marginLeft: '1rem' }}>
+                  <button style={{ fontWeight: 'normal', padding: 4 }} type='button' className={styles.add}>
                     Adicionar Recurso
                   </button>
                 </Input>
 
                 <Input>
-                  <button style={{ fontWeight: 'normal', padding: 4 }} type='button'  className={styles.add}>
+                  <button style={{ fontWeight: 'normal', padding: 4 }} type='button' className={styles.add}>
                     Adicionar Titulo
                   </button>
                 </Input>
