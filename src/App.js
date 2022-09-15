@@ -23,7 +23,6 @@ import Postgraduate from './pages/postgraduate/Postgraduate'
 import About from './pages/about/About'
 import Protocols from './pages/protocols/Protocols'
 import Extension from './pages/extension/Extension'
-import Departments from './pages/departments/Departments'
 import DashboardLayout from './pages/dashboard/DashboardLayout'
 import Dashboard from './pages/dashboard/Dashboard'
 
@@ -55,6 +54,11 @@ import { CreateCourse } from './features/courses/CreateCourse'
 import { CourseList } from './features/courses/CourseList'
 import { fetchCourses } from './features/courses/coursesSlice'
 import { CourseDetails } from './features/courses/CourseDetails'
+import { DepartmentDetails } from './features/departments/DepartmentDetails'
+import { DepartmentTable } from './features/departments/DepartmentTable'
+import { UpdateDepartment } from './features/departments/UpdateDepartment'
+import { CreateDepartment } from './features/departments/CreateDepartment'
+import { fetchDepartments } from './features/departments/departmentsSlice'
 
 const App = () => {
   const projectStatus = useSelector(state => state.projects.status)
@@ -63,6 +67,7 @@ const App = () => {
   const curriculumsStatus = useSelector(state => state.curriculums.status)
   const publicationsStatus = useSelector(state => state.publications.status)
   const coursesStatus = useSelector(state => state.courses.status)
+  const departmentsStatus = useSelector(state => state.departments.status)
 
   const dispatch = useDispatch()
 
@@ -90,12 +95,17 @@ const App = () => {
     if (coursesStatus === 'idle') dispatch(fetchCourses())
   }, [coursesStatus, dispatch])
 
+  useEffect(() => {
+    if (departmentsStatus === 'idle') dispatch(fetchDepartments())
+  }, [departmentsStatus, dispatch])
+
   if (
     projectStatus === 'pending'
     || newsStatus === 'pending'
     || usersStatus === 'pending'
     || curriculumsStatus === 'pending'
     || publicationsStatus === 'pending'
+    || departmentsStatus === 'pending'
   ) {
     return <ActivityContainer />
   }
@@ -106,6 +116,7 @@ const App = () => {
     && usersStatus === 'fulfilled'
     && curriculumsStatus === 'fulfilled'
     && publicationsStatus === 'fulfilled'
+    && departmentsStatus === 'fulfilled'
   ) {
     return (
       <Routes>
@@ -125,12 +136,16 @@ const App = () => {
             <Route index element={<CourseList />} />
             <Route path=':courseId' element={<CourseDetails />} />
           </Route>
+          <Route path='departments'>
+            <Route path=':departmentId' element={<DepartmentDetails />} />
+          </Route>
+
 
           {/* <Route path='graduation' element={<Graduation />} />
           <Route path='postgraduate' element={<Postgraduate />} />
           <Route path='protocols' element={<Protocols />} />
           <Route path='extension' element={<Extension />} />
-          <Route path='departments' element={<Departments />} /> */}
+          */}
 
           {/* Temporarias */}
           <Route path='graduation' element={<InProgress />} />
@@ -138,7 +153,6 @@ const App = () => {
           {/* <Route path='about' element={<InProgress />} /> */}
           {/* <Route path='protocols' element={<InProgress />} /> */}
           <Route path='extension' element={<InProgress />} />
-          <Route path='departments' element={<InProgress />} />
 
 
           <Route path='teachers/:teacherId' element={<CurriculumDetails />} />
@@ -181,6 +195,11 @@ const App = () => {
             <Route index element={<RequireAuth><CourseTable /></RequireAuth>} />
             <Route path='edit/:courseId' element={<RequireAuth><UpdateCourse /></RequireAuth>} />
             <Route path='create' element={<RequireAuth><CreateCourse /></RequireAuth>} />
+          </Route>
+          <Route path='departments'>
+            <Route index element={<RequireAuth><DepartmentTable /></RequireAuth>} />
+            <Route path='edit/:departmentId' element={<RequireAuth><UpdateDepartment /></RequireAuth>} />
+            <Route path='create' element={<RequireAuth><CreateDepartment /></RequireAuth>} />
           </Route>
         </Route>
       </Routes>

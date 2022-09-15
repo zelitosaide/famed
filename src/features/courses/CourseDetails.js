@@ -15,6 +15,8 @@ import Dots from 'react-activity/dist/Dots'
 import YouTube from 'react-youtube'
 import 'react-activity/dist/Dots.css'
 
+import Base64Downloader from 'common-base64-downloader-react'
+
 import styles from './Courses.module.css'
 
 import { Row } from '../../components/row/Row'
@@ -152,148 +154,113 @@ export const CourseDetails = () => {
                   Material e Conteúdo do curso
                 </p>
 
-                <p
-                  style={{
-                    fontSize: '0.875rem',
-                    background: '#F6F9F6',
-                    padding: 6,
-                    boxShadow: '0 1px 1px 0 rgba(20, 111, 18, .5)',
-                    borderRadius: 2,
-                    fontWeight: 500,
-                    color: 'var(--main-color)',
-                  }}
-                >Inferência estatística - 1</p>
-                <div
-                  style={{
-                    fontSize: '0.8rem',
-                    marginBottom: 12,
-                    marginLeft: 10,
-                    background: '#F6F9F6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: 4,
-                    cursor: 'pointer'
-                  }}
-                  className={styles.files}
-                >
-                  <FontAwesomeIcon color='#2D92D4' icon={faFileWord}></FontAwesomeIcon>
-                  &nbsp;&nbsp;<span style={{
-                    textDecoration: 'underline',
-                    textDecorationColor: 'var(--main-color)',
-                  }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                </div>
+                {course.content ? course.content.rowOrder.map((rowId) => {
+                  const row = course.content.rows[rowId]
+                  const docs = row.docIds.map((docId) => course.content.docs[docId])
 
-                <div
-                  style={{
-                    fontSize: '0.8rem',
-                    marginBottom: 12,
-                    marginLeft: 10,
-                    background: '#F6F9F6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: 4,
-                    cursor: 'pointer',
-                  }}
-                  className={styles.files}
-                >
-                  <FontAwesomeIcon color='rgb(27, 154, 25)' icon={faFileExcel}></FontAwesomeIcon>
-                  &nbsp;&nbsp;<span style={{
-                    textDecoration: 'underline',
-                    textDecorationColor: 'var(--main-color)',
-                  }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                </div>
+                  return (
+                    <div key={row.id}>
+                      <p
+                        style={{
+                          fontSize: '0.875rem',
+                          background: '#F6F9F6',
+                          padding: 6,
+                          boxShadow: '0 1px 1px 0 rgba(20, 111, 18, .5)',
+                          borderRadius: 2,
+                          fontWeight: 500,
+                          color: 'var(--main-color)',
+                        }}
+                      >{row.title}</p>
 
-                <div
-                  style={{
-                    fontSize: '0.8rem',
-                    marginBottom: 12,
-                    marginLeft: 10,
-                    background: '#F6F9F6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: 4,
-                    cursor: 'pointer'
-                  }}
-                  className={styles.files}
-                >
-                  <FontAwesomeIcon color='#E64B48' icon={faFilePdf}></FontAwesomeIcon>
-                  &nbsp;&nbsp;<span style={{
-                    textDecoration: 'underline',
-                    textDecorationColor: 'var(--main-color)',
-                  }}>Livro: Introduction to R</span>
-                </div>
+                      <div>
+                        {docs.map(resource => {
+                          const fileIcon = resource.label === 'URL / Link'
+                            ? faArrowUpRightFromSquare
+                            : resource.label === 'Documento em PDF'
+                              ? faFilePdf
+                              : resource.label === 'Documento em WORD'
+                                ? faFileWord
+                                : resource.label === 'Documento em Excel'
+                                  ? faFileExcel
+                                  : faFilePowerpoint
+
+                          const fileName = Object.keys(resource).filter(
+                            value => value !== 'title' && value !== 'id' && value !== 'color' && value !== 'label' && value !== 'url'
+                          ).join()
+
+                          console.log('filename', resource[fileName])
 
 
-                <div
-                  style={{
-                    fontSize: '0.8rem',
-                    marginBottom: 12,
-                    marginLeft: 10,
-                    background: '#F6F9F6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: 4,
-                    cursor: 'pointer'
-                  }}
-                  className={styles.files}
-                >
-                  <FontAwesomeIcon color='#0090D3' icon={faArrowUpRightFromSquare}></FontAwesomeIcon>
-                  &nbsp;&nbsp;<span style={{
-                    textDecoration: 'underline',
-                    textDecorationColor: 'var(--main-color)',
-                  }}>Grupos para atividade final</span>
-                </div>
-                <div
-                  style={{
-                    fontSize: '0.8rem',
-                    marginBottom: 12,
-                    marginLeft: 10,
-                    background: '#F6F9F6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: 4,
-                    cursor: 'pointer'
-                  }}
-                  className={styles.files}
-                >
-                  <FontAwesomeIcon color='#FF6D00' icon={faFilePowerpoint}></FontAwesomeIcon>
-                  &nbsp;&nbsp;<span style={{
-                    textDecoration: 'underline',
-                    textDecorationColor: 'var(--main-color)',
-                  }}>Introdução à bioestatística</span>
-                </div>
-
-                <p
-                  style={{
-                    fontSize: '0.875rem',
-                    background: '#F6F9F6',
-                    padding: 6,
-                    boxShadow: '0 1px 1px 0 rgba(20, 111, 18, .5)',
-                    borderRadius: 2,
-                    fontWeight: 500,
-                    color: 'var(--main-color)',
-                    marginTop: 30
-                  }}
-                >Inferência estatística - 2</p>
-                <div
-                  style={{
-                    fontSize: '0.8rem',
-                    marginBottom: 12,
-                    marginLeft: 10,
-                    background: '#F6F9F6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: 4,
-                    cursor: 'pointer'
-                  }}
-                  className={styles.files}
-                >
-                  <FontAwesomeIcon color='#2D92D4' icon={faFileWord}></FontAwesomeIcon>
-                  &nbsp;&nbsp;<span style={{
-                    textDecoration: 'underline',
-                    textDecorationColor: 'var(--main-color)',
-                  }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                </div>
+                          return fileName ? (
+                            <Base64Downloader
+                              style={{ display: 'block', padding: 0, margin: 0, background: 'none', border: 'none', outline: 'none', width: '100%' }}
+                              base64={resource[fileName].base64}
+                              downloadName={resource.title}
+                            >
+                              <div
+                                key={resource.id}
+                                style={{
+                                  fontSize: '0.8rem',
+                                  marginBottom: 12,
+                                  marginLeft: 10,
+                                  background: '#F6F9F6',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  padding: 4,
+                                  cursor: 'pointer'
+                                }}
+                                className={styles.files}
+                              >
+                                <FontAwesomeIcon color={resource.color} icon={fileIcon}></FontAwesomeIcon>
+                                &nbsp;&nbsp;<span style={{
+                                  textDecoration: 'underline',
+                                  textDecorationColor: 'var(--main-color)',
+                                }}>{resource.title}</span>
+                              </div>
+                            </Base64Downloader>
+                          ) : (
+                            <a target='_blank' href={resource.url} rel='noreferrer' style={{ display: 'block', color: 'black' }}>
+                              <div
+                                key={resource.id}
+                                style={{
+                                  fontSize: '0.8rem',
+                                  marginBottom: 12,
+                                  marginLeft: 10,
+                                  background: '#F6F9F6',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  padding: 4,
+                                  cursor: 'pointer'
+                                }}
+                                className={styles.files}
+                              >
+                                <FontAwesomeIcon color={resource.color} icon={fileIcon}></FontAwesomeIcon>
+                                &nbsp;&nbsp;<span style={{
+                                  textDecoration: 'underline',
+                                  textDecorationColor: 'var(--main-color)',
+                                }}>{resource.title}</span>
+                              </div>
+                            </a>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )
+                }) : (
+                  <div
+                    style={{
+                      fontSize: '0.8rem',
+                      marginBottom: 12,
+                      background: '#F6F9F6',
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: 4,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Nenhum Conteúdo do curso encontrado!!!
+                  </div>
+                )}
               </main>
             )}
           </Column>

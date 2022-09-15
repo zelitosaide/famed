@@ -1,0 +1,11 @@
+.chooseContainer .choose {
+  cursor: pointer;
+}
+
+.chooseContainer .choose:hover {
+  background: #F6F9F6;
+}
+
+.chooseContainer .choose:last-child {
+  margin-bottom: 0.8rem !important;
+}

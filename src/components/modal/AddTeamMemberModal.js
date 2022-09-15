@@ -105,15 +105,15 @@ export const AddTeamMemberModal = (props) => {
                 value: visible && !isEdit,
                 message: 'This field is required'
               },
-              validate: (value) => {
-                if (!!value) {
-                  if (typeof value !== 'string') {
-                    const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
-                    setValue(`team.${counter}.image.imageName`, value[0].name)
-                    return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
-                  }
-                }
-              }
+              // validate: (value) => {
+              //   if (!!value) {
+              //     if (typeof value !== 'string') {
+              //       const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+              //       setValue(`team.${counter}.image.imageName`, value[0].name)
+              //       return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+              //     }
+              //   }
+              // }
             })}
           />
         </FileInput>

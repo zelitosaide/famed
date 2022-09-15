@@ -181,7 +181,8 @@ const CreateProject = () => {
                         <select id='Departamento' disabled={!canCreate}
                           {...methods.register('department', { required: 'This field is required' })}
                         >
-                          <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option>
+                          {/* <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option> */}
+                          <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
                           <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
                           <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
                           <option value='Dep. Patologia'>Dep. Patologia</option>

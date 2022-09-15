@@ -11,11 +11,11 @@
 }
 
 /* Create Course */
-.createCourse .pencil:hover {
+.createCourse .pencil:hover svg {
   color: rgb(27, 154, 25);
 }
 
-.createCourse .trash:hover {
+.createCourse .trash:hover svg {
   color: rgb(252, 88, 50);
 }
 

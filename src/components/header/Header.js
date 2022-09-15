@@ -144,10 +144,26 @@ const Header = () => {
                   Extensão
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/departments'>
                   Departamentos
                 </NavLink>
+              </li> */}
+              <li>
+                <Menu>
+                  <MenuButton>Departamentos <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
+                  <MenuList className={styles.slideDown}>
+                    <MenuLink as={Link} to='/departments/fisiologicas'>Dep. Ciências Fisiológicas</MenuLink>
+                    <MenuLink as={Link} to='/departments/morfologicas'>Dep. Ciências Morfológicas</MenuLink>
+                    <MenuLink as={Link} to='/departments/microbiologia'>Dep. Microbiologia</MenuLink>
+                    <MenuLink as={Link} to='/departments/patologia'>Dep. Patologia</MenuLink>
+                    <MenuLink as={Link} to='/departments/saude-da-comunidade'>Dep. Saúde da Comunidade</MenuLink>
+                    <MenuLink as={Link} to='/departments/pediatria'>Dep. Pediatria</MenuLink>
+                    <MenuLink as={Link} to='/departments/medicina'>Dep. Medicina</MenuLink>
+                    <MenuLink as={Link} to='/departments/cirurgia'>Dep. Cirurgia</MenuLink>
+                    <MenuLink as={Link} to='/departments/ginecologia-obstetricia'>Dep. Ginecologia e Obstetrícia</MenuLink>
+                  </MenuList>
+                </Menu>
               </li>
               <li>
                 <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/protocols'>
@@ -180,3 +196,13 @@ const Header = () => {
 }
 
 export default Header
+
+{/* <option value='Dep. Ciências Fisiológicas'></option>
+<option value='Dep. Ciências Morfológicas'></option>
+<option value='Dep. Microbiologia'></option>
+<option value='Dep. Patologia'></option>
+<option value='Dep. Saúde da Comunidade'></option>
+<option value='Dep. Pediatria'></option>
+<option value='Dep. Medicina'></option>
+<option value='Dep. Cirurgia'></option>
+<option value='Dep. Ginecologia e Obstetrícia'></option> */}
