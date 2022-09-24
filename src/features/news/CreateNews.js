@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 
 import { createNews } from './newsSlice'
 import styles from './News.module.css'
@@ -32,6 +33,8 @@ const CreateNews = () => {
       }
     }
   })
+
+  const departments = useSelector(state => state.departments.departments).map(d => d.name)
 
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
   const canCreate = currentUser.user.roles.normal || currentUser.user.roles.admin
@@ -114,15 +117,9 @@ const CreateNews = () => {
                       <select id='Departamento' disabled={!canCreate}
                         {...register('department', { required: 'This field is riquired' })}
                       >
-                        <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
-                        <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
-                        <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
-                        <option value='Dep. Patologia'>Dep. Patologia</option>
-                        <option value='Dep. Saúde da Comunidade'>Dep. Saúde da Comunidade</option>
-                        <option value='Dep. Pediatria'>Dep. Pediatria</option>
-                        <option value='Dep. Medicina'>Dep. Medicina</option>
-                        <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
-                        <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                        {departments.map((value, index) => (
+                          <option key={index} value={value}>{value}</option>
+                        ))}
                       </select>
                     </Input>
                   </Column>

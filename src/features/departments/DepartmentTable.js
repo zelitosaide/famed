@@ -286,7 +286,8 @@ export const DepartmentTable = () => {
                             }}
                             className={styles.deleteBtn}
                             onClick={() => { setOpenModal(true); setSelectedId(department._id) }}
-                            disabled={!canDelete || deleteStatus === 'pending'}
+                            // disabled={!canDelete || deleteStatus === 'pending'}
+                            disabled
                           >
                             {selectedDepartment === department._id && deleteStatus === 'pending'
                               ? 'Deleting...'

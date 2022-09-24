@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { FormProvider, useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 
 import styles from './Publications.module.css'
 import { createPublication } from './publicationsSlice'
@@ -32,6 +33,7 @@ const CreatePublication = () => {
     },
     mode: 'onChange'
   })
+
   const [openAuthorModal, setOpenAuthorModal] = useState(false)
   const [counterAuthor, setCounterAuthor] = useState(0)
   const [previousAuthor, setPreviousAuthor] = useState(null)
@@ -44,6 +46,8 @@ const CreatePublication = () => {
   const [status, setStatus] = useState('idle')
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const departments = useSelector(state => state.departments.departments).map(d => d.name)
 
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
   const canCreate = currentUser.user.roles.teacher || currentUser.user.roles.admin
@@ -154,8 +158,10 @@ const CreatePublication = () => {
                         <select id='Departamento' disabled={!canCreate}
                           {...methods.register('department', { required: 'This field is riquired' })}
                         >
-                          {/* <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option> */}
-                          <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
+                          {departments.map((value, index) => (
+                            <option key={index} value={value}>{value}</option>
+                          ))}
+                          {/* <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
                           <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
                           <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
                           <option value='Dep. Patologia'>Dep. Patologia</option>
@@ -163,7 +169,7 @@ const CreatePublication = () => {
                           <option value='Dep. Pediatria'>Dep. Pediatria</option>
                           <option value='Dep. Medicina'>Dep. Medicina</option>
                           <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
-                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option> */}
                         </select>
                       </Input>
                     </Column>

@@ -11,12 +11,12 @@ import { Row } from '../../components/row/Row'
 import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
 import { Input } from '../../components/input/Input'
-import { FileInput } from '../../components/input/FileInput'
 import { LeftArrow, RightArrow } from './arrows'
 import { Chip } from '../../components/chip/Chip'
 import { AddFinancierModal } from '../../components/modal/AddFinancierModal'
 import { AddTeamMemberModal } from '../../components/modal/AddTeamMemberModal'
 import { Notification } from '../../components/notification/Notification'
+import { FileInput2 } from '../../components/input/FileInput2'
 
 
 const UpdateProject = () => {
@@ -42,6 +42,10 @@ const UpdateProject = () => {
 
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
   const canUpdate = project.userId === currentUser.user._id || currentUser.user.roles.admin
+
+  const admin = currentUser.user.roles.admin
+
+  const departments = useSelector(state => state.departments.departments).map(d => d.name)
 
   const methods = useForm({
     defaultValues: {
@@ -172,16 +176,9 @@ const UpdateProject = () => {
                         <select id='Departamento' disabled={!canUpdate}
                           {...methods.register('department', { required: 'This field is required' })}
                         >
-                          {/* <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option> */}
-                          <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
-                          <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
-                          <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
-                          <option value='Dep. Patologia'>Dep. Patologia</option>
-                          <option value='Dep. Saúde da Comunidade'>Dep. Saúde da Comunidade</option>
-                          <option value='Dep. Pediatria'>Dep. Pediatria</option>
-                          <option value='Dep. Medicina'>Dep. Medicina</option>
-                          <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
-                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                          {departments.map((value, index) => (
+                            <option key={index} value={value}>{value}</option>
+                          ))}
                         </select>
                       </Input>
                     </Column>
@@ -193,7 +190,9 @@ const UpdateProject = () => {
                         required error={methods?.formState?.errors?.approvalDate?.message}>
                         <input type='date' id='Data de Aprov. Ética' disabled={!canUpdate}
                           style={{ border: '1px solid var(--main-border-color)' }}
-                          {...methods.register('approvalDate', { required: 'This field is required' })}
+                          {...methods.register('approvalDate', {
+                            // required: 'This field is required'
+                          })}
                         />
                       </Input>
                     </Column>
@@ -222,6 +221,30 @@ const UpdateProject = () => {
                       {...methods.register('content', { required: 'This field is required' })}
                     />
                   </Input>
+
+
+                  {admin && (
+                    <Fieldset legend='Estado do Projecto'
+                      style={{ border: 'none', padding: 0, margin: '0.5rem 0 0', boxShadow: 'none' }}
+                      legendStyle={{
+                        background: '#fff',
+                        fontWeight: 'var(--bold-font-weight)',
+                        fontSize: 'var(--main-font-size)',
+                        color: 'var(--main-font-color)',
+                      }}
+                    >
+                      <Input label='Publicar Projecto no Site' style={{ paddingBottom: 0, paddingTop: 0 }}>
+                        <input type='checkbox' id='Publicar Projecto no Site'
+                          {...methods.register('flags.published')}
+                        />
+                      </Input>
+
+                      <Input label='Mover para Página Inicial'>
+                        <input type='checkbox' id='Mover para Página Inicial' {...methods.register('flags.home')} />
+                      </Input>
+                    </Fieldset>
+                  )}
+
 
                   <Input style={{ display: 'inline-block' }}>
                     <button type='button' disabled={status === 'pending' || !canUpdate}
@@ -274,7 +297,7 @@ const UpdateProject = () => {
                   tabIndex={10}
                   ref={fieldset}
                 >
-                  <FileInput label='Image do projecto' required disabled={!canUpdate || status === 'pending'}
+                  <FileInput2 label='Image do projecto' required disabled={!canUpdate || status === 'pending'}
                     error={methods.formState.errors?.image?.base64Image.message}
                     fileName={
                       typeof image?.base64Image === 'string' ? image.imageName : image?.base64Image[0].name
@@ -293,7 +316,7 @@ const UpdateProject = () => {
                         }
                       })}
                     />
-                  </FileInput>
+                  </FileInput2>
 
                   <div
                     style={{

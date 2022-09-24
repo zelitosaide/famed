@@ -15,7 +15,10 @@ export const DepartmentDetails = () => {
     pediatria: 'Dep. Pediatria',
     medicina: 'Dep. Medicina',
     cirurgia: 'Dep. Cirurgia',
-    ['ginecologia-obstetricia']: 'Dep. Ginecologia e Obstetrícia'
+    ['ginecologia-obstetricia']: 'Dep. Ginecologia e Obstetrícia',
+    ['trauma-violencia']: 'Unidade de Trauma e Violência',
+    ['ciencias-implementacao']: 'Unidade de pesquisa em ciências de implementação',
+    ['saude-sexual-reprodutiva']: 'Unidade de Saúde Sexual e Reprodutiva e HIV/SIDA'
   }
 
   const department = useSelector(state => state.departments.departments.find(
@@ -30,7 +33,6 @@ export const DepartmentDetails = () => {
     return publication.department === routes[departmentId]
   }))
 
-
   if (!department) {
     return <Navigate to='/' replace />
   }
@@ -43,7 +45,11 @@ export const DepartmentDetails = () => {
             <img src={department.image.base64Image} alt='' className={styles.image} />
 
             <div className={styles.info}>
-              <p className={styles.title}>Departamento de {department.name.split('Dep. ')[1]}</p>
+              {department.name.split('Dep. ').length === 2 ? (
+                <p className={styles.title}>Departamento de {department.name.split('Dep. ')[1]}</p>
+              ) : (
+                <p className={styles.title}>{department.name}</p>
+              )}
               <p className={styles.content}>{department.content}</p>
             </div>
           </div>

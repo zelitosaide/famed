@@ -3,6 +3,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { ScrollMenu } from 'react-horizontal-scrolling-menu'
+import { useSelector } from 'react-redux'
 
 import styles from './Projects.module.css'
 import './hideScrollbar.css'
@@ -61,6 +62,8 @@ const CreateProject = () => {
 
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
   const canCreate = currentUser.user.roles.teacher || currentUser.user.roles.admin
+
+  const departments = useSelector(state => state.departments.departments).map(d => d.name)
 
   const navigate = useNavigate()
   const [status, setStatus] = useState('idle')
@@ -181,16 +184,9 @@ const CreateProject = () => {
                         <select id='Departamento' disabled={!canCreate}
                           {...methods.register('department', { required: 'This field is required' })}
                         >
-                          {/* <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option> */}
-                          <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
-                          <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
-                          <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
-                          <option value='Dep. Patologia'>Dep. Patologia</option>
-                          <option value='Dep. Saúde da Comunidade'>Dep. Saúde da Comunidade</option>
-                          <option value='Dep. Pediatria'>Dep. Pediatria</option>
-                          <option value='Dep. Medicina'>Dep. Medicina</option>
-                          <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
-                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                          {departments.map((value, index) => (
+                            <option key={index} value={value}>{value}</option>
+                          ))}
                         </select>
                       </Input>
                     </Column>
@@ -200,7 +196,9 @@ const CreateProject = () => {
                       <Input label='Data de Aprov. Ética'
                         required error={methods?.formState?.errors?.approvalDate?.message}>
                         <input type='date' id='Data de Aprov. Ética' disabled={!canCreate}
-                          {...methods.register('approvalDate', { required: 'This field is required' })}
+                          {...methods.register('approvalDate', {
+                            // required: 'This field is required'
+                          })}
                         />
                       </Input>
                     </Column>

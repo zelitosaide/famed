@@ -10,8 +10,8 @@ import { Row } from '../../components/row/Row'
 import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
 import { Input } from '../../components/input/Input'
-import { FileInput } from '../../components/input/FileInput'
 import { Notification } from '../../components/notification/Notification'
+import { FileInput2 } from '../../components/input/FileInput2'
 
 const UpdateNews = () => {
   const { newsId } = useParams()
@@ -24,6 +24,8 @@ const UpdateNews = () => {
   const news = useSelector(state =>
     state.news.news.find(news => news._id === newsId)
   )
+
+  const departments = useSelector(state => state.departments.departments).map(d => d.name)
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
     defaultValues: { ...news, department: news.department ? news.department : '' }
@@ -112,21 +114,14 @@ const UpdateNews = () => {
                       <select id='Departamento' disabled={!canUpdate}
                         {...register('department', { required: 'This field is riquired' })}
                       >
-                        {/* <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option> */}
-                        <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
-                        <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
-                        <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
-                        <option value='Dep. Patologia'>Dep. Patologia</option>
-                        <option value='Dep. Saúde da Comunidade'>Dep. Saúde da Comunidade</option>
-                        <option value='Dep. Pediatria'>Dep. Pediatria</option>
-                        <option value='Dep. Medicina'>Dep. Medicina</option>
-                        <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
-                        <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                        {departments.map((value, index) => (
+                          <option key={index} value={value}>{value}</option>
+                        ))}
                       </select>
                     </Input>
                   </Column>
                   <Column style={{ width: '50%' }}>
-                    <FileInput label='Image da Notícia' required error={errors.image?.base64Image.message}
+                    <FileInput2 label='Image da Notícia' required error={errors.image?.base64Image.message}
                       fileName={
                         typeof image?.base64Image === 'string' ? image.imageName : image?.base64Image[0].name
                       }
@@ -144,11 +139,11 @@ const UpdateNews = () => {
                           }
                         })}
                       />
-                    </FileInput>
+                    </FileInput2>
                   </Column>
                 </Row>
 
-                <FileInput label='PDF' disabled={!canUpdate} error={errors.pdf?.base64PDF.message}
+                <FileInput2 label='PDF' disabled={!canUpdate} error={errors.pdf?.base64PDF.message}
                   fileName={typeof pdf?.base64PDF === 'string' ? !!pdf.pdfName ? pdf.pdfName : 'Nenhum ficheiro' : pdf?.base64PDF[0].name}
                 >
                   <input id='PDF' type='file' style={{ display: 'none' }}
@@ -163,7 +158,7 @@ const UpdateNews = () => {
                       }
                     })}
                   />
-                </FileInput>
+                </FileInput2>
 
                 {/* Mudancas sobre permissoes */}
                 {admin && (

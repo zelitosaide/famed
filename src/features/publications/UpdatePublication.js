@@ -32,6 +32,8 @@ const UpdatePublication = () => {
   )
   const [counterAuthor, setCounterAuthor] = useState(publication.authors.length)
 
+  const departments = useSelector(state => state.departments.departments).map(d => d.name)
+
   const methods = useForm({
     defaultValues: {
       ...publication, pubDate: formatDate(publication.pubDate),
@@ -132,8 +134,10 @@ const UpdatePublication = () => {
                         <select id='Departamento' disabled={!canUpdate}
                           {...methods.register('department', { required: 'This field is riquired' })}
                         >
-                          {/* <option value='Dep. Ciências Patológicas'>Dep. Ciências Patológicas</option> */}
-                          <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
+                          {departments.map((value, index) => (
+                            <option key={index} value={value}>{value}</option>
+                          ))}
+                          {/* <option value='Dep. Ciências Fisiológicas'>Dep. Ciências Fisiológicas</option>
                           <option value='Dep. Ciências Morfológicas'>Dep. Ciências Morfológicas</option>
                           <option value='Dep. Microbiologia'>Dep. Microbiologia</option>
                           <option value='Dep. Patologia'>Dep. Patologia</option>
@@ -141,7 +145,7 @@ const UpdatePublication = () => {
                           <option value='Dep. Pediatria'>Dep. Pediatria</option>
                           <option value='Dep. Medicina'>Dep. Medicina</option>
                           <option value='Dep. Cirurgia'>Dep. Cirurgia</option>
-                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option>
+                          <option value='Dep. Ginecologia e Obstetrícia'>Dep. Ginecologia e Obstetrícia</option> */}
                         </select>
                       </Input>
                     </Column>

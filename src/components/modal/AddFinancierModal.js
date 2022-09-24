@@ -67,10 +67,10 @@ export const AddFinancierModal = (props) => {
             id='Website do Financiador'
             placeholder='https://example.com'
             {...register(`financiers.${counter}.websiteUrl`, {
-              required: {
-                value: visible,
-                message: 'This field is required'
-              },
+              // required: {
+              //   value: visible,
+              //   message: 'This field is required'
+              // },
               pattern: visible && {
                 value: /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/,
                 message: 'Please provide a valid URL, (Example: https://example.com)'

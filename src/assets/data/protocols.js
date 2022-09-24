@@ -1,56 +1,20 @@
 export const navlinks = [
   {
-    name: 'Link 1',
-    to: '/protocols',
-  },
-  {
-    name: 'Link 2',
+    name: 'Comité de Bioética',
     subMenu: [
       {
-        name: 'Menu Item',
-        to: '/protocols'
-      },
-      {
-        name: 'Menu Item',
-        to: '/protocols'
-      },
-      {
-        name: 'Menu Item',
+        name: 'Membros do Comité',
         to: '/protocols'
       },
     ]
   },
   {
-    name: 'Link 3',
+    name: 'Conselho Científico',
     subMenu: [
       {
-        name: 'Menu Item',
-        to: '/protocols'
-      },
-      {
-        name: 'Menu Item',
-        to: '/protocols'
-      },
-      {
-        name: 'Menu Item',
+        name: 'Membros do Conselho',
         to: '/protocols'
       },
     ]
   },
-  {
-    name: 'Link 4',
-    to: '/protocols',
-  },
-  {
-    name: 'Link 5',
-    to: '/protocols',
-  },
-  {
-    name: 'Link 6',
-    to: '/protocols',
-  },
-  {
-    name: 'Notícias',
-    to: '/protocols',
-  }
 ]

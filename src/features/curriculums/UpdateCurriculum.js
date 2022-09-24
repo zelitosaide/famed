@@ -9,9 +9,9 @@ import { convert2base64 } from '../projects/processData'
 import { Row } from '../../components/row/Row'
 import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
-import { FileInput } from '../../components/input/FileInput'
 import { Input } from '../../components/input/Input'
 import { Notification } from '../../components/notification/Notification'
+import { FileInput2 } from '../../components/input/FileInput2'
 
 const UpdateCurriculum = () => {
   const [status, setStatus] = useState('idle')
@@ -113,7 +113,7 @@ const UpdateCurriculum = () => {
               <Fieldset legend='Editar Curriculum Vitae (CV)'>
                 <Row>
                   <Column style={{ width: '50%' }}>
-                    <FileInput label='PDF' required disabled={!canCreate}
+                    <FileInput2 label='PDF' required disabled={!canCreate}
                       error={errors.pdf?.base64PDF.message}
                       fileName={
                         typeof pdf?.base64PDF === 'string' ? !!pdf.pdfName ? pdf.pdfName : 'Nenhum ficheiro' : pdf?.base64PDF[0].name
@@ -131,10 +131,10 @@ const UpdateCurriculum = () => {
                           }
                         })}
                       />
-                    </FileInput>
+                    </FileInput2>
                   </Column>
                   <Column style={{ width: '50%' }}>
-                    <FileInput label='Image do Professor' required disabled={!canCreate}
+                    <FileInput2 label='Image do Professor' required disabled={!canCreate}
                       error={errors.image?.base64Image.message}
                       fileName={
                         typeof image?.base64Image === 'string' ? !!image.imageName ? image.imageName : 'Nenhum ficheiro' : image?.base64Image[0].name
@@ -152,7 +152,7 @@ const UpdateCurriculum = () => {
                           }
                         })}
                       />
-                    </FileInput>
+                    </FileInput2>
                   </Column>
                 </Row>
 

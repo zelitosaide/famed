@@ -2,7 +2,7 @@ import { useFormContext } from 'react-hook-form'
 
 import { Column } from '../column/Column'
 import { DialogOverlay } from '../dialog_overlay/DialogOverlay'
-import { FileInput } from '../input/FileInput'
+import { FileInput2 } from '../input/FileInput2'
 import { Input } from '../input/Input'
 import { Row } from '../row/Row'
 import { Section } from '../section/Section'
@@ -91,7 +91,7 @@ export const AddTeamMemberModal = (props) => {
         </Row>
 
 
-        <FileInput label='Foto do colaborador' style={{ paddingLeft: 0, paddingRight: 0 }}
+        <FileInput2 label='Foto do colaborador' style={{ paddingLeft: 0, paddingRight: 0 }}
           error={errors.team && errors?.team[counter]?.image?.base64Image?.message}
           fileName={
             !!team[counter]?.image?.imageName ? team[counter]?.image?.imageName : 'Nenhum ficheiro selecionado.'
@@ -116,7 +116,7 @@ export const AddTeamMemberModal = (props) => {
               // }
             })}
           />
-        </FileInput>
+        </FileInput2>
 
         <Row>
           <Input style={{ display: 'inline-block', float: 'right', paddingRight: 0 }}>

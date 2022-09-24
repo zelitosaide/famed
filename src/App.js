@@ -106,6 +106,7 @@ const App = () => {
     || curriculumsStatus === 'pending'
     || publicationsStatus === 'pending'
     || departmentsStatus === 'pending'
+    || coursesStatus === 'pending'
   ) {
     return <ActivityContainer />
   }
@@ -117,6 +118,7 @@ const App = () => {
     && curriculumsStatus === 'fulfilled'
     && publicationsStatus === 'fulfilled'
     && departmentsStatus === 'fulfilled'
+    && coursesStatus === 'fulfilled'
   ) {
     return (
       <Routes>

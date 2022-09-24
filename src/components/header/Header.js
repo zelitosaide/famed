@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown as caret } from '@fortawesome/free-solid-svg-icons'
@@ -6,10 +7,13 @@ import { MenuButton, Menu, MenuList, MenuLink } from '@reach/menu-button'
 import '@reach/menu-button/styles.css'
 import { Drawer, IconButton } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import { useSelector } from 'react-redux'
+
+import { anchors, navlinks } from '../../assets/data/header'
+import { routes } from '../../assets/data/routes'
 
 import styles from './Header.module.css'
 import Logo from '../../assets/images/logo.png'
-import { anchors, navlinks } from '../../assets/data/header'
 import DrawerHeader from './DrawerHeader'
 import DrawerList from './DrawerList'
 import DrawerHeaderTablet from './DrawerHeaderTablet'
@@ -21,6 +25,14 @@ const Header = () => {
   const closeDrawer = () => {
     setIsDrawerOpen(false)
   }
+
+  const departments = useSelector(state => state.departments.departments)
+    .map((value, index) => {
+      return { name: value.name, path: routes[index] }
+    })
+
+    console.log('departments', departments.map(value => value.name))
+
 
   return (
     <div className={styles.header}>
@@ -96,7 +108,6 @@ const Header = () => {
                 marginRight: '1rem'
               }}
             >
-              {/* info@med.uem.mz &nbsp;|&nbsp;  */}
               Av. Salvador Allende nº 702
             </p>
             <button>
@@ -144,24 +155,13 @@ const Header = () => {
                   Extensão
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/departments'>
-                  Departamentos
-                </NavLink>
-              </li> */}
               <li>
                 <Menu>
-                  <MenuButton>Departamentos <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
+                  <MenuButton>Departamentos e Unidades <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
                   <MenuList className={styles.slideDown}>
-                    <MenuLink as={Link} to='/departments/fisiologicas'>Dep. Ciências Fisiológicas</MenuLink>
-                    <MenuLink as={Link} to='/departments/morfologicas'>Dep. Ciências Morfológicas</MenuLink>
-                    <MenuLink as={Link} to='/departments/microbiologia'>Dep. Microbiologia</MenuLink>
-                    <MenuLink as={Link} to='/departments/patologia'>Dep. Patologia</MenuLink>
-                    <MenuLink as={Link} to='/departments/saude-da-comunidade'>Dep. Saúde da Comunidade</MenuLink>
-                    <MenuLink as={Link} to='/departments/pediatria'>Dep. Pediatria</MenuLink>
-                    <MenuLink as={Link} to='/departments/medicina'>Dep. Medicina</MenuLink>
-                    <MenuLink as={Link} to='/departments/cirurgia'>Dep. Cirurgia</MenuLink>
-                    <MenuLink as={Link} to='/departments/ginecologia-obstetricia'>Dep. Ginecologia e Obstetrícia</MenuLink>
+                    {departments.map((value, index) => (
+                      <MenuLink key={index} as={Link} to={`/departments/${value.path}`}>{value.name}</MenuLink>
+                    ))}
                   </MenuList>
                 </Menu>
               </li>
@@ -196,13 +196,3 @@ const Header = () => {
 }
 
 export default Header
-
-{/* <option value='Dep. Ciências Fisiológicas'></option>
-<option value='Dep. Ciências Morfológicas'></option>
-<option value='Dep. Microbiologia'></option>
-<option value='Dep. Patologia'></option>
-<option value='Dep. Saúde da Comunidade'></option>
-<option value='Dep. Pediatria'></option>
-<option value='Dep. Medicina'></option>
-<option value='Dep. Cirurgia'></option>
-<option value='Dep. Ginecologia e Obstetrícia'></option> */}

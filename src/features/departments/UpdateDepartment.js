@@ -85,7 +85,9 @@ export const UpdateDepartment = () => {
             <Column style={{ width: '50%' }}>
               <Fieldset legend='Editar Departamento'>
                 <Input label='Nome do Departamento' required error={errors.name?.message}>
-                  <input type='text' id='Nome do Departamento' disabled={!canUpdate}
+                  <input type='text' id='Nome do Departamento'
+                    // disabled={!canUpdate}
+                    disabled
                     {...register('name', { required: 'This field is riquired' })}
                   />
                 </Input>
