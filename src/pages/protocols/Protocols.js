@@ -4,13 +4,11 @@ import Carousel from '../home/carousel/Carousel'
 import styles from './Protocols.module.css'
 
 const Protocols = () => {
-  const projects = useSelector(state => state.projects.projects)
-
-  console.log(projects);
+  const projects = useSelector(state => state.projects.projects).slice(0, 1)
 
   return (
     <div className={styles.protocols}>
-      <Carousel news={projects} />
+      {true && <Carousel news={projects} />}
     </div>
   )
 }
