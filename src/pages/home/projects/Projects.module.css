@@ -1,3 +1,5 @@
+
+
 .projects div .project {
   margin-top: 2.5rem;
 }
@@ -30,28 +32,40 @@
   opacity: 1;
 }
 
-
-
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  .projects.responsive div::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   .projects.responsive div .project img {
     padding-left: 0;
     padding-right: 0;
+    height: 140px;
   }
 
   .projects.responsive div .project {
     box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, 0.3);
-    margin-right: 1.4rem;
+    margin-right: 1rem;
     padding-bottom: 2rem;
   }
 
-  .projects.responsive div:nth-child(2) .project {
-    margin-left: 0.7rem;
+  .projects.responsive div:nth-child(2) .project,
+  .projects.responsive div:nth-child(3) .project {
+    margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
 
   .projects.responsive div:last-child .project {
-    margin-left: 1.4rem;
+    margin-left: 1rem;
     margin-right: 0;
   }
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
 }

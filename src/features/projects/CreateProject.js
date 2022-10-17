@@ -81,8 +81,12 @@ const CreateProject = () => {
       const team = data.team
         .map(value => value.name && value.role && value.image ? value : null)
         .filter(value => value)
+      // const financiers = data.financiers
+      //   .map(value => value.name && value.websiteUrl ? value : null)
+      //   .filter(value => value)
+
       const financiers = data.financiers
-        .map(value => value.name && value.websiteUrl ? value : null)
+        .map(value => value.name ? value : null)
         .filter(value => value)
 
       for (let i = 0; i < base64team.length; i++) {

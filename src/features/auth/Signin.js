@@ -39,7 +39,10 @@ const Signin = () => {
               Caso não tenha uma conta, entre em contato com o administrador para ter uma.
             </p>
 
-            <p style={{ textDecoration: 'underline', color: 'red', fontSize: '0.9rem' }}>ccfaculdademedicina@gmail.com</p>
+            {/* <p style={{ textDecoration: 'underline', color: 'red', fontSize: '0.9rem' }}>ccfaculdademedicina@gmail.com</p> */}
+            <p style={{ textDecoration: 'underline', fontSize: '0.9rem' }}>
+              Email: <span style={{ color: 'green' }}>info.med@uem.mz</span>
+            </p>
           </div>
 
           <div className={`${styles.column} col col-768-6`}>

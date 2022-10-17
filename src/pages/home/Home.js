@@ -12,7 +12,7 @@ import Projects from './projects/Projects'
 const Home = () => {
   const projects = useSelector(state => state.projects.projects.filter(
     project => project.flags.home && project.flags.published
-  ).slice(0, 3))
+  ).slice(0, 12))
 
   const orderedProjects = projects.slice().sort((a, b) => b.startDate.localeCompare(a.startDate))
 

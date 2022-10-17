@@ -13,7 +13,7 @@ export const contactLocation = [
   { id: 3, name: 'Telefone: (+258) 21 428076' },
   { id: 4, name: 'Celular: (+258) 825881101' },
   { id: 5, name: 'Fax: (+258) 21 325255' },
-  { id: 6, name: 'E-mail: info@med.uem.mz' },
+  { id: 6, name: 'E-mail: info.med@uem.mz' },
 ]
 
 export const linksUteis = [

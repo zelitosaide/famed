@@ -2,7 +2,7 @@
   background-color: var(--footer-bg-color);
   padding-bottom: 3rem;
   display: none;
-  /* margin-top: 3rem; */
+  margin-top: 3rem;
 }
 
 .desktop .row::after {
