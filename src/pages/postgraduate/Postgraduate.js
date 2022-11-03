@@ -32,7 +32,7 @@ const Postgraduate = () => {
             marginTop: "1.5rem"
           }}
         >
-          Seis (6) Cursos de Mestrado:
+          Cursos de Mestrado:
         </p>
 
         <ul style={{ listStyle: "circle", marginLeft: "1.5rem" }}>
@@ -41,43 +41,129 @@ const Postgraduate = () => {
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
               fontWeight: 500,
-              marginBottom: 10,
+              marginBottom: 15,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
               // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
-          >Mestrado em Saúde Pública Presencial</li>
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              fontWeight: 500,
-              marginBottom: 10,
-              textDecoration: "underline",
-              textUnderlineOffset: 3,
-              textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
-            }}
-          >Mestrado em Saúde Pública à Distância: (dividido em 3 ramos abaixo)
-            {/* <ul>
-              <li>Ramo de Desenvolvimento de Recursos Humanos para Saúde (DRHS) à Distância</li>
-              <li>Ramo de Higiene, Saúde e Segurança Ocupacional (HSSO) à Distância</li>
-              <li>Ramo em Gestão e Liderança de Sistemas de Saúde (GLSS) à Distância</li>
-            </ul> */}
+          >
+            Mestrado em Saúde Pública Presencial (MSP)
           </li>
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
               fontWeight: 500,
-              marginBottom: 10,
+              marginBottom: 15,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >Mestrado em Saúde Pública à Distância (MSPD), com os seguintes ramos:
+            <ul style={{ listStyle: "square", marginLeft: "1.5rem" }}>
+              <li
+                style={{
+                  lineHeight: "1.6rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 400,
+                  marginTop: 10,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                  textDecorationThickness: 1.5,
+                  textDecorationColor: "white",
+                  color: "var(--main-color)",
+                }}
+              >Ramo de Desenvolvimento de Recursos Humanos para Saúde (DRHS)</li>
+              <li
+                style={{
+                  lineHeight: "1.6rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 400,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                  textDecorationThickness: 1.5,
+                  textDecorationColor: "white",
+                  color: "var(--main-color)",
+                }}
+              >Ramo de Higiene, Saúde e Segurança Ocupacional (HSSO)</li>
+              <li
+                style={{
+                  lineHeight: "1.6rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 400,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                  textDecorationThickness: 1.5,
+                  textDecorationColor: "white",
+                  color: "var(--main-color)",
+                }}
+              >Ramo em Gestão e Liderança de Sistemas de Saúde (GLSS)</li>
+            </ul>
+          </li>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              fontWeight: 500,
+              marginBottom: 15,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >Mestrado em  Biociências (MBC), com os seguintes ramos:
+            <ul style={{ listStyle: "square", marginLeft: "1.5rem" }}>
+              <li
+                style={{
+                  lineHeight: "1.6rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 400,
+                  marginTop: 10,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                  textDecorationThickness: 1.5,
+                  textDecorationColor: "white",
+                  color: "var(--main-color)",
+                }}
+              >Ramo de Microbiologia</li>
+              <li
+                style={{
+                  lineHeight: "1.6rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 400,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                  textDecorationThickness: 1.5,
+                  textDecorationColor: "white",
+                  color: "var(--main-color)",
+                }}
+              >Ramo de Parasitologia</li>
+              <li
+                style={{
+                  lineHeight: "1.6rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 400,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                  textDecorationThickness: 1.5,
+                  textDecorationColor: "white",
+                  color: "var(--main-color)",
+                }}
+              >Ramo de Neurociências</li>
+            </ul>
+          </li>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              fontWeight: 500,
+              marginBottom: 15,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
               textDecorationColor: "var(--hover-color)",
             }}
           >Mestrado em Epidemiologia de Campo e Laboratorial (MECL)</li>
@@ -86,27 +172,14 @@ const Postgraduate = () => {
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
               fontWeight: 500,
-              marginBottom: 10,
+              marginBottom: 15,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >Mestrado em Saúde Mental e Psico-intervenções (MSMPI)</li>
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              fontWeight: 500,
-              marginBottom: 10,
-              textDecoration: "underline",
-              textUnderlineOffset: 3,
-              textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
-            }}
-          >Mestrado em  Biociências (MBC)</li>
+
           <li
             style={{
               lineHeight: "1.6rem",
@@ -131,7 +204,7 @@ const Postgraduate = () => {
             marginTop: "1.5rem"
           }}
         >
-          Um (1) Curso de Doutoramento:
+          Cursos de Doutoramentos:
         </p>
 
         <ul style={{ listStyle: "circle", marginLeft: "1.5rem" }}>
@@ -140,11 +213,10 @@ const Postgraduate = () => {
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
               fontWeight: 500,
-              marginBottom: 10,
+              marginBottom: 15,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >Doutoramento em Biociências e Saúde Pública</li>
@@ -155,11 +227,3 @@ const Postgraduate = () => {
 }
 
 export default Postgraduate
-
-// .publicationList .singlePublication a:hover {
-//
-//
-//   ;
-//   text-decoration-color: var(--main-color);
-//   color: var(--black-color);
-// }
