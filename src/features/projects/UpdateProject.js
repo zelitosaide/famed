@@ -50,7 +50,7 @@ const UpdateProject = () => {
   const methods = useForm({
     defaultValues: {
       ...project,
-      approvalDate: formatDate(project.approvalDate),
+      approvalDate: project.approvalDate ? formatDate(project.approvalDate) : "",
       startDate: formatDate(project.startDate),
       endDate: formatDate(project.endDate),
       image: typeof project.image === 'string' ? {
