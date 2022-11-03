@@ -12,7 +12,7 @@ export const courses = [
   {
     id: 2,
     title: 'Cursos de Pós-graduação',
-    content: 'A Faculdade de Medicina oferece 4 cursos de mestrado académico, nomeadamente Mestrado em Saúde Pública, Mestrado em Saúde Pública a Distância, Mestrado em Saúde Mental e Psico-Intervenção, e Mestrado em Epidemiologia e Laboratório.',
+    content: 'A Faculdade de Medicina oferece 6 cursos de mestrado académico, nomeadamente Mestrado em Saúde Pública Presencial (MSP), Mestrado em Saúde Pública à Distância (MSPD), Mestrado em  Biociências (MBC), Mestrado em Epidemiologia de Campo e Laboratorial (MECL), Mestrado em Saúde Mental e Psico-intervenções (MSMPI) e Mestrado em Emergências Pediatrias e Neonatais (MEPN), e também oferece um curso de Doutoramento em Biociências e Saúde Pública.',
     url: '/postgraduate',
   },
   {
