@@ -20,7 +20,7 @@ const Postgraduate = () => {
             fontSize: "0.875rem",
           }}
         >
-          A Faculdade de Medicina da Universidade Eduardo Mondlane oferece para o nível de Pós-Graduação os seguintes cursos:
+          A Faculdade de Medicina oferece 6 cursos de mestrado académico, nomeadamente Mestrado em Saúde Pública Presencial (MSP), Mestrado em Saúde Pública à Distância (MSPD), Mestrado em  Biociências (MBC), Mestrado em Epidemiologia de Campo e Laboratorial (MECL), Mestrado em Saúde Mental e Psico-intervenções (MSMPI) e Mestrado em Emergências Pediatrias e Neonatais (MEPN), e também oferece um curso de Doutoramento em Biociências e Saúde Pública.
         </p>
 
         <p
