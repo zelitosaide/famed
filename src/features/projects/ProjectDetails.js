@@ -41,22 +41,89 @@ const ProjectDetails = () => {
                 {<FormattedDate date={project.startDate} />}&nbsp;&nbsp;à&nbsp;&nbsp;{<FormattedDate date={project.endDate} />}
               </span>
             </p>
-            <p>
-              <span
-                style={{
-                  background: '#C66518',
-                  marginRight: '0.5rem',
-                  padding: '0 0.2rem',
-                  color: 'white',
-                }}
-              >
-                Financiador
-              </span>
-              <span style={{ display: 'inline-block' }}>
-                {project.financiers && project.financiers[0].name}
-              </span>
-            </p>
-            <p>{project.content}</p>
+            {project.financiers && (
+              <>
+                <h4
+                  style={{
+                    marginBottom: '0.4rem',
+                    marginTop: '0.6rem',
+                    fontSize: '0.92rem',
+                    fontWeight: 'bold',
+                    color: 'var(--main-color)',
+                    lineHeight: '1.2rem',
+                  }}
+                >Financiador(es):</h4>
+                <ul>
+                  {project.financiers.map(function (financier, index) {
+                    return (
+                      <li
+                        key={index}
+                        style={{
+                          marginTop: '0.4rem',
+                          marginBottom: 0,
+                          fontSize: '0.875rem',
+                          lineHeight: '1.6rem',
+                          color: 'var(--main-color)',
+                        }}
+                      >
+                        {financier.websiteUrl ? (
+                          <a
+                            href={financier.websiteUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <span
+                              style={{
+                                background: '#C66518',
+                                marginRight: '0.5rem',
+                                padding: '0 0.2rem',
+                                color: 'white',
+                              }}
+                            >
+                              Financiador
+                            </span>
+                            <span
+                              style={{
+                                display: 'inline-block',
+                                textDecoration: 'underline',
+                                color: 'var(--main-color)',
+                              }}
+                            >
+                              {financier.name}
+                            </span>
+                          </a>
+                        ) : (
+                          <div>
+                            <span
+                              style={{
+                                background: '#C66518',
+                                marginRight: '0.5rem',
+                                padding: '0 0.2rem',
+                                color: 'white',
+                              }}
+                            >
+                              Financiador
+                            </span>
+                            <span
+                              style={{
+                                display: 'inline-block',
+                                color: 'var(--main-color)',
+                              }}
+                            >
+                              {financier.name}
+                            </span>
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
+
+
+
+            <p style={{ marginTop: 5 }}>{project.content}</p>
           </div>
 
           {!!project.team.length && (

@@ -5,7 +5,6 @@ const About = () => {
   return (
     <div className={`${styles.about} ${styles.responsive}`}>
       <div className={styles.gap}></div>
-      {/* <div style={{ paddingTop: '9.5rem' }} className='row'></div> */}
 
       <div className='row'>
         <div className={styles.container}>
@@ -31,7 +30,7 @@ const About = () => {
             <p className={styles.title}>Nossa Visão</p>
 
             <p>
-              A Visão da Faculdade de Medicina da Universidade Eduardo Mondlane é de: 
+              A Visão da Faculdade de Medicina da Universidade Eduardo Mondlane é de:
               Ser uma instituição de excelência na formação de médicos e de outros profissionais de saúde e áreas afins e de referência na investigação e extensão, contribuindo para a saúde e bem-estar do indivíduo e da comunidade de Moçambique, de África e do Mundo em geral.
             </p>
 

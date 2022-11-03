@@ -17,13 +17,13 @@ export const courses = [
   },
   {
     id: 3,
-    title: 'Cursos de Verão',
+    title: 'Cursos de curta duração',
     content: 'A Faculdade de Medicina, muitas vezes em colaboração com importantes instituições nacionais e internacionais, ministra vários cursos de curta duração nas diversas áreas científicas das ciências biomédicas e saúde pública.',
     url: '/minicourse',
   }
 ]
 
-export const teachers =  [
+export const teachers = [
   {
     id: 1,
     name: 'Prof. Jahit Sacarlal',

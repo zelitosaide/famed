@@ -78,7 +78,7 @@ const ProjectTable = () => {
 
   const projects = useSelector(state => state.projects.projects)
 
-  const orderedProjects = projects.slice().sort((a, b) => b.startDate.localeCompare(a.startDate))
+  const orderedProjects = projects.slice().sort((a, b) => a.startDate.localeCompare(b.startDate))
 
   // const projects = useSelector(state => {
   //   if (canDelete) {

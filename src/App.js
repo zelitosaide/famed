@@ -151,11 +151,8 @@ const App = () => {
 
           {/* Temporarias */}
           <Route path='graduation' element={<InProgress />} />
-          <Route path='postgraduate' element={<InProgress />} />
-          {/* <Route path='about' element={<InProgress />} /> */}
-          {/* <Route path='protocols' element={<InProgress />} /> */}
+          <Route path='postgraduate' element={<Postgraduate />} />
           <Route path='extension' element={<InProgress />} />
-
 
           <Route path='teachers/:teacherId' element={<CurriculumDetails />} />
           <Route path='signin' element={<Signin />} />
