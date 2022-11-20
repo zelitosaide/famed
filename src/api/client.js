@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 // const API = axios.create({ baseURL: 'http://localhost:5000' })
-const API = axios.create({ baseURL: 'https://famed-v1.herokuapp.com/' })
+// const API = axios.create({ baseURL: 'https://famed-v1.herokuapp.com/' })
+// const API = axios.create({ baseURL: 'http://www.med.uem.mz:5000/' })
+const API = axios.create({ baseURL: 'https://www.med.uem.mz/' })
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('famedv1_user')) {
