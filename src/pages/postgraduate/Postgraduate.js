@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const Postgraduate = () => {
   return (
     <div style={{ paddingTop: '9.5rem' }}>
@@ -49,7 +51,9 @@ const Postgraduate = () => {
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Mestrado em Saúde Pública Presencial (MSP)
+            <Link to="msp">
+              Mestrado em Saúde Pública Presencial (MSP)
+            </Link>
           </li>
           <li
             style={{
@@ -62,7 +66,10 @@ const Postgraduate = () => {
               textDecorationThickness: 1.5,
               textDecorationColor: "var(--hover-color)",
             }}
-          >Mestrado em Saúde Pública à Distância (MSPD), com os seguintes ramos:
+          >
+            <Link to="mspd">
+              Mestrado em Saúde Pública à Distância (MSPD), com os seguintes ramos:
+            </Link>
             <ul style={{ listStyle: "square", marginLeft: "1.5rem" }}>
               <li
                 style={{
@@ -114,7 +121,10 @@ const Postgraduate = () => {
               textDecorationThickness: 1.5,
               textDecorationColor: "var(--hover-color)",
             }}
-          >Mestrado em  Biociências (MBC), com os seguintes ramos:
+          >
+            <Link to="mbc">
+              Mestrado em  Biociências (MBC), com os seguintes ramos:
+            </Link>
             <ul style={{ listStyle: "square", marginLeft: "1.5rem" }}>
               <li
                 style={{
@@ -166,7 +176,11 @@ const Postgraduate = () => {
               textDecorationThickness: 1.5,
               textDecorationColor: "var(--hover-color)",
             }}
-          >Mestrado em Epidemiologia de Campo e Laboratorial (MECL)</li>
+          >
+            <Link to="mecl">
+              Mestrado em Epidemiologia de Campo e Laboratorial (MECL)
+            </Link>
+          </li>
           <li
             style={{
               lineHeight: "1.6rem",
@@ -178,7 +192,11 @@ const Postgraduate = () => {
               textDecorationThickness: 1.5,
               textDecorationColor: "var(--hover-color)",
             }}
-          >Mestrado em Saúde Mental e Psico-intervenções (MSMPI)</li>
+          >
+            <Link to='msmpi'>
+              Mestrado em Saúde Mental e Psico-intervenções (MSMPI)
+            </Link>
+          </li>
 
           <li
             style={{
@@ -192,7 +210,11 @@ const Postgraduate = () => {
               // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
-          >Mestrado em Emergências Pediatrias e Neonatais (MEPN)</li>
+          >
+            <Link to='mepn'>
+              Mestrado em Emergências Pediatrias e Neonatais (MEPN)
+            </Link>
+          </li>
         </ul>
 
         <p
@@ -219,7 +241,11 @@ const Postgraduate = () => {
               textDecorationThickness: 1.5,
               textDecorationColor: "var(--hover-color)",
             }}
-          >Doutoramento em Biociências e Saúde Pública</li>
+          >
+            <Link to='dbsp'>
+              Doutoramento em Biociências e Saúde Pública
+            </Link>
+          </li>
         </ul>
       </div>
     </div >

@@ -59,6 +59,13 @@ import { DepartmentTable } from './features/departments/DepartmentTable'
 import { UpdateDepartment } from './features/departments/UpdateDepartment'
 import { CreateDepartment } from './features/departments/CreateDepartment'
 import { fetchDepartments } from './features/departments/departmentsSlice'
+import { MestradoSaudePublicaPresencial } from './pages/postgraduate/MestradoSaudePublicaPresencial'
+import { MestradoSaudePublicaDistancia } from './pages/postgraduate/MestradoSaudePublicaDistancia'
+import { MestradoBiociencias } from './pages/postgraduate/MestradoBiociencias'
+import { MestradoEpidemiologiaCampoLaboratorial } from './pages/postgraduate/MestradoEpidemiologiaCampoLaboratorial'
+import { MestradoSaudeMentalPsicoIntervencoes } from './pages/postgraduate/MestradoSaudeMentalPsicoIntervencoes'
+import { MestradoEmergenciasPediatriasNeonatais } from './pages/postgraduate/MestradoEmergenciasPediatriasNeonatais'
+import { DoutoramentoBiocienciasSaudePublica } from './pages/postgraduate/DoutoramentoBiocienciasSaudePublica'
 
 const App = () => {
   const projectStatus = useSelector(state => state.projects.status)
@@ -150,8 +157,19 @@ const App = () => {
           */}
 
           {/* Temporarias */}
-          <Route path='graduation' element={<InProgress />} />
-          <Route path='postgraduate' element={<Postgraduate />} />
+          <Route path='graduation' element={<Graduation />} />
+
+          <Route path='postgraduate'>
+            <Route index element={<Postgraduate />} />
+            <Route path='msp' element={<MestradoSaudePublicaPresencial />} />
+            <Route path='mspd' element={<MestradoSaudePublicaDistancia />} />
+            <Route path='mbc' element={<MestradoBiociencias />} />
+            <Route path='mecl' element={<MestradoEpidemiologiaCampoLaboratorial />} />
+            <Route path='msmpi' element={<MestradoSaudeMentalPsicoIntervencoes />} />
+            <Route path='mepn' element={<MestradoEmergenciasPediatriasNeonatais />} />
+            <Route path='dbsp' element={<DoutoramentoBiocienciasSaudePublica />} />
+          </Route>
+
           <Route path='extension' element={<InProgress />} />
 
           <Route path='teachers/:teacherId' element={<CurriculumDetails />} />
