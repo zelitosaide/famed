@@ -51,6 +51,23 @@ export function MestradoEmergenciasPediatriasNeonatais() {
           Organização do Programa:
         </p>
 
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          As aulas do MEPN decorrerão essencialmente na Faculdade de Medicina da UEM e no Departamento de Pediatria do Hospital Central de Maputo (HCM), <strong><i>no período laboral</i></strong>. Os trabalhos de culminação de estudos irão decorrer nas diferentes instituições de ensino envolvidas repectivamente: UEM, UNIPD, UCM, HCM, Hospital Central da Beira (HCB) ou em outras instituições de pesquisa parceiras da Faculdade de Medicina da UEM ou do Serviço Nacional de Saúde.
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          <strong><i>O início do curso</i></strong> está previsto para Agosto de 2022.
+        </p>
 
 
         <p
@@ -209,20 +226,20 @@ export function MestradoEmergenciasPediatriasNeonatais() {
             marginTop: "1.5rem"
           }}
         >
-          Propinas e taxas:
+          Procedimentos para candidatura:
         </p>
+
 
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
           }}
         >
-          Procedimentos para candidatura:
+          Requer-se que os candidatos apresentem os seguintes documentos na Direcção da Faculdade de Medicina da UEM:
         </p>
+
+
 
         <p
           style={{
@@ -238,6 +255,40 @@ export function MestradoEmergenciasPediatriasNeonatais() {
 
         <p
           style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          15 de Julho de 2022
+        </p>
+
+
+
+        <p
+          style={{
+            fontSize: "0.92rem",
+            fontWeight: "bold",
+            color: "var(--main-color)",
+            lineHeight: "1.2rem",
+            marginTop: "1.5rem"
+          }}
+        >
+          Propinas e taxas:
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          A taxa de matrícula anual é de 1.750,00 Mt; Valor de inscrição 9.000,00 Mt. A propina de frequência é de 9.000,00 Mt por mês pagos na íntegra ou em prestações mensais durante 24 meses.
+        </p>
+
+
+
+        <p
+          style={{
             fontSize: "0.92rem",
             fontWeight: "bold",
             color: "var(--main-color)",
@@ -246,6 +297,15 @@ export function MestradoEmergenciasPediatriasNeonatais() {
           }}
         >
           Informações adicionais:
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          Pederão ser obtidas na Direcção da Faculdade de Medicina, da Universidade Eduardo Mondlane. Av. Salvador Allende, n &#870; 702, CP.257, Maputo. Falar com: Sr. João Kumayo (contacto: 827536540) ou Sra. Rosita Mandlate (contacto: 828658985).
         </p>
       </div>
     </div>
