@@ -240,6 +240,135 @@ export function MestradoEmergenciasPediatriasNeonatais() {
         </p>
 
 
+        <ul style={{ listStyle: "circle", marginLeft: "1.5rem" }}>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              // fontWeight: 500,
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Carta endereçada ao Senhor Director da Faculdade de Medicina da UEM, manifestando o interesse em candidatar-se;
+          </li>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              // fontWeight: 500,
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Carta de Motivação;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              // fontWeight: 500,
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Curriculum Vitae;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              // fontWeight: 500,
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Cópia autenticada do Certificado de Licenciatura;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              // fontWeight: 500,
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Cópia autenticada do Bilhete de Identificação;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              // fontWeight: 500,
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Duas cartas de recomendação;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              // fontWeight: 500,
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Duas fotografias tipo passe recentes;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              // fontWeight: 500,
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Duas fotografias tipo passe recentes;
+          </li>
+        </ul>
+
 
         <p
           style={{
