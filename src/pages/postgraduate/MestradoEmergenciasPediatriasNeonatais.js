@@ -365,7 +365,7 @@ export function MestradoEmergenciasPediatriasNeonatais() {
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Duas fotografias tipo passe recentes;
+            Carta de autorização do serviço (para o candidato trabalhador).
           </li>
         </ul>
 
