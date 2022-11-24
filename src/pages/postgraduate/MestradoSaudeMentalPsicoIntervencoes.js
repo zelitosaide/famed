@@ -32,7 +32,7 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             fontSize: "0.875rem",
           }}
         >
-          O MEPN visa formar profissionais de saúde para providenciar cuidados de saúde, e realizarem docência e pesquisas relevantes, na área de pediatria e neonatologia, para serem capazes de darem o seu melhor contributo no contexto de equipas multidisciplinares. Os estudantes que completarem este curso com sucesso receberão o grau de <i>Mestre em Emergências Pediatrias e Neonatais</i>.
+         O Programa de Mestrado em Saúde Mental e Psicointervenções tem como objectivo formar profissionais com competências em pesquisa, avaliação e intervenção nas diferentes áreas da saúde mental, promovendo o bem-estar, optimizando a funcionalidade e interacção do individuo no seu contexto de vivência.
         </p>
 
         <p
@@ -53,26 +53,36 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             fontSize: "0.875rem",
           }}
         >
-          As aulas do MEPN decorrerão essencialmente na Faculdade de Medicina da UEM e no Departamento de Pediatria do Hospital Central de Maputo (HCM), <strong><i>no período laboral</i></strong>. Os trabalhos de culminação de estudos irão decorrer nas diferentes instituições de ensino envolvidas repectivamente: UEM, UNIPD, UCM, HCM, Hospital Central da Beira (HCB) ou em outras instituições de pesquisa parceiras da Faculdade de Medicina da UEM ou do Serviço Nacional de Saúde.
+          O Mestrado em Saúde Mental e Psicointervenções tem 30 vagas disponíveis, conferindo um Diploma de Mestrado Académico em Saúde Mental e Psicointervenções, com dois ramos de especialização em Psicologia Forense e Psicologia da Saúde. O curso tem a duração de 2 anos, sendo um curricular e o segundo de investigação e preparação da dissertação. 
         </p>
 
         <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          Actividades académico-cientificas tais como a frequência em disciplinas/módulos, apresentação anual em jornadas
+          cientificas e em outras conferências, estágios, entre outras, são incluídas no programa e contam para a acumulação de créditos académicos. 
+        </p>
+
+        {/* <p
           style={{
             lineHeight: "1.6rem",
             fontSize: "0.875rem",
           }}
         >
           <strong><i>O início do curso</i></strong> está previsto para Agosto de 2022.
-        </p>
+        </p> */}
 
-        <p
+        {/* <p
           style={{
             lineHeight: "1.6rem",
             fontSize: "0.875rem",
           }}
         >
           <strong><i>O número máximo de vagas</i></strong> estimado para este curso é de 30. O curso só abrirá se tiver um número mínimo de 15 estudantes.
-        </p>
+        </p> */}
 
         <p
           style={{
@@ -91,111 +101,10 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
             }}
           >
-            Ter Licenciatura em Medicina; Especialidade de Pediatria; Curso Superior de Enfermagem Geral; Curso Superior de Enfermagem Pediátrica; Curso Superior de Enfermagem em Saúde Materna; Curso Superior de Técnico de Cirurgia e Obstetrícia, ou outras afins;
-          </li>
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Possuir Grau de Licenciatura com nota de conclusão igual ou superior a 14 valores;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Excepcionalmente, poderão ingressar os candidatos com grau de Licenciatura com média final não inferior a 12 valores, por questões de mérito (currículo científico relevante, experiência de trabalho comprovada na área de conhecimento do Mestrado, ter publicações científicas, ser capaz de fundamentar a investigação que pretende realizar);
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Ter domínio da língua portuguesa;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Ter conhecimentos de língua inglesa é uma vantagem;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Os candidatos pré-selecionados serão submetidos a uma entrevista a ser realizada na Faculdade de Medicina da UEM em data e horários a serem anunciados;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Encoraja-se candidaturas do sexo feminino.
+            Podem se candidatar ao mestrado titulares do grau de  licenciatura em Psicologia ou outras áreas de saúde mental com classificação final igual ou superior a 14 valores ou não inferior a 12 valores, desde que apresentem comprovada experiência profissional de pelo menos 2 anos.
           </li>
         </ul>
 
@@ -225,43 +134,65 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Carta endereçada ao Senhor Director da Faculdade de Medicina da UEM, manifestando o interesse em candidatar-se;
+            Formulário de candidatura devidamente preenchido com uma fotografia tipo passe;
           </li>
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Carta de Motivação;
+            Requerimento de candidatura dirigido ao Director da Faculdade de Medicina da UEM;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Certificado de Licenciatura com respectivo certificado de cadeiras feitas;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Carta de autorização dos serviços para frequentar o curso (para candidatos com emprego);
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
               textDecorationColor: "var(--hover-color)",
             }}
           >
@@ -272,80 +203,56 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Cópia autenticada do Certificado de Licenciatura;
+            Carta de motivação do candidato;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Cópia autenticada do Bilhete de Identificação;
+            Uma pré-proposta cientifica (pré-protocolo de pesquisa para a dissertação com até 200 palavras);
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Duas cartas de recomendação;
+            Comprovativo de que dispõe de recursos financeiros suficientes para o pagamento das taxas e propinas;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Duas fotografias tipo passe recentes;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              textDecoration: "underline",
-              textUnderlineOffset: 3,
-              textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Carta de autorização do serviço (para o candidato trabalhador).
+            Copia de BI/DIRE/Passaporte. (todos os documentos autenticados). 
           </li>
         </ul>
 
@@ -358,7 +265,7 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             marginTop: "1.5rem"
           }}
         >
-          Data Limite da Submissão de Candidaturas:
+          Instrução dos Processos de Candidatura
         </p>
 
         <p
@@ -367,7 +274,34 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             fontSize: "0.875rem",
           }}
         >
-          15 de Julho de 2022
+          Os processos de candidatura devidamente instruídos, deverão dar entrada até ao dia <b><i>20 de Janeiro de 2023</i></b>, no secretariado da Direcção da Faculdade. 
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          Os candidatos com processos aprovados serão convidados para uma entrevista de selecção que deverá  ocorrer de <b><i>25 a 27  Janeiro de 2023</i></b>.
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          Os resultados das candidaturas serão divulgados até ao dia 6 de Fevereiro de 2023, prevendo-se o inicio das aulas para o dis 13 de Fevereiro de 2023.
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          As aulas irão decorrer em regime pós-laboral das 16:00h as 20:00h de segunda a sexta feira.
         </p>
 
         <p
@@ -388,7 +322,16 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             fontSize: "0.875rem",
           }}
         >
-          A taxa de matrícula anual é de 1.750,00 Mt; Valor de inscrição 9.000,00 Mt. A propina de frequência é de 9.000,00 Mt por mês pagos na íntegra ou em prestações mensais durante 24 meses.
+          A taxa de inscrição semestral é de 5.000,00Mtn, o valor da propina anual será pago em 22 fracções mensais de 9.000,00Mtn. A taxa de  inscrição para a dissertação de mestrado é de 13.000,00Mtn.
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          A propina mensal (para os estudantes admitidos), deve ser paga até ao dia 5 de cada mês. O valor da mensalidade deve ser depositado em talão separado ao valor da inscrição. 
         </p>
 
         <p
@@ -409,7 +352,7 @@ export function MestradoSaudeMentalPsicoIntervencoes() {
             fontSize: "0.875rem",
           }}
         >
-          Pederão ser obtidas na Direcção da Faculdade de Medicina, da Universidade Eduardo Mondlane. Av. Salvador Allende, n &#870; 702, CP.257, Maputo. Falar com: Sr. João Kumayo (contacto: 827536540) ou Sra. Rosita Mandlate (contacto: 828658985).
+          Informações adicionais poderão ser obtidas através dos contactos: 823856000 Dr. Sitoe ou 827536540 e 842741070 Lic. Cumaio ou ainda por e-mail: pepnando@gmail.com / jkhumayo@yahoo.com.
         </p>
       </div>
     </div>
