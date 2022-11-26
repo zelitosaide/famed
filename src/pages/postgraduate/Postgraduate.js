@@ -47,11 +47,11 @@ const Postgraduate = () => {
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            <Link to="msp">
+            {/* <Link to="msp"> */}
+            <Link to="/postgraduate">
               Mestrado em Saúde Pública Presencial (MSP)
             </Link>
           </li>
@@ -67,7 +67,8 @@ const Postgraduate = () => {
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            <Link to="mspd">
+            {/* <Link to="mspd"> */}
+            <Link to="/postgraduate">
               Mestrado em Saúde Pública à Distância (MSPD), com os seguintes ramos:
             </Link>
             <ul style={{ listStyle: "square", marginLeft: "1.5rem" }}>
@@ -177,7 +178,8 @@ const Postgraduate = () => {
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            <Link to="mecl">
+            {/* <Link to="mecl"> */}
+            <Link to="/postgraduate">
               Mestrado em Epidemiologia de Campo e Laboratorial (MECL)
             </Link>
           </li>
@@ -207,7 +209,6 @@ const Postgraduate = () => {
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
@@ -242,7 +243,8 @@ const Postgraduate = () => {
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            <Link to='dbsp'>
+            {/* <Link to='dbsp'> */}
+            <Link to='/postgraduate'>
               Doutoramento em Biociências e Saúde Pública
             </Link>
           </li>
