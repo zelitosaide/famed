@@ -11,7 +11,7 @@ const About = () => {
           <img src={Image} alt='' />
 
           <div className={styles.info}>
-            <p className={styles.title}>---Faculdade de Medicina: Visão geral e história---</p>
+            <p className={styles.title}>Faculdade de Medicina: Visão geral e história</p>
 
             <p>
               A Faculdade de Medicina foi fundada em 1963 e em 1970 graduou o primeiro grupo de Médicos formado em Moçambique. Desde o início, a instituição concentrou-se na oferta do curso de graduação em Medicina tendo formado até a data mais de dois mil médicos. Até meados dos anos 1990 era a única instituição no país responsável pela formação de médicos. Hoje existem outras instituições públicas e privadas que também se dedicam à formação de médicos.
