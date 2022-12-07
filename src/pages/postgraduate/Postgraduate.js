@@ -51,7 +51,7 @@ const Postgraduate = () => {
             }}
           >
             {/* <Link to="msp"> */}
-            <Link to="/msp">
+            <Link to="msp">
               Mestrado em Saúde Pública Presencial (MSP)
             </Link>
           </li>
