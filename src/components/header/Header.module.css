@@ -55,7 +55,7 @@
   padding-right: 2rem;
 }
 
-.blocks .heading .actions button {
+.blocks .heading .actions .signin {
   outline: none;
   appearance: none;
   border: none;
@@ -65,7 +65,7 @@
   cursor: pointer;
 }
 
-.blocks .heading .actions button a {
+.blocks .heading .actions .signin a {
   color: var(--white-color);
   font-size: 0.9rem;
   padding: 0.6rem 1rem;

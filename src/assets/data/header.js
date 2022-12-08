@@ -66,7 +66,8 @@ export const navlinks = [
   },
   {
     name: 'Submissão de Protocolos',
-    to: '/protocols',
+    // to: '/protocols',
+    to: 'https://cibs.uem.mz',
   },
   {
     name: 'Extensão',

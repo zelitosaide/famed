@@ -17,6 +17,7 @@ import Logo from '../../assets/images/logo.png'
 import DrawerHeader from './DrawerHeader'
 import DrawerList from './DrawerList'
 import DrawerHeaderTablet from './DrawerHeaderTablet'
+import { Input } from '../input/Input'
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -69,6 +70,10 @@ const Header = () => {
                   {value.subMenu.map(v => <MenuLink key={v.name} as={Link} to={v.to}>{v.name}</MenuLink>)}
                 </MenuList>
               </Menu>
+            ) : value.name === "Submissão de Protocolos" ? (
+              <a href='https://cibs.uem.mz' target="_blank" rel="noreferrer">
+                Submissão de Protocolos
+              </a>
             ) : (
               <NavLink className={({ isActive }) => isActive ? styles.active : null} to={value.to}>
                 {value.name}
@@ -96,17 +101,37 @@ const Header = () => {
           </div>
 
           <div className={styles.actions}>
-            <p
+            <Input 
               style={{
-                color: '#146F12',
-                fontSize: '0.9rem',
-                display: 'inline-block',
-                marginRight: '1rem'
+                display: "inline-block", 
+                marginRight: 12,
+                // '--bg-color': 'rgb(252, 88, 50)',
+                // '--bg-hover': 'rgb(252, 70, 29)',
+                // '--bg-active': 'rgb(252, 88, 50)',
+                // '--outline-color': 'rgb(253, 152, 129)',
               }}
             >
-              Av. Salvador Allende nº 702
-            </p>
-            <button>
+              <button style={{ padding: 11, borderRadius: 20}}>Consultas de Bioestatística</button>
+            </Input>
+            {/* <p
+              style={{
+                color: '#146F12',
+                // color: 'white',
+                fontSize: '0.9rem',
+                display: 'inline-block',
+                marginRight: '1rem',
+                // background: '#F0E38A',
+                // background: '#e2c71d',
+                // background: '#FC5832',
+                // background: '#146F12',
+                padding: 10,
+                border: "1px solid #146F12",
+                borderRadius: 20
+              }}
+            >
+              Consultas de Bioestatística
+            </p> */}
+            <button className={styles.signin}>
               <Link to='/signin'>
                 Iniciar Sessão
               </Link>
@@ -161,10 +186,15 @@ const Header = () => {
                   </MenuList>
                 </Menu>
               </li>
-              <li>
+              {/* <li>
                 <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/protocols'>
                   Submissão de Protocolos
                 </NavLink>
+              </li> */}
+              <li>
+                <a href='https://cibs.uem.mz' target="_blank" rel="noreferrer">
+                  Submissão de Protocolos
+                </a>
               </li>
               <li>
                 <Menu>
