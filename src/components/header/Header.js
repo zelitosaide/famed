@@ -104,7 +104,6 @@ const Header = () => {
             <Input 
               style={{
                 display: "inline-block", 
-                marginRight: 12,
                 // '--bg-color': 'rgb(252, 88, 50)',
                 // '--bg-hover': 'rgb(252, 70, 29)',
                 // '--bg-active': 'rgb(252, 88, 50)',
@@ -113,29 +112,22 @@ const Header = () => {
             >
               <button style={{ padding: 11, borderRadius: 20}}>Consultas de Bioestatística</button>
             </Input>
-            {/* <p
+            <Input 
               style={{
-                color: '#146F12',
-                // color: 'white',
-                fontSize: '0.9rem',
-                display: 'inline-block',
-                marginRight: '1rem',
-                // background: '#F0E38A',
-                // background: '#e2c71d',
-                // background: '#FC5832',
-                // background: '#146F12',
-                padding: 10,
-                border: "1px solid #146F12",
-                borderRadius: 20
+                display: "inline-block",
+                marginTop: '1.4rem',
+                '--bg-color': 'rgb(252, 88, 50)',
+                '--bg-hover': 'rgb(252, 70, 29)',
+                '--bg-active': 'rgb(252, 88, 50)',
+                '--outline-color': 'rgb(253, 152, 129)',
               }}
             >
-              Consultas de Bioestatística
-            </p> */}
-            <button className={styles.signin}>
-              <Link to='/signin'>
-                Iniciar Sessão
-              </Link>
-            </button>
+              <button style={{ padding: 11, borderRadius: 20 }}>
+                <Link to='/signin' style={{ color: 'white'}}>
+                  Iniciar Sessão
+                </Link>
+              </button>
+            </Input>
           </div>
         </div>
 
