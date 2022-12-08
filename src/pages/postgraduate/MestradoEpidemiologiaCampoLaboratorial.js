@@ -260,7 +260,7 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             marginTop: "1.5rem"
           }}
         >
-          Data Limite da Submissão de Candidaturas:
+          Data limite da submissão de candidaturas:
         </p>
 
         <p
@@ -269,8 +269,15 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             fontSize: "0.875rem",
           }}
         >
-          15 de Julho de 2022
+          23 de Abril de 2023.
         </p>
+
+
+
+
+
+
+
 
         <p
           style={{
@@ -293,6 +300,10 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
           A taxa de matrícula anual é de 1.750,00 Mt; Valor de inscrição 9.000,00 Mt. A propina de frequência é de 9.000,00 Mt por mês pagos na íntegra ou em prestações mensais durante 24 meses.
         </p>
 
+
+
+
+
         <p
           style={{
             fontSize: "0.92rem",
@@ -302,7 +313,7 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             marginTop: "1.5rem"
           }}
         >
-          Informações adicionais:
+          Informações Adicionais:
         </p>
 
         <p
@@ -311,7 +322,7 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             fontSize: "0.875rem",
           }}
         >
-          Pederão ser obtidas na Direcção da Faculdade de Medicina, da Universidade Eduardo Mondlane. Av. Salvador Allende, n &#870; 702, CP.257, Maputo. Falar com: Sr. João Kumayo (contacto: 827536540) ou Sra. Rosita Mandlate (contacto: 828658985).
+          No Departamento de Microbiologia da Faculdade de Medicina da Universidade Eduardo Mondlane, Maputo. Falar com a Sra Ema Nhamtumbo. Tel: 84 2493940/821089082. Na Secretaria do Instituto Nacional de Saúde, Vila de Marracuene. Falar com a Sra Keronice Hassane . Tel: 86 8536820/825427716.
         </p>
       </div>
     </div>
