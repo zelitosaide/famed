@@ -370,8 +370,37 @@ export function MestradoSaudePublicaPresencial() {
             marginTop: "1.5rem"
           }}
         >
-          Data Limite da Submissão de Candidaturas:
+          Propinas: O Curso está sujeito às seguintes propinas:
         </p>
+
+        <ul style={{ listStyle: "circle", marginLeft: "1.5rem" }}>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Propina de matrícula, no valor de 9.000,00 MT, paga uma única vez no acto de matrícula;
+          </li>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Propina de frequência no valor de 9.000,00 MT/mês, paga na íntegra ou em prestações, durante 22 meses.
+          </li>
+        </ul>
 
         <p
           style={{
@@ -379,7 +408,7 @@ export function MestradoSaudePublicaPresencial() {
             fontSize: "0.875rem",
           }}
         >
-          15 de Julho de 2022
+          Os candidatos são encorajados a procurar bolsas de estudo junto às instituições de tutela ou a candidatarem-se para bolsas de estudo atribuídas por Organizações Nacionais e Internacionais.
         </p>
 
         <p
@@ -391,7 +420,7 @@ export function MestradoSaudePublicaPresencial() {
             marginTop: "1.5rem"
           }}
         >
-          Propinas e taxas:
+          Informações Adicionais:
         </p>
 
         <p
@@ -400,28 +429,7 @@ export function MestradoSaudePublicaPresencial() {
             fontSize: "0.875rem",
           }}
         >
-          A taxa de matrícula anual é de 1.750,00 Mt; Valor de inscrição 9.000,00 Mt. A propina de frequência é de 9.000,00 Mt por mês pagos na íntegra ou em prestações mensais durante 24 meses.
-        </p>
-
-        <p
-          style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
-          }}
-        >
-          Informações adicionais:
-        </p>
-
-        <p
-          style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
-          }}
-        >
-          Pederão ser obtidas na Direcção da Faculdade de Medicina, da Universidade Eduardo Mondlane. Av. Salvador Allende, n &#870; 702, CP.257, Maputo. Falar com: Sr. João Kumayo (contacto: 827536540) ou Sra. Rosita Mandlate (contacto: 828658985).
+         Poderão ser obtidas na Secretaria do Departamento de Saúde da Comunidade, Faculdade de Medicina da Universidade Eduardo Mondlane, Maputo, através da Dra. Luísa Huo ou da Sra. Maria Adozinda Mutisse (endereços eletrónicos luisahuo@gmail.com; mariadozinda@gmail.com, Telf: n &#870; 21 428076).
         </p>
       </div>
     </div>
