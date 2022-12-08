@@ -31,9 +31,6 @@ const Header = () => {
       return { name: value.name, path: routes[index] }
     })
 
-    console.log('departments', departments.map(value => value.name))
-
-
   return (
     <div className={styles.header}>
       {/* Left Drawer */}

@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
-
 import styles from './Departments.module.css'
 import { updateDepartment } from './departmentsSlice'
 import { Notification } from '../../components/notification/Notification'

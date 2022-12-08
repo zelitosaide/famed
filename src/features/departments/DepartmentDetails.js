@@ -17,7 +17,7 @@ export const DepartmentDetails = () => {
     cirurgia: 'Dep. Cirurgia',
     ['ginecologia-obstetricia']: 'Dep. Ginecologia e Obstetrícia',
     ['trauma-violencia']: 'Unidade de Trauma e Violência',
-    ['ciencias-implementacao']: 'Unidade de pesquisa em ciências de implementação',
+    ['ciencias-implementacao']: 'Unidade de Ciências de Implementação e Apoio à Pesquisa em Saúde',
     ['saude-sexual-reprodutiva']: 'Unidade de Saúde Sexual e Reprodutiva e HIV/SIDA'
   }
 

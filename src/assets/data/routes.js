@@ -1,17 +1,32 @@
 export const routes = [
-  'fisiologicas',
   'morfologicas',
-  'microbiologia',
+  'fisiologicas',
   'patologia',
+  'microbiologia',
   'saude-da-comunidade',
+  'cirurgia',
   'pediatria',
   'medicina',
-  'cirurgia',
   'ginecologia-obstetricia',
   'trauma-violencia',
+  'saude-sexual-reprodutiva',
   'ciencias-implementacao',
-  'saude-sexual-reprodutiva'
 ]
+
+// export const routes = [
+//   'fisiologicas',
+//   'morfologicas',
+//   'microbiologia',
+//   'patologia',
+//   'saude-da-comunidade',
+//   'pediatria',
+//   'medicina',
+//   'cirurgia',
+//   'ginecologia-obstetricia',
+//   'trauma-violencia',
+//   'ciencias-implementacao',
+//   'saude-sexual-reprodutiva'
+// ]
 
 
 // 0: "Dep. Ciências Fisiológicas"
