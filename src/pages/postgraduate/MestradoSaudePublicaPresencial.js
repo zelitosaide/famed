@@ -99,30 +99,56 @@ export function MestradoSaudePublicaPresencial() {
           Estão disponíveis 30 vagas para as duas áreas de orientação.
         </p>
 
-
-
-
-
-
-
-
-
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
+            fontSize: "0.92rem",
+            fontWeight: "bold",
+            color: "var(--main-color)",
+            lineHeight: "1.2rem",
+            marginTop: "1.5rem"
           }}
         >
-          <strong><i>O início do curso</i></strong> está previsto para Agosto de 2022.
+         Candidatos elegíveis:
         </p>
 
+        <ul style={{ listStyle: "disc", marginLeft: "1.5rem" }}>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+            }}
+          >
+            Titulares do grau de Licenciatura ou equivalente em Ciências Básicas de Saúde, Ciências Sociais, Ciências Biológicas ou outras áreas afins;
+          </li>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+            }}
+          >
+            Possuir a nota de conclusão do grau de Licenciatura igual ou superior a 14 valores ou não inferior a 12 valores, desde que apresente experiência profissional comprovada e relevante de pelo menos 2 anos;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+            }}
+          >
+            Ter competência comprovada de domínio das línguas Portuguesa e Inglesa.
+          </li>
+        </ul>
+
         <p
           style={{
             lineHeight: "1.6rem",
             fontSize: "0.875rem",
           }}
         >
-          <strong><i>O número máximo de vagas</i></strong> estimado para este curso é de 30. O curso só abrirá se tiver um número mínimo de 15 estudantes.
+          Todos os candidatos pré-seleccionados serão submetidos a um exame de admissão presencial (em data a marcar).
         </p>
 
         <p
@@ -134,121 +160,21 @@ export function MestradoSaudePublicaPresencial() {
             marginTop: "1.5rem"
           }}
         >
-          Grupo alvo:
+         Data limite da submissão de candidaturas:
         </p>
 
-        <ul style={{ listStyle: "disc", marginLeft: "1.5rem" }}>
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Ter Licenciatura em Medicina; Especialidade de Pediatria; Curso Superior de Enfermagem Geral; Curso Superior de Enfermagem Pediátrica; Curso Superior de Enfermagem em Saúde Materna; Curso Superior de Técnico de Cirurgia e Obstetrícia, ou outras afins;
-          </li>
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Possuir Grau de Licenciatura com nota de conclusão igual ou superior a 14 valores;
-          </li>
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          30 de Outubro de 2022.
+        </p>
 
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Excepcionalmente, poderão ingressar os candidatos com grau de Licenciatura com média final não inferior a 12 valores, por questões de mérito (currículo científico relevante, experiência de trabalho comprovada na área de conhecimento do Mestrado, ter publicações científicas, ser capaz de fundamentar a investigação que pretende realizar);
-          </li>
 
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Ter domínio da língua portuguesa;
-          </li>
 
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Ter conhecimentos de língua inglesa é uma vantagem;
-          </li>
 
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Os candidatos pré-selecionados serão submetidos a uma entrevista a ser realizada na Faculdade de Medicina da UEM em data e horários a serem anunciados;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Encoraja-se candidaturas do sexo feminino.
-          </li>
-        </ul>
 
         <p
           style={{
