@@ -32,7 +32,7 @@ export function MestradoSaudePublicaPresencial() {
             fontSize: "0.875rem",
           }}
         >
-          O MEPN visa formar profissionais de saúde para providenciar cuidados de saúde, e realizarem docência e pesquisas relevantes, na área de pediatria e neonatologia, para serem capazes de darem o seu melhor contributo no contexto de equipas multidisciplinares. Os estudantes que completarem este curso com sucesso receberão o grau de <i>Mestre em Emergências Pediatrias e Neonatais</i>.
+          Oferecer aos participantes uma formação multidisciplinar, orientada para a solução de problemas de Saúde em Moçambique e proporcionar o domínio de conceitos biomédicos e socioculturais relevantes para a investigação, implementação e gestão em Saúde Pública.
         </p>
 
         <p
@@ -44,7 +44,7 @@ export function MestradoSaudePublicaPresencial() {
             marginTop: "1.5rem"
           }}
         >
-          Organização do Programa:
+          Local e horário:
         </p>
 
         <p
@@ -53,8 +53,59 @@ export function MestradoSaudePublicaPresencial() {
             fontSize: "0.875rem",
           }}
         >
-          As aulas do MEPN decorrerão essencialmente na Faculdade de Medicina da UEM e no Departamento de Pediatria do Hospital Central de Maputo (HCM), <strong><i>no período laboral</i></strong>. Os trabalhos de culminação de estudos irão decorrer nas diferentes instituições de ensino envolvidas repectivamente: UEM, UNIPD, UCM, HCM, Hospital Central da Beira (HCB) ou em outras instituições de pesquisa parceiras da Faculdade de Medicina da UEM ou do Serviço Nacional de Saúde.
+          As aulas do mestrado presencial decorrerão na Faculdade de Medicina, das 16 às 19 horas.
         </p>
+
+        <p
+          style={{
+            fontSize: "0.92rem",
+            fontWeight: "bold",
+            color: "var(--main-color)",
+            lineHeight: "1.2rem",
+            marginTop: "1.5rem"
+          }}
+        >
+          Duração:
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          4 semestres com início em Fevereiro de 2023.
+        </p>
+
+
+        <p
+          style={{
+            fontSize: "0.92rem",
+            fontWeight: "bold",
+            color: "var(--main-color)",
+            lineHeight: "1.2rem",
+            marginTop: "1.5rem"
+          }}
+        >
+         Vagas:
+        </p>
+
+        <p
+          style={{
+            lineHeight: "1.6rem",
+            fontSize: "0.875rem",
+          }}
+        >
+          Estão disponíveis 30 vagas para as duas áreas de orientação.
+        </p>
+
+
+
+
+
+
+
+
 
         <p
           style={{
