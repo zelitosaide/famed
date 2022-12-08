@@ -149,7 +149,7 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             fontSize: "0.875rem",
           }}
         >
-          Requer-se que os candidatos apresentem os seguintes documentos na Direcção da Faculdade de Medicina da UEM:
+          Requer-se que os candidatos apresentem os seguintes documentos, na Faculdade de Medicina (Departamento de Microbiologia):
         </p>
 
         <ul style={{ listStyle: "circle", marginLeft: "1.5rem" }}>
@@ -157,59 +157,51 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Carta endereçada ao Senhor Director da Faculdade de Medicina da UEM, manifestando o interesse em candidatar-se;
+            Carta endereçada ao Director da Faculdade de Medicina da UEM, manifestando interesse em candidatar-se;
           </li>
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Carta de Motivação;
+            “Curriculum vitae” com elementos de mérito;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Curriculum Vitae;
+            Carta de motivação para frequentar este curso;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
@@ -220,28 +212,10 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Cópia autenticada do Bilhete de Identificação;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              textDecoration: "underline",
-              textUnderlineOffset: 3,
-              textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
@@ -252,32 +226,28 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Duas fotografias tipo passe recentes;
+            Carta de autorização da entidade laboral;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Carta de autorização do serviço (para o candidato trabalhador).
+            Duas fotografias tipo passe.
           </li>
         </ul>
 
