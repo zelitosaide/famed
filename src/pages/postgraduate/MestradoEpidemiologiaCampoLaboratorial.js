@@ -288,17 +288,59 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             marginTop: "1.5rem"
           }}
         >
-          Propinas e taxas:
+          Observações:
         </p>
 
-        <p
-          style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
-          }}
-        >
-          A taxa de matrícula anual é de 1.750,00 Mt; Valor de inscrição 9.000,00 Mt. A propina de frequência é de 9.000,00 Mt por mês pagos na íntegra ou em prestações mensais durante 24 meses.
-        </p>
+        <ul style={{ listStyle: "disc", marginLeft: "1.5rem" }}>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+            }}
+          >
+            Os candidatos pertencentes ao Serviço Nacional de Saúde deverão solicitar uma autorização prévia ao Ministro de tutela;
+          </li>
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+            }}
+          >
+            Para que a inscrição seja confirmada e aceite, é necessário que toda a documentação exigida seja entregue dentro do período e local estabelecido. Inscrições com documentação incompleta não serão aceites.
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+            }}
+          >
+            As despesas relacionadas com a estadia em Maputo dos candidatos seleccionados das Províncias deverão ser custeadas pelos candidatos.
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+            }}
+          >
+            Os candidatos seleccionados deverão assinar um contrato de formação comprometendo-se em trabalhar para o Serviço Nacional de Saúde por um período equivalente ao tempo de formação após o término do curso;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+            }}
+          >
+            Os candidatos não devem estar inscritos em outros programas de pós-graduação e, devem ter dedicação exclusiva ao mestrado em causa.
+          </li>
+        </ul>       
 
 
 
