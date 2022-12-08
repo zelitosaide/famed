@@ -178,8 +178,7 @@ const Postgraduate = () => {
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            {/* <Link to="mecl"> */}
-            <Link to="/postgraduate">
+            <Link to="mecl">
               Mestrado em Epidemiologia de Campo e Laboratorial (MECL)
             </Link>
           </li>
