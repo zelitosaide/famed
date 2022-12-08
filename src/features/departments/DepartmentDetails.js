@@ -55,8 +55,21 @@ export const DepartmentDetails = () => {
           </div>
         </div>
 
-        <div className='row'>
+        {/* <div className='row'>
+          {department.name.split('Dep. ').length === 2 ? (
+            <p className={styles.title}>Departamento de {department.name.split('Dep. ')[1]}</p>
+          ) : (
+            <p className={styles.title}>{department.name}</p>
+          )}
+          <p className={styles.content}>{department.content}</p>
+        </div> */}
+
+        {/* <div className='row'>
           <p style={{ marginTop: '1rem' }} className={styles.title}>Projectos do Departamento de {department.name.split('Dep. ')[1]}</p>
+        </div> */}
+
+        <div className='row'>
+          <p style={{ marginTop: '1rem' }} className={styles.title}>Projectos</p>
         </div>
 
         <div>
@@ -114,7 +127,7 @@ export const DepartmentDetails = () => {
         <div style={{ marginBottom: '1.5rem' }} />
 
         <div className='row'>
-          <p style={{ marginTop: '1rem' }} className={styles.title}>Publcações do Departamento de {department.name.split('Dep. ')[1]}</p>
+          <p style={{ marginTop: '1rem' }} className={styles.title}>Publcações</p>
         </div>
 
         <div>

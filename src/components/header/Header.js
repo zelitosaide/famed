@@ -18,7 +18,6 @@ import DrawerHeader from './DrawerHeader'
 import DrawerList from './DrawerList'
 import DrawerHeaderTablet from './DrawerHeaderTablet'
 
-
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
