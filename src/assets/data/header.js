@@ -46,7 +46,7 @@ export const navlinks = [
         to: '/postgraduate'
       },
       {
-        name: 'Cursos de Verão',
+        name: 'Cursos de curta duração',
         to: '/minicourse'
       },
     ]
