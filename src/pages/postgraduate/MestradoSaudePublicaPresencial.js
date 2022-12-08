@@ -172,10 +172,6 @@ export function MestradoSaudePublicaPresencial() {
           30 de Outubro de 2022.
         </p>
 
-
-
-
-
         <p
           style={{
             fontSize: "0.92rem",
@@ -185,7 +181,7 @@ export function MestradoSaudePublicaPresencial() {
             marginTop: "1.5rem"
           }}
         >
-          Procedimentos para candidatura:
+          Orientações para a candidatura:
         </p>
 
         <p
@@ -194,7 +190,7 @@ export function MestradoSaudePublicaPresencial() {
             fontSize: "0.875rem",
           }}
         >
-          Requer-se que os candidatos apresentem os seguintes documentos na Direcção da Faculdade de Medicina da UEM:
+          Requer-se que os candidatos apresentem os seguintes documentos:
         </p>
 
         <ul style={{ listStyle: "circle", marginLeft: "1.5rem" }}>
@@ -202,127 +198,166 @@ export function MestradoSaudePublicaPresencial() {
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Carta endereçada ao Senhor Director da Faculdade de Medicina da UEM, manifestando o interesse em candidatar-se;
+            Requerimento de candidatura dirigido ao Director da Faculdade de Medicina;
           </li>
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Carta de Motivação;
+            Carta de motivação endereçada ao Director da Faculdade de Medicina, indicando a área de orientação que pretende seguir;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Curriculum Vitae;
+            Certificado autenticado de habilitações literárias;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Cópia autenticada do Certificado de Licenciatura;
+            Certificado autenticado de disciplinas feitas, contendo as respectivas classificações;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Cópia autenticada do Bilhete de Identificação;
+            Certidão comprovativa de atribuição de uma equivalência/ reconhecimento de habilitações obtidas numa Universidade estrangeira;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Duas cartas de recomendação;
+            Fotocópia autenticada de BI ou passaporte;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
-          >
-            Duas fotografias tipo passe recentes;
+          >Curriculum vitae assinado, com elementos de mérito;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: "underline",
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: "var(--hover-color)",
             }}
           >
-            Carta de autorização do serviço (para o candidato trabalhador).
+            Duas cartas de recomendação (de preferência uma académica e uma profissional);
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Carta de autorização da autoridade patronal para a continuação dos estudos (se aplicável);
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Comprovativo de disponibilidade financeira;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Duas fotografias de tipo-passe;
+          </li>
+
+          <li
+            style={{
+              lineHeight: "1.6rem",
+              fontSize: "0.875rem",
+              marginBottom: 10,
+              textDecoration: "underline",
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: "var(--hover-color)",
+            }}
+          >
+            Resumo de uma proposta de pesquisa, com o máximo de 200 palavras.
           </li>
         </ul>
 
