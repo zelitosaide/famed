@@ -60,24 +60,6 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
 
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
-          }}
-        >
-          <strong><i>O início do curso</i></strong> está previsto para Agosto de 2022.
-        </p>
-
-        <p
-          style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
-          }}
-        >
-          <strong><i>O número máximo de vagas</i></strong> estimado para este curso é de 30. O curso só abrirá se tiver um número mínimo de 15 estudantes.
-        </p>
-
-        <p
-          style={{
             fontSize: "0.92rem",
             fontWeight: "bold",
             color: "var(--main-color)",
@@ -85,7 +67,7 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             marginTop: "1.5rem"
           }}
         >
-          Grupo alvo:
+          Candidatos elegíveis:
         </p>
 
         <ul style={{ listStyle: "disc", marginLeft: "1.5rem" }}>
@@ -93,111 +75,59 @@ As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
             }}
           >
-            Ter Licenciatura em Medicina; Especialidade de Pediatria; Curso Superior de Enfermagem Geral; Curso Superior de Enfermagem Pediátrica; Curso Superior de Enfermagem em Saúde Materna; Curso Superior de Técnico de Cirurgia e Obstetrícia, ou outras afins;
+            Ter Licenciatura (1º ciclo) em Ciências de Saúde, Medicina, Farmácia, Enfermagem, Ciências Biológicas, Veterinária, Nutrição, ou outras áreas afins;
           </li>
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
             }}
           >
-            Possuir Grau de Licenciatura com nota de conclusão igual ou superior a 14 valores;
+            Possuir a nota de conclusão do grau de Licenciatura igual ou superior a 14 valores ou não inferior a 12 valores, desde que tenha pelo menos 2 anos de experiência profissional no sector de Saúde ou em qualquer área biomédica, e ser funcionário do Serviço Nacional de Saúde;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
             }}
           >
-            Excepcionalmente, poderão ingressar os candidatos com grau de Licenciatura com média final não inferior a 12 valores, por questões de mérito (currículo científico relevante, experiência de trabalho comprovada na área de conhecimento do Mestrado, ter publicações científicas, ser capaz de fundamentar a investigação que pretende realizar);
+            Encoraja-se a candidatura do sexo feminino;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
             }}
           >
-            Ter domínio da língua portuguesa;
+            Encoraja-se também a candidatura de profissionais residentes fora de Maputo;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
             }}
           >
-            Ter conhecimentos de língua inglesa é uma vantagem;
+            Ter competência comprovada no domínio das línguas Portuguesa e Inglesa;
           </li>
 
           <li
             style={{
               lineHeight: "1.6rem",
               fontSize: "0.875rem",
-              // fontWeight: 500,
               marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
             }}
           >
-            Os candidatos pré-selecionados serão submetidos a uma entrevista a ser realizada na Faculdade de Medicina da UEM em data e horários a serem anunciados;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Encoraja-se candidaturas do sexo feminino.
+            Todos os candidatos pré-seleccionados serão submetidos a um teste diagnóstico e a uma entrevista a realizar em Maputo (data a anunciar).
           </li>
         </ul>
 
