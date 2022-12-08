@@ -32,7 +32,9 @@ export function MestradoEpidemiologiaCampoLaboratorial() {
             fontSize: "0.875rem",
           }}
         >
-          O MEPN visa formar profissionais de saúde para providenciar cuidados de saúde, e realizarem docência e pesquisas relevantes, na área de pediatria e neonatologia, para serem capazes de darem o seu melhor contributo no contexto de equipas multidisciplinares. Os estudantes que completarem este curso com sucesso receberão o grau de <i>Mestre em Emergências Pediatrias e Neonatais</i>.
+          O objectivo geral deste programa é a formação em serviço, baseada nos Princípios Fundamentais da Epidemiologia, de forma a permitir aos formandos a aquisição de conhecimentos e capacidades essenciais para a solução de problemas de Saúde Pública em Moçambique.
+Os residentes que completarem este programa com sucesso receberão o grau de “Mestre em Epidemiologia de Campo e Laboratorial” conferido pela UEM.
+As aulas deste Mestrado decorrerão na Faculdade de Medicina da UEM (Maputo) e o trabalho de campo (estágio) irá decorrer em diferentes Unidades do Serviço Nacional de Saúde. As aulas terão início em Agosto de 2023.
         </p>
 
         <p
@@ -44,7 +46,7 @@ export function MestradoEpidemiologiaCampoLaboratorial() {
             marginTop: "1.5rem"
           }}
         >
-          Organização do Programa:
+          Número vagas:
         </p>
 
         <p
@@ -53,7 +55,7 @@ export function MestradoEpidemiologiaCampoLaboratorial() {
             fontSize: "0.875rem",
           }}
         >
-          As aulas do MEPN decorrerão essencialmente na Faculdade de Medicina da UEM e no Departamento de Pediatria do Hospital Central de Maputo (HCM), <strong><i>no período laboral</i></strong>. Os trabalhos de culminação de estudos irão decorrer nas diferentes instituições de ensino envolvidas repectivamente: UEM, UNIPD, UCM, HCM, Hospital Central da Beira (HCB) ou em outras instituições de pesquisa parceiras da Faculdade de Medicina da UEM ou do Serviço Nacional de Saúde.
+          O número estimado de vagas disponíveis para este programa é de 12.
         </p>
 
         <p
