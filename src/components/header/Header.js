@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown as caret } from '@fortawesome/free-solid-svg-icons'
 import { MenuButton, Menu, MenuList, MenuLink } from '@reach/menu-button'
@@ -21,6 +21,7 @@ import { Input } from '../input/Input'
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const navigate = useNavigate()
 
   const closeDrawer = () => {
     setIsDrawerOpen(false)
@@ -122,10 +123,14 @@ const Header = () => {
                 '--outline-color': 'rgb(253, 152, 129)',
               }}
             >
-              <button style={{ padding: 11, borderRadius: 20 }}>
-                <Link to='/signin' style={{ color: 'white'}}>
+              <button style={{ padding: 11, borderRadius: 20 }}
+                onClick={function() {
+                  navigate("/signin")
+                }}
+              >
+                {/* <Link to='/signin' style={{ color: 'white'}}> */}
                   Iniciar Sessão
-                </Link>
+                {/* </Link> */}
               </button>
             </Input>
           </div>
