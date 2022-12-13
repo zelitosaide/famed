@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
 import { Input } from '../../components/input/Input'
@@ -13,6 +15,8 @@ export function ConsultasBioestatiscas() {
     'Redação de aspectos de análise estatística no protocolo',
     'Outro (especifique)',
   ]
+
+  const navigate = useNavigate()
 
   return (
     <div style={{ paddingTop: '9.5rem' }}>
@@ -76,8 +80,25 @@ export function ConsultasBioestatiscas() {
           >
             <textarea />
           </Input>
-          <Input>
-            <button>Enviar</button>
+          <Input style={{ display: 'inline-block' }}>
+            <button>Marcar</button>
+          </Input>
+          <Input
+            style={{
+              display: 'inline-block',
+              '--bg-color': 'rgb(252, 88, 50)',
+              '--bg-hover': 'rgb(252, 70, 29)',
+              '--bg-active': 'rgb(252, 88, 50)',
+              '--outline-color': 'rgb(253, 152, 129)',
+            }}
+          >
+            <button
+              onClick={function () {
+                navigate('/')
+              }}
+            >
+              Cancelar
+            </button>
           </Input>
         </Fieldset>
       </div>
