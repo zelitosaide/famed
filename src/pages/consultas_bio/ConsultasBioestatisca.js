@@ -57,20 +57,20 @@ export function ConsultasBioestatiscas() {
           </Row>
           <Row>
             <Column style={{ width: '50%' }}>
+              <Input
+                label="Marque a sua consulta (apenas em todas Quarta-feira, das 16-18h)"
+                required
+              >
+                <input type="date" />
+              </Input>
+            </Column>
+            <Column style={{ width: '50%' }}>
               <Input label="Tópico de consulta" required>
                 <select>
                   {topicos.map(function (item) {
                     return <option key={item}>{item}</option>
                   })}
                 </select>
-              </Input>
-            </Column>
-            <Column style={{ width: '50%' }}>
-              <Input
-                label="Marque a sua consulta (apenas em todas Quarta-feira, das 16-18h)"
-                required
-              >
-                <input type="date" />
               </Input>
             </Column>
           </Row>
