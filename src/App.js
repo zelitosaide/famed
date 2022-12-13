@@ -66,15 +66,16 @@ import { MestradoEpidemiologiaCampoLaboratorial } from './pages/postgraduate/Mes
 import { MestradoSaudeMentalPsicoIntervencoes } from './pages/postgraduate/MestradoSaudeMentalPsicoIntervencoes'
 import { MestradoEmergenciasPediatriasNeonatais } from './pages/postgraduate/MestradoEmergenciasPediatriasNeonatais'
 import { DoutoramentoBiocienciasSaudePublica } from './pages/postgraduate/DoutoramentoBiocienciasSaudePublica'
+import { ConsultasBioestatiscas } from './pages/consultas_bio/ConsultasBioestatisca'
 
 const App = () => {
-  const projectStatus = useSelector(state => state.projects.status)
-  const newsStatus = useSelector(state => state.news.status)
-  const usersStatus = useSelector(state => state.users.status)
-  const curriculumsStatus = useSelector(state => state.curriculums.status)
-  const publicationsStatus = useSelector(state => state.publications.status)
-  const coursesStatus = useSelector(state => state.courses.status)
-  const departmentsStatus = useSelector(state => state.departments.status)
+  const projectStatus = useSelector((state) => state.projects.status)
+  const newsStatus = useSelector((state) => state.news.status)
+  const usersStatus = useSelector((state) => state.users.status)
+  const curriculumsStatus = useSelector((state) => state.curriculums.status)
+  const publicationsStatus = useSelector((state) => state.publications.status)
+  const coursesStatus = useSelector((state) => state.courses.status)
+  const departmentsStatus = useSelector((state) => state.departments.status)
 
   const dispatch = useDispatch()
 
@@ -107,116 +108,274 @@ const App = () => {
   }, [departmentsStatus, dispatch])
 
   if (
-    projectStatus === 'pending'
-    || newsStatus === 'pending'
-    || usersStatus === 'pending'
-    || curriculumsStatus === 'pending'
-    || publicationsStatus === 'pending'
-    || departmentsStatus === 'pending'
-    || coursesStatus === 'pending'
+    projectStatus === 'pending' ||
+    newsStatus === 'pending' ||
+    usersStatus === 'pending' ||
+    curriculumsStatus === 'pending' ||
+    publicationsStatus === 'pending' ||
+    departmentsStatus === 'pending' ||
+    coursesStatus === 'pending'
   ) {
     return <ActivityContainer />
   }
 
   if (
-    projectStatus === 'fulfilled'
-    && newsStatus === 'fulfilled'
-    && usersStatus === 'fulfilled'
-    && curriculumsStatus === 'fulfilled'
-    && publicationsStatus === 'fulfilled'
-    && departmentsStatus === 'fulfilled'
-    && coursesStatus === 'fulfilled'
+    projectStatus === 'fulfilled' &&
+    newsStatus === 'fulfilled' &&
+    usersStatus === 'fulfilled' &&
+    curriculumsStatus === 'fulfilled' &&
+    publicationsStatus === 'fulfilled' &&
+    departmentsStatus === 'fulfilled' &&
+    coursesStatus === 'fulfilled'
   ) {
     return (
       <Routes>
-        <Route path='/' element={<SiteLayout />}>
+        <Route path="/" element={<SiteLayout />}>
           <Route index element={<Home />} />
-          <Route path='projects'>
+          <Route path="consultas-bio" element={<ConsultasBioestatiscas />} />
+          <Route path="projects">
             <Route index element={<ProjectList />} />
-            <Route path=':projectId' element={<ProjectDetails />} />
+            <Route path=":projectId" element={<ProjectDetails />} />
           </Route>
-          <Route path='news'>
+          <Route path="news">
             <Route index element={<NewsLists />} />
-            <Route path=':newsId' element={<NewsDetails />} />
+            <Route path=":newsId" element={<NewsDetails />} />
           </Route>
-          <Route path='publications' element={<PublicationList />} />
-          <Route path='about' element={<About />} />
-          <Route path='minicourse'>
+          <Route path="publications" element={<PublicationList />} />
+          <Route path="about" element={<About />} />
+          <Route path="minicourse">
             <Route index element={<CourseList />} />
-            <Route path=':courseId' element={<CourseDetails />} />
+            <Route path=":courseId" element={<CourseDetails />} />
           </Route>
-          <Route path='departments'>
-            <Route path=':departmentId' element={<DepartmentDetails />} />
+          <Route path="departments">
+            <Route path=":departmentId" element={<DepartmentDetails />} />
           </Route>
 
-
-          {/* <Route path='graduation' element={<Graduation />} />
-          <Route path='postgraduate' element={<Postgraduate />} />
+          {/* 
           <Route path='protocols' element={<Protocols />} />
           <Route path='extension' element={<Extension />} />
           */}
 
           {/* Temporarias */}
-          <Route path='graduation' element={<Graduation />} />
+          <Route path="graduation" element={<Graduation />} />
 
-          <Route path='postgraduate'>
+          <Route path="postgraduate">
             <Route index element={<Postgraduate />} />
-            <Route path='msp' element={<MestradoSaudePublicaPresencial />} />
-            <Route path='mspd' element={<MestradoSaudePublicaDistancia />} />
-            <Route path='mbc' element={<MestradoBiociencias />} />
-            <Route path='mecl' element={<MestradoEpidemiologiaCampoLaboratorial />} />
-            <Route path='msmpi' element={<MestradoSaudeMentalPsicoIntervencoes />} />
-            <Route path='mepn' element={<MestradoEmergenciasPediatriasNeonatais />} />
-            <Route path='dbsp' element={<DoutoramentoBiocienciasSaudePublica />} />
+            <Route path="msp" element={<MestradoSaudePublicaPresencial />} />
+            <Route path="mspd" element={<MestradoSaudePublicaDistancia />} />
+            <Route path="mbc" element={<MestradoBiociencias />} />
+            <Route
+              path="mecl"
+              element={<MestradoEpidemiologiaCampoLaboratorial />}
+            />
+            <Route
+              path="msmpi"
+              element={<MestradoSaudeMentalPsicoIntervencoes />}
+            />
+            <Route
+              path="mepn"
+              element={<MestradoEmergenciasPediatriasNeonatais />}
+            />
+            <Route
+              path="dbsp"
+              element={<DoutoramentoBiocienciasSaudePublica />}
+            />
           </Route>
 
-          <Route path='extension' element={<InProgress />} />
+          <Route path="extension" element={<InProgress />} />
 
-          <Route path='teachers/:teacherId' element={<CurriculumDetails />} />
-          <Route path='signin' element={<Signin />} />
+          <Route path="teachers/:teacherId" element={<CurriculumDetails />} />
+          <Route path="signin" element={<Signin />} />
           {/* <Route path='signup' element={<Signup />} /> */}
         </Route>
 
-        <Route path='/protocols' element={<ProtocolsLayout />}>
+        <Route path="/protocols" element={<ProtocolsLayout />}>
           <Route index element={<Protocols />} />
         </Route>
 
-        <Route path='/dashboard' element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path='projects'>
-            <Route index element={<RequireAuth><ProjectTable /></RequireAuth>} />
-            <Route path='edit/:projectId' element={<RequireAuth><UpdateProject /></RequireAuth>} />
-            <Route path='create' element={<RequireAuth><CreateProject /></RequireAuth>} />
+          <Route path="projects">
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <ProjectTable />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="edit/:projectId"
+              element={
+                <RequireAuth>
+                  <UpdateProject />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="create"
+              element={
+                <RequireAuth>
+                  <CreateProject />
+                </RequireAuth>
+              }
+            />
           </Route>
-          <Route path='users'>
-            <Route index element={<RequireAuth><UserTable /></RequireAuth>} />
-            <Route path='edit/:userId' element={<RequireAuth><UpdateUser /></RequireAuth>} />
-            <Route path='create' element={<RequireAuth><CreateUser /></RequireAuth>} />
+          <Route path="users">
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <UserTable />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="edit/:userId"
+              element={
+                <RequireAuth>
+                  <UpdateUser />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="create"
+              element={
+                <RequireAuth>
+                  <CreateUser />
+                </RequireAuth>
+              }
+            />
           </Route>
-          <Route path='news'>
-            <Route index element={<RequireAuth><NewsTable /></RequireAuth>} />
-            <Route path='edit/:newsId' element={<RequireAuth><UpdateNews /></RequireAuth>} />
-            <Route path='create' element={<RequireAuth><CreateNews /></RequireAuth>} />
+          <Route path="news">
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <NewsTable />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="edit/:newsId"
+              element={
+                <RequireAuth>
+                  <UpdateNews />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="create"
+              element={
+                <RequireAuth>
+                  <CreateNews />
+                </RequireAuth>
+              }
+            />
           </Route>
-          <Route path='publications'>
-            <Route index element={<RequireAuth><PublicationTable /></RequireAuth>} />
-            <Route path='edit/:publicationId' element={<RequireAuth><UpdatePublication /></RequireAuth>} />
-            <Route path='create' element={<RequireAuth><CreatePublication /></RequireAuth>} />
+          <Route path="publications">
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <PublicationTable />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="edit/:publicationId"
+              element={
+                <RequireAuth>
+                  <UpdatePublication />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="create"
+              element={
+                <RequireAuth>
+                  <CreatePublication />
+                </RequireAuth>
+              }
+            />
           </Route>
-          <Route path='curriculums'>
-            <Route index element={<RequireAuth><CurriculumTable /></RequireAuth>} />
-            <Route path='edit/:curriculumId' element={<RequireAuth><UpdateCurriculum /></RequireAuth>} />
-            <Route path='create' element={<RequireAuth><CreateCurriculum /></RequireAuth>} />
+          <Route path="curriculums">
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <CurriculumTable />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="edit/:curriculumId"
+              element={
+                <RequireAuth>
+                  <UpdateCurriculum />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="create"
+              element={
+                <RequireAuth>
+                  <CreateCurriculum />
+                </RequireAuth>
+              }
+            />
           </Route>
-          <Route path='courses'>
-            <Route index element={<RequireAuth><CourseTable /></RequireAuth>} />
-            <Route path='edit/:courseId' element={<RequireAuth><UpdateCourse /></RequireAuth>} />
-            <Route path='create' element={<RequireAuth><CreateCourse /></RequireAuth>} />
+          <Route path="courses">
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <CourseTable />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="edit/:courseId"
+              element={
+                <RequireAuth>
+                  <UpdateCourse />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="create"
+              element={
+                <RequireAuth>
+                  <CreateCourse />
+                </RequireAuth>
+              }
+            />
           </Route>
-          <Route path='departments'>
-            <Route index element={<RequireAuth><DepartmentTable /></RequireAuth>} />
-            <Route path='edit/:departmentId' element={<RequireAuth><UpdateDepartment /></RequireAuth>} />
-            <Route path='create' element={<RequireAuth><CreateDepartment /></RequireAuth>} />
+          <Route path="departments">
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <DepartmentTable />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="edit/:departmentId"
+              element={
+                <RequireAuth>
+                  <UpdateDepartment />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="create"
+              element={
+                <RequireAuth>
+                  <CreateDepartment />
+                </RequireAuth>
+              }
+            />
           </Route>
         </Route>
       </Routes>

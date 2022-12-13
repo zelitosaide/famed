@@ -37,11 +37,11 @@ const CreateProject = () => {
       team: [],
       flags: {
         home: false,
-        published: true
-      }
+        published: true,
+      },
     },
     mode: 'onChange',
-    shouldUnregister: false
+    shouldUnregister: false,
   })
 
   const financiers = methods.watch('financiers')
@@ -61,9 +61,12 @@ const CreateProject = () => {
   const [previousTeamMember, setPreviousTeamMember] = useState(null)
 
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
-  const canCreate = currentUser.user.roles.teacher || currentUser.user.roles.admin
+  const canCreate =
+    currentUser.user.roles.teacher || currentUser.user.roles.admin
 
-  const departments = useSelector(state => state.departments.departments).map(d => d.name)
+  const departments = useSelector((state) => state.departments.departments).map(
+    (d) => d.name
+  )
 
   const navigate = useNavigate()
   const [status, setStatus] = useState('idle')
@@ -79,23 +82,31 @@ const CreateProject = () => {
       const image = { imageName, base64Image }
 
       const team = data.team
-        .map(value => value.name && value.role && value.image ? value : null)
-        .filter(value => value)
+        .map((value) =>
+          value.name && value.role && value.image ? value : null
+        )
+        .filter((value) => value)
       // const financiers = data.financiers
       //   .map(value => value.name && value.websiteUrl ? value : null)
       //   .filter(value => value)
 
       const financiers = data.financiers
-        .map(value => value.name ? value : null)
-        .filter(value => value)
+        .map((value) => (value.name ? value : null))
+        .filter((value) => value)
 
       for (let i = 0; i < base64team.length; i++) {
         team[i].image = { ...team[i].image, base64Image: base64team[i] }
       }
 
-      await dispatch(createProject({
-        ...data, image, team, financiers, userId: currentUser.user._id
-      })).unwrap()
+      await dispatch(
+        createProject({
+          ...data,
+          image,
+          team,
+          financiers,
+          userId: currentUser.user._id,
+        })
+      ).unwrap()
 
       openAndAutoClose()
       setCounterFinancier(0)
@@ -124,16 +135,16 @@ const CreateProject = () => {
             <Notification
               visible={openNotification}
               setVisible={setOpenNotification}
-              text='Cadastro efectuado com sucesso!'
-              title='Salvo com sucesso!'
+              text="Cadastro efectuado com sucesso!"
+              title="Salvo com sucesso!"
             />
 
             <Notification
               visible={openErrorNotification}
               setVisible={setOpenErrorNotification}
               text={errorMessage}
-              title='Erro de cadastro'
-              type='Error'
+              title="Erro de cadastro"
+              type="Error"
             />
 
             <AddFinancierModal
@@ -158,38 +169,68 @@ const CreateProject = () => {
 
             <Row>
               <Column style={{ width: '50%' }}>
-                <Fieldset legend='Criação de Projecto'
+                <Fieldset
+                  legend="Criação de Projecto"
                   style={{
                     minHeight: '27rem',
                     border: '1px solid var(--main-border-color)',
                     boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
                     position: 'relative',
-                    zIndex: 10
+                    zIndex: 10,
                   }}
                   className={styles.outline}
                   tabIndex={10}
                 >
-                  <Input label='Titulo do Projecto' required error={methods?.formState?.errors?.title?.message}>
-                    <input type='text' id='Titulo do Projecto' disabled={!canCreate}
-                      {...methods.register('title', { required: 'This field is required' })}
+                  <Input
+                    label="Titulo do Projecto"
+                    required
+                    error={methods?.formState?.errors?.title?.message}
+                  >
+                    <input
+                      type="text"
+                      id="Titulo do Projecto"
+                      disabled={!canCreate}
+                      {...methods.register('title', {
+                        required: 'This field is required',
+                      })}
                     />
                   </Input>
                   <Row>
                     <Column style={{ width: '50%' }}>
-                      <Input label='Nº de Aprovação Ética'
-                        required error={methods?.formState?.errors?.regNumBioethic?.message}>
-                        <input type='text' id='Nº de Aprovação Ética' disabled={!canCreate}
-                          {...methods.register('regNumBioethic', { required: 'This field is required' })}
+                      <Input
+                        label="Nº de Aprovação Ética"
+                        required
+                        error={
+                          methods?.formState?.errors?.regNumBioethic?.message
+                        }
+                      >
+                        <input
+                          type="text"
+                          id="Nº de Aprovação Ética"
+                          disabled={!canCreate}
+                          {...methods.register('regNumBioethic', {
+                            required: 'This field is required',
+                          })}
                         />
                       </Input>
                     </Column>
                     <Column style={{ width: '50%' }}>
-                      <Input label='Departamento' required error={methods?.formState?.errors?.department?.message}>
-                        <select id='Departamento' disabled={!canCreate}
-                          {...methods.register('department', { required: 'This field is required' })}
+                      <Input
+                        label="Departamento"
+                        required
+                        error={methods?.formState?.errors?.department?.message}
+                      >
+                        <select
+                          id="Departamento"
+                          disabled={!canCreate}
+                          {...methods.register('department', {
+                            required: 'This field is required',
+                          })}
                         >
                           {departments.map((value, index) => (
-                            <option key={index} value={value}>{value}</option>
+                            <option key={index} value={value}>
+                              {value}
+                            </option>
                           ))}
                         </select>
                       </Input>
@@ -197,9 +238,17 @@ const CreateProject = () => {
                   </Row>
                   <Row>
                     <Column style={{ width: '33.33%' }}>
-                      <Input label='Data de Aprov. Ética'
-                        required error={methods?.formState?.errors?.approvalDate?.message}>
-                        <input type='date' id='Data de Aprov. Ética' disabled={!canCreate}
+                      <Input
+                        label="Data de Aprov. Ética"
+                        required
+                        error={
+                          methods?.formState?.errors?.approvalDate?.message
+                        }
+                      >
+                        <input
+                          type="date"
+                          id="Data de Aprov. Ética"
+                          disabled={!canCreate}
                           {...methods.register('approvalDate', {
                             // required: 'This field is required'
                           })}
@@ -207,46 +256,78 @@ const CreateProject = () => {
                       </Input>
                     </Column>
                     <Column style={{ width: '33.33%' }}>
-                      <Input label='Início do Projecto'
-                        required error={methods?.formState?.errors?.startDate?.message}>
-                        <input type='date' id='Início do Projecto' disabled={!canCreate}
-                          {...methods.register('startDate', { required: 'This field is required' })}
+                      <Input
+                        label="Início do Projecto"
+                        required
+                        error={methods?.formState?.errors?.startDate?.message}
+                      >
+                        <input
+                          type="date"
+                          id="Início do Projecto"
+                          disabled={!canCreate}
+                          {...methods.register('startDate', {
+                            required: 'This field is required',
+                          })}
                         />
                       </Input>
                     </Column>
                     <Column style={{ width: '33.33%' }}>
-                      <Input label='Fim do Projecto' required error={methods?.formState?.errors?.endDate?.message}>
-                        <input type='date' id='Fim do Projecto' disabled={!canCreate}
-                          {...methods.register('endDate', { required: 'This field is required' })}
+                      <Input
+                        label="Fim do Projecto"
+                        required
+                        error={methods?.formState?.errors?.endDate?.message}
+                      >
+                        <input
+                          type="date"
+                          id="Fim do Projecto"
+                          disabled={!canCreate}
+                          {...methods.register('endDate', {
+                            required: 'This field is required',
+                          })}
                         />
                       </Input>
                     </Column>
                   </Row>
-                  <Input label='Resumo do Projecto' required error={methods?.formState?.errors?.content?.message}>
-                    <textarea id='Resumo do Projecto' disabled={!canCreate}
-                      {...methods.register('content', { required: 'This field is required' })}
+                  <Input
+                    label="Resumo do Projecto"
+                    required
+                    error={methods?.formState?.errors?.content?.message}
+                  >
+                    <textarea
+                      id="Resumo do Projecto"
+                      disabled={!canCreate}
+                      {...methods.register('content', {
+                        required: 'This field is required',
+                      })}
                     />
                   </Input>
 
                   <Input style={{ display: 'inline-block' }}>
-                    <button type={step === 1 ? 'submit' : 'button'} disabled={status === 'pending' || !canCreate}
+                    <button
+                      type={step === 1 ? 'submit' : 'button'}
+                      disabled={status === 'pending' || !canCreate}
                       onClick={async () => {
-                        const continuar = await methods.trigger([
-                          'content',
-                          'endDate',
-                          'startDate',
-                          'approvalDate',
-                          'department',
-                          'regNumBioethic',
-                          'title'
-                        ], { shouldFocus: true })
+                        const continuar = await methods.trigger(
+                          [
+                            'content',
+                            'endDate',
+                            'startDate',
+                            'approvalDate',
+                            'department',
+                            'regNumBioethic',
+                            'title',
+                          ],
+                          { shouldFocus: true }
+                        )
 
                         if (continuar) {
                           setStep(2)
                           fieldset.current.focus()
                         }
                       }}
-                    >Continuar</button>
+                    >
+                      Continuar
+                    </button>
                   </Input>
 
                   <Input
@@ -258,18 +339,20 @@ const CreateProject = () => {
                       '--outline-color': 'rgb(253, 152, 129)',
                     }}
                   >
-                    <button type='button' disabled={status === 'pending'}
+                    <button
+                      type="button"
+                      disabled={status === 'pending'}
                       onClick={() => navigate(-1, { replace: true })}
                     >
                       Cancelar
                     </button>
                   </Input>
-
                 </Fieldset>
               </Column>
 
               <Column style={{ width: '50%' }}>
-                <Fieldset legend='Criação de Projecto'
+                <Fieldset
+                  legend="Criação de Projecto"
                   style={{
                     minHeight: '27rem',
                     position: 'relative',
@@ -283,20 +366,32 @@ const CreateProject = () => {
                   tabIndex={10}
                   ref={fieldset}
                 >
-                  <Input label='Image do projecto' required error={methods?.formState?.errors?.image?.message}>
-                    <input type='file' id='Image do projecto'
-                      disabled={step === 1 || !canCreate || status === 'pending'}
+                  <Input
+                    label="Image do projecto"
+                    required
+                    error={methods?.formState?.errors?.image?.message}
+                  >
+                    <input
+                      type="file"
+                      id="Image do projecto"
+                      disabled={
+                        step === 1 || !canCreate || status === 'pending'
+                      }
                       {...methods.register('image', {
                         required: {
                           value: step === 2,
-                          message: 'This field is required'
+                          message: 'This field is required',
                         },
                         validate: (value) => {
                           if (!!value) {
-                            const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
-                            return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                            const allowedExtensions =
+                              /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+                            return (
+                              !!allowedExtensions.exec(value[0].name) ||
+                              'Invalid file type'
+                            )
                           }
-                        }
+                        },
                       })}
                     />
                   </Input>
@@ -322,7 +417,7 @@ const CreateProject = () => {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        paddingLeft: '0.5rem'
+                        paddingLeft: '0.5rem',
                       }}
                     >
                       <span
@@ -332,12 +427,16 @@ const CreateProject = () => {
                           fontWeight: 'var(--bold-font-weight)',
                           fontFamily: 'var(--font-family)',
                         }}
-                      >Financiadores</span>
+                      >
+                        Financiadores
+                      </span>
 
                       <Input>
                         <button
-                          disabled={step === 1 || !canCreate || status === 'pending'}
-                          type='button'
+                          disabled={
+                            step === 1 || !canCreate || status === 'pending'
+                          }
+                          type="button"
                           className={styles.addFinancierBtn}
                           style={{ padding: '0.2rem', borderRadius: '1rem' }}
                           onClick={() => setOpenFinancierModal(true)}
@@ -361,28 +460,40 @@ const CreateProject = () => {
                           LeftArrow={LeftArrow}
                           RightArrow={RightArrow}
                           onWheel={onWheel}
-                        // apiRef={apiRef}
+                          // apiRef={apiRef}
                         >
-                          {financiers.map((value, index) => (
-                            value.name &&
-                            <Chip
-                              key={index}
-                              handleClick={() => {
-                                setCounterFinancier(index)
-                                methods.setValue(`financiers.${index}`, value)
-                                setIsEdit(true)
-                                setOpenFinancierModal(true)
-                                setPreviousFinancier(value)
-                              }}
-                              handleDelete={() => {
-                                const newFinanciers = financiers.filter((_, i) => i !== index)
-                                methods.setValue('financiers', newFinanciers)
-                                setCounterFinancier(prevState => prevState - 1)
-                              }}
-                              text={value.name}
-                              disabled={step === 1 || status === 'pending'}
-                            />
-                          ))}
+                          {financiers.map(
+                            (value, index) =>
+                              value.name && (
+                                <Chip
+                                  key={index}
+                                  handleClick={() => {
+                                    setCounterFinancier(index)
+                                    methods.setValue(
+                                      `financiers.${index}`,
+                                      value
+                                    )
+                                    setIsEdit(true)
+                                    setOpenFinancierModal(true)
+                                    setPreviousFinancier(value)
+                                  }}
+                                  handleDelete={() => {
+                                    const newFinanciers = financiers.filter(
+                                      (_, i) => i !== index
+                                    )
+                                    methods.setValue(
+                                      'financiers',
+                                      newFinanciers
+                                    )
+                                    setCounterFinancier(
+                                      (prevState) => prevState - 1
+                                    )
+                                  }}
+                                  text={value.name}
+                                  disabled={step === 1 || status === 'pending'}
+                                />
+                              )
+                          )}
                         </ScrollMenu>
                       )}
                     </div>
@@ -404,16 +515,14 @@ const CreateProject = () => {
                             fontWeight: 'var(--main-font-weight)',
                             fontFamily: 'var(--font-family)',
                             padding: '0.5rem',
-                            display: 'inline-block'
+                            display: 'inline-block',
                           }}
                         >
-                          {financiers.length - 1 <= 0 ? (
-                            'Nenhum Financiador criado'
-                          ) : financiers.length - 1 === 1 ? (
-                            `${financiers.length - 1} Financiador`
-                          ) : (
-                            `${financiers.length - 1} Financiadores`
-                          )}
+                          {financiers.length - 1 <= 0
+                            ? 'Nenhum Financiador criado'
+                            : financiers.length - 1 === 1
+                            ? `${financiers.length - 1} Financiador`
+                            : `${financiers.length - 1} Financiadores`}
                         </span>
                         <Input
                           style={{
@@ -428,10 +537,12 @@ const CreateProject = () => {
                           <button
                             style={{
                               color: 'rgb(27, 154, 25)',
-                              fontWeight: 'var(--bold-font-weight)'
+                              fontWeight: 'var(--bold-font-weight)',
                             }}
-                            type='button'
-                            disabled={step === 1 || !canCreate || status === 'pending'}
+                            type="button"
+                            disabled={
+                              step === 1 || !canCreate || status === 'pending'
+                            }
                           >
                             Ver todos
                           </button>
@@ -461,7 +572,7 @@ const CreateProject = () => {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        paddingLeft: '0.5rem'
+                        paddingLeft: '0.5rem',
                       }}
                     >
                       <span
@@ -476,8 +587,10 @@ const CreateProject = () => {
                       </span>
                       <Input>
                         <button
-                          disabled={step === 1 || !canCreate || status === 'pending'}
-                          type='button'
+                          disabled={
+                            step === 1 || !canCreate || status === 'pending'
+                          }
+                          type="button"
                           className={styles.addFinancierBtn}
                           style={{ padding: '0.2rem', borderRadius: '1rem' }}
                           onClick={() => setOpenTeamModal(true)}
@@ -501,28 +614,34 @@ const CreateProject = () => {
                           LeftArrow={LeftArrow}
                           RightArrow={RightArrow}
                           onWheel={onWheel}
-                        // apiRef={apiRef}
+                          // apiRef={apiRef}
                         >
-                          {team.map((value, index) => (
-                            value.name &&
-                            <Chip
-                              key={index}
-                              handleClick={() => {
-                                setCounterTeamMember(index)
-                                methods.setValue(`team.${index}`, value)
-                                setIsEdit(true)
-                                setOpenTeamModal(true)
-                                setPreviousTeamMember(value)
-                              }}
-                              handleDelete={() => {
-                                const newTeam = team.filter((_, i) => i !== index)
-                                methods.setValue('team', newTeam)
-                                setCounterTeamMember(prevState => prevState - 1)
-                              }}
-                              text={value.name}
-                              disabled={step === 1 || status === 'pending'}
-                            />
-                          ))}
+                          {team.map(
+                            (value, index) =>
+                              value.name && (
+                                <Chip
+                                  key={index}
+                                  handleClick={() => {
+                                    setCounterTeamMember(index)
+                                    methods.setValue(`team.${index}`, value)
+                                    setIsEdit(true)
+                                    setOpenTeamModal(true)
+                                    setPreviousTeamMember(value)
+                                  }}
+                                  handleDelete={() => {
+                                    const newTeam = team.filter(
+                                      (_, i) => i !== index
+                                    )
+                                    methods.setValue('team', newTeam)
+                                    setCounterTeamMember(
+                                      (prevState) => prevState - 1
+                                    )
+                                  }}
+                                  text={value.name}
+                                  disabled={step === 1 || status === 'pending'}
+                                />
+                              )
+                          )}
                         </ScrollMenu>
                       )}
                     </div>
@@ -544,16 +663,14 @@ const CreateProject = () => {
                             fontWeight: 'var(--main-font-weight)',
                             fontFamily: 'var(--font-family)',
                             padding: '0.5rem',
-                            display: 'inline-block'
+                            display: 'inline-block',
                           }}
                         >
-                          {team.length - 1 <= 0 ? (
-                            'Nenhum Colaborador criado'
-                          ) : team.length - 1 === 1 ? (
-                            `${team.length - 1} Colaborador`
-                          ) : (
-                            `${team.length - 1} Colaboradores`
-                          )}
+                          {team.length - 1 <= 0
+                            ? 'Nenhum Colaborador criado'
+                            : team.length - 1 === 1
+                            ? `${team.length - 1} Colaborador`
+                            : `${team.length - 1} Colaboradores`}
                         </span>
                         <Input
                           style={{
@@ -568,10 +685,12 @@ const CreateProject = () => {
                           <button
                             style={{
                               color: 'rgb(27, 154, 25)',
-                              fontWeight: 'var(--bold-font-weight)'
+                              fontWeight: 'var(--bold-font-weight)',
                             }}
-                            type='button'
-                            disabled={step === 1 || !canCreate || status === 'pending'}
+                            type="button"
+                            disabled={
+                              step === 1 || !canCreate || status === 'pending'
+                            }
                           >
                             Ver todos
                           </button>
@@ -581,7 +700,12 @@ const CreateProject = () => {
                   </div>
 
                   <Input style={{ display: 'inline-block' }}>
-                    <button type='submit' disabled={step === 1 || status === 'pending' || !canCreate}>
+                    <button
+                      type="submit"
+                      disabled={
+                        step === 1 || status === 'pending' || !canCreate
+                      }
+                    >
                       {status === 'pending' ? 'Salvando...' : 'Salvar'}
                     </button>
                   </Input>
@@ -595,7 +719,9 @@ const CreateProject = () => {
                       '--outline-color': 'rgb(253, 152, 129)',
                     }}
                   >
-                    <button type='button' disabled={status === 'pending'}
+                    <button
+                      type="button"
+                      disabled={status === 'pending'}
                       onClick={() => navigate(-1, { replace: true })}
                     >
                       Cancelar
@@ -607,10 +733,9 @@ const CreateProject = () => {
           </form>
         </FormProvider>
       </div>
-    </div >
+    </div>
   )
 }
-
 
 const onWheel = (apiObj, ev) => {
   const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15

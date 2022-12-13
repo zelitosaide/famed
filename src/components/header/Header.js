@@ -27,17 +27,18 @@ const Header = () => {
     setIsDrawerOpen(false)
   }
 
-  const departments = useSelector(state => state.departments.departments)
-    .map((value, index) => {
+  const departments = useSelector((state) => state.departments.departments).map(
+    (value, index) => {
       return { name: value.name, path: routes[index] }
-    })
+    }
+  )
 
   return (
     <div className={styles.header}>
       {/* Left Drawer */}
       <Drawer
         className={styles.top}
-        anchor='left'
+        anchor="left"
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       >
@@ -48,7 +49,7 @@ const Header = () => {
       {/* Right Drawer */}
       <Drawer
         className={styles.right}
-        anchor='right'
+        anchor="right"
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       >
@@ -59,24 +60,35 @@ const Header = () => {
       {/* Responsive Navbar (width: 1040) */}
       <ul className={styles.responsive}>
         <li>
-          <Link to='/'><img src={Logo} alt='' /></Link>
+          <Link to="/">
+            <img src={Logo} alt="" />
+          </Link>
         </li>
 
-        {navlinks.map(value => (
+        {navlinks.map((value) => (
           <li key={value.name}>
             {!!value.subMenu ? (
               <Menu>
-                <MenuButton>{value.name} <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
+                <MenuButton>
+                  {value.name} <FontAwesomeIcon icon={caret}></FontAwesomeIcon>
+                </MenuButton>
                 <MenuList className={styles.slideDown}>
-                  {value.subMenu.map(v => <MenuLink key={v.name} as={Link} to={v.to}>{v.name}</MenuLink>)}
+                  {value.subMenu.map((v) => (
+                    <MenuLink key={v.name} as={Link} to={v.to}>
+                      {v.name}
+                    </MenuLink>
+                  ))}
                 </MenuList>
               </Menu>
-            ) : value.name === "Submissão de Protocolos" ? (
-              <a href='https://cibs.uem.mz' target="_blank" rel="noreferrer">
+            ) : value.name === 'Submissão de Protocolos' ? (
+              <a href="https://cibs.uem.mz" target="_blank" rel="noreferrer">
                 Submissão de Protocolos
               </a>
             ) : (
-              <NavLink className={({ isActive }) => isActive ? styles.active : null} to={value.to}>
+              <NavLink
+                className={({ isActive }) => (isActive ? styles.active : null)}
+                to={value.to}
+              >
                 {value.name}
               </NavLink>
             )}
@@ -84,7 +96,9 @@ const Header = () => {
         ))}
 
         <li className={styles.menu} onClick={() => setIsDrawerOpen(true)}>
-          <IconButton><MenuIcon /></IconButton>
+          <IconButton>
+            <MenuIcon />
+          </IconButton>
         </li>
       </ul>
 
@@ -92,8 +106,8 @@ const Header = () => {
       <div className={styles.blocks}>
         <div className={styles.heading}>
           <div className={styles.image}>
-            <Link to='/'>
-              <img src={Logo} alt='' />
+            <Link to="/">
+              <img src={Logo} alt="" />
             </Link>
           </div>
 
@@ -102,20 +116,23 @@ const Header = () => {
           </div>
 
           <div className={styles.actions}>
-            <Input 
+            <Input
               style={{
-                display: "inline-block", 
-                // '--bg-color': 'rgb(252, 88, 50)',
-                // '--bg-hover': 'rgb(252, 70, 29)',
-                // '--bg-active': 'rgb(252, 88, 50)',
-                // '--outline-color': 'rgb(253, 152, 129)',
+                display: 'inline-block',
               }}
             >
-              <button style={{ padding: 11, borderRadius: 20}}>Consultas de Bioestatística</button>
+              <button
+                style={{ padding: 11, borderRadius: 20 }}
+                onClick={function () {
+                  navigate('/consultas-bio')
+                }}
+              >
+                Consultas de Bioestatística
+              </button>
             </Input>
-            <Input 
+            <Input
               style={{
-                display: "inline-block",
+                display: 'inline-block',
                 marginTop: '1.4rem',
                 '--bg-color': 'rgb(252, 88, 50)',
                 '--bg-hover': 'rgb(252, 70, 29)',
@@ -123,14 +140,13 @@ const Header = () => {
                 '--outline-color': 'rgb(253, 152, 129)',
               }}
             >
-              <button style={{ padding: 11, borderRadius: 20 }}
-                onClick={function() {
-                  navigate("/signin")
+              <button
+                style={{ padding: 11, borderRadius: 20 }}
+                onClick={function () {
+                  navigate('/signin')
                 }}
               >
-                {/* <Link to='/signin' style={{ color: 'white'}}> */}
-                  Iniciar Sessão
-                {/* </Link> */}
+                Iniciar Sessão
               </button>
             </Input>
           </div>
@@ -140,45 +156,84 @@ const Header = () => {
           <nav>
             <ul>
               <li>
-                <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/'>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? styles.active : null
+                  }
+                  to="/"
+                >
                   Página Inicial
                 </NavLink>
               </li>
               <li>
-                <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/about'>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? styles.active : null
+                  }
+                  to="/about"
+                >
                   Sobre nós
                 </NavLink>
               </li>
               <li>
                 <Menu>
-                  <MenuButton>Ensino <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
+                  <MenuButton>
+                    Ensino <FontAwesomeIcon icon={caret}></FontAwesomeIcon>
+                  </MenuButton>
                   <MenuList className={styles.slideDown}>
-                    <MenuLink as={Link} to='/graduation'>Graduação</MenuLink>
-                    <MenuLink as={Link} to='/postgraduate'>Pós-Graduação</MenuLink>
-                    <MenuLink as={Link} to='/minicourse'>Cursos de curta duração</MenuLink>
+                    <MenuLink as={Link} to="/graduation">
+                      Graduação
+                    </MenuLink>
+                    <MenuLink as={Link} to="/postgraduate">
+                      Pós-Graduação
+                    </MenuLink>
+                    <MenuLink as={Link} to="/minicourse">
+                      Cursos de curta duração
+                    </MenuLink>
                   </MenuList>
                 </Menu>
               </li>
               <li>
                 <Menu>
-                  <MenuButton>Investigação <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
+                  <MenuButton>
+                    Investigação{' '}
+                    <FontAwesomeIcon icon={caret}></FontAwesomeIcon>
+                  </MenuButton>
                   <MenuList className={styles.slideDown}>
-                    <MenuLink as={Link} to='/projects'>Projectos de Pesquisa</MenuLink>
-                    <MenuLink as={Link} to='/publications'>Publicações</MenuLink>
+                    <MenuLink as={Link} to="/projects">
+                      Projectos de Pesquisa
+                    </MenuLink>
+                    <MenuLink as={Link} to="/publications">
+                      Publicações
+                    </MenuLink>
                   </MenuList>
                 </Menu>
               </li>
               <li>
-                <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/extension'>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? styles.active : null
+                  }
+                  to="/extension"
+                >
                   Extensão
                 </NavLink>
               </li>
               <li>
                 <Menu>
-                  <MenuButton>Departamentos e Unidades <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
+                  <MenuButton>
+                    Departamentos e Unidades{' '}
+                    <FontAwesomeIcon icon={caret}></FontAwesomeIcon>
+                  </MenuButton>
                   <MenuList className={styles.slideDown}>
                     {departments.map((value, index) => (
-                      <MenuLink key={index} as={Link} to={`/departments/${value.path}`}>{value.name}</MenuLink>
+                      <MenuLink
+                        key={index}
+                        as={Link}
+                        to={`/departments/${value.path}`}
+                      >
+                        {value.name}
+                      </MenuLink>
                     ))}
                   </MenuList>
                 </Menu>
@@ -189,16 +244,23 @@ const Header = () => {
                 </NavLink>
               </li> */}
               <li>
-                <a href='https://cibs.uem.mz' target="_blank" rel="noreferrer">
+                <a href="https://cibs.uem.mz" target="_blank" rel="noreferrer">
                   Submissão de Protocolos
                 </a>
               </li>
               <li>
                 <Menu>
-                  <MenuButton>Links úteis <FontAwesomeIcon icon={caret}></FontAwesomeIcon></MenuButton>
+                  <MenuButton>
+                    Links úteis <FontAwesomeIcon icon={caret}></FontAwesomeIcon>
+                  </MenuButton>
                   <MenuList className={styles.slideDown}>
-                    {anchors.map(value => (
-                      <MenuLink key={value.name} as='a' target='_blank' href={value.href}>
+                    {anchors.map((value) => (
+                      <MenuLink
+                        key={value.name}
+                        as="a"
+                        target="_blank"
+                        href={value.href}
+                      >
                         {value.name}
                       </MenuLink>
                     ))}
@@ -206,7 +268,12 @@ const Header = () => {
                 </Menu>
               </li>
               <li>
-                <NavLink className={({ isActive }) => isActive ? styles.active : null} to='/news'>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? styles.active : null
+                  }
+                  to="/news"
+                >
                   Notícias
                 </NavLink>
               </li>
