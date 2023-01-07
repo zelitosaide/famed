@@ -121,7 +121,7 @@ export function ConsultasBioestatiscas() {
                         console.log(weekday)
                         return (
                           weekday === 'Wednesday' ||
-                          'Disponibilidade apenas nas todas Quarta-feira'
+                          'Data inválida. Disponibilidade apenas nas Quarta-feira'
                         )
                       },
                     })}
