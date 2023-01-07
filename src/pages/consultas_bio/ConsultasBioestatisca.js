@@ -131,8 +131,17 @@ export function ConsultasBioestatiscas() {
                 </Input>
               </Column>
               <Column style={{ width: '50%' }}>
-                <Input label="Tópico de consulta" required>
-                  <select>
+                <Input
+                  label="Tópico de consulta"
+                  required
+                  error={errors.title?.message}
+                >
+                  <select
+                    id="Tópico de consulta"
+                    {...register('title', {
+                      required: 'Este campo é obrigatório',
+                    })}
+                  >
                     {topicos.map(function (item) {
                       return <option key={item}>{item}</option>
                     })}
