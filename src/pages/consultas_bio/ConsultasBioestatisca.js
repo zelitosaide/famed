@@ -16,6 +16,7 @@ export function ConsultasBioestatiscas() {
       name: '',
       email: '',
       phone: '',
+      date: '',
     },
   })
 
@@ -106,8 +107,25 @@ export function ConsultasBioestatiscas() {
                 <Input
                   label="Marque a sua consulta (apenas em todas Quarta-feira, das 16-18h)"
                   required
+                  error={errors.date?.message}
                 >
-                  <input type="date" />
+                  <input
+                    type="date"
+                    id="Marque a sua consulta (apenas em todas Quarta-feira, das 16-18h)"
+                    {...register('date', {
+                      required: 'Este campo é obrigatório',
+                      validate: (value) => {
+                        const weekday = Intl.DateTimeFormat('en-US', {
+                          weekday: 'long',
+                        }).format(new Date(value))
+                        console.log(weekday)
+                        return (
+                          weekday === 'Wednesday' ||
+                          'Disponibilidade apenas nas todas Quarta-feira'
+                        )
+                      },
+                    })}
+                  />
                 </Input>
               </Column>
               <Column style={{ width: '50%' }}>
@@ -156,3 +174,4 @@ export function ConsultasBioestatiscas() {
 
 // var date = new Date(2023, 0, 2);
 // var weekday = Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);
+//
