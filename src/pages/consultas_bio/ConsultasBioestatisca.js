@@ -14,7 +14,7 @@ export function ConsultasBioestatiscas() {
   } = useForm({
     defaultValues: {
       name: '',
-      content: '',
+      email: '',
     },
   })
 
@@ -74,8 +74,14 @@ export function ConsultasBioestatiscas() {
                 </Input>
               </Column>
               <Column style={{ width: '33.33%' }}>
-                <Input label="Email" required>
-                  <input type="email" />
+                <Input label="Email" required error={errors.email?.message}>
+                  <input
+                    type="email"
+                    id="Email"
+                    {...register('email', {
+                      required: 'Este campo é obrigatório',
+                    })}
+                  />
                 </Input>
               </Column>
               <Column style={{ width: '33.33%' }}>
