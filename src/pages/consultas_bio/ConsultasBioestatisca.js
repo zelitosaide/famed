@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { Column } from '../../components/column/Column'
@@ -6,6 +7,17 @@ import { Input } from '../../components/input/Input'
 import { Row } from '../../components/row/Row'
 
 export function ConsultasBioestatiscas() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: '',
+      content: '',
+    },
+  })
+
   const topicos = [
     'Cálculo de amostra',
     'Análise estatística descritiva (tabela/gráfico)',
@@ -17,6 +29,13 @@ export function ConsultasBioestatiscas() {
   ]
 
   const navigate = useNavigate()
+
+  const onSubmit = async (data) => {
+    try {
+    } catch (error) {
+    } finally {
+    }
+  }
 
   return (
     <div style={{ paddingTop: '9.5rem' }}>
@@ -33,75 +52,90 @@ export function ConsultasBioestatiscas() {
         >
           Formulário de requisição de Consulta de Bioestatística
         </p>
-
-        <Fieldset
-          legend="Formulário de requisição de Consulta de Bioestatística"
-          style={{ margin: 0, background: '#F3F4F6' }}
-        >
-          <Row>
-            <Column style={{ width: '33.33%' }}>
-              <Input label="Nome Completo" required>
-                <input type="text" />
-              </Input>
-            </Column>
-            <Column style={{ width: '33.33%' }}>
-              <Input label="Email" required>
-                <input type="email" />
-              </Input>
-            </Column>
-            <Column style={{ width: '33.33%' }}>
-              <Input label="Contacto telemóvel" required>
-                <input type="text" />
-              </Input>
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ width: '50%' }}>
-              <Input
-                label="Marque a sua consulta (apenas em todas Quarta-feira, das 16-18h)"
-                required
-              >
-                <input type="date" />
-              </Input>
-            </Column>
-            <Column style={{ width: '50%' }}>
-              <Input label="Tópico de consulta" required>
-                <select>
-                  {topicos.map(function (item) {
-                    return <option key={item}>{item}</option>
-                  })}
-                </select>
-              </Input>
-            </Column>
-          </Row>
-          <Input
-            label="Resumo da pesquisa (deixar um espaço com pelo menos 10 linhas)"
-            reqired
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Fieldset
+            legend="Formulário de requisição de Consulta de Bioestatística"
+            style={{ margin: 0, background: '#F3F4F6' }}
           >
-            <textarea />
-          </Input>
-          <Input style={{ display: 'inline-block' }}>
-            <button>Marcar</button>
-          </Input>
-          <Input
-            style={{
-              display: 'inline-block',
-              '--bg-color': 'rgb(252, 88, 50)',
-              '--bg-hover': 'rgb(252, 70, 29)',
-              '--bg-active': 'rgb(252, 88, 50)',
-              '--outline-color': 'rgb(253, 152, 129)',
-            }}
-          >
-            <button
-              onClick={function () {
-                navigate('/')
+            <Row>
+              <Column style={{ width: '33.33%' }}>
+                <Input
+                  label="Nome Completo"
+                  required
+                  error={errors.name?.message}
+                >
+                  <input
+                    type="text"
+                    id="Nome Completo"
+                    {...register('name', {
+                      required: 'Este campo é obrigatório',
+                    })}
+                  />
+                </Input>
+              </Column>
+              <Column style={{ width: '33.33%' }}>
+                <Input label="Email" required>
+                  <input type="email" />
+                </Input>
+              </Column>
+              <Column style={{ width: '33.33%' }}>
+                <Input label="Contacto telemóvel" required>
+                  <input type="text" />
+                </Input>
+              </Column>
+            </Row>
+            <Row>
+              <Column style={{ width: '50%' }}>
+                <Input
+                  label="Marque a sua consulta (apenas em todas Quarta-feira, das 16-18h)"
+                  required
+                >
+                  <input type="date" />
+                </Input>
+              </Column>
+              <Column style={{ width: '50%' }}>
+                <Input label="Tópico de consulta" required>
+                  <select>
+                    {topicos.map(function (item) {
+                      return <option key={item}>{item}</option>
+                    })}
+                  </select>
+                </Input>
+              </Column>
+            </Row>
+            <Input
+              label="Resumo da pesquisa (deixar um espaço com pelo menos 10 linhas)"
+              reqired
+            >
+              <textarea />
+            </Input>
+            <Input style={{ display: 'inline-block' }}>
+              <button type="submit">Marcar</button>
+            </Input>
+            <Input
+              style={{
+                display: 'inline-block',
+                '--bg-color': 'rgb(252, 88, 50)',
+                '--bg-hover': 'rgb(252, 70, 29)',
+                '--bg-active': 'rgb(252, 88, 50)',
+                '--outline-color': 'rgb(253, 152, 129)',
               }}
             >
-              Cancelar
-            </button>
-          </Input>
-        </Fieldset>
+              <button
+                type="button"
+                onClick={function () {
+                  navigate('/')
+                }}
+              >
+                Cancelar
+              </button>
+            </Input>
+          </Fieldset>
+        </form>
       </div>
     </div>
   )
 }
+
+// var date = new Date(2023, 0, 2);
+// var weekday = Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);
