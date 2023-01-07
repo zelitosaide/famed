@@ -8,6 +8,7 @@ import publicationsReducer from '../features/publications/publicationsSlice'
 import curriculumsRecuder from '../features/curriculums/curriculumsSlice'
 import coursesReducer from '../features/courses/coursesSlice'
 import departmentsReducer from '../features/departments/departmentsSlice'
+import biostatisticsConsultationsReducer from '../features/biostatistics-consultations/biostatisticsConsultationsSlice'
 
 const store = configureStore({
   reducer: {
@@ -18,8 +19,9 @@ const store = configureStore({
     publications: publicationsReducer,
     curriculums: curriculumsRecuder,
     courses: coursesReducer,
-    departments: departmentsReducer
-  }
+    departments: departmentsReducer,
+    biostatisticsConsultations: biostatisticsConsultationsReducer,
+  },
 })
 
 export default store
