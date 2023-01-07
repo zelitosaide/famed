@@ -15,6 +15,7 @@ export function ConsultasBioestatiscas() {
     defaultValues: {
       name: '',
       email: '',
+      phone: '',
     },
   })
 
@@ -85,8 +86,18 @@ export function ConsultasBioestatiscas() {
                 </Input>
               </Column>
               <Column style={{ width: '33.33%' }}>
-                <Input label="Contacto telemóvel" required>
-                  <input type="text" />
+                <Input
+                  label="Contacto telemóvel"
+                  required
+                  error={errors.phone?.message}
+                >
+                  <input
+                    type="text"
+                    id="Contacto telemóvel"
+                    {...register('phone', {
+                      required: 'Este campo é obrigatório',
+                    })}
+                  />
                 </Input>
               </Column>
             </Row>
