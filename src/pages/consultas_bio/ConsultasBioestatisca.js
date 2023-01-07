@@ -36,6 +36,7 @@ export function ConsultasBioestatiscas() {
 
   const onSubmit = async (data) => {
     try {
+      console.log(data)
     } catch (error) {
     } finally {
     }
@@ -124,7 +125,6 @@ export function ConsultasBioestatiscas() {
                         const weekday = Intl.DateTimeFormat('en-US', {
                           weekday: 'long',
                         }).format(new Date(value))
-                        console.log(weekday)
                         return (
                           weekday === 'Wednesday' ||
                           'Data inválida. Disponibilidade apenas nas Quarta-feira'
