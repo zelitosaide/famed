@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
 import { Input } from '../../components/input/Input'
 import { Row } from '../../components/row/Row'
+import { createBiostatisticsConsultation } from '../../features/biostatistics-consultations/biostatisticsConsultationsSlice'
 
 export function ConsultasBioestatiscas() {
   const {
@@ -33,11 +35,13 @@ export function ConsultasBioestatiscas() {
   ]
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const onSubmit = async (data) => {
     try {
-      console.log(data)
+      await dispatch(createBiostatisticsConsultation(data)).unwrap()
     } catch (error) {
+      console.log(error)
     } finally {
     }
   }
