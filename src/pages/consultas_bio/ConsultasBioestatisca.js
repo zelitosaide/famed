@@ -17,6 +17,8 @@ export function ConsultasBioestatiscas() {
       email: '',
       phone: '',
       date: '',
+      title: '',
+      description: '',
     },
   })
 
@@ -140,9 +142,15 @@ export function ConsultasBioestatiscas() {
             </Row>
             <Input
               label="Resumo da pesquisa (deixar um espaço com pelo menos 10 linhas)"
-              reqired
+              required
+              error={errors.description?.message}
             >
-              <textarea />
+              <textarea
+                id="Resumo da pesquisa (deixar um espaço com pelo menos 10 linhas)"
+                {...register('description', {
+                  required: 'Este campo é obrigatório',
+                })}
+              />
             </Input>
             <Input style={{ display: 'inline-block' }}>
               <button type="submit">Marcar</button>
