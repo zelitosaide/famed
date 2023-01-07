@@ -192,7 +192,3 @@ export function ConsultasBioestatiscas() {
     </div>
   )
 }
-
-// var date = new Date(2023, 0, 2);
-// var weekday = Intl.DateTimeFormat("en-US", { weekday: "long" }).format(date);
-//
