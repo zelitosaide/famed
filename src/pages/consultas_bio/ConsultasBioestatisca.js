@@ -67,7 +67,7 @@ export function ConsultasBioestatiscas() {
     setOpenNotification(true)
     setTimeout(() => {
       setOpenNotification(false)
-    }, 34000)
+    }, 14000)
   }
 
   return (
