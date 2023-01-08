@@ -71,11 +71,26 @@ export function SModal({ visible, setVisible, title, text, ...props }) {
         </div>
 
         <div>
-          <Input>
-            <button style={{ width: '100%' }} onClick={setVisible}>
-              Fechar
-            </button>
-          </Input>
+          {props.error ? (
+            <Input
+              style={{
+                '--bg-color': 'rgb(252, 88, 50)',
+                '--bg-hover': 'rgb(252, 70, 29)',
+                '--bg-active': 'rgb(252, 88, 50)',
+                '--outline-color': 'rgb(253, 152, 129)',
+              }}
+            >
+              <button style={{ width: '100%' }} onClick={setVisible}>
+                Fechar
+              </button>
+            </Input>
+          ) : (
+            <Input>
+              <button style={{ width: '100%' }} onClick={setVisible}>
+                Fechar
+              </button>
+            </Input>
+          )}
         </div>
       </Section>
     </SDialogOverlay>
