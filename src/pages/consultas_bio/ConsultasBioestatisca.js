@@ -32,6 +32,8 @@ export function ConsultasBioestatiscas() {
   })
   const [status, setStatus] = useState('idle')
   const [openNotification, setOpenNotification] = useState(false)
+  const [openErrorNotification, setOpenErrorNotification] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const topicos = [
     'Cálculo de amostra',
@@ -49,13 +51,23 @@ export function ConsultasBioestatiscas() {
   const onSubmit = async (data) => {
     try {
       setStatus('pending')
+      setOpenErrorNotification(false)
       await dispatch(createBiostatisticsConsultation(data)).unwrap()
+      openAndAutoClose()
       // reset()
     } catch (error) {
-      console.log(error)
+      setErrorMessage(error.message)
+      setOpenErrorNotification(true)
     } finally {
       setStatus('idle')
     }
+  }
+
+  const openAndAutoClose = () => {
+    setOpenNotification(true)
+    setTimeout(() => {
+      setOpenNotification(false)
+    }, 14000)
   }
 
   return (
