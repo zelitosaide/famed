@@ -6,9 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
 import { Input } from '../../components/input/Input'
-import { Modal } from '../../components/modal/Modal'
 import { SModal } from '../../components/modal/SModal'
-import { Notification } from '../../components/notification/Notification'
 import { Row } from '../../components/row/Row'
 import { createBiostatisticsConsultation } from '../../features/biostatistics-consultations/biostatisticsConsultationsSlice'
 
@@ -68,25 +66,13 @@ export function ConsultasBioestatiscas() {
   const openAndAutoClose = () => {
     setOpenNotification(true)
     setTimeout(() => {
-      // setOpenNotification(false)
-    }, 14000)
+      setOpenNotification(false)
+    }, 34000)
   }
 
   return (
     <div style={{ paddingTop: '9.5rem' }}>
       <div className="row">
-        {/* <Modal
-          visible={openNotification}
-          setVisible={function () {
-            setOpenNotification(false)
-          }}
-          handleRemove={function () {
-            setOpenNotification(false)
-          }}
-          title="Consulta marcada com sucesso!"
-          text="Um email foi enviado para si com os detalhes da consulta."
-        /> */}
-
         <SModal
           visible={openNotification}
           setVisible={function () {
@@ -96,12 +82,14 @@ export function ConsultasBioestatiscas() {
           text="Um email foi enviado para si com os detalhes da consulta."
         />
 
-        <Notification
+        <SModal
           visible={openErrorNotification}
-          setVisible={setOpenErrorNotification}
-          text={errorMessage}
+          setVisible={function () {
+            setOpenErrorNotification(false)
+          }}
           title="Erro na Marcação da Consulta"
-          type="Error"
+          text={errorMessage}
+          error
         />
 
         <p
