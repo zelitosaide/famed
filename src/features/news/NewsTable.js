@@ -31,7 +31,7 @@ import { Notification } from '../../components/notification/Notification'
 
 const theme = createTheme({
   typography: {
-    fontFamily: ['Montserrat'].join(',')
+    fontFamily: ['Montserrat'].join(','),
   },
   components: {
     MuiTablePagination: {
@@ -46,7 +46,7 @@ const theme = createTheme({
         },
         displayedRows: {
           fontSize: 'var(--main-font-size)',
-          color: 'var(--main-font-color)'
+          color: 'var(--main-font-color)',
         },
         selectIcon: {
           fontSize: '1.2rem',
@@ -57,14 +57,14 @@ const theme = createTheme({
           color: 'var(--main-font-color)',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
         },
         select: {
-          paddingLeft: 0
-        }
-      }
-    }
-  }
+          paddingLeft: 0,
+        },
+      },
+    },
+  },
 })
 
 const NewsTable = () => {
@@ -77,7 +77,7 @@ const NewsTable = () => {
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
   const canDelete = currentUser.user.roles.admin
 
-  const news = useSelector(state => state.news.news)
+  const news = useSelector((state) => state.news.news)
   const orderedNews = news.slice().reverse()
 
   // const news = useSelector(state => {
@@ -101,9 +101,10 @@ const NewsTable = () => {
     setPage(0)
   }
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - orderedNews.length) : 0
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - orderedNews.length) : 0
 
-  const status = useSelector(state => state.news.status)
+  const status = useSelector((state) => state.news.status)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -143,169 +144,199 @@ const NewsTable = () => {
   return (
     <div className={`${styles.newsTable} ${styles.responsive}`}>
       <div style={{ padding: '2rem' }}>
-        <Fieldset legend='Tabela de Notícias' style={{ marginRight: 0 }}>
+        <Fieldset legend="Tabela de Notícias" style={{ marginRight: 0 }}>
           <Modal
             setVisible={() => setOpenModal(false)}
             visible={openModal}
             handleRemove={handleRemove}
-            title='Remover Notícia'
-            text='Tem certeza de que deseja remover a Notícia? Todos os dados serão removidos permanentemente. Essa ação não pode ser desfeita.'
+            title="Remover Notícia"
+            text="Tem certeza de que deseja remover a Notícia? Todos os dados serão removidos permanentemente. Essa ação não pode ser desfeita."
           />
 
           <Notification
             visible={openErrorNotification}
             setVisible={setOpenErrorNotification}
             text={errorMessage}
-            title='Erro de remoção'
-            type='Error'
+            title="Erro de remoção"
+            type="Error"
           />
 
           <Notification
             visible={openSuccessNotification}
             setVisible={setOpenSuccessNotification}
-            text='A Notícia foi excluída com sucesso.'
-            title='Excluída com sucesso!'
+            text="A Notícia foi excluída com sucesso."
+            title="Excluída com sucesso!"
           />
 
           <ThemeProvider theme={theme}>
-            <TableContainer sx={{ fontFamily: 'Montserrat', fontSize: '14px' }} variant='outlined'>
-              <Table size='small'>
+            <TableContainer
+              sx={{ fontFamily: 'Montserrat', fontSize: '14px' }}
+              variant="outlined"
+            >
+              <Table size="small">
                 <TableHead>
                   <TableRow>
                     <TableCell
                       sx={{
                         color: 'var(--main-font-color)',
                         fontSize: 'var(--main-font-size)',
-                        fontWeight: 'var(--bold-font-weight)'
+                        fontWeight: 'var(--bold-font-weight)',
                       }}
                       style={{ width: '20rem' }}
-                    >Título da Notícia</TableCell>
+                    >
+                      Título da Notícia
+                    </TableCell>
 
                     <TableCell
                       sx={{
                         color: 'var(--main-font-color)',
                         fontSize: 'var(--main-font-size)',
-                        fontWeight: 'var(--bold-font-weight)'
+                        fontWeight: 'var(--bold-font-weight)',
                       }}
                       style={{ width: '8.5rem' }}
-                    >Data de criação</TableCell>
+                    >
+                      Data de criação
+                    </TableCell>
 
                     <TableCell
                       sx={{
                         color: 'var(--main-font-color)',
                         fontSize: 'var(--main-font-size)',
-                        fontWeight: 'var(--bold-font-weight)'
+                        fontWeight: 'var(--bold-font-weight)',
                       }}
                       style={{ width: '12rem' }}
-                    >Resumo da Notícia</TableCell>
+                    >
+                      Resumo da Notícia
+                    </TableCell>
 
                     <TableCell
                       sx={{
                         color: 'var(--main-font-color)',
                         fontSize: 'var(--main-font-size)',
-                        fontWeight: 'var(--bold-font-weight)'
+                        fontWeight: 'var(--bold-font-weight)',
                       }}
                       style={{ width: '9rem' }}
-                      align='right'
-                    >Actions</TableCell>
+                      align="right"
+                    >
+                      Actions
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {!!orderedNews.length ? (
-                    rowsPerPage > 0
-                      ? orderedNews.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    (rowsPerPage > 0
+                      ? orderedNews.slice(
+                          page * rowsPerPage,
+                          page * rowsPerPage + rowsPerPage
+                        )
                       : orderedNews
-                  ).map(news => (
-                    <TableRow key={news._id}>
-                      <TableCell
-                        sx={{
-                          color: 'var(--main-font-color)',
-                          fontSize: 'var(--main-font-size)',
-                          fontWeight: 'var(--main-font-weight)'
-                        }}
-                      >
-                        {news.title.length > 40
-                          ? `${news.title.substring(0, 40)} ...`
-                          : news.title
-                        }
-                      </TableCell>
+                    ).map((news) => (
+                      <TableRow key={news._id}>
+                        <TableCell
+                          sx={{
+                            color: 'var(--main-font-color)',
+                            fontSize: 'var(--main-font-size)',
+                            fontWeight: 'var(--main-font-weight)',
+                          }}
+                        >
+                          {news.title.length > 40
+                            ? `${news.title.substring(0, 40)} ...`
+                            : news.title}
+                        </TableCell>
 
-                      <TableCell
-                        sx={{
-                          color: 'var(--main-font-color)',
-                          fontSize: 'var(--main-font-size)',
-                          fontWeight: 'var(--main-font-weight)'
-                        }}
-                      >
-                        <FormattedDate date={news.createdAt} />
-                      </TableCell>
+                        <TableCell
+                          sx={{
+                            color: 'var(--main-font-color)',
+                            fontSize: 'var(--main-font-size)',
+                            fontWeight: 'var(--main-font-weight)',
+                          }}
+                        >
+                          <FormattedDate date={news.createdAt} />
+                        </TableCell>
 
-                      <TableCell
-                        sx={{
-                          color: 'var(--main-font-color)',
-                          fontSize: 'var(--main-font-size)',
-                          fontWeight: 'var(--main-font-weight)'
-                        }}
-                      >
-                        {news.content.length > 25
-                          ? `${news.content.substring(0, 25)} ...`
-                          : news.content
-                        }
-                      </TableCell>
+                        <TableCell
+                          sx={{
+                            color: 'var(--main-font-color)',
+                            fontSize: 'var(--main-font-size)',
+                            fontWeight: 'var(--main-font-weight)',
+                          }}
+                        >
+                          {news.content.length > 25
+                            ? `${news.content.substring(0, 25)} ...`
+                            : news.content}
+                        </TableCell>
 
-                      <TableCell
-                        sx={{
-                          color: 'var(--main-font-color)',
-                          fontSize: 'var(--main-font-size)',
-                          fontWeight: 'var(--main-font-weight)'
-                        }}
-                        align='right'>
-
-                        <Input style={{ display: 'inline-block', padding: 0, '--outline-color': '#fff' }}>
-                          <button
+                        <TableCell
+                          sx={{
+                            color: 'var(--main-font-color)',
+                            fontSize: 'var(--main-font-size)',
+                            fontWeight: 'var(--main-font-weight)',
+                          }}
+                          align="right"
+                        >
+                          <Input
                             style={{
+                              display: 'inline-block',
                               padding: 0,
-                              marginLeft: '0.5rem',
-                              background: 'none',
-                              border: 'none',
-                              color: '#146F12',
-                              fontWeight: 'var(--main-font-weight)'
+                              '--outline-color': '#fff',
                             }}
-                            className={styles.editBtn}
-                            onClick={() => navigate(`/dashboard/news/edit/${news._id}`)}
-                            disabled={deleteStatus === 'pending'}
                           >
-                            Edit
-                          </button>
-                        </Input>
+                            <button
+                              style={{
+                                padding: 0,
+                                marginLeft: '0.5rem',
+                                background: 'none',
+                                border: 'none',
+                                color: '#146F12',
+                                fontWeight: 'var(--main-font-weight)',
+                              }}
+                              className={styles.editBtn}
+                              onClick={() =>
+                                navigate(`/dashboard/news/edit/${news._id}`)
+                              }
+                              disabled={deleteStatus === 'pending'}
+                            >
+                              Edit
+                            </button>
+                          </Input>
 
-                        <Input style={{ display: 'inline-block', padding: 0, '--outline-color': '#fff' }}>
-                          <button
+                          <Input
                             style={{
+                              display: 'inline-block',
                               padding: 0,
-                              marginLeft: '0.5rem',
-                              background: 'none',
-                              border: 'none',
-                              color: 'rgb(252, 88, 50)',
-                              fontWeight: 'var(--main-font-weight)'
+                              '--outline-color': '#fff',
                             }}
-                            className={styles.deleteBtn}
-                            onClick={() => { setOpenModal(true); setSelectedId(news._id) }}
-                            disabled={!canDelete || deleteStatus === 'pending'}
                           >
-                            {selectedNews === news._id && deleteStatus === 'pending'
-                              ? 'Deleting...'
-                              : 'Delete'
-                            }
-                          </button>
-                        </Input>
-                      </TableCell>
-                    </TableRow>
-                  )) : (
+                            <button
+                              style={{
+                                padding: 0,
+                                marginLeft: '0.5rem',
+                                background: 'none',
+                                border: 'none',
+                                color: 'rgb(252, 88, 50)',
+                                fontWeight: 'var(--main-font-weight)',
+                              }}
+                              className={styles.deleteBtn}
+                              onClick={() => {
+                                setOpenModal(true)
+                                setSelectedId(news._id)
+                              }}
+                              disabled={
+                                !canDelete || deleteStatus === 'pending'
+                              }
+                            >
+                              {selectedNews === news._id &&
+                              deleteStatus === 'pending'
+                                ? 'Deleting...'
+                                : 'Delete'}
+                            </button>
+                          </Input>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
                     <TableRow>
-                      <TableCell rowSpan={5}>
-                        No News to show
-                      </TableCell>
+                      <TableCell rowSpan={5}>No News to show</TableCell>
                     </TableRow>
                   )}
 
@@ -317,10 +348,20 @@ const NewsTable = () => {
                 </TableBody>
 
                 <TableFooter>
-                  <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableRow
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
                     <TableCell style={{ paddingLeft: 10 }}>
-                      <Input style={{ paddingTop: '0.8rem', paddingLeft: 0, display: 'inline-block' }}>
-                        <button className={styles.addbtn} onClick={() => navigate('/dashboard/news/create')}
+                      <Input
+                        style={{
+                          paddingTop: '0.8rem',
+                          paddingLeft: 0,
+                          display: 'inline-block',
+                        }}
+                      >
+                        <button
+                          className={styles.addbtn}
+                          onClick={() => navigate('/dashboard/news/create')}
                           disabled={deleteStatus === 'pending'}
                         >
                           Adicionar Notícia
@@ -334,7 +375,9 @@ const NewsTable = () => {
                       count={orderedNews.length}
                       rowsPerPage={rowsPerPage}
                       page={page}
-                      SelectProps={{ inputProps: { 'aria-label': 'rows per page' } }}
+                      SelectProps={{
+                        inputProps: { 'aria-label': 'rows per page' },
+                      }}
                       onPageChange={handleChangePage}
                       onRowsPerPageChange={handleChangeRowsPerPage}
                       ActionsComponent={TablePaginationActions}
@@ -345,8 +388,6 @@ const NewsTable = () => {
             </TableContainer>
           </ThemeProvider>
         </Fieldset>
-
-
       </div>
     </div>
   )
@@ -379,86 +420,86 @@ const TablePaginationActions = (props) => {
       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
-        aria-label='first page'
+        aria-label="first page"
       >
-        {theme.direction === 'rtl' ?
+        {theme.direction === 'rtl' ? (
           <LastPageIcon
             style={{
               fontSize: 'var(--main-font-size)',
               color: 'var(--main-font-color)',
             }}
           />
-          :
+        ) : (
           <FirstPageIcon
             style={{
               fontSize: 'var(--main-font-size)',
               color: 'var(--main-font-color)',
             }}
           />
-        }
+        )}
       </IconButton>
       <IconButton
         onClick={handleBackButtonClick}
         disabled={page === 0}
-        aria-label='previous page'
+        aria-label="previous page"
       >
-        {theme.direction === 'rtl' ?
+        {theme.direction === 'rtl' ? (
           <KeyboardArrowRight
             style={{
               fontSize: 'var(--main-font-size)',
               color: 'var(--main-font-color)',
             }}
           />
-          :
+        ) : (
           <KeyboardArrowLeft
             style={{
               fontSize: 'var(--main-font-size)',
               color: 'var(--main-font-color)',
             }}
           />
-        }
+        )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label='next page'
+        aria-label="next page"
       >
-        {theme.direction === 'rtl' ?
+        {theme.direction === 'rtl' ? (
           <KeyboardArrowLeft
             style={{
               fontSize: 'var(--main-font-size)',
               color: 'var(--main-font-color)',
             }}
           />
-          :
+        ) : (
           <KeyboardArrowRight
             style={{
               fontSize: 'var(--main-font-size)',
               color: 'var(--main-font-color)',
             }}
           />
-        }
+        )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label='last page'
+        aria-label="last page"
       >
-        {theme.direction === 'rtl' ?
+        {theme.direction === 'rtl' ? (
           <FirstPageIcon
             style={{
               fontSize: 'var(--main-font-size)',
               color: 'var(--main-font-color)',
             }}
           />
-          :
+        ) : (
           <LastPageIcon
             style={{
               fontSize: 'var(--main-font-size)',
               color: 'var(--main-font-color)',
             }}
           />
-        }
+        )}
       </IconButton>
     </Box>
   )
