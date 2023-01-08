@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
 import { Input } from '../../components/input/Input'
+import { Notification } from '../../components/notification/Notification'
 import { Row } from '../../components/row/Row'
 import { createBiostatisticsConsultation } from '../../features/biostatistics-consultations/biostatisticsConsultationsSlice'
 
@@ -14,6 +15,7 @@ export function ConsultasBioestatiscas() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       name: '',
@@ -29,6 +31,7 @@ export function ConsultasBioestatiscas() {
     },
   })
   const [status, setStatus] = useState('idle')
+  const [openNotification, setOpenNotification] = useState(false)
 
   const topicos = [
     'Cálculo de amostra',
@@ -47,6 +50,7 @@ export function ConsultasBioestatiscas() {
     try {
       setStatus('pending')
       await dispatch(createBiostatisticsConsultation(data)).unwrap()
+      // reset()
     } catch (error) {
       console.log(error)
     } finally {
@@ -57,6 +61,13 @@ export function ConsultasBioestatiscas() {
   return (
     <div style={{ paddingTop: '9.5rem' }}>
       <div className="row">
+        <Notification
+          visible={openNotification}
+          setVisible={setOpenNotification}
+          text="Consulta marcada com sucesso! Um email foi enviado para si com os detalhes da consulta."
+          title="Consulta marcada com sucesso!"
+        />
+
         <p
           style={{
             fontSize: '0.92rem',
