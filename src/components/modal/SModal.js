@@ -1,5 +1,5 @@
 import { Column } from '../column/Column'
-import { DialogOverlay } from '../dialog_overlay/DialogOverlay'
+import { SDialogOverlay } from '../dialog_overlay/SDialogOverlay'
 import { WarnIcon } from '../icons/icons'
 import { Input } from '../input/Input'
 import { Row } from '../row/Row'
@@ -7,7 +7,7 @@ import { Section } from '../section/Section'
 
 export function SModal({ visible, setVisible, title, text, ...props }) {
   return (
-    <DialogOverlay {...props} visible={visible} setVisible={setVisible} center>
+    <SDialogOverlay {...props} visible={visible} setVisible={setVisible} center>
       <Section
         style={{
           borderRadius: 'var(--border-radius-large)',
@@ -76,6 +76,6 @@ export function SModal({ visible, setVisible, title, text, ...props }) {
           </Column>
         </Row>
       </Section>
-    </DialogOverlay>
+    </SDialogOverlay>
   )
 }
