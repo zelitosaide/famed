@@ -20,7 +20,12 @@ const CreateNews = () => {
   const [status, setStatus] = useState('idle')
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       title: '',
       content: '',
@@ -29,15 +34,18 @@ const CreateNews = () => {
       department: '',
       flags: {
         home: false,
-        published: true
-      }
-    }
+        published: true,
+      },
+    },
   })
 
-  const departments = useSelector(state => state.departments.departments).map(d => d.name)
+  const departments = useSelector((state) => state.departments.departments).map(
+    (d) => d.name
+  )
 
   const currentUser = JSON.parse(localStorage.getItem('famedv1_user'))
-  const canCreate = currentUser.user.roles.normal || currentUser.user.roles.admin
+  const canCreate =
+    currentUser.user.roles.normal || currentUser.user.roles.admin
 
   const onSubmit = async (data) => {
     try {
@@ -51,14 +59,21 @@ const CreateNews = () => {
         const base64PDF = await convert2base64(data.pdf[0])
         const pdfName = data.pdf[0].name
         const pdf = { pdfName, base64PDF }
-        await dispatch(createNews({ ...data, image, pdf, userId: currentUser.user._id })).unwrap()
+        await dispatch(
+          createNews({ ...data, image, pdf, userId: currentUser.user._id })
+        ).unwrap()
       } else {
-        await dispatch(createNews({
-          ...data, image, pdf: {
-            pdfName: '',
-            base64PDF: ''
-          }, userId: currentUser.user._id
-        })).unwrap()
+        await dispatch(
+          createNews({
+            ...data,
+            image,
+            pdf: {
+              pdfName: '',
+              base64PDF: '',
+            },
+            userId: currentUser.user._id,
+          })
+        ).unwrap()
       }
       openAndAutoClose()
       reset()
@@ -84,77 +99,128 @@ const CreateNews = () => {
           <Notification
             visible={openNotification}
             setVisible={setOpenNotification}
-            text='Notícia criada com sucesso!'
-            title='Salvo com sucesso!'
+            text="Notícia criada com sucesso!"
+            title="Salvo com sucesso!"
           />
 
           <Notification
             visible={openErrorNotification}
             setVisible={setOpenErrorNotification}
             text={errorMessage}
-            title='Erro de cadastro'
-            type='Error'
+            title="Erro de cadastro"
+            type="Error"
           />
 
           <Row>
             <Column style={{ width: '50%' }}>
-              <Fieldset legend='Criar nova Notícia' style={{ minHeight: '26rem' }}>
-                <Input label='Título da Notícia' required error={errors.title?.message}>
-                  <input type='text' id='Título da Notícia' disabled={!canCreate}
-                    {...register('title', { required: 'This field is riquired' })}
+              <Fieldset
+                legend="Criar nova Notícia"
+                style={{ minHeight: '26rem' }}
+              >
+                <Input
+                  label="Título da Notícia"
+                  required
+                  error={errors.title?.message}
+                >
+                  <input
+                    type="text"
+                    id="Título da Notícia"
+                    disabled={!canCreate}
+                    {...register('title', {
+                      required: 'This field is riquired',
+                    })}
                   />
                 </Input>
 
-                <Input label='Resumo da Notícia' required error={errors.content?.message}>
-                  <textarea id='Resumo da Notícia' disabled={!canCreate}
-                    {...register('content', { required: 'This field is riquired' })}
+                <Input
+                  label="Resumo da Notícia"
+                  required
+                  error={errors.content?.message}
+                >
+                  <textarea
+                    id="Resumo da Notícia"
+                    disabled={!canCreate}
+                    {...register('content', {
+                      required: 'This field is riquired',
+                    })}
                   />
                 </Input>
 
                 <Row>
                   <Column style={{ width: '50%' }}>
-                    <Input label='Departamento' required error={errors.department?.message}>
-                      <select id='Departamento' disabled={!canCreate}
-                        {...register('department', { required: 'This field is riquired' })}
+                    <Input
+                      label="Departamento"
+                      required
+                      error={errors.department?.message}
+                    >
+                      <select
+                        id="Departamento"
+                        disabled={!canCreate}
+                        {...register('department', {
+                          required: 'This field is riquired',
+                        })}
                       >
                         {departments.map((value, index) => (
-                          <option key={index} value={value}>{value}</option>
+                          <option key={index} value={value}>
+                            {value}
+                          </option>
                         ))}
                       </select>
                     </Input>
                   </Column>
                   <Column style={{ width: '50%' }}>
-                    <Input label='Image da Notícia' required error={errors.image?.message}>
-                      <input type='file' id='Image da Notícia' disabled={!canCreate}
+                    <Input
+                      label="Image da Notícia"
+                      required
+                      error={errors.image?.message}
+                    >
+                      <input
+                        type="file"
+                        id="Image da Notícia"
+                        disabled={!canCreate}
                         {...register('image', {
                           required: 'This field is riquired',
                           validate: (value) => {
                             if (!!value) {
-                              const allowedExtensions = /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
-                              return !!allowedExtensions.exec(value[0]?.name) || 'Invalid file type'
+                              const allowedExtensions =
+                                /\.jpg|\.jpeg|\.png|\.gif|\.webp$/i
+                              return (
+                                !!allowedExtensions.exec(value[0]?.name) ||
+                                'Invalid file type'
+                              )
                             }
-                          }
+                          },
                         })}
                       />
                     </Input>
                   </Column>
                 </Row>
 
-                <Input label='PDF' error={errors.pdf?.message}>
-                  <input type='file' id='PDF' disabled={!canCreate}
+                <Input label="PDF" error={errors.pdf?.message}>
+                  <input
+                    type="file"
+                    id="PDF"
+                    disabled={!canCreate}
                     {...register('pdf', {
                       validate: (value) => {
                         if (!!value) {
-                          const allowedExtensions = /\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd$/i
-                          return !!allowedExtensions.exec(value[0].name) || 'Invalid file type'
+                          const allowedExtensions =
+                            /\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd$/i
+                          return (
+                            !!allowedExtensions.exec(value[0].name) ||
+                            'Invalid file type'
+                          )
                         }
-                      }
+                      },
                     })}
                   />
                 </Input>
 
                 <Input style={{ display: 'inline-block' }}>
-                  <button type='submit' disabled={status === 'pending' || !canCreate}>
+                  <button
+                    type="submit"
+                    disabled={status === 'pending' || !canCreate}
+                  >
                     {status === 'pending' ? 'Salvando...' : 'Salvar'}
                   </button>
                 </Input>
@@ -168,7 +234,9 @@ const CreateNews = () => {
                     '--outline-color': 'rgb(253, 152, 129)',
                   }}
                 >
-                  <button type='button' disabled={status === 'pending'}
+                  <button
+                    type="button"
+                    disabled={status === 'pending'}
                     onClick={() => navigate(-1, { replace: true })}
                   >
                     Cancelar
@@ -179,7 +247,7 @@ const CreateNews = () => {
           </Row>
         </form>
       </div>
-    </div >
+    </div>
   )
 }
 
