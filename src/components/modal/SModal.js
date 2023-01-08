@@ -1,5 +1,5 @@
 import { SDialogOverlay } from '../dialog_overlay/SDialogOverlay'
-import { WarnIcon } from '../icons/icons'
+import { Check, WarnIcon } from '../icons/icons'
 import { Input } from '../input/Input'
 import { Section } from '../section/Section'
 
@@ -24,14 +24,22 @@ export function SModal({ visible, setVisible, title, text, ...props }) {
             style={{
               width: '2rem',
               height: '2rem',
-              background: 'rgb(255, 234, 230)',
+              background: props.error
+                ? 'rgb(255, 234, 230)'
+                : 'var(--pale-bg-color)',
               borderRadius: '1rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
-            <WarnIcon style={{ width: '1.4rem', color: 'rgb(252, 70, 29)' }} />
+            {props.error ? (
+              <WarnIcon
+                style={{ width: '1.4rem', color: 'rgb(252, 70, 29)' }}
+              />
+            ) : (
+              <Check style={{ width: '1.4rem', color: 'rgb(27, 154, 25)' }} />
+            )}
           </div>
         </div>
 
