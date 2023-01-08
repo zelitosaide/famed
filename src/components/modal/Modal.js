@@ -1,14 +1,27 @@
-import { Column } from "../column/Column"
-import { DialogOverlay } from "../dialog_overlay/DialogOverlay"
-import { WarnIcon } from "../icons/icons"
-import { Input } from "../input/Input"
-import { Row } from "../row/Row"
-import { Section } from "../section/Section"
+import { Column } from '../column/Column'
+import { DialogOverlay } from '../dialog_overlay/DialogOverlay'
+import { WarnIcon } from '../icons/icons'
+import { Input } from '../input/Input'
+import { Row } from '../row/Row'
+import { Section } from '../section/Section'
 
-export const Modal = ({ visible, setVisible, handleRemove, type, text, title, ...props }) => {
+export const Modal = ({
+  visible,
+  setVisible,
+  handleRemove,
+  type,
+  text,
+  title,
+  ...props
+}) => {
   return (
     <DialogOverlay {...props} visible={visible} setVisible={setVisible}>
-      <Section style={{ borderRadius: 'var(--border-radius-large)', background: '#fff' }}>
+      <Section
+        style={{
+          borderRadius: 'var(--border-radius-large)',
+          background: '#fff',
+        }}
+      >
         <Row>
           <Column style={{ width: '2rem', height: '2rem' }}>
             <div
@@ -19,10 +32,12 @@ export const Modal = ({ visible, setVisible, handleRemove, type, text, title, ..
                 borderRadius: '1rem',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
               }}
             >
-              <WarnIcon style={{ width: '1.4rem', color: 'rgb(252, 70, 29)' }} />
+              <WarnIcon
+                style={{ width: '1.4rem', color: 'rgb(252, 70, 29)' }}
+              />
             </div>
           </Column>
           <Column style={{ width: 'calc(100% - 2rem)' }}>
@@ -32,13 +47,19 @@ export const Modal = ({ visible, setVisible, handleRemove, type, text, title, ..
                   margin: 0,
                   fontWeight: 'var(--bold-font-weight)',
                   fontSize: '.9rem',
-                  color: 'var(--main-font-color)'
+                  color: 'var(--main-font-color)',
                 }}
               >
                 {title}
               </h3>
 
-              <p style={{ color: 'var(--main-font-color)', fontSize: 'var(--main-font-size)', lineHeight: 1.5 }}>
+              <p
+                style={{
+                  color: 'var(--main-font-color)',
+                  fontSize: 'var(--main-font-size)',
+                  lineHeight: 1.5,
+                }}
+              >
                 {text}
               </p>
 
