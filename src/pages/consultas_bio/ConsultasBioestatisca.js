@@ -80,6 +80,14 @@ export function ConsultasBioestatiscas() {
           title="Consulta marcada com sucesso!"
         />
 
+        <Notification
+          visible={openErrorNotification}
+          setVisible={setOpenErrorNotification}
+          text={errorMessage}
+          title="Erro na Marcação da Consulta"
+          type="Error"
+        />
+
         <p
           style={{
             fontSize: '0.92rem',
