@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -21,8 +22,13 @@ export function ConsultasBioestatiscas() {
       date: '',
       title: '',
       description: '',
+      flags: {
+        complete: false,
+        heAttended: false,
+      },
     },
   })
+  const [status, setStatus] = useState('idle')
 
   const topicos = [
     'Cálculo de amostra',
@@ -39,10 +45,12 @@ export function ConsultasBioestatiscas() {
 
   const onSubmit = async (data) => {
     try {
+      setStatus('pending')
       await dispatch(createBiostatisticsConsultation(data)).unwrap()
     } catch (error) {
       console.log(error)
     } finally {
+      setStatus('idle')
     }
   }
 
@@ -170,7 +178,9 @@ export function ConsultasBioestatiscas() {
               />
             </Input>
             <Input style={{ display: 'inline-block' }}>
-              <button type="submit">Marcar</button>
+              <button type="submit" disabled={status === 'pending'}>
+                {status === 'pending' ? 'Marcando...' : 'Marcar'}
+              </button>
             </Input>
             <Input
               style={{
