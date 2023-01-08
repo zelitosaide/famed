@@ -14,24 +14,45 @@ export function SModal({ visible, setVisible, title, text, ...props }) {
           background: '#fff',
         }}
       >
-        <Row>
-          <Column style={{ width: '2rem', height: '2rem' }}>
-            <div
-              style={{
-                width: '2rem',
-                height: '2rem',
-                background: 'rgb(255, 234, 230)',
-                borderRadius: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <WarnIcon
-                style={{ width: '1.4rem', color: 'rgb(252, 70, 29)' }}
-              />
-            </div>
-          </Column>
+        <div
+          style={{
+            paddingTop: 5,
+            paddingBottom: 5,
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            style={{
+              width: '2rem',
+              height: '2rem',
+              background: 'rgb(255, 234, 230)',
+              borderRadius: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <WarnIcon style={{ width: '1.4rem', color: 'rgb(252, 70, 29)' }} />
+          </div>
+        </div>
+
+        <div style={{ paddingTop: 10 }}>
+          <h3
+            style={{
+              margin: 0,
+              fontWeight: 'var(--bold-font-weight)',
+              fontSize: '.9rem',
+              color: 'var(--main-font-color)',
+              textAlign: 'center',
+            }}
+          >
+            {title}
+          </h3>
+        </div>
+
+        {/* <Row>
+         
           <Column style={{ width: 'calc(100% - 2rem)' }}>
             <div style={{ paddingLeft: '1rem' }}>
               <h3
@@ -65,7 +86,6 @@ export function SModal({ visible, setVisible, title, text, ...props }) {
                   '--outline-color': 'rgb(253, 152, 129)',
                 }}
               >
-                {/* <button onClick={handleRemove}>Remover</button> */}
                 <button onClick={function () {}}>Remover</button>
               </Input>
 
@@ -74,7 +94,7 @@ export function SModal({ visible, setVisible, title, text, ...props }) {
               </Input>
             </div>
           </Column>
-        </Row>
+        </Row> */}
       </Section>
     </SDialogOverlay>
   )

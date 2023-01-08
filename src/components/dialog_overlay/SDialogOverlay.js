@@ -1,6 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { TimesIcon } from '../icons/icons'
-import { Input } from '../input/Input'
 
 export const SDialogOverlay = ({
   children,
@@ -58,7 +56,7 @@ const dialogOverlay = {
 const dialogContent = {
   position: 'relative',
   background: 'white',
-  width: '28rem',
+  width: '24rem',
   borderRadius: 'var(--border-radius-large)',
   minHeight: '10rem',
 }
