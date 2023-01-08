@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
 import { Input } from '../../components/input/Input'
+import { Modal } from '../../components/modal/Modal'
 import { Notification } from '../../components/notification/Notification'
 import { Row } from '../../components/row/Row'
 import { createBiostatisticsConsultation } from '../../features/biostatistics-consultations/biostatisticsConsultationsSlice'
@@ -73,12 +74,24 @@ export function ConsultasBioestatiscas() {
   return (
     <div style={{ paddingTop: '9.5rem' }}>
       <div className="row">
-        <Notification
+        <Modal
+          visible={openNotification}
+          setVisible={function () {
+            setOpenNotification(false)
+          }}
+          handleRemove={function () {
+            setOpenNotification(false)
+          }}
+          title="Consulta marcada com sucesso!"
+          text="Um email foi enviado para si com os detalhes da consulta."
+        />
+
+        {/* <Notification
           visible={openNotification}
           setVisible={setOpenNotification}
           text="Um email foi enviado para si com os detalhes da consulta."
           title="Consulta marcada com sucesso!"
-        />
+        /> */}
 
         <Notification
           visible={openErrorNotification}
