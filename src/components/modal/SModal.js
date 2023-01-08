@@ -5,7 +5,7 @@ import { Section } from '../section/Section'
 
 export function SModal({ visible, setVisible, title, text, ...props }) {
   return (
-    <SDialogOverlay {...props} visible={visible} setVisible={setVisible} center>
+    <SDialogOverlay {...props} visible={visible} center>
       <Section
         style={{
           borderRadius: 'var(--border-radius-large)',
