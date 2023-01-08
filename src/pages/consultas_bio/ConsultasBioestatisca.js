@@ -7,6 +7,7 @@ import { Column } from '../../components/column/Column'
 import { Fieldset } from '../../components/fieldset/Fieldset'
 import { Input } from '../../components/input/Input'
 import { Modal } from '../../components/modal/Modal'
+import { SModal } from '../../components/modal/SModal'
 import { Notification } from '../../components/notification/Notification'
 import { Row } from '../../components/row/Row'
 import { createBiostatisticsConsultation } from '../../features/biostatistics-consultations/biostatisticsConsultationsSlice'
@@ -67,14 +68,14 @@ export function ConsultasBioestatiscas() {
   const openAndAutoClose = () => {
     setOpenNotification(true)
     setTimeout(() => {
-      setOpenNotification(false)
+      // setOpenNotification(false)
     }, 14000)
   }
 
   return (
     <div style={{ paddingTop: '9.5rem' }}>
       <div className="row">
-        <Modal
+        {/* <Modal
           visible={openNotification}
           setVisible={function () {
             setOpenNotification(false)
@@ -84,14 +85,16 @@ export function ConsultasBioestatiscas() {
           }}
           title="Consulta marcada com sucesso!"
           text="Um email foi enviado para si com os detalhes da consulta."
-        />
-
-        {/* <Notification
-          visible={openNotification}
-          setVisible={setOpenNotification}
-          text="Um email foi enviado para si com os detalhes da consulta."
-          title="Consulta marcada com sucesso!"
         /> */}
+
+        <SModal
+          visible={openNotification}
+          setVisible={function () {
+            setOpenNotification(false)
+          }}
+          title="Consulta marcada com sucesso!"
+          text="Um email foi enviado para si com os detalhes da consulta."
+        />
 
         <Notification
           visible={openErrorNotification}

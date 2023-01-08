@@ -2,7 +2,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { TimesIcon } from '../icons/icons'
 import { Input } from '../input/Input'
 
-export const DialogOverlay = ({ children, visible, setVisible, backdrop, ...props }) => {
+export const DialogOverlay = ({
+  children,
+  visible,
+  setVisible,
+  backdrop,
+  ...props
+}) => {
   return (
     <AnimatePresence>
       {visible && (
@@ -14,7 +20,7 @@ export const DialogOverlay = ({ children, visible, setVisible, backdrop, ...prop
           exit={{ opacity: 0 }}
         >
           <motion.div
-            style={{ marginLeft: !!props.center ? 0 : '13rem' }} 
+            style={{ marginLeft: !!props.center ? 0 : '13rem' }}
             initial={{ y: -10 }}
             animate={{ y: 0 }}
             exit={{ y: 10 }}
@@ -22,7 +28,11 @@ export const DialogOverlay = ({ children, visible, setVisible, backdrop, ...prop
           >
             <div
               {...props}
-              style={{ ...dialogContent, ...props.style }}
+              style={{
+                ...dialogContent,
+                ...props.style,
+                margin: !!props.center ? '160px auto 0' : '100px auto 0',
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               <Input
@@ -39,12 +49,12 @@ export const DialogOverlay = ({ children, visible, setVisible, backdrop, ...prop
                 }}
               >
                 <button
-                  type='button'
+                  type="button"
                   style={{
                     padding: 1,
                     width: '1.4rem',
                     height: '1.4rem',
-                    color: 'var(--main-stroke-svg-color)'
+                    color: 'var(--main-stroke-svg-color)',
                   }}
                   onClick={setVisible}
                 >
@@ -75,7 +85,7 @@ const dialogContent = {
   position: 'relative',
   background: 'white',
   width: '28rem',
-  margin: '100px auto 0',
+  // margin: '100px auto 0',
   borderRadius: 'var(--border-radius-large)',
   minHeight: '10rem',
 }
