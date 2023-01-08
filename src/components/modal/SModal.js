@@ -1,8 +1,6 @@
-import { Column } from '../column/Column'
 import { SDialogOverlay } from '../dialog_overlay/SDialogOverlay'
 import { WarnIcon } from '../icons/icons'
 import { Input } from '../input/Input'
-import { Row } from '../row/Row'
 import { Section } from '../section/Section'
 
 export function SModal({ visible, setVisible, title, text, ...props }) {
@@ -51,50 +49,26 @@ export function SModal({ visible, setVisible, title, text, ...props }) {
           </h3>
         </div>
 
-        {/* <Row>
-         
-          <Column style={{ width: 'calc(100% - 2rem)' }}>
-            <div style={{ paddingLeft: '1rem' }}>
-              <h3
-                style={{
-                  margin: 0,
-                  fontWeight: 'var(--bold-font-weight)',
-                  fontSize: '.9rem',
-                  color: 'var(--main-font-color)',
-                }}
-              >
-                {title}
-              </h3>
+        <div>
+          <p
+            style={{
+              color: 'var(--main-font-color)',
+              fontSize: 'var(--main-font-size)',
+              lineHeight: 1.5,
+              textAlign: 'center',
+            }}
+          >
+            {text}
+          </p>
+        </div>
 
-              <p
-                style={{
-                  color: 'var(--main-font-color)',
-                  fontSize: 'var(--main-font-size)',
-                  lineHeight: 1.5,
-                }}
-              >
-                {text}
-              </p>
-
-              <Input
-                style={{
-                  paddingLeft: 0,
-                  display: 'inline-block',
-                  '--bg-color': 'rgb(252, 88, 50)',
-                  '--bg-hover': 'rgb(252, 70, 29)',
-                  '--bg-active': 'rgb(252, 88, 50)',
-                  '--outline-color': 'rgb(253, 152, 129)',
-                }}
-              >
-                <button onClick={function () {}}>Remover</button>
-              </Input>
-
-              <Input style={{ display: 'inline-block' }}>
-                <button onClick={setVisible}>Cancel</button>
-              </Input>
-            </div>
-          </Column>
-        </Row> */}
+        <div>
+          <Input>
+            <button style={{ width: '100%' }} onClick={setVisible}>
+              Fechar
+            </button>
+          </Input>
+        </div>
       </Section>
     </SDialogOverlay>
   )

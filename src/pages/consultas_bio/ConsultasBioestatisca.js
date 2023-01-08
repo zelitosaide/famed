@@ -240,6 +240,7 @@ export function ConsultasBioestatiscas() {
             >
               <button
                 type="button"
+                disabled={status === 'pending'}
                 onClick={function () {
                   navigate('/')
                 }}
