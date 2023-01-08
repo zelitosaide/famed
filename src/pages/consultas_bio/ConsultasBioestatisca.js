@@ -54,7 +54,7 @@ export function ConsultasBioestatiscas() {
       setOpenErrorNotification(false)
       await dispatch(createBiostatisticsConsultation(data)).unwrap()
       openAndAutoClose()
-      // reset()
+      reset()
     } catch (error) {
       setErrorMessage(error.message)
       setOpenErrorNotification(true)
@@ -76,7 +76,7 @@ export function ConsultasBioestatiscas() {
         <Notification
           visible={openNotification}
           setVisible={setOpenNotification}
-          text="Consulta marcada com sucesso! Um email foi enviado para si com os detalhes da consulta."
+          text="Um email foi enviado para si com os detalhes da consulta."
           title="Consulta marcada com sucesso!"
         />
 
