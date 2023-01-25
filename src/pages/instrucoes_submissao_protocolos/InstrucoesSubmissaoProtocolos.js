@@ -45,6 +45,15 @@ export function InstrucoesSubmissaoProtocolos() {
           <a href="https://www.cibs.uem.mz"> https://www.cibs.uem.mz</a> devendo
           para o efeito registar-se.
         </p>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Em anexo encontre o Manual com as instruções do uso da plataforma.
+        </p>
       </div>
     </div>
   )
