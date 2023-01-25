@@ -71,7 +71,7 @@ export const navlinks = [
       },
       {
         name: 'Instruções de Submissão de Protocolos',
-        to: '/departments/fisiologicas',
+        to: '/instrucoes-submissao-protocolos',
       },
     ],
   },
