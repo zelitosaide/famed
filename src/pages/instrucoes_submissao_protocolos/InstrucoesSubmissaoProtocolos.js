@@ -1,4 +1,18 @@
 export function InstrucoesSubmissaoProtocolos() {
+  const onDownload = () => {
+    // using Java Script method to get PDF file
+    fetch('SamplePDF.pdf').then((response) => {
+      response.blob().then((blob) => {
+        // Creating new object of PDF file
+        const fileURL = window.URL.createObjectURL(blob) // Setting various property values
+        let alink = document.createElement('a')
+        alink.href = fileURL
+        alink.download = 'SamplePDF.pdf'
+        alink.click()
+      })
+    })
+  }
+
   return (
     <div style={{ paddingTop: '9.5rem' }}>
       <div className="row">
@@ -53,7 +67,7 @@ export function InstrucoesSubmissaoProtocolos() {
           }}
         >
           Encontre o Manual com as instruções do uso da plataforma neste link:{' '}
-          <button>Baixar Manual de Instruções</button>
+          <button onClick={onDownload}>Baixar Manual de Instruções</button>
         </p>
       </div>
     </div>
