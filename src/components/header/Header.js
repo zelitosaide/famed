@@ -74,7 +74,9 @@ const Header = () => {
                 <MenuList className={styles.slideDown}>
                   {value.subMenu.map((v) =>
                     v.to.includes('http') ? (
-                      <MenuLink href={v.to}>{v.name}</MenuLink>
+                      <MenuLink href={v.to} target="_blank" rel="noreferrer">
+                        {v.name}
+                      </MenuLink>
                     ) : (
                       <MenuLink key={v.name} as={Link} to={v.to}>
                         {v.name}
