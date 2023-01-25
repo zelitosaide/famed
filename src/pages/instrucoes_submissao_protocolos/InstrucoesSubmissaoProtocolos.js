@@ -72,7 +72,16 @@ export function InstrucoesSubmissaoProtocolos() {
           }}
         >
           Encontre o Manual com as instruções do uso da plataforma neste link:{' '}
-          <button onClick={onDownload}>Baixar Manual de Instruções</button>
+          <span
+            style={{
+              color: 'var(--main-color)',
+              cursor: 'pointer',
+              textDecoration: 'underline',
+            }}
+            onClick={onDownload}
+          >
+            Manual de instruções.
+          </span>
         </p>
       </div>
     </div>
