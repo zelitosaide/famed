@@ -1,16 +1,33 @@
+import manual from '../../assets/pdf/Manual_Utilizador_ Plataforma_CIBS.pdf'
+
 export function InstrucoesSubmissaoProtocolos() {
   const onDownload = () => {
     // using Java Script method to get PDF file
-    fetch('SamplePDF.pdf').then((response) => {
-      response.blob().then((blob) => {
-        // Creating new object of PDF file
-        const fileURL = window.URL.createObjectURL(blob) // Setting various property values
-        let alink = document.createElement('a')
-        alink.href = fileURL
-        alink.download = 'SamplePDF.pdf'
-        alink.click()
-      })
+    fetch(manual, {
+      method: 'get',
+      mode: 'no-cors',
+      referrerPolicy: 'no-referrer',
     })
+      .then((response) => response.blob())
+      .then((data) => {
+        const aElement = document.createElement('a')
+        aElement.setAttribute('download', 'Manual de instrucoes')
+        const href = URL.createObjectURL(data)
+        aElement.href = href
+        aElement.setAttribute('target', '_blank')
+        aElement.click()
+        URL.revokeObjectURL(href)
+      })
+
+    //   response.blob().then((blob) => {
+    //     // Creating new object of PDF file
+    //     const fileURL = window.URL.createObjectURL(blob) // Setting various property values
+    //     let alink = document.createElement('a')
+    //     alink.href = fileURL
+    //     alink.download = 'Manual de instrucoes'
+    //     alink.click()
+    //   })
+    // })
   }
 
   return (
