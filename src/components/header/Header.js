@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown as caret } from '@fortawesome/free-solid-svg-icons'
@@ -73,11 +72,15 @@ const Header = () => {
                   {value.name} <FontAwesomeIcon icon={caret}></FontAwesomeIcon>
                 </MenuButton>
                 <MenuList className={styles.slideDown}>
-                  {value.subMenu.map((v) => (
-                    <MenuLink key={v.name} as={Link} to={v.to}>
-                      {v.name}
-                    </MenuLink>
-                  ))}
+                  {value.subMenu.map((v) =>
+                    v.to.includes('http') ? (
+                      <MenuLink href={v.to}>{v.name}</MenuLink>
+                    ) : (
+                      <MenuLink key={v.name} as={Link} to={v.to}>
+                        {v.name}
+                      </MenuLink>
+                    )
+                  )}
                 </MenuList>
               </Menu>
             ) : (

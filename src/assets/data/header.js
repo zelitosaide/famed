@@ -67,7 +67,7 @@ export const navlinks = [
     subMenu: [
       {
         name: 'Iniciar Submissão de Protocolos',
-        to: '/departments/morfologicas',
+        to: 'https://cibs.uem.mz',
       },
       {
         name: 'Instruções de Submissão de Protocolos',
