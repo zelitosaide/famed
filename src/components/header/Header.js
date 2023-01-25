@@ -80,11 +80,11 @@ const Header = () => {
                   ))}
                 </MenuList>
               </Menu>
-            ) : value.name === 'Submissão de Protocolos' ? (
-              <a href="https://cibs.uem.mz" target="_blank" rel="noreferrer">
-                Submissão de Protocolos
-              </a>
             ) : (
+              // ) : value.name === 'Submissão de Protocolos' ? (
+              //   <a href="https://cibs.uem.mz" target="_blank" rel="noreferrer">
+              //     Submissão de Protocolos
+              //   </a>
               <NavLink
                 className={({ isActive }) => (isActive ? styles.active : null)}
                 to={value.to}
