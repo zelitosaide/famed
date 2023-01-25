@@ -34,6 +34,17 @@ export function InstrucoesSubmissaoProtocolos() {
           introdução do uso da Plataforma Electrónica para submissão dos
           protocolos e projectos de Investigação Científica, solicita que:
         </p>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Proceda à submissão de seu(s) protocolo(s) através do site
+          <a href="https://www.cibs.uem.mz"> https://www.cibs.uem.mz</a> devendo
+          para o efeito registar-se.
+        </p>
       </div>
     </div>
   )
