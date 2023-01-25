@@ -133,6 +133,10 @@ const App = () => {
         <Route path="/" element={<SiteLayout />}>
           <Route index element={<Home />} />
           <Route path="consultas-bio" element={<ConsultasBioestatiscas />} />
+          <Route
+            path="instrucoes-submissao-protocolos"
+            element={<ConsultasBioestatiscas />}
+          />
           <Route path="projects">
             <Route index element={<ProjectList />} />
             <Route path=":projectId" element={<ProjectDetails />} />
@@ -152,7 +156,6 @@ const App = () => {
           </Route>
 
           {/* 
-          <Route path='protocols' element={<Protocols />} />
           <Route path='extension' element={<Extension />} />
           */}
 
