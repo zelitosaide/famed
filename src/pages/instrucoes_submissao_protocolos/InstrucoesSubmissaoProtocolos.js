@@ -29,7 +29,6 @@ export function InstrucoesSubmissaoProtocolos() {
             color: 'var(--main-color)',
             lineHeight: '1.2rem',
             textTransform: 'uppercase',
-            marginBottom: '2rem',
           }}
         >
           Instruções de Submissão de Protocolos
