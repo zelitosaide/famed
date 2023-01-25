@@ -249,9 +249,24 @@ const Header = () => {
                 </NavLink>
               </li> */}
               <li>
-                <a href="https://cibs.uem.mz" target="_blank" rel="noreferrer">
-                  Submissão de Protocolos
-                </a>
+                <Menu>
+                  <MenuButton>
+                    Submissão de Protocolos{' '}
+                    <FontAwesomeIcon icon={caret}></FontAwesomeIcon>
+                  </MenuButton>
+                  <MenuList className={styles.slideDown}>
+                    <MenuLink
+                      href="https://cibs.uem.mz"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Iniciar Submissão de Protocolos
+                    </MenuLink>
+                    <MenuLink as={Link} to="/instrucoes-submissao-protocolos">
+                      Instruções de Submissão de Protocolos
+                    </MenuLink>
+                  </MenuList>
+                </Menu>
               </li>
               <li>
                 <Menu>
