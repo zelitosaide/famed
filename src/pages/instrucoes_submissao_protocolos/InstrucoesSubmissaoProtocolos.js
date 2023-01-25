@@ -52,7 +52,8 @@ export function InstrucoesSubmissaoProtocolos() {
             fontSize: '0.875rem',
           }}
         >
-          Em anexo encontre o Manual com as instruções do uso da plataforma.
+          Encontre o Manual com as instruções do uso da plataforma:{' '}
+          <button>Baixar Manual</button>
         </p>
       </div>
     </div>
