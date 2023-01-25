@@ -12,7 +12,7 @@ export function InstrucoesSubmissaoProtocolos() {
             marginBottom: '2rem',
           }}
         >
-          Formulário de requisição de Consulta de Bioestatística
+          Instruções de Submissão de Protocolos
         </p>
       </div>
     </div>

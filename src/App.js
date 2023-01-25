@@ -67,6 +67,7 @@ import { MestradoSaudeMentalPsicoIntervencoes } from './pages/postgraduate/Mestr
 import { MestradoEmergenciasPediatriasNeonatais } from './pages/postgraduate/MestradoEmergenciasPediatriasNeonatais'
 import { DoutoramentoBiocienciasSaudePublica } from './pages/postgraduate/DoutoramentoBiocienciasSaudePublica'
 import { ConsultasBioestatiscas } from './pages/consultas_bio/ConsultasBioestatisca'
+import { InstrucoesSubmissaoProtocolos } from './pages/instrucoes_submissao_protocolos/InstrucoesSubmissaoProtocolos'
 
 const App = () => {
   const projectStatus = useSelector((state) => state.projects.status)
@@ -135,7 +136,7 @@ const App = () => {
           <Route path="consultas-bio" element={<ConsultasBioestatiscas />} />
           <Route
             path="instrucoes-submissao-protocolos"
-            element={<ConsultasBioestatiscas />}
+            element={<InstrucoesSubmissaoProtocolos />}
           />
           <Route path="projects">
             <Route index element={<ProjectList />} />
