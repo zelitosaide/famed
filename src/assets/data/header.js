@@ -66,12 +66,12 @@ export const navlinks = [
     // to: 'https://cibs.uem.mz',
     subMenu: [
       {
-        name: 'Instruções de Submissão de Protocolos',
-        to: '/departments/fisiologicas',
-      },
-      {
         name: 'Iniciar Submissão de Protocolos',
         to: '/departments/morfologicas',
+      },
+      {
+        name: 'Instruções de Submissão de Protocolos',
+        to: '/departments/fisiologicas',
       },
     ],
   },
