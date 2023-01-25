@@ -69,7 +69,10 @@ export const navlinks = [
         name: 'Instruções de Submissão de Protocolos',
         to: '/departments/fisiologicas',
       },
-      { name: 'Dep. Ciências Morfológicas', to: '/departments/morfologicas' },
+      {
+        name: 'Iniciar Submissão de Protocolos',
+        to: '/departments/morfologicas',
+      },
     ],
   },
   {
