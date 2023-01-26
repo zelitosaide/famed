@@ -136,6 +136,15 @@ export function InstrucoesSubmissaoProtocolos() {
           </span>
           .
         </p>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Saudações académicas
+        </p>
       </div>
     </div>
   )
