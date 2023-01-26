@@ -117,7 +117,7 @@ export function InstrucoesSubmissaoProtocolos() {
             fontSize: '0.875rem',
           }}
         >
-          Questões específicas do Comité Científico use o email
+          Questões específicas do Comité Científico use o email:{' '}
           <span style={{ color: 'var(--main-color)' }}>
             ccfaculdademedicina@gmail.com
           </span>
