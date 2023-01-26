@@ -118,7 +118,7 @@ export function InstrucoesSubmissaoProtocolos() {
             marginTop: '1.5rem',
           }}
         >
-          Informações adicionais:
+          Informações adicionais
         </p>
 
         <p
