@@ -86,6 +86,26 @@ export function InstrucoesSubmissaoProtocolos() {
 
         <p
           style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Informar aos investigadores que os documentos devem ser submetidos em
+          separado somente no formato "PDF" segundo a lista de verificação anexa{' '}
+          <span
+            style={{
+              color: 'var(--main-color)',
+              cursor: 'pointer',
+              textDecoration: 'underline',
+            }}
+            onClick={onDownload}
+          >
+            anexa aqui.
+          </span>
+        </p>
+
+        <p
+          style={{
             fontSize: '0.92rem',
             fontWeight: 'bold',
             color: 'var(--main-color)',
