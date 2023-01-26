@@ -110,6 +110,18 @@ export function InstrucoesSubmissaoProtocolos() {
           ou{' '}
           <span style={{ color: 'var(--main-color)' }}>info@leeva.agency</span>.
         </p>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Questões específicas do Comité Científico use o email
+          <span style={{ color: 'var(--main-color)' }}>
+            ccfaculdademedicina@gmail.com
+          </span>
+        </p>
       </div>
     </div>
   )
