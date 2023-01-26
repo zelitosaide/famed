@@ -83,6 +83,18 @@ export function InstrucoesSubmissaoProtocolos() {
             Manual de instruções.
           </span>
         </p>
+
+        <p
+          style={{
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            marginTop: '1.5rem',
+          }}
+        >
+          Informações adicionais:
+        </p>
       </div>
     </div>
   )
