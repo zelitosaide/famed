@@ -1,5 +1,7 @@
 import manual from '../../assets/pdf/Manual_Utilizador_ Plataforma_CIBS.pdf'
 import listaDocumentos from '../../assets/pdf/Lista_Verificacao_docuemntos.pdf'
+import calendarioCC from '../../assets/pdf/Calendario_CC_2023.pdf'
+import calendarioCIBSFMHCM from '../../assets/pdf/Calendario_CIBS_FM_HCM_2023.pdf'
 
 export function InstrucoesSubmissaoProtocolos() {
   const onDownload = (file, fileName) => {
@@ -94,7 +96,7 @@ export function InstrucoesSubmissaoProtocolos() {
           }}
         >
           Informar aos investigadores que os documentos devem ser submetidos em
-          separado somente no formato "PDF" segundo a lista de verificação anexa{' '}
+          separado somente no formato "PDF" segundo a lista de verificação{' '}
           <span
             style={{
               color: 'var(--main-color)',
@@ -117,9 +119,7 @@ export function InstrucoesSubmissaoProtocolos() {
         >
           Os protocolos devem ser submetidos com minimo de 15 de dias de
           antecedência a data da próxima reunião do comité que deseja que reveja
-          segundo o calendário do Comité Cientifico [ anexar aqui o calendáro de
-          reuniões de CC] ou Comité Institucional de Bioética em Saúde da FM&HCM
-          [anexar aqui o calendário de reuniões de CIBS]
+          segundo o calendário do Comité Cientifico{' '}
           <span
             style={{
               color: 'var(--main-color)',
@@ -127,9 +127,27 @@ export function InstrucoesSubmissaoProtocolos() {
               textDecoration: 'underline',
             }}
             onClick={function () {
-              onDownload(listaDocumentos, 'Lista dos documentos')
+              onDownload(calendarioCC, 'Calendario das Reunioes do CC')
             }}
-          ></span>
+          >
+            anexa aqui
+          </span>{' '}
+          ou Comité Institucional de Bioética em Saúde da FM&HCM{' '}
+          <span
+            style={{
+              color: 'var(--main-color)',
+              cursor: 'pointer',
+              textDecoration: 'underline',
+            }}
+            onClick={function () {
+              onDownload(
+                calendarioCIBSFMHCM,
+                'Calendario das Reunioes de Bioetica da FM e HCM'
+              )
+            }}
+          >
+            anexa aqui.
+          </span>{' '}
         </p>
 
         <p
