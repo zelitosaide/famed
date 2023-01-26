@@ -168,7 +168,7 @@ export function InstrucoesSubmissaoProtocolos() {
             fontSize: '0.875rem',
           }}
         >
-          Saudações académicas
+          Saudações académicas.
         </p>
       </div>
     </div>
