@@ -3,7 +3,7 @@ import listaDocumentos from '../../assets/pdf/Lista_Verificacao_docuemntos.pdf'
 
 export function InstrucoesSubmissaoProtocolos() {
   const onDownload = (file, fileName) => {
-    fetch(manual, {
+    fetch(file, {
       method: 'get',
       mode: 'no-cors',
       referrerPolicy: 'no-referrer',
