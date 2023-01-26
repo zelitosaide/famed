@@ -121,6 +121,20 @@ export function InstrucoesSubmissaoProtocolos() {
           <span style={{ color: 'var(--main-color)' }}>
             ccfaculdademedicina@gmail.com
           </span>
+          .
+        </p>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Questões especificas do Comité Institucional de Bioética use o email:{' '}
+          <span style={{ color: 'var(--main-color)' }}>
+            cibsfmhcm@gmail.com
+          </span>
+          .
         </p>
       </div>
     </div>
