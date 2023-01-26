@@ -1,7 +1,8 @@
 import manual from '../../assets/pdf/Manual_Utilizador_ Plataforma_CIBS.pdf'
+import listaDocumentos from '../../assets/pdf/Lista_Verificacao_docuemntos.pdf'
 
 export function InstrucoesSubmissaoProtocolos() {
-  const onDownload = () => {
+  const onDownload = (file, fileName) => {
     fetch(manual, {
       method: 'get',
       mode: 'no-cors',
@@ -10,7 +11,7 @@ export function InstrucoesSubmissaoProtocolos() {
       .then((response) => response.blob())
       .then((data) => {
         const aElement = document.createElement('a')
-        aElement.setAttribute('download', 'Manual de instrucoes')
+        aElement.setAttribute('download', fileName)
         const href = URL.createObjectURL(data)
         aElement.href = href
         aElement.setAttribute('target', '_blank')
@@ -78,7 +79,9 @@ export function InstrucoesSubmissaoProtocolos() {
               cursor: 'pointer',
               textDecoration: 'underline',
             }}
-            onClick={onDownload}
+            onClick={function () {
+              onDownload(manual, 'Manual de instrucoes')
+            }}
           >
             Manual de instruções.
           </span>
