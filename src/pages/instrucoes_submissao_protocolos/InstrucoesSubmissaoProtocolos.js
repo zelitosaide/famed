@@ -95,6 +95,21 @@ export function InstrucoesSubmissaoProtocolos() {
         >
           Informações adicionais:
         </p>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          No caso de dificuldade de registo na plataforma entre em contacto pelo
+          email:{' '}
+          <span style={{ color: 'var(--main-color)' }}>
+            ccfaculdademedicina@gmail.com
+          </span>{' '}
+          ou{' '}
+          <span style={{ color: 'var(--main-color)' }}>info@leeva.agency</span>.
+        </p>
       </div>
     </div>
   )
