@@ -101,7 +101,9 @@ export function InstrucoesSubmissaoProtocolos() {
               cursor: 'pointer',
               textDecoration: 'underline',
             }}
-            onClick={onDownload}
+            onClick={function () {
+              onDownload(listaDocumentos, 'Lista dos documentos')
+            }}
           >
             anexa aqui.
           </span>
