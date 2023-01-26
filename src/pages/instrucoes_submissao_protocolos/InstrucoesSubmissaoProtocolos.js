@@ -111,6 +111,29 @@ export function InstrucoesSubmissaoProtocolos() {
 
         <p
           style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Os protocolos devem ser submetidos com minimo de 15 de dias de
+          antecedência a data da próxima reunião do comité que deseja que reveja
+          segundo o calendário do Comité Cientifico [ anexar aqui o calendáro de
+          reuniões de CC] ou Comité Institucional de Bioética em Saúde da FM&HCM
+          [anexar aqui o calendário de reuniões de CIBS]
+          <span
+            style={{
+              color: 'var(--main-color)',
+              cursor: 'pointer',
+              textDecoration: 'underline',
+            }}
+            onClick={function () {
+              onDownload(listaDocumentos, 'Lista dos documentos')
+            }}
+          ></span>
+        </p>
+
+        <p
+          style={{
             fontSize: '0.92rem',
             fontWeight: 'bold',
             color: 'var(--main-color)',
