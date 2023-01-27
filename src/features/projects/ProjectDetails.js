@@ -4,25 +4,30 @@ import FormattedDate from '../../components/date/FormattedDate'
 import HorizontalScroll from './HorizontalScroll'
 
 import styles from './Projects.module.css'
+import temporaryImage from '../../assets/images/edctp.jpeg'
 
 const ProjectDetails = () => {
   const { projectId } = useParams()
 
-  const project = useSelector(state => state.projects.projects.find(
-    project => project._id === projectId
-  ))
+  const project = useSelector((state) =>
+    state.projects.projects.find((project) => project._id === projectId)
+  )
 
   if (!project) {
-    return <Navigate to='/' replace />
+    return <Navigate to="/" replace />
   }
 
   return (
     <div className={`${styles.projectDetails} ${styles.responsive}`}>
       <div className={styles.gap2}></div>
 
-      <div className='row'>
+      <div className="row">
         <div className={styles.container}>
-          <img className={styles.__image} src={project.image.base64Image} alt='' />
+          <img
+            className={styles.__image}
+            src={project.image.base64Image}
+            alt=""
+          />
 
           <div className={styles.info}>
             <p>{project.title}</p>
@@ -38,7 +43,9 @@ const ProjectDetails = () => {
                 Duração do Projecto
               </span>
               <span style={{ display: 'inline-block' }}>
-                {<FormattedDate date={project.startDate} />}&nbsp;&nbsp;à&nbsp;&nbsp;{<FormattedDate date={project.endDate} />}
+                {<FormattedDate date={project.startDate} />}
+                &nbsp;&nbsp;à&nbsp;&nbsp;
+                {<FormattedDate date={project.endDate} />}
               </span>
             </p>
             {project.financiers && (
@@ -52,7 +59,9 @@ const ProjectDetails = () => {
                     color: 'var(--main-color)',
                     lineHeight: '1.2rem',
                   }}
-                >Financiador(es):</h4>
+                >
+                  Financiador(es):
+                </h4>
                 <ul>
                   {project.financiers.map(function (financier, index) {
                     return (
@@ -115,15 +124,17 @@ const ProjectDetails = () => {
                           </div>
                         )}
                       </li>
-                    );
+                    )
                   })}
                 </ul>
               </>
             )}
 
-
-
             <p style={{ marginTop: 5 }}>{project.content}</p>
+
+            {project._id === '634fe6711983a2568223af41' && (
+              <img src={temporaryImage} alt="Ola" />
+            )}
           </div>
 
           {!!project.team.length && (
