@@ -16,6 +16,7 @@ export function ConsultasBioestatiscas() {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm({
     defaultValues: {
       name: '',
@@ -23,6 +24,7 @@ export function ConsultasBioestatiscas() {
       phone: '',
       date: '',
       title: '',
+      outro: '',
       description: '',
       flags: {
         complete: false,
@@ -30,6 +32,7 @@ export function ConsultasBioestatiscas() {
       },
     },
   })
+  const title = watch('title')
   const [status, setStatus] = useState('idle')
   const [openNotification, setOpenNotification] = useState(false)
   const [openErrorNotification, setOpenErrorNotification] = useState(false)
@@ -200,6 +203,21 @@ export function ConsultasBioestatiscas() {
                 </Input>
               </Column>
             </Row>
+            {title === 'Outro (especifique)' && (
+              <Input
+                label="Outro (especifique)"
+                required
+                error={errors.outro?.message}
+              >
+                <input
+                  type="text"
+                  id="Outro (especifique)"
+                  {...register('outro', {
+                    required: 'Este campo é obrigatório',
+                  })}
+                />
+              </Input>
+            )}
             <Input
               label="Resumo da pesquisa (deixar um espaço com pelo menos 10 linhas)"
               required
