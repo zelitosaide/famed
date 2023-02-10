@@ -45,7 +45,7 @@ export function ConsultasBioestatiscas() {
     'Sobre base de dados (Criação, limpeza, preparação para análises, etc)',
     'Reporte, interpretação de resultados de análise inferencial',
     'Redação de aspectos de análise estatística no protocolo',
-    'Outro (especifique)',
+    'Outro',
   ]
 
   const navigate = useNavigate()
@@ -203,7 +203,7 @@ export function ConsultasBioestatiscas() {
                 </Input>
               </Column>
             </Row>
-            {title === 'Outro (especifique)' && (
+            {title === 'Outro' && (
               <Input
                 label="Outro (especifique)"
                 required
