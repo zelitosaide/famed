@@ -271,6 +271,35 @@ export function DoutoramentoBiocienciasSaudePublica() {
           >
             Uma pré proposta científica*;
           </li>
+          <li
+            style={{
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
+              marginBottom: 10,
+              textDecoration: 'underline',
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: 'var(--hover-color)',
+            }}
+          >
+            Uma proposta de equipa de supervisão constituída por um supervisor
+            principal e um máximo de dois co-supervisores;
+          </li>
+          <li
+            style={{
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
+              marginBottom: 10,
+              textDecoration: 'underline',
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: 'var(--hover-color)',
+            }}
+          >
+            Comprovativo que dispõe de recursos financeiros suficientes para o
+            pagamento das taxas e para a execução do projecto de pesquisa
+            proposto.
+          </li>
         </ul>
 
         <p
