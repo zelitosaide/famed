@@ -1,14 +1,14 @@
 export function DoutoramentoBiocienciasSaudePublica() {
   return (
     <div style={{ paddingTop: '9.5rem' }}>
-      <div className='row'>
+      <div className="row">
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            textTransform: "uppercase"
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            textTransform: 'uppercase',
           }}
         >
           Doutoramento em Biociências e Saúde Pública
@@ -16,32 +16,37 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            marginTop: '1.5rem',
           }}
         >
-          Objectivo geral do Programa:
+          Objectivos do Programa de Doutoramento:
         </p>
 
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
           }}
         >
-          O MEPN visa formar profissionais de saúde para providenciar cuidados de saúde, e realizarem docência e pesquisas relevantes, na área de pediatria e neonatologia, para serem capazes de darem o seu melhor contributo no contexto de equipas multidisciplinares. Os estudantes que completarem este curso com sucesso receberão o grau de <i>Mestre em Emergências Pediatrias e Neonatais</i>.
+          O Programa visa criar oportunidades para que o doutorando adquira
+          conhecimentos e competências, sobretudo na concepção, planeamento e
+          execução de investigação nas áreas de Biociências e Saúde Pública; no
+          desenvolvimento de habilidades de comunicação científica; capacidade
+          de aprendizagem contínua e competência para formar novos
+          investigadores.
         </p>
 
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            marginTop: '1.5rem',
           }}
         >
           Organização do Programa:
@@ -49,284 +54,181 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
           }}
         >
-          As aulas do MEPN decorrerão essencialmente na Faculdade de Medicina da UEM e no Departamento de Pediatria do Hospital Central de Maputo (HCM), <strong><i>no período laboral</i></strong>. Os trabalhos de culminação de estudos irão decorrer nas diferentes instituições de ensino envolvidas repectivamente: UEM, UNIPD, UCM, HCM, Hospital Central da Beira (HCB) ou em outras instituições de pesquisa parceiras da Faculdade de Medicina da UEM ou do Serviço Nacional de Saúde.
+          Para o ano académico 2023 o Programa abre <strong>6 VAGAS</strong>.
         </p>
 
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
           }}
         >
-          <strong><i>O início do curso</i></strong> está previsto para Agosto de 2022.
+          O Doutoramento é no modelo de investigação e tem a duração regular
+          máxima de 4 anos, exigindo dedicação a <strong>TEMPO INTEIRO</strong>.
         </p>
 
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
           }}
         >
-          <strong><i>O número máximo de vagas</i></strong> estimado para este curso é de 30. O curso só abrirá se tiver um número mínimo de 15 estudantes.
+          Actividades académico-científicas tais como a frequência em
+          disciplinas/módulos, apresentação anual em Jornadas do Doutoramento e
+          em outras conferências, participação em cursos de curta duração,
+          estágios, entre outras, serão incluídas no programa e contarão para a
+          acumulação de créditos académicos.
         </p>
 
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Cada estudante que ingressar neste programa terá um plano de trabalho
+          específico que deverá seguir durante o seu período de formação.
+        </p>
+
+        <p
+          style={{
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            marginTop: '1.5rem',
           }}
         >
           Grupo alvo:
         </p>
 
-        <ul style={{ listStyle: "disc", marginLeft: "1.5rem" }}>
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Ter Licenciatura em Medicina; Especialidade de Pediatria; Curso Superior de Enfermagem Geral; Curso Superior de Enfermagem Pediátrica; Curso Superior de Enfermagem em Saúde Materna; Curso Superior de Técnico de Cirurgia e Obstetrícia, ou outras afins;
-          </li>
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Possuir Grau de Licenciatura com nota de conclusão igual ou superior a 14 valores;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Excepcionalmente, poderão ingressar os candidatos com grau de Licenciatura com média final não inferior a 12 valores, por questões de mérito (currículo científico relevante, experiência de trabalho comprovada na área de conhecimento do Mestrado, ter publicações científicas, ser capaz de fundamentar a investigação que pretende realizar);
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Ter domínio da língua portuguesa;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Ter conhecimentos de língua inglesa é uma vantagem;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Os candidatos pré-selecionados serão submetidos a uma entrevista a ser realizada na Faculdade de Medicina da UEM em data e horários a serem anunciados;
-          </li>
-
-          <li
-            style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
-              marginBottom: 10,
-              // textDecoration: "underline",
-              // textUnderlineOffset: 3,
-              // textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              // textDecorationColor: "var(--hover-color)",
-            }}
-          >
-            Encoraja-se candidaturas do sexo feminino.
-          </li>
-        </ul>
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Podem se candidatar os profissionais com Mestrado Académico em
+          Biociências, Saúde Pública ou áreas afins. Poderão igualmente
+          ingressar os candidatos com Mestrado Profissionalizante desde que
+          possuam o número de créditos equivalente ao Mestrado Académico,
+          devendo igualmente possuir experiência de investigação comprovada de
+          pelo menos 3 anos, na área a que pretendem candidatar-se.
+        </p>
 
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            marginTop: '1.5rem',
           }}
         >
           Procedimentos para candidatura:
         </p>
 
-        <p
-          style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
-          }}
-        >
-          Requer-se que os candidatos apresentem os seguintes documentos na Direcção da Faculdade de Medicina da UEM:
-        </p>
-
-        <ul style={{ listStyle: "circle", marginLeft: "1.5rem" }}>
+        <ul style={{ listStyle: 'circle', marginLeft: '1.5rem' }}>
           <li
             style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
               marginBottom: 10,
-              textDecoration: "underline",
+              textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
+              textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Carta endereçada ao Senhor Director da Faculdade de Medicina da UEM, manifestando o interesse em candidatar-se;
+            Formulário de candidatura devidamente preenchido*;
           </li>
           <li
             style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
               marginBottom: 10,
-              textDecoration: "underline",
+              textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
+              textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Carta de Motivação;
+            Requerimento de candidatura dirigido ao Director da Faculdade de
+            Medcina;
           </li>
 
           <li
             style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
               marginBottom: 10,
-              textDecoration: "underline",
+              textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
+              textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Curriculum Vitae;
+            Certificado de habilitações literária;
           </li>
 
           <li
             style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
               marginBottom: 10,
-              textDecoration: "underline",
+              textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
+              textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Cópia autenticada do Certificado de Licenciatura;
+            Certificado de disciplinas feitas no Mestrado e respectivos créditos
+            e classificação;
           </li>
 
           <li
             style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
               marginBottom: 10,
-              textDecoration: "underline",
+              textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
+              textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Cópia autenticada do Bilhete de Identificação;
+            Carta de autorização dos serviços (para os candidatos com emprego).
           </li>
 
           <li
             style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
-              // fontWeight: 500,
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
               marginBottom: 10,
-              textDecoration: "underline",
+              textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
+              textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Duas cartas de recomendação;
+            Curriculum Vitae*;
           </li>
 
           <li
             style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
               // fontWeight: 500,
               marginBottom: 10,
-              textDecoration: "underline",
+              textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
               // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
+              textDecorationColor: 'var(--hover-color)',
             }}
           >
             Duas fotografias tipo passe recentes;
@@ -334,15 +236,15 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
           <li
             style={{
-              lineHeight: "1.6rem",
-              fontSize: "0.875rem",
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
               // fontWeight: 500,
               marginBottom: 10,
-              textDecoration: "underline",
+              textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
               // textDecorationColor: "var(--main-color)",
-              textDecorationColor: "var(--hover-color)",
+              textDecorationColor: 'var(--hover-color)',
             }}
           >
             Carta de autorização do serviço (para o candidato trabalhador).
@@ -351,11 +253,11 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            marginTop: '1.5rem',
           }}
         >
           Data Limite da Submissão de Candidaturas:
@@ -363,8 +265,8 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
           }}
         >
           15 de Julho de 2022
@@ -372,11 +274,11 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            marginTop: '1.5rem',
           }}
         >
           Propinas e taxas:
@@ -384,20 +286,22 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
           }}
         >
-          A taxa de matrícula anual é de 1.750,00 Mt; Valor de inscrição 9.000,00 Mt. A propina de frequência é de 9.000,00 Mt por mês pagos na íntegra ou em prestações mensais durante 24 meses.
+          A taxa de matrícula anual é de 15.000,00 MZM, o valor da propina anual
+          será pago em 12 fracções de 20.000,00 MZM, taxa de inscrição para a
+          tese de doutoramento é de 75.000,00 MZM.
         </p>
 
         <p
           style={{
-            fontSize: "0.92rem",
-            fontWeight: "bold",
-            color: "var(--main-color)",
-            lineHeight: "1.2rem",
-            marginTop: "1.5rem"
+            fontSize: '0.92rem',
+            fontWeight: 'bold',
+            color: 'var(--main-color)',
+            lineHeight: '1.2rem',
+            marginTop: '1.5rem',
           }}
         >
           Informações adicionais:
@@ -405,13 +309,16 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
         <p
           style={{
-            lineHeight: "1.6rem",
-            fontSize: "0.875rem",
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
           }}
         >
-          Pederão ser obtidas na Direcção da Faculdade de Medicina, da Universidade Eduardo Mondlane. Av. Salvador Allende, n &#870; 702, CP.257, Maputo. Falar com: Sr. João Kumayo (contacto: 827536540) ou Sra. Rosita Mandlate (contacto: 828658985).
+          Pederão ser obtidas na Direcção da Faculdade de Medicina, da
+          Universidade Eduardo Mondlane. Av. Salvador Allende, n &#870; 702,
+          CP.257, Maputo. Falar com: Sr. João Kumayo (contacto: 827536540) ou
+          Sra. Rosita Mandlate (contacto: 828658985).
         </p>
       </div>
     </div>
-  );
+  )
 }
