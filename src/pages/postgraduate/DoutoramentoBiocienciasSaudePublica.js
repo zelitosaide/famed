@@ -359,15 +359,6 @@ export function DoutoramentoBiocienciasSaudePublica() {
 
         <p
           style={{
-            lineHeight: '1.6rem',
-            fontSize: '0.875rem',
-          }}
-        >
-          Para mais informações contacte-nos pelo e-mail do programa.
-        </p>
-
-        <p
-          style={{
             fontSize: '0.92rem',
             fontWeight: 'bold',
             color: 'var(--main-color)',
@@ -407,10 +398,7 @@ export function DoutoramentoBiocienciasSaudePublica() {
             fontSize: '0.875rem',
           }}
         >
-          Pederão ser obtidas na Direcção da Faculdade de Medicina, da
-          Universidade Eduardo Mondlane. Av. Salvador Allende, n &#870; 702,
-          CP.257, Maputo. Falar com: Sr. João Kumayo (contacto: 827536540) ou
-          Sra. Rosita Mandlate (contacto: 828658985).
+          Para mais informações contacte-nos pelo e-mail do programa.
         </p>
       </div>
     </div>
