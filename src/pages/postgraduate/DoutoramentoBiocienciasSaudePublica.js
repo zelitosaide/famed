@@ -222,32 +222,54 @@ export function DoutoramentoBiocienciasSaudePublica() {
             style={{
               lineHeight: '1.6rem',
               fontSize: '0.875rem',
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Duas fotografias tipo passe recentes;
+            Fotocópia do BI/Passaporte;
           </li>
 
           <li
             style={{
               lineHeight: '1.6rem',
               fontSize: '0.875rem',
-              // fontWeight: 500,
               marginBottom: 10,
               textDecoration: 'underline',
               textUnderlineOffset: 3,
               textDecorationThickness: 1.5,
-              // textDecorationColor: "var(--main-color)",
               textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Carta de autorização do serviço (para o candidato trabalhador).
+            Carta de motivação do candidato;
+          </li>
+          <li
+            style={{
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
+              marginBottom: 10,
+              textDecoration: 'underline',
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: 'var(--hover-color)',
+            }}
+          >
+            Duas cartas de recomendação;
+          </li>
+          <li
+            style={{
+              lineHeight: '1.6rem',
+              fontSize: '0.875rem',
+              marginBottom: 10,
+              textDecoration: 'underline',
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: 'var(--hover-color)',
+            }}
+          >
+            Uma pré proposta científica*;
           </li>
         </ul>
 
