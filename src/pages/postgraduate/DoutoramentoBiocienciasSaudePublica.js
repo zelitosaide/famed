@@ -144,7 +144,8 @@ export function DoutoramentoBiocienciasSaudePublica() {
               textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Formulário de candidatura devidamente preenchido*;
+            Formulário de candidatura devidamente preenchido
+            <strong style={{ color: 'var(--main-color)' }}>*</strong>;
           </li>
           <li
             style={{
@@ -215,7 +216,8 @@ export function DoutoramentoBiocienciasSaudePublica() {
               textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Curriculum Vitae*;
+            Curriculum Vitae
+            <strong style={{ color: 'var(--main-color)' }}>*</strong>;
           </li>
 
           <li
@@ -269,7 +271,8 @@ export function DoutoramentoBiocienciasSaudePublica() {
               textDecorationColor: 'var(--hover-color)',
             }}
           >
-            Uma pré proposta científica*;
+            Uma pré proposta científica
+            <strong style={{ color: 'var(--main-color)' }}>*</strong>;
           </li>
           <li
             style={{
@@ -301,6 +304,16 @@ export function DoutoramentoBiocienciasSaudePublica() {
             proposto.
           </li>
         </ul>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          <strong style={{ color: 'var(--main-color)' }}>*</strong> Formulários
+          disponíveis por e-mail.
+        </p>
 
         <p
           style={{
