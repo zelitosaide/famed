@@ -324,7 +324,7 @@ export function DoutoramentoBiocienciasSaudePublica() {
             marginTop: '1.5rem',
           }}
         >
-          Data Limite da Submissão de Candidaturas:
+          Instrução dos Processos de Candidatura:
         </p>
 
         <p
@@ -333,7 +333,37 @@ export function DoutoramentoBiocienciasSaudePublica() {
             fontSize: '0.875rem',
           }}
         >
-          15 de Julho de 2022
+          Os processos de candidatura devidamente instruídos, deverão dar
+          entrada até ao dia 31 de Março de 2023, através do e-mail:{' '}
+          <i
+            style={{
+              textDecoration: 'underline',
+              textUnderlineOffset: 3,
+              textDecorationThickness: 1.5,
+              textDecorationColor: 'var(--hover-color)',
+            }}
+          >
+            doutoramentobspfmuem@gmail.com
+          </i>
+        </p>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Os resultados das candidaturas serão divulgados até ao dia 16 de Junho
+          de 2023, prevendo-se o início do programa em Julho de 2023.
+        </p>
+
+        <p
+          style={{
+            lineHeight: '1.6rem',
+            fontSize: '0.875rem',
+          }}
+        >
+          Para mais informações contacte-nos pelo e-mail do programa.
         </p>
 
         <p
