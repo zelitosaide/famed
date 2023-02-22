@@ -31,7 +31,7 @@ const NewsDetails = () => {
           )}
 
           <div className={styles.info}>
-            <p>{news.title}</p>
+            <p className={styles.firstChild}>{news.title}</p>
             <p>
               <span
                 style={{
