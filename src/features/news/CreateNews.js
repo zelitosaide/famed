@@ -53,7 +53,6 @@ const CreateNews = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log({ ...data, contentHTML })
       setStatus('pending')
       setOpenErrorNotification(false)
       const base64Image = await convert2base64(data.image[0])
