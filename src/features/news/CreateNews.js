@@ -144,7 +144,7 @@ const CreateNews = () => {
                   />
                 </Input>
 
-                {/* <Input
+                <Input
                   label="Resumo da Notícia"
                   required
                   error={errors.content?.message}
@@ -156,7 +156,7 @@ const CreateNews = () => {
                       required: 'This field is riquired',
                     })}
                   />
-                </Input> */}
+                </Input>
 
                 <ReactQuill
                   theme="snow"
@@ -233,6 +233,60 @@ const CreateNews = () => {
                     })}
                   />
                 </Input>
+
+                <Input style={{ display: 'inline-block' }}>
+                  <button
+                    type="submit"
+                    disabled={status === 'pending' || !canCreate}
+                  >
+                    {status === 'pending' ? 'Salvando...' : 'Salvar'}
+                  </button>
+                </Input>
+
+                <Input
+                  style={{
+                    display: 'inline-block',
+                    '--bg-color': 'rgb(252, 88, 50)',
+                    '--bg-hover': 'rgb(252, 70, 29)',
+                    '--bg-active': 'rgb(252, 88, 50)',
+                    '--outline-color': 'rgb(253, 152, 129)',
+                  }}
+                >
+                  <button
+                    type="button"
+                    disabled={status === 'pending'}
+                    onClick={() => navigate(-1, { replace: true })}
+                  >
+                    Cancelar
+                  </button>
+                </Input>
+              </Fieldset>
+            </Column>
+
+            <Column style={{ width: '50%' }}>
+              <Fieldset
+                legend="Criar nova Notícia"
+                style={{ minHeight: '26rem' }}
+              >
+                {/* <Input
+                  label="Resumo da Notícia"
+                  required
+                  error={errors.content?.message}
+                >
+                  <textarea
+                    id="Resumo da Notícia"
+                    disabled={!canCreate}
+                    {...register('content', {
+                      required: 'This field is riquired',
+                    })}
+                  />
+                </Input> */}
+
+                <ReactQuill
+                  theme="snow"
+                  value={contentHTML}
+                  onChange={setContentHTML}
+                />
 
                 <Input style={{ display: 'inline-block' }}>
                   <button
