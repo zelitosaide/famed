@@ -152,6 +152,22 @@
   font-size: 0.875rem;
 }
 
+.newsDetails .container .info .conteudoDinamico h1 {
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--main-color);
+  line-height: 1.2rem;
+}
+
+.newsDetails .container .info .conteudoDinamico h2 {
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--main-color);
+  line-height: 1.2rem;
+}
+
 @media only screen and (min-width: 300px) {
   .newsDetails.responsive .container .info p:first-child {
     margin-top: 0;
