@@ -158,12 +158,6 @@ const CreateNews = () => {
                   />
                 </Input>
 
-                <ReactQuill
-                  theme="snow"
-                  value={contentHTML}
-                  onChange={setContentHTML}
-                />
-
                 <Row>
                   <Column style={{ width: '50%' }}>
                     <Input
@@ -282,11 +276,14 @@ const CreateNews = () => {
                   />
                 </Input> */}
 
-                <ReactQuill
-                  theme="snow"
-                  value={contentHTML}
-                  onChange={setContentHTML}
-                />
+                <div>
+                  <ReactQuill
+                    theme="snow"
+                    value={contentHTML}
+                    onChange={setContentHTML}
+                    // style={{ height: 250 }}
+                  />
+                </div>
 
                 <Input style={{ display: 'inline-block' }}>
                   <button
