@@ -162,8 +162,16 @@
 
 .newsDetails .container .info .conteudoDinamico h2 {
   margin-bottom: 0.2rem;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
+  color: var(--main-color);
+  line-height: 1.2rem;
+}
+
+.newsDetails .container .info .conteudoDinamico h2 {
+  margin-bottom: 0.2rem;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--main-color);
   line-height: 1.2rem;
 }
