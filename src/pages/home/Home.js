@@ -10,26 +10,37 @@ import Teachers from './teachers/Teachers'
 import Projects from './projects/Projects'
 
 const Home = () => {
-  const projects = useSelector(state => state.projects.projects.filter(
-    project => project.flags.home && project.flags.published
-  ).slice(0, 12))
+  const projects = useSelector((state) =>
+    state.projects.projects
+      .filter((project) => project.flags.home && project.flags.published)
+      .slice(0, 12)
+  )
 
-  const orderedProjects = projects.slice().sort((a, b) => b.startDate.localeCompare(a.startDate))
+  const orderedProjects = projects
+    .slice()
+    .sort((a, b) => b.startDate.localeCompare(a.startDate))
 
-  const news = useSelector(state => state.news.news.filter(
-    news => news.flags.home && news.flags.published
-  ).slice(0, 12))
+  const news = useSelector((state) =>
+    state.news.news
+      .filter((news) => news.flags.home && news.flags.published)
+      .slice(0, 20)
+  )
 
   const orderedNews = news.slice().reverse()
 
-  const users = useSelector(state => state.users.users.filter(user => user.roles.teacher))
-  const curriculums = useSelector(state => state.curriculums.curriculums)
+  const users = useSelector((state) =>
+    state.users.users.filter((user) => user.roles.teacher)
+  )
+  const curriculums = useSelector((state) => state.curriculums.curriculums)
 
-  const teachers = users.map(user => {
-    const curriculum = curriculums.find(curriculum => curriculum.userId === user._id)
-    return { ...curriculum, name: `${user.firstName} ${user.lastName}` }
-  }).filter(teacher => teacher.title)
-
+  const teachers = users
+    .map((user) => {
+      const curriculum = curriculums.find(
+        (curriculum) => curriculum.userId === user._id
+      )
+      return { ...curriculum, name: `${user.firstName} ${user.lastName}` }
+    })
+    .filter((teacher) => teacher.title)
 
   return (
     <div className={styles.home}>
@@ -37,25 +48,26 @@ const Home = () => {
       <Carousel news={orderedNews} />
 
       {/* Courses Grid */}
-      <div className='row'>
+      <div className="row">
         <Courses courses={courses} />
       </div>
 
       {/* Teachers Grid */}
-      <div className='row'>
+      <div className="row">
         <Teachers teachers={teachers} />
       </div>
 
       {/* Projects Grid */}
-      <div className='row'>
-        <p className={styles.title}>Projectos |&nbsp;
-          <Link to='/projects'>
+      <div className="row">
+        <p className={styles.title}>
+          Projectos |&nbsp;
+          <Link to="/projects">
             <span>Ver Todos Projectos</span>
           </Link>
         </p>
       </div>
 
-      <div className='row'>
+      <div className="row">
         <Projects projects={orderedProjects} />
       </div>
     </div>
