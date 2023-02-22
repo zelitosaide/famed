@@ -176,6 +176,10 @@
   line-height: 1.2rem;
 }
 
+.newsDetails .container .info .conteudoDinamico a {
+  color: var(--main-color);
+}
+
 @media only screen and (min-width: 300px) {
   .newsDetails.responsive .container .info p:first-child {
     margin-top: 0;
