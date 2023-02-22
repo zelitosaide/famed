@@ -357,8 +357,6 @@ a {
 
 .ql-toolbar.ql-snow {
   border: 1px solid var(--main-border-color) !important;
-  box-sizing: border-box;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  padding: 8px;
-  font-size: var(--main-font-size);
+  border-top-right-radius: var(--border-radius-small) !important;
+  border-top-left-radius: var(--border-radius-small) !important;
 }
