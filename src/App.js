@@ -22,7 +22,7 @@ import Graduation from './pages/graduation/Graduation'
 import Postgraduate from './pages/postgraduate/Postgraduate'
 import About from './pages/about/About'
 import Protocols from './pages/protocols/Protocols'
-import Extension from './pages/extension/Extension'
+// import Extension from './pages/extension/Extension'
 import DashboardLayout from './pages/dashboard/DashboardLayout'
 import Dashboard from './pages/dashboard/Dashboard'
 
