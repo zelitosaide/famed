@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
 import { createNews } from './newsSlice'
 import styles from './News.module.css'
 import { convert2base64 } from '../projects/processData'
@@ -38,6 +41,7 @@ const CreateNews = () => {
       },
     },
   })
+  const [contentHTML, setContentHTML] = useState('')
 
   const departments = useSelector((state) => state.departments.departments).map(
     (d) => d.name
@@ -49,6 +53,7 @@ const CreateNews = () => {
 
   const onSubmit = async (data) => {
     try {
+      console.log(data)
       setStatus('pending')
       setOpenErrorNotification(false)
       const base64Image = await convert2base64(data.image[0])
@@ -60,12 +65,19 @@ const CreateNews = () => {
         const pdfName = data.pdf[0].name
         const pdf = { pdfName, base64PDF }
         await dispatch(
-          createNews({ ...data, image, pdf, userId: currentUser.user._id })
+          createNews({
+            ...data,
+            contentHTML,
+            image,
+            pdf,
+            userId: currentUser.user._id,
+          })
         ).unwrap()
       } else {
         await dispatch(
           createNews({
             ...data,
+            contentHTML,
             image,
             pdf: {
               pdfName: '',
@@ -76,6 +88,7 @@ const CreateNews = () => {
         ).unwrap()
       }
       openAndAutoClose()
+      setContentHTML('')
       reset()
     } catch (error) {
       setErrorMessage(error.message)
@@ -132,7 +145,7 @@ const CreateNews = () => {
                   />
                 </Input>
 
-                <Input
+                {/* <Input
                   label="Resumo da Notícia"
                   required
                   error={errors.content?.message}
@@ -144,7 +157,13 @@ const CreateNews = () => {
                       required: 'This field is riquired',
                     })}
                   />
-                </Input>
+                </Input> */}
+
+                <ReactQuill
+                  theme="snow"
+                  value={contentHTML}
+                  onChange={setContentHTML}
+                />
 
                 <Row>
                   <Column style={{ width: '50%' }}>
