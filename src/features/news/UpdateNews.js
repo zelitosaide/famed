@@ -86,6 +86,7 @@ const UpdateNews = () => {
       await dispatch(
         updateNews({
           ...data,
+          contentHTML,
           image: { imageName, base64Image },
           pdf: {
             pdfName,
