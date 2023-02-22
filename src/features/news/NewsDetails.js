@@ -59,7 +59,10 @@ const NewsDetails = () => {
               </div>
             )}
             {news.contentHTML ? (
-              <p dangerouslySetInnerHTML={{ __html: news.contentHTML }}></p>
+              <div
+                className={styles.conteudoDinamico}
+                dangerouslySetInnerHTML={{ __html: news.contentHTML }}
+              />
             ) : (
               <p className={styles.lastChild}>{news.content}</p>
             )}
