@@ -147,7 +147,8 @@
 }
 
 /* Conteudo vindo do react-quill */
-.newsDetails .container .info .conteudoDinamico p {
+.newsDetails .container .info .conteudoDinamico p,
+li {
   line-height: 1.6rem;
   font-size: 0.875rem;
 }
