@@ -355,6 +355,10 @@ a {
   padding: calc(0.5rem * var(--scale));
 }
 
+.ql-editor {
+  min-height: 270px;
+}
+
 .ql-toolbar.ql-snow {
   border: 1px solid var(--main-border-color) !important;
   border-top-right-radius: var(--border-radius-small) !important;

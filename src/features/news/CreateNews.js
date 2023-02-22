@@ -281,7 +281,6 @@ const CreateNews = () => {
                     theme="snow"
                     value={contentHTML}
                     onChange={setContentHTML}
-                    // style={{ height: 250 }}
                   />
                 </div>
 
