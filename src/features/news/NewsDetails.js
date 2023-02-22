@@ -32,7 +32,7 @@ const NewsDetails = () => {
 
           <div className={styles.info}>
             <p className={styles.firstChild}>{news.title}</p>
-            <p>
+            <p className={styles.nthChild2}>
               <span
                 style={{
                   background: '#C66518',

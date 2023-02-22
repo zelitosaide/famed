@@ -132,7 +132,7 @@
   line-height: 1.2rem;
 }
 
-.newsDetails .container .info p:nth-child(2) {
+.newsDetails .container .info .nthChild2 {
   margin-top: 0.4rem;
   margin-bottom: 0;
   font-size: 0.875rem;
