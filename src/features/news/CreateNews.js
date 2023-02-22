@@ -262,20 +262,6 @@ const CreateNews = () => {
                 legend="Criar nova Notícia"
                 style={{ minHeight: '26rem' }}
               >
-                {/* <Input
-                  label="Resumo da Notícia"
-                  required
-                  error={errors.content?.message}
-                >
-                  <textarea
-                    id="Resumo da Notícia"
-                    disabled={!canCreate}
-                    {...register('content', {
-                      required: 'This field is riquired',
-                    })}
-                  />
-                </Input> */}
-
                 <div>
                   <ReactQuill
                     theme="snow"
