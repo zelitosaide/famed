@@ -47,7 +47,7 @@ const UpdateNews = () => {
   const image = watch('image')
   const pdf = watch('pdf')
   const [contentHTML, setContentHTML] = useState(
-    news.contentHTML ? news.contentHTML : news.content
+    news.contentHTML ? news.contentHTML : ''
   )
 
   if (!news) {
