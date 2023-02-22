@@ -10,26 +10,24 @@ import FormattedDate from '../../components/date/FormattedDate'
 const NewsDetails = () => {
   const { newsId } = useParams()
 
-  const news = useSelector(state => state.news.news.find(
-    news => news._id === newsId
-  ))
+  const news = useSelector((state) =>
+    state.news.news.find((news) => news._id === newsId)
+  )
 
   if (!news) {
-    return <Navigate to='/' replace />
+    return <Navigate to="/" replace />
   }
-
 
   return (
     <div className={`${styles.newsDetails} ${styles.responsive}`}>
       <div className={styles.gap2}></div>
 
-      <div className='row'>
+      <div className="row">
         <div className={styles.container}>
-
           {typeof news.image === 'string' ? (
-            <img src={news.image} alt='' />
+            <img src={news.image} alt="" />
           ) : (
-            <img src={news.image.base64Image} alt='' />
+            <img src={news.image.base64Image} alt="" />
           )}
 
           <div className={styles.info}>
@@ -55,11 +53,16 @@ const NewsDetails = () => {
                   base64={news.pdf.base64PDF}
                   downloadName={news.title}
                 >
-                  <FontAwesomeIcon icon={faFilePdf}></FontAwesomeIcon>&nbsp;Download
+                  <FontAwesomeIcon icon={faFilePdf}></FontAwesomeIcon>
+                  &nbsp;Download
                 </Base64Downloader>
               </div>
             )}
-            <p>{news.content}</p>
+            {news.contentHTML ? (
+              <p dangerouslySetInnerHTML={{ __html: news.contentHTML }}></p>
+            ) : (
+              <p>{news.content}</p>
+            )}
           </div>
         </div>
       </div>
