@@ -46,7 +46,9 @@ const UpdateNews = () => {
 
   const image = watch('image')
   const pdf = watch('pdf')
-  const [contentHTML, setContentHTML] = useState('')
+  const [contentHTML, setContentHTML] = useState(
+    news.contentHTML ? news.contentHTML : news.content
+  )
 
   if (!news) {
     return <Navigate to="/dashboard/news" replace />
