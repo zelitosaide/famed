@@ -61,7 +61,7 @@ const NewsDetails = () => {
             {news.contentHTML ? (
               <p dangerouslySetInnerHTML={{ __html: news.contentHTML }}></p>
             ) : (
-              <p>{news.content}</p>
+              <p className={styles.lastChild}>{news.content}</p>
             )}
           </div>
         </div>
