@@ -359,6 +359,10 @@ a {
   min-height: 270px;
 }
 
+.height .ql-editor {
+  min-height: 90px;
+}
+
 .ql-toolbar.ql-snow {
   border: 1px solid var(--main-border-color) !important;
   border-top-right-radius: var(--border-radius-small) !important;

@@ -311,6 +311,7 @@ const CreateProject = () => {
                   <div>
                     <ReactQuill
                       theme="snow"
+                      className="height"
                       value={contentHTML}
                       onChange={setContentHTML}
                     />
