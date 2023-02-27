@@ -106,6 +106,7 @@ const CreateProject = () => {
       await dispatch(
         createProject({
           ...data,
+          contentHTML,
           image,
           team,
           financiers,
