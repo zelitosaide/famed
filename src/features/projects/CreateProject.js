@@ -117,6 +117,7 @@ const CreateProject = () => {
       openAndAutoClose()
       setCounterFinancier(0)
       setCounterTeamMember(0)
+      setContentHTML('')
       methods.reset()
     } catch (error) {
       setErrorMessage(error.message)
