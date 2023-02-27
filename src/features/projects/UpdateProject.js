@@ -121,17 +121,17 @@ const UpdateProject = () => {
         team,
       })
 
-      // await dispatch(
-      //   updateProject({
-      //     ...data,
-      //     contentHTML,
-      //     image: { imageName, base64Image },
-      //     financiers,
-      //     team,
-      //   })
-      // ).unwrap()
+      await dispatch(
+        updateProject({
+          ...data,
+          contentHTML,
+          image: { imageName, base64Image },
+          financiers,
+          team,
+        })
+      ).unwrap()
 
-      // navigate('/dashboard/projects')
+      navigate('/dashboard/projects')
     } catch (error) {
       setErrorMessage(error.message)
       setOpenErrorNotification(true)
