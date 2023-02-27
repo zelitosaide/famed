@@ -22,6 +22,9 @@ import { Chip } from '../../components/chip/Chip'
 import { LeftArrow, RightArrow } from './arrows'
 import { Notification } from '../../components/notification/Notification'
 
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
 const CreateProject = () => {
   const methods = useForm({
     defaultValues: {
@@ -43,6 +46,8 @@ const CreateProject = () => {
     mode: 'onChange',
     shouldUnregister: false,
   })
+
+  const [contentHTML, setContentHTML] = useState('')
 
   const financiers = methods.watch('financiers')
   const team = methods.watch('team')
@@ -288,6 +293,7 @@ const CreateProject = () => {
                       </Input>
                     </Column>
                   </Row>
+
                   <Input
                     label="Resumo do Projecto"
                     required
@@ -301,6 +307,14 @@ const CreateProject = () => {
                       })}
                     />
                   </Input>
+
+                  <div>
+                    <ReactQuill
+                      theme="snow"
+                      value={contentHTML}
+                      onChange={setContentHTML}
+                    />
+                  </div>
 
                   <Input style={{ display: 'inline-block' }}>
                     <button
