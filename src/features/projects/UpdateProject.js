@@ -18,6 +18,9 @@ import { AddTeamMemberModal } from '../../components/modal/AddTeamMemberModal'
 import { Notification } from '../../components/notification/Notification'
 import { FileInput2 } from '../../components/input/FileInput2'
 
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+
 const UpdateProject = () => {
   const fieldset = useRef()
   const { projectId } = useParams()
@@ -320,6 +323,27 @@ const UpdateProject = () => {
                       })}
                     />
                   </Input>
+
+                  <div>
+                    <label
+                      style={{
+                        fontSize: 'var(--main-font-size)',
+                        color: 'var(--main-font-color)',
+                        fontWeight: 'var(--bold-font-weight)',
+                        paddingBottom: 'calc(0.26rem * var(--scale))',
+                        fontFamily: 'var(--font-family)',
+                        padding: 'calc(0.5rem * var(--scale))',
+                      }}
+                    >
+                      Descrição detalhada do Projecto
+                    </label>
+                    <ReactQuill
+                      theme="snow"
+                      className="height"
+                      value={contentHTML}
+                      onChange={setContentHTML}
+                    />
+                  </div>
 
                   {admin && (
                     <Fieldset
