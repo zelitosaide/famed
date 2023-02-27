@@ -113,17 +113,25 @@ const UpdateProject = () => {
         team[i].image = { ...team[i].image, base64Image: base64team[i] }
       }
 
-      await dispatch(
-        updateProject({
-          ...data,
-          contentHTML,
-          image: { imageName, base64Image },
-          financiers,
-          team,
-        })
-      ).unwrap()
+      console.log({
+        ...data,
+        contentHTML,
+        image: { imageName, base64Image },
+        financiers,
+        team,
+      })
 
-      navigate('/dashboard/projects')
+      // await dispatch(
+      //   updateProject({
+      //     ...data,
+      //     contentHTML,
+      //     image: { imageName, base64Image },
+      //     financiers,
+      //     team,
+      //   })
+      // ).unwrap()
+
+      // navigate('/dashboard/projects')
     } catch (error) {
       setErrorMessage(error.message)
       setOpenErrorNotification(true)
