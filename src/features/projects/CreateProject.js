@@ -309,7 +309,18 @@ const CreateProject = () => {
                   </Input>
 
                   <div>
-                    <label>Descrição detalhada do Projecto</label>
+                    <label
+                      style={{
+                        fontSize: 'var(--main-font-size)',
+                        color: 'var(--main-font-color)',
+                        fontWeight: 'var(--bold-font-weight)',
+                        paddingBottom: 'calc(0.26rem * var(--scale))',
+                        fontFamily: 'var(--font-family)',
+                        padding: 'calc(0.5rem * var(--scale))',
+                      }}
+                    >
+                      Descrição detalhada do Projecto
+                    </label>
                     <ReactQuill
                       theme="snow"
                       className="height"
