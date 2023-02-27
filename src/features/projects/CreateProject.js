@@ -309,7 +309,7 @@ const CreateProject = () => {
                   </Input>
 
                   <div>
-                    <label>Descrição detalhada</label>
+                    <label>Descrição detalhada do Projecto</label>
                     <ReactQuill
                       theme="snow"
                       className="height"
