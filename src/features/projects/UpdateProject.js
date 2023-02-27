@@ -113,6 +113,7 @@ const UpdateProject = () => {
       await dispatch(
         updateProject({
           ...data,
+          contentHTML,
           image: { imageName, base64Image },
           financiers,
           team,
