@@ -30,7 +30,7 @@ const ProjectDetails = () => {
           />
 
           <div className={styles.info}>
-            <p>{project.title}</p>
+            <p className={styles.firstChild}>{project.title}</p>
             <p>
               <span
                 style={{

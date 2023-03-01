@@ -130,14 +130,13 @@
   padding-bottom: 1rem;
 }
 
-.projectDetails .container .info p:first-child {
+.projectDetails .container .info .firstChild {
   margin-bottom: 0.2rem;
   font-size: 0.92rem;
   font-weight: bold;
   color: var(--main-color);
   line-height: 1.2rem;
 }
-
 
 /* Team Member */
 .horizontalScroll {
@@ -147,7 +146,8 @@
 .member {
   width: 11rem;
   padding: 1rem 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
 }
@@ -206,7 +206,6 @@
   margin-top: 1.4rem;
 }
 
-
 @media only screen and (min-width: 300px) {
   .projectDetails.responsive .container .info p:first-child {
     margin-top: 0;
@@ -233,7 +232,7 @@
 .createProject,
 .projectTable {
   min-height: 100vh;
-  background: #F3F4F6;
+  background: #f3f4f6;
   padding-top: 3.5rem;
   height: max-content;
   padding-left: 16rem;
@@ -271,8 +270,6 @@
   z-index: -10;
 }
 
-
-
 /* Project Table */
 .projectTable .addbtn {
   position: relative;
@@ -297,7 +294,6 @@
 .projectTable .editBtn:disabled:hover {
   text-decoration: none;
 }
-
 
 @media only screen and (min-width: 1280px) {
   .gap {
