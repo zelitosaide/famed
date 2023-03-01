@@ -31,7 +31,7 @@ const ProjectDetails = () => {
 
           <div className={styles.info}>
             <p className={styles.firstChild}>{project.title}</p>
-            <p>
+            <p className={styles.nthChild2}>
               <span
                 style={{
                   background: '#C66518',
