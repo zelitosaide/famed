@@ -160,7 +160,3 @@ const ProjectDetails = () => {
 }
 
 export default ProjectDetails
-
-// line-height: 1.6rem;
-// font-size: 0.875rem;
-// margin-top: 1.4rem;
