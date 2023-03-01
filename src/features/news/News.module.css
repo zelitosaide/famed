@@ -147,8 +147,13 @@
 }
 
 /* Conteudo vindo do react-quill */
+.projectDetails .container .info .conteudoDinamico ul {
+  padding-left: 26px;
+  list-style-type: disc;
+}
+
 .newsDetails .container .info .conteudoDinamico p,
-li {
+.newsDetails .container .info .conteudoDinamico li {
   line-height: 1.6rem;
   font-size: 0.875rem;
 }
