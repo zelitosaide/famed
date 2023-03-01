@@ -134,14 +134,13 @@ const ProjectDetails = () => {
               <div
                 className={styles.conteudoDinamico}
                 dangerouslySetInnerHTML={{ __html: project.contentHTML }}
+                style={{ marginTop: 5 }}
               />
             ) : (
               <p className={styles.lastChild} style={{ marginTop: 5 }}>
                 {project.content}
               </p>
             )}
-
-            {/* <p style={{ marginTop: 5 }}>{project.content}</p> */}
 
             {project._id === '634fe6711983a2568223af41' && (
               <img src={temporaryImage} alt="Ola" />
