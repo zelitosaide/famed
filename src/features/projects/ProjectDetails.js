@@ -130,7 +130,18 @@ const ProjectDetails = () => {
               </>
             )}
 
-            <p style={{ marginTop: 5 }}>{project.content}</p>
+            {project.contentHTML ? (
+              <div
+                className={styles.conteudoDinamico}
+                dangerouslySetInnerHTML={{ __html: project.contentHTML }}
+              />
+            ) : (
+              <p className={styles.lastChild} style={{ marginTop: 5 }}>
+                {project.content}
+              </p>
+            )}
+
+            {/* <p style={{ marginTop: 5 }}>{project.content}</p> */}
 
             {project._id === '634fe6711983a2568223af41' && (
               <img src={temporaryImage} alt="Ola" />
@@ -150,3 +161,7 @@ const ProjectDetails = () => {
 }
 
 export default ProjectDetails
+
+// line-height: 1.6rem;
+// font-size: 0.875rem;
+// margin-top: 1.4rem;

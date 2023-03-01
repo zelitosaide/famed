@@ -193,14 +193,14 @@
   color: var(--main-color);
 }
 
-.projectDetails .container .info p:nth-child(3) {
+/* .projectDetails .container .info p:nth-child(3) {
   margin-top: 0.4rem;
   font-size: 0.875rem;
   line-height: 1.6rem;
   color: var(--main-color);
-}
+} */
 
-.projectDetails .container .info p:last-child {
+.projectDetails .container .info .lastChild {
   line-height: 1.6rem;
   font-size: 0.875rem;
   margin-top: 1.4rem;
