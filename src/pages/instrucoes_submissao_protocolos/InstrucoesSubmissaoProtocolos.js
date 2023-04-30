@@ -1,5 +1,6 @@
 import manual from '../../assets/pdf/Manual_Utilizador_ Plataforma_CIBS.pdf'
-import listaDocumentos from '../../assets/pdf/Lista_Verificacao_docuemntos.pdf'
+// import listaDocumentos from '../../assets/pdf/Lista_Verificacao_docuemntos.pdf'
+import listaDocumentos from '../../assets/pdf/Lista_Atual_Verificacao_documentos.pdf'
 import calendarioCC from '../../assets/pdf/Calendario_CC_2023.pdf'
 import calendarioCIBSFMHCM from '../../assets/pdf/Calendario_CIBS_FM_HCM_2023.pdf'
 
