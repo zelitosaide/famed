@@ -47,12 +47,11 @@ const Postgraduate = () => {
           <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)" }}>
             <p 
               style={{
-                fontSize: 15,
-                fontWeight: 500,
+                fontSize: 14,
                 margin: 0,
                 backgroundColor: "#257A23",
                 color: "white", 
-                padding: "14px 16px"
+                padding: "10px 16px"
               }}
             >
               Mestrado em Saúde Pública Presencial (MSP)
@@ -66,18 +65,19 @@ const Postgraduate = () => {
               }...
             </p>
           </div>
-          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)", padding: "14px 16px" }}>
+          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)" }}>
             <p 
               style={{
-                fontSize: 16, 
-                color: "var(--main-color)",
-                fontWeight: 500,
+                fontSize: 14,
                 margin: 0,
+                backgroundColor: "#257A23",
+                color: "white", 
+                padding: "10px 16px"
               }}
             >
               Mestrado em Saúde Pública à Distância (MSPD)
             </p>
-            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6 }}>
+            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
                 `Mestrado em Saúde Pública à Distância (MSPD), com os seguintes ramos:
                 Ramo de Desenvolvimento de Recursos Humanos para Saúde (DRHS)
@@ -87,18 +87,19 @@ const Postgraduate = () => {
               }...
             </p>
           </div>
-          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)", padding: "14px 16px" }}>
+          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)" }}>
             <p
               style={{
-                fontSize: 16, 
-                color: "var(--main-color)",
-                fontWeight: 500,
+                fontSize: 14,
                 margin: 0,
+                backgroundColor: "#257A23",
+                color: "white", 
+                padding: "10px 16px"
               }}
             >
               Mestrado em Biociências (MBC)
             </p>
-            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6 }}>
+            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
                 `O mestrado em Biociências visa formar profissionais de nível superior 
                 qualificados para o exercício profissional, incluindo docência e investigação 
