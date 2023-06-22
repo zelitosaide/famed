@@ -207,25 +207,33 @@ const Postgraduate = () => {
           Cursos de Doutoramentos:
         </p>
 
-        <ul style={{ listStyle: 'circle', marginLeft: '1.5rem' }}>
-          <li
-            style={{
-              lineHeight: '1.6rem',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-              marginBottom: 15,
-              textDecoration: 'underline',
-              textUnderlineOffset: 3,
-              textDecorationThickness: 1.5,
-              textDecorationColor: 'var(--hover-color)',
-            }}
-          >
-            <Link to="dbsp">
-              {/* <Link to='/postgraduate'> */}
-              Doutoramento em Biociências e Saúde Pública
-            </Link>
-          </li>
-        </ul>
+        <div style={{ display: "flex", gap: 26, marginBottom: 20 }}>
+          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)" }}>
+            <p
+              style={{
+                fontSize: 14,
+                margin: 0,
+                backgroundColor: "#257A23",
+                color: "white", 
+                padding: "10px 16px"
+              }}
+            >
+              <Link style={{ color: "white" }} to="dbsp">
+                Doutoramento em Biociências e Saúde Pública
+              </Link>
+            </p>
+            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
+              {
+                `O Programa visa criar oportunidades para que o doutorando adquira conhecimentos 
+                e competências, sobretudo na concepção, planeamento e execução de investigação 
+                nas áreas de Biociências e Saúde Pública; no desenvolvimento de habilidades de 
+                comunicação científica; capacidade de aprendizagem contínua e competência para formar 
+                novos investigadores.`
+                .slice(0, 200)
+              }...
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   )
