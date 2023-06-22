@@ -99,7 +99,7 @@ const Postgraduate = () => {
                 padding: "10px 16px"
               }}
             >
-              <Link to="mbc">
+              <Link style={{ color: "white" }} to="mbc">
                 Mestrado em Biociências (MBC)
               </Link>
             </p>
@@ -125,7 +125,9 @@ const Postgraduate = () => {
                 padding: "10px 16px"
               }}
             >
-              Mestrado em Epidemiologia de Campo e Laboratorial (MECL)
+              <Link style={{ color: "white" }} to="mecl">
+                Mestrado em Epidemiologia de Campo e Laboratorial (MECL)
+              </Link>
             </p>
             <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
