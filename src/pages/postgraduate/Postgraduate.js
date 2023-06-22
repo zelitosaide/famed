@@ -54,7 +54,7 @@ const Postgraduate = () => {
                 padding: "10px 16px"
               }}
             >
-              Mestrado em Saúde Pública Presencial (MSP)
+              <Link style={{ color: "white"}} to="msp">Mestrado em Saúde Pública Presencial (MSP)</Link>
             </p>
             <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
@@ -75,7 +75,9 @@ const Postgraduate = () => {
                 padding: "10px 16px"
               }}
             >
-              Mestrado em Saúde Pública à Distância (MSPD)
+              <Link style={{ color: "white" }} to="/postgraduate">
+                Mestrado em Saúde Pública à Distância (MSPD)
+              </Link>
             </p>
             <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
@@ -97,7 +99,9 @@ const Postgraduate = () => {
                 padding: "10px 16px"
               }}
             >
-              Mestrado em Biociências (MBC)
+              <Link to="mbc">
+                Mestrado em Biociências (MBC)
+              </Link>
             </p>
             <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
