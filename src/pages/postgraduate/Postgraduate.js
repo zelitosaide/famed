@@ -110,19 +110,20 @@ const Postgraduate = () => {
           </div>
         </div>
 
-        <div style={{ display: "flex", gap: 26, marginBottom: 20 }}>
-          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)", padding: "14px 16px" }}>
+        <div style={{ display: "flex", gap: 26, marginBottom: 20, marginTop: 30 }}>
+          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)" }}>
             <p
               style={{
-                fontSize: 16, 
-                color: "var(--main-color)",
-                fontWeight: 500,
+                fontSize: 14,
                 margin: 0,
+                backgroundColor: "#257A23",
+                color: "white", 
+                padding: "10px 16px"
               }}
             >
               Mestrado em Epidemiologia de Campo e Laboratorial (MECL)
             </p>
-            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6 }}>
+            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
                 `O objectivo geral deste programa é a formação em serviço, baseada nos 
                 Princípios Fundamentais da Epidemiologia, de forma a permitir aos formandos 
@@ -137,18 +138,19 @@ const Postgraduate = () => {
               }...
             </p>
           </div>
-          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)", padding: "14px 16px" }}>
+          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)" }}>
             <p
               style={{
-                fontSize: 16, 
-                color: "var(--main-color)",
-                fontWeight: 500,
+                fontSize: 14,
                 margin: 0,
+                backgroundColor: "#257A23",
+                color: "white", 
+                padding: "10px 16px"
               }}
             >
               Mestrado em Saúde Mental e Psico-intervenções (MSMPI)
             </p>
-            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6 }}>
+            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
                 `O Programa de Mestrado em Saúde Mental e Psicointervenções tem como objectivo 
                 formar profissionais com competências em pesquisa, avaliação e intervenção nas 
@@ -158,18 +160,19 @@ const Postgraduate = () => {
               }...
             </p>
           </div>
-          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)", padding: "14px 16px" }}>
+          <div style={{ width: "33.33%", height: 200, boxShadow: "1px 2px 10px 0 rgba(0, 0, 0, 0.3)" }}>
             <p
               style={{
-                fontSize: 16, 
-                color: "var(--main-color)",
-                fontWeight: 500,
+                fontSize: 14,
                 margin: 0,
+                backgroundColor: "#257A23",
+                color: "white", 
+                padding: "10px 16px"
               }}
             >
               Mestrado em Emergências Pediatrias e Neonatais (MEPN)
             </p>
-            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6 }}>
+            <p style={{ fontSize: 14, lineHeight: "1.5rem", marginTop: 6, padding: "8px 16px 14px" }}>
               {
                 `MEPN visa formar profissionais de saúde para providenciar cuidados de 
                 saúde, e realizarem docência e pesquisas relevantes, na área de pediatria 
