@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 
+import styles from "./Postgraduate.module.css"
+
 const Postgraduate = () => {
   return (
-    <div style={{ paddingTop: '9.5rem' }}>
+    <div className={styles.postgraduate} style={{ paddingTop: '9.5rem' }}>
       <div className="row">
         <p
           style={{
