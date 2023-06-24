@@ -171,14 +171,27 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink
+                {/* <NavLink
                   className={({ isActive }) =>
                     isActive ? styles.active : null
                   }
                   to="/about"
                 >
                   Sobre nós
-                </NavLink>
+                </NavLink> */}
+                <Menu>
+                  <MenuButton>
+                    Sobre nós <FontAwesomeIcon icon={caret}></FontAwesomeIcon>
+                  </MenuButton>
+                  <MenuList className={styles.slideDown}>
+                    <MenuLink as={Link} to="/about">
+                      Sobre a FAMED
+                    </MenuLink>
+                    <MenuLink as={Link} to="/">
+                      Documentos e regumentos da FAMED
+                    </MenuLink>
+                  </MenuList>
+                </Menu>
               </li>
               <li>
                 <Menu>
