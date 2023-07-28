@@ -171,9 +171,13 @@ export function InstrucoesSubmissaoProtocolos() {
         >
           No caso de dificuldade de registo na plataforma entre em contacto pelo
           email:{' '}
-          <span style={{ color: 'var(--main-color)' }}>
+          {/* <span style={{ color: 'var(--main-color)' }}>
             ccfaculdademedicina@gmail.com
+          </span>{' '} */}
+          <span style={{ color: 'var(--main-color)' }}>
+            info.med@uem.mz / fameduem@gmail.com
           </span>{' '}
+
           ou{' '}
           <span style={{ color: 'var(--main-color)' }}>info@leeva.agency</span>.
         </p>
