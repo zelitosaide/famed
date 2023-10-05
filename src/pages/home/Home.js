@@ -62,7 +62,7 @@ const Home = () => {
         <p className={styles.title}>
           Projectos |&nbsp;
           <Link to="/projects">
-            <span>Ver Todos Projectos</span>
+            <span>Ver Todos Projectos:::</span>
           </Link>
         </p>
       </div>
