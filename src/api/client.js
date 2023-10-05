@@ -5,7 +5,8 @@ import axios from 'axios'
 // const API = axios.create({ baseURL: 'http://www.med.uem.mz:5000/' })
 // const API = axios.create({ baseURL: 'https://www.med.uem.mz/' })
 // const API = axios.create({ baseURL: 'https://api.med.uem.mz/' })
-const API = axios.create({ baseURL: 'https://192.168.88.109:5000/' })
+// const API = axios.create({ baseURL: 'https://192.168.88.109:5000/' })
+const API = axios.create({ baseURL: 'https://api.med.uem.mz:5000/' })
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('famedv1_user')) {
