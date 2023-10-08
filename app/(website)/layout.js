@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           {children}  
         </div>
         <Footer />
-        ola
+        ola, tudo bem?
       </body>
     </html>
   );
