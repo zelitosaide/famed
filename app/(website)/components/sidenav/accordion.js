@@ -23,10 +23,12 @@ export default function Accordion({ links }) {
                   return (
                     <Link 
                       style={{ 
-                        height: 45, 
                         display: "flex", 
                         alignItems: "center",
-                        paddingLeft: 30
+                        paddingLeft: 20,
+                        paddingRight: 10,
+                        paddingTop: 10,
+                        paddingBottom: 10
                       }} 
                       className="block hover:bg-[#1F8E23]" 
                       href={href} 
