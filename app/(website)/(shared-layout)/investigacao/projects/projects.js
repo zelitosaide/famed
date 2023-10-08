@@ -1,3 +1,4 @@
+import { baseURL } from "@/app/api/server";
 import Link from "next/link";
 
 export default function Projects({ projects }) {
@@ -12,7 +13,7 @@ export default function Projects({ projects }) {
             <div className="flex">
               <img 
                 className="shrink-0 w-40"
-                src={`http://localhost:3001/${project.thumbnail}`}
+                src={`${baseURL}/${project.thumbnail}`}
               />
               <div className="p-3">
                 <Link
