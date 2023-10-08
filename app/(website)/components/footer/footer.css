@@ -1,0 +1,41 @@
+@import '@radix-ui/colors/slate.css';
+
+.footer-title {
+  color: var(--slate-4);
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.footer-link {
+  color: var(--slate-8);
+  font-size: 15px;
+  padding: 5px 0;
+  display: block;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-contacto li {
+  color: var(--slate-8);
+  font-size: 15px;
+  padding: 5px 0;
+  display: block;
+}
+
+.footer-copyright {
+  color: var(--slate-8);
+  font-size: 15px;
+  padding: 5px 0;
+  display: block;
+}
+
+.footer-social-network {
+  color: var(--slate-8);
+}
+
+.footer-social-network:hover {
+  color: var(--slate-4);
+}

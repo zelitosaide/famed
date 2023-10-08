@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  --primary-button-rgb: 23, 132, 21;
+  --secondary-button-rgb: 34, 34, 34;
+  --accent-rgb: 20, 111, 18;
+  --border-rgb: 186, 224, 186;
+  --card-rgb: 242, 248, 242;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  line-height: 2rem;
+  font-weight: 700;
+  color: #178415;
+  margin-bottom: 0.8888889em;
+}
+
+h2 {
+  font-weight: 700;
+  color: #178415;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.tiptap .is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #ced4da;
+  pointer-events: none;
+  height: 0;
+}
+
+.tiptap {
+  padding-left: 20px;
+  padding-right: 12px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.tiptap ul, .tiptap ol {
+  padding: 0 1rem;
+}
+
+ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+}
+
+ul[data-type="taskList"] p {
+  margin: 0;
+}
+
+ul[data-type="taskList"] li {
+  display: flex;
+}
+
+ul[data-type="taskList"] li > label {
+  flex: 0 0 auto;
+  margin-right: 0.5rem;
+  user-select: none;
+}
+
+ul[data-type="taskList"] li > div {
+  flex: 1 1 auto;
+}
+
+ul[data-type="taskList"] li ul li, ul[data-type="taskList"] li ol li {
+  display: list-item;
+}
+
+ul[data-type="taskList"] li ul[data-type="taskList"] > li {
+  display: flex;
+}
+
+.tiptap a {
+  cursor: pointer;
+}
+

@@ -1,0 +1,71 @@
+.tippy-box {
+  max-width: unset !important;
+}
+
+.bubble-menu .divider,
+.floating-menu .divider {
+  background-color: #E8E8EB;;
+  height: 1.25rem;
+  margin-left: 0.5rem;
+  margin-right: 0.75rem;
+  width: 1px;
+}
+
+.bubble-menu .editor__header, 
+.floating-menu .editor__header {
+  align-items: center;
+  border-radius: 0.4rem;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  padding: 0.25rem;
+
+  background-color: #fff;
+  border: 1px solid #E8E8EB;
+  border-radius: 6px;
+  box-shadow: 0 3px 15px -3px #0d142121;
+}
+
+.bubble-menu .menu-item, 
+.floating-menu .menu-item {
+  background-color: transparent;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  height: 1.75rem;
+  margin-right: 0.25rem;
+  width: 1.75rem;
+
+  opacity: 0.6;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bubble-menu .menu-item:hover, 
+.floating-menu .menu-item:hover, 
+.bubble-menu .menu-item.is-active,
+.floating-menu .menu-item.is-active {
+  background-color: rgb(23 132 21 / 10%);
+  opacity: 1;
+}
+
+.tiptap img {
+  height: auto;
+  max-width: 100%;
+}
+
+.tiptap img.ProseMirror-selectednode {
+  outline: 3px solid #68cef8;
+}
+
+.tiptap iframe {
+  width: 100%;
+  outline: 5px solid #E2F0E2;
+}
+
+.tiptap div[data-youtube-video] {
+  background-color: #E2F0E2;
+}

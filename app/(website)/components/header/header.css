@@ -1,0 +1,125 @@
+@import '@radix-ui/colors/slate.css';
+
+.H-NavigationMenuRoot {
+  position: relative;
+  display: flex;
+  z-index: 30000;
+}
+
+.H-NavigationMenuList {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+}
+
+.H-NavigationMenuTrigger,
+.H-NavigationMenuLink {
+  padding: 8px 12px;
+  outline: none;
+  user-select: none;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--slate-4);
+}
+
+.SocialNetwork {
+  color: var(--slate-4);
+  background-color: rgb(23 132 21 / 70%);
+}
+
+.SocialNetwork:hover {
+  background-color: #0d5e0c;
+}
+
+/* .H-NavigationMenuTrigger:focus,
+.H-NavigationMenuLink:focus {
+  box-shadow: 0 0 0 2px rgb(23 132 21 / 76%);
+} */
+
+.H-NavigationMenuTrigger:hover,
+.H-NavigationMenuLink:hover {
+  background-color: #0d5e0c;
+}
+
+.H-NavigationMenuTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.H-NavigationMenuLink {
+  display: block;
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.H-NavigationMenuContentWrapper {
+  position: relative;
+}
+
+.H-NavigationMenuContentBoundary {
+  margin-top: 8px;
+  padding: 4px 0;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgb(23 132 21 / 21%);
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  height: var(--radix-navigation-menu-viewport-height);
+}
+
+.H-NavigationMenuContent {
+  position: absolute;
+  left: 0;
+  animation-duration: 250ms;
+  animation-timing-function: ease;
+}
+
+.H-NavigationMenuContent[data-state='open'] {
+  animation: scaleIn 200ms ease;
+}
+
+.H-NavigationMenuContent[data-state='closed'] {
+  animation: scaleOut 200ms ease;
+}
+
+.H-RowList {
+  padding: 6px;
+}
+
+.H-CaretDown {
+  position: relative;
+  color: var(--slate-4);
+  top: 1px;
+  transition: transform 250ms ease;
+}
+[data-state='open'] > .H-CaretDown {
+  transform: rotate(-180deg);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: rotateX(-30deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: rotateX(-10deg) scale(0.95);
+  }
+}
