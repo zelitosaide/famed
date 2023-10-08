@@ -19,7 +19,6 @@ export default function RootLayout({ children }) {
           {children}  
         </div>
         <Footer />
-        ola, tudo bem?
       </body>
     </html>
   );
