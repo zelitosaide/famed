@@ -468,7 +468,7 @@ export default function Content({ content, id }) {
                 onClick={async function() {
                   setIsLoading(true);
                   setTimeout(async () => {
-                    // await updateContent(id, editor.getHTML());
+                    await updateContent(id, editor.getHTML());
                     setIsLoading(false);
                     setIsEditable(false);
                     showNotification("Salvo com sucesso!");
