@@ -81,5 +81,6 @@ export async function updateContent(id, content) {
     },
   });
   
+  // Ola
   return res.json();
 }
