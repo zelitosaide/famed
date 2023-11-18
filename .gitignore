@@ -1,5 +1,4 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-# pm2 start npm --name website-3003 -- run start -- --port 3003
 
 # dependencies
 /node_modules
@@ -27,6 +26,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel

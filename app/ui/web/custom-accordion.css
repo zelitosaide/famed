@@ -1,0 +1,86 @@
+@import "@radix-ui/colors/slate.css";
+
+button,
+h3 {
+  all: unset;
+}
+
+.AccordionRoot {
+  width: 100%;
+  background-color: rgb(23 132 21 / 70%);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.AccordionItem {
+  overflow: hidden;
+  margin-top: 1px;
+}
+
+.AccordionItem:first-child {
+  margin-top: 0;
+}
+
+.AccordionHeader {
+  display: flex;
+}
+
+.AccordionTrigger {
+  font-family: inherit;
+  background-color: transparent;
+  padding: 0 20px;
+  height: 45px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--slate-4);
+  box-shadow: 0 1px 0 #78ba78;
+  background-color: #1b9a19;
+  font-weight: 600;
+}
+
+.AccordionContent {
+  overflow: hidden;
+  font-size: 15px;
+  color: var(--slate-5);
+  background-color: #1b9a19;
+}
+
+.AccordionContent[data-state='open'] {
+  animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+.AccordionContent[data-state='closed'] {
+  animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.AccordionChevron {
+  color: var(--slate-4);
+  transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+.AccordionTrigger[data-state='open'] > .AccordionChevron {
+  transform: rotate(90deg);
+}
+
+.AccordionTrigger[data-state='open'] {
+  background-color: #1F8E23;
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

@@ -1,8 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // experimental: {
-  //   serverActions: true,
-  // },
-}
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.med.uem.mz",
+        port: "",
+        pathname: "/**",
+        // pathname: '/account123/**',
+      },
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

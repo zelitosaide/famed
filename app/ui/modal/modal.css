@@ -1,0 +1,16 @@
+/* @import "@radix-ui/colors/black-alpha.css"; */
+
+.ModalOverlay {
+  /* background-color: var(--black-a9); */
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
