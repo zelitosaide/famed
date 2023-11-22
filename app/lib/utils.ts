@@ -1,4 +1,7 @@
-import { Revenue } from './definitions';
+import { Revenue } from "./definitions";
+
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
@@ -67,3 +70,19 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export function showNotification(message: string, type = "success") {
+  Toastify({
+    text: message,
+    duration: 3000,
+    gravity: "bottom",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: type !== "error" 
+        ? "linear-gradient(to right, #00b09b, #96c93d)"
+        : "linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
+      color: "white",
+    },
+  }).showToast();
+}

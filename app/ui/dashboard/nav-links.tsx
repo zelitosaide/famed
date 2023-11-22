@@ -4,6 +4,7 @@ import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
+  DocumentTextIcon
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -14,11 +15,11 @@ import clsx from "clsx";
 const links = [
   { name: "Home", href: "/dashboard", icon: HomeIcon },
   {
-    name: "Invoices",
+    name: "Páginas Dinámicas",
     href: "/dashboard/invoices",
-    icon: DocumentDuplicateIcon,
+    icon: DocumentTextIcon,
   },
-  { name: "Customers", href: "/dashboard/customers", icon: UserGroupIcon },
+  { name: "Páginas Estáticas", href: "/dashboard/customers", icon: DocumentDuplicateIcon },
 ];
 
 export default function NavLinks() {

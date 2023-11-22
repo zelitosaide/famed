@@ -1,13 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import "./nav.css";
+import Link from "next/link";
 import * as Menubar from "@radix-ui/react-menubar";
+import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 export default function Nav({ links }: any) {
   return (
     <Menubar.Root className="MenubarRoot">
-      {links.map((link: any) => {
+      {links.filter((item: any) => item.title !== "Investigação").map((link: any) => {
         return (
           <Menubar.Menu key={link._id}>
             {link.children.length > 0 ? (
@@ -15,27 +16,46 @@ export default function Nav({ links }: any) {
                 <Menubar.Trigger className="MenubarTrigger">{link.title}</Menubar.Trigger>
                 <Menubar.Portal>
                   <Menubar.Content className="MenubarContent" align="start" sideOffset={5} alignOffset={-3}>
-
                     {link.title === "Ensino" ? (
-                      link.children.map(function(child: any) {
-                        if (child.title === "Cursos de Curta Duração") {
-                          return null;
-                        }
-
+                      link.children.filter((item: any) => item.title !== "Cursos de Curta Duração").map(function(child: any) {
                         return (
-                          <Menubar.Sub>
-                            <Menubar.SubTrigger>
-                              {child.title} <div>:::</div>
+                          <Menubar.Sub key={child.title}>
+                            <Menubar.SubTrigger
+                              className="MenubarSubTrigger"
+                              style={{ 
+                                height: "30px", 
+                                padding: "0 10px",
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                            >
+                              {child.title} 
+                              <div className="RightSlot">
+                                <ChevronRightIcon />
+                              </div>
                             </Menubar.SubTrigger>
 
                             <Menubar.Portal>
-                              <Menubar.SubContent alignOffset={-5}>
+                              <Menubar.SubContent className="MenubarSubContent" alignOffset={-5}>
                                 {child.children.map(function(i: any) {
                                   return (
-                                    <>
-                                      <Menubar.Item>{i.title}</Menubar.Item>
-                                      <Menubar.Separator />
-                                    </>
+                                    <Menubar.Item 
+                                      key={i.title} 
+                                      className="MenubarItem"
+                                      asChild
+                                    >
+                                      <Link
+                                        style={{ 
+                                          height: "30px", 
+                                          padding: "0 10px",
+                                          display: "flex",
+                                          alignItems: "center",
+                                        }} 
+                                        href={`/dashboard/customers/${i.segment}`}
+                                      >
+                                        {i.title}
+                                      </Link>
+                                    </Menubar.Item>
                                   );
                                 })}
                               </Menubar.SubContent>
@@ -44,17 +64,18 @@ export default function Nav({ links }: any) {
                         );
                       })
                     ) : (
-                      link.children.map(function(child: any) {
-                        const href = 
-                          child.segment ? `/web/${link.segment}/${child.segment}` : child.href;
-
-                        if (!child.segment) {
-                          return null;
-                        }
-
+                      link.children.filter((item: any) => item.segment).map(function(child: any) {
                         return (
-                          <Menubar.Item key={child.title}>
-                            <Link href={href}>
+                          <Menubar.Item className="MenubarItem" key={child.segment} asChild>
+                            <Link 
+                              style={{ 
+                                height: "30px", 
+                                padding: "0 10px",
+                                display: "flex",
+                                alignItems: "center",
+                              }} 
+                              href={`/dashboard/customers/${child.segment}`}
+                            >
                               {child.title}
                             </Link>
                           </Menubar.Item>
@@ -65,49 +86,18 @@ export default function Nav({ links }: any) {
                 </Menubar.Portal>
               </>
             ) : (
-              <Menubar.Trigger className="MenubarTrigger" asChild>
-                <Link href="/dashboard/customers">{link.title}</Link>
-              </Menubar.Trigger>
+              <>
+                <Menubar.Trigger>
+                  <Link className="MenubarTrigger" href={`/dashboard/customers/${link.segment}`}>{link.title}</Link>
+                </Menubar.Trigger>
+                <Menubar.Portal>
+                <Menubar.Content></Menubar.Content>
+                </Menubar.Portal>
+              </>
             )}
           </Menubar.Menu>
         );
       })}
     </Menubar.Root>
-    // <div className="bg-blue-600">
-    //   <ul>
-    //     {links.map(function(link: any) {
-    //       return (
-    //         <li key={link._id}>
-    //           {link.children.length > 0 ? (
-    //             <>
-    //               <p style={{ background: "red" }}>{link.title}</p>
-    //               {link.title === "Ensino" ? (
-    //                 <ul>
-    //                   {link.children.map(function(child: any) {
-                        
-    //                   })}
-    //                 </ul>
-    //               ) : (
-    //                 <ul>
-    //                   {link.children.map(function(child: any) {
-    //                     const href = 
-    //                       child.segment ? `/web/${link.segment}/${child.segment}` : child.href;
-    //                     return (
-    //                       <a key={child.title} href={href}>{child.title}</a>
-    //                     );
-    //                   })}
-    //                 </ul>
-    //               )}
-    //             </>
-    //           ) : (
-    //             <a style={{ background: "red" }} href={`/web/${link.segment}`}>
-    //               {link.title}
-    //             </a>
-    //           )}
-    //         </li>
-    //       );
-    //     })}
-    //   </ul>
-    // </div>
   );
 }

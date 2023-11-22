@@ -70,3 +70,15 @@ export async function getNewsById(id: string) {
   });
   return res.json();
 }
+
+export async function updateContent(id: string, content: any) {
+  const res = await fetch(`${baseURL}/contents/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({ content }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "Access-Control-Allow-Origin": "*"
+    },
+  });
+  return res.json();
+}

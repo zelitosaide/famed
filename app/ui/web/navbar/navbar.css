@@ -1,0 +1,207 @@
+@import "@radix-ui/colors/olive.css";
+
+/* reset */
+/* p, */
+button {
+  all: unset;
+}
+
+.NavigationMenuRoot {
+  position: relative;
+  display: flex;
+  z-index: 20000;
+}
+
+.NavigationMenuList {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(242, 248, 242);
+  padding: 4px;
+  border-radius: 6px;
+  list-style: none;
+  margin: 0;
+}
+
+.NavigationMenuTrigger,
+.NavigationMenuLink {
+  padding: 8px 12px;
+  outline: none;
+  user-select: none;
+  line-height: 1;
+  font-size: 18px;
+  color: #178415;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.NavigationMenuTrigger:focus,
+.NavigationMenuLink:focus {
+  box-shadow: 0 0 0 2px rgb(23 132 21 / 76%);
+}
+
+.NavigationMenuTrigger:hover,
+.NavigationMenuLink:hover {
+  background-color: rgb(23 132 21 / 12%);
+}
+
+.NavigationMenuTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.NavigationMenuLink {
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.NavigationMenuContentWrapper {
+  position: relative;
+}
+
+.NavigationMenuContentBoundary {
+  margin-top: 8px;
+  padding: 4px 0;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgb(23 132 21 / 21%);
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  height: var(--radix-navigation-menu-viewport-height);
+}
+
+.NavigationMenuContent {
+  position: absolute;
+  left: 0;
+  animation-duration: 250ms;
+  animation-timing-function: ease;
+}
+
+.NavigationMenuContent[data-state='open'] {
+  animation: scaleIn 200ms ease;
+}
+
+.NavigationMenuContent[data-state='closed'] {
+  animation: scaleOut 200ms ease;
+}
+
+.NavigationMenuContentSectionHeader {
+  font-weight: 700;
+  color: #178415;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  padding: 6px;
+}
+
+.NavigationMenuContentSectionHeader.Link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.NavigationMenuContentSectionHeader.Link:focus {
+  box-shadow: 0 0 0 2px rgb(23 132 21 / 21%);
+}
+
+.NavigationMenuContentSectionHeader.Link:hover {
+  background-color: rgb(23 132 21 / 10%);
+}
+
+.SeparatorRoot {
+  background-color: rgb(23 132 21 / 21%);
+}
+
+.SeparatorRoot[data-orientation='horizontal'] {
+  height: 1px;
+  width: 100%;
+}
+
+.RowList {
+  padding: 6px;
+}
+
+.GridList {
+  display: grid;
+  margin: 0;
+  list-style: none;
+  width: 700px;
+  padding: 6px;
+}
+
+.GridList.one {
+  grid-template-columns: 1fr;
+}
+
+.GridList.two {
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 8px;
+}
+
+.ListItemLink {
+  display: block;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+  padding: 6px 10px;
+}
+
+.ListItemLink:focus {
+  box-shadow: 0 0 0 2px rgb(23 132 21 / 21%);
+}
+
+.ListItemLink:hover {
+  background-color: rgb(23 132 21 / 10%);
+}
+
+.ListItemHeading {
+  font-weight: 500;
+  line-height: 1.2;
+  color: #178415;
+  margin-bottom: 6px;
+}
+
+.ListItemText {
+  color: var(--olive-11);
+  line-height: 1.4;
+  font-weight: initial;
+}
+
+.CaretDown {
+  position: relative;
+  color: #178415;
+  top: 1px;
+  transition: transform 250ms ease;
+}
+[data-state='open'] > .CaretDown {
+  transform: rotate(-180deg);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: rotateX(-30deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: rotateX(-10deg) scale(0.95);
+  }
+}
