@@ -80,6 +80,5 @@ export async function updateContent(id: string, content: any) {
       "Access-Control-Allow-Origin": "*"
     },
   });
-  // Ola tudo bem?
   return res.json();
 }
