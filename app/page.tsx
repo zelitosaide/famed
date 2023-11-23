@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>Tudo bem?</div>;
+  return <div>Tudo bem!?</div>;
 }
