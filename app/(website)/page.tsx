@@ -8,6 +8,7 @@ export default async function Page() {
     <main className="pl-28 pr-28">
       <div className="mt-8">
         {/* <Carousel news={news} /> */}
+        ola
       </div>
     </main>
   );
