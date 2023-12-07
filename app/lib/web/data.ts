@@ -87,6 +87,14 @@ export async function getNewsById(id: string) {
   return res.json();
 }
 
+export async function removeNewsById(id: string) {
+  const res = await fetch(`${baseURL}/news/${id}`, {
+    method: "DELETE",
+    cache: "no-cache",
+  });
+  return res.json();
+}
+
 export async function updateContent(id: string, content: any) {
   const res = await fetch(`${baseURL}/contents/${id}`, {
     method: "PATCH",
