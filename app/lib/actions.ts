@@ -5,7 +5,8 @@ import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
-import { updateNews } from "./web/data";
+import { createNews, updateNews } from "./web/data";
+// import { showNotification } from "./utils";
  
 // const InvoiceSchema = z.object({
 //   id: z.string(),
@@ -15,29 +16,29 @@ import { updateNews } from "./web/data";
 //   date: z.string(),
 // });
 
-const InvoiceSchema = z.object({
-  id: z.string(),
-  customerId: z.string({
-    invalid_type_error: "Please select a customer.",
-  }),
-  amount: z.coerce
-    .number()
-    .gt(0, { message: "Please enter an amount greater than $0." }),
-  status: z.enum(["pending", "paid"], {
-    invalid_type_error: "Please select an invoice status.",
-  }),
-  date: z.string(),
-  // title: z.string(),
-});
+// const InvoiceSchema = z.object({
+//   id: z.string(),
+//   customerId: z.string({
+//     invalid_type_error: "Please select a customer.",
+//   }),
+//   amount: z.coerce
+//     .number()
+//     .gt(0, { message: "Please enter an amount greater than $0." }),
+//   status: z.enum(["pending", "paid"], {
+//     invalid_type_error: "Please select an invoice status.",
+//   }),
+//   date: z.string(),
+//   title: z.string(),
+// });
  
-const CreateInvoice = InvoiceSchema.omit({ id: true, date: true });
-const UpdateInvoice = InvoiceSchema.omit({ id: true, date: true });
+// const CreateInvoice = InvoiceSchema.omit({ id: true, date: true });
+// const UpdateInvoice = InvoiceSchema.omit({ id: true, date: true });
 
 export type State = {
   errors?: {
-    customerId?: string[];
-    amount?: string[];
-    status?: string[];
+    // customerId?: string[];
+    // amount?: string[];
+    // status?: string[];
     title?: string[];
     description?: string[];
     // image?: string[];
@@ -47,39 +48,42 @@ export type State = {
 };
  
 export async function createInvoice(prevState: State, formData: FormData) {
-  const validatedFields = CreateInvoice.safeParse({
-    customerId: formData.get("customerId"),
-    amount: formData.get("amount"),
-    status: formData.get("status"),
-  });
+  // const validatedFields = CreateInvoice.safeParse({
+  //   customerId: formData.get("customerId"),
+  //   amount: formData.get("amount"),
+  //   status: formData.get("status"),
+  // });
 
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Invoice.",
-    };
-  }
+  // if (!validatedFields.success) {
+  //   return {
+  //     errors: validatedFields.error.flatten().fieldErrors,
+  //     message: "Missing Fields. Failed to Create Invoice.",
+  //   };
+  // }
  
   // Prepare data for insertion into the database
-  const { customerId, amount, status } = validatedFields.data;
-  const amountInCents = amount * 100;
-  const date = new Date().toISOString().split("T")[0];
+  // const { customerId, amount, status } = validatedFields.data;
+  // const amountInCents = amount * 100;
+  // const date = new Date().toISOString().split("T")[0];
  
   // Insert data into the database
   try {
-    await sql`
-      INSERT INTO invoices (customer_id, amount, status, date)
-      VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
-    `;
+    // await sql`
+    //   INSERT INTO invoices (customer_id, amount, status, date)
+    //   VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
+    // `;
+    await createNews(formData);
+    // showNotification("Salvo com sucesso!");
   } catch (error) {
     // If a database error occurs, return a more specific error.
+    // console.log(error);
     return {
       message: "Database Error: Failed to Create Invoice.",
     };
   }
  
-  revalidatePath("/dashboard/invoices");
-  redirect("/dashboard/invoices");
+  revalidatePath("/dashboard/invoices/news");
+  redirect("/dashboard/invoices/news");
 }
 
 // export async function updateInvoice(id: string, formData: FormData) {
@@ -159,10 +163,11 @@ export async function updateInvoice(
 
     // const news = await updateNews(id, formData);
     await updateNews(id, formData);
+    // showNotification("Atualizado com sucesso!");
     // console.log("Ollallalla");
     // console.log(news);
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     return { message: "Database Error: Failed to Update Invoice." };
   }
  
@@ -175,7 +180,7 @@ export async function deleteInvoice(id: string) {
   
   try {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
-    revalidatePath("/dashboard/invoices");
+    revalidatePath("/dashboard/invoices/news");
     return { message: "Deleted Invoice." };
   } catch (error) {
     return { message: "Database Error: Failed to Delete Invoice." };

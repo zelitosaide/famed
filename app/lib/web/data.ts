@@ -72,6 +72,14 @@ export async function updateNews(id: string, formData: FormData) {
   return res.json();
 }
 
+export async function createNews(formData: FormData) {
+  const res = await fetch(`${baseURL}/news`, {
+    method: "POST",
+    body: formData,
+  });
+  return res.json();
+}
+
 export async function getNewsById(id: string) {
   const res = await fetch(`${baseURL}/news/${id}`, {
     cache: "no-cache"
@@ -90,3 +98,18 @@ export async function updateContent(id: string, content: any) {
   });
   return res.json();
 }
+
+export const departaments = [
+  "Dep. Ciências Fisiológicas",
+  "Dep. Ciências Morfológicas",
+  "Dep. Microbiologia",
+  "Dep. Patologia",
+  "Dep. Saúde da Comunidade",
+  "Dep. Pediatria",
+  "Dep. Medicina",
+  "Dep. Cirurgia",
+  "Dep. Ginecologia e Obstetrícia",
+  "Unidade de Trauma e Violência",
+  "Unidade de Ciências de Implementação e Apoio à Pesquisa em Saúde",
+  "Unidade de Saúde Sexual e Reprodutiva e HIV/SIDA",
+];

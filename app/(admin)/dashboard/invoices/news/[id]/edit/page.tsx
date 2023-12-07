@@ -2,22 +2,9 @@ import Form from "@/app/ui/invoices/edit-form";
 import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
 // import { fetchCustomers, fetchInvoiceById } from "@/app/lib/data";
 // import { notFound } from "next/navigation";
-import { getNewsById } from "@/app/lib/web/data";
+import { departaments, getNewsById } from "@/app/lib/web/data";
 
-const departaments = [
-  "Dep. Ciências Fisiológicas",
-  "Dep. Ciências Morfológicas",
-  "Dep. Microbiologia",
-  "Dep. Patologia",
-  "Dep. Saúde da Comunidade",
-  "Dep. Pediatria",
-  "Dep. Medicina",
-  "Dep. Cirurgia",
-  "Dep. Ginecologia e Obstetrícia",
-  "Unidade de Trauma e Violência",
-  "Unidade de Ciências de Implementação e Apoio à Pesquisa em Saúde",
-  "Unidade de Saúde Sexual e Reprodutiva e HIV/SIDA",
-];
+
  
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;

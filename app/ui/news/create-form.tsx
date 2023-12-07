@@ -3,15 +3,20 @@
 import "./content.css";
 import "remixicon/fonts/remixicon.css";
 
-import { CustomerField, InvoiceForm } from "@/app/lib/definitions";
-import { BookmarkIcon } from "@heroicons/react/24/outline";
+// import { CustomerField } from "@/app/lib/definitions";
 import Link from "next/link";
+import {
+  BookmarkIcon,
+  // CheckIcon,
+  // ClockIcon,
+  // CurrencyDollarIcon,
+  // UserCircleIcon,
+} from "@heroicons/react/24/outline";
 import { Button } from "@/app/ui/button";
-// import { updateInvoice } from "@/app/lib/actions";
-import { updateInvoice } from '@/app/lib/actions';
+import { createInvoice } from '@/app/lib/actions';
 import { useFormState, useFormStatus } from "react-dom";
-import { useCallback, useRef, useState } from "react";
 import { BubbleMenu, EditorContent, FloatingMenu, useEditor } from "@tiptap/react";
+
 import StarterKit from "@tiptap/starter-kit";
 import Document from "@tiptap/extension-document";
 import Heading from "@tiptap/extension-heading";
@@ -24,23 +29,15 @@ import TipTapLink from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
 import Placeholder from "@tiptap/extension-placeholder";
 import { baseURL } from "@/app/lib/web/data";
+import { useCallback, useRef } from "react";
 
 const CustomDocument = Document.extend({
   content: "heading block+",
 });
 
-// export default function EditInvoiceForm({
-//   invoice,
-//   customers,
-// }: {
-//   invoice: InvoiceForm;
-//   customers: CustomerField[];
-// }) {
-export default function EditNewsForm({ news, departaments }: any) {
+export default function Form({ departaments }: any) {
   const initialState = { message: null, errors: {} };
-  // const [content, setContent] = useState("");
-  const updateInvoiceWithId = updateInvoice.bind(null, news._id);
-  const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
+  const [state, dispatch] = useFormState(createInvoice, initialState);
 
   const imageRef: any = useRef(null);
   const fileRef: any = useRef(null);
@@ -87,7 +84,7 @@ export default function EditNewsForm({ news, departaments }: any) {
         },
       }),
     ],
-    content: news.content,
+    // content: "",
     editorProps: {
       attributes: {
         spellcheck: "false",
@@ -195,7 +192,6 @@ export default function EditNewsForm({ news, departaments }: any) {
 
   return (
     <form action={dispatch}>
-      <input type="hidden" name="id" value={news._id} />
       <input type="hidden" name="content" value={editor.getHTML()} />
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Titulo da Notícia */}
@@ -203,13 +199,31 @@ export default function EditNewsForm({ news, departaments }: any) {
           <label htmlFor="title" className="mb-2 block text-sm font-medium">
             Título da Notícia
           </label>
+          {/* <div className="relative">
+            <select
+              id="customer"
+              name="customerId"
+              className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+              defaultValue=""
+              aria-describedby="customer-error"
+            >
+              <option value="" disabled>
+                Select a customer
+              </option>
+              {customers.map((customer) => (
+                <option key={customer.id} value={customer.id}>
+                  {customer.name}
+                </option>
+              ))}
+            </select>
+            <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+          </div> */}
           <div className="relative mt-2 rounded-md">
             <div className="relative">
               <input
                 id="title"
                 name="title"
                 type="text"
-                defaultValue={news.title}
                 placeholder="Digite o Título"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                 aria-describedby="title-error"
@@ -217,6 +231,17 @@ export default function EditNewsForm({ news, departaments }: any) {
               <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
+          {/* {state.errors?.customerId ? (
+            <div
+              id="customer-error"
+              aria-live="polite"
+              className="mt-2 text-sm text-red-500"
+            >
+              {state.errors.customerId.map((error: string) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          ) : null} */}
           {state.errors?.title ? (
             <div
               id="title-error"
@@ -235,13 +260,26 @@ export default function EditNewsForm({ news, departaments }: any) {
           <label htmlFor="description" className="mb-2 block text-sm font-medium">
             Descrição da Notícia
           </label>
+          {/* <div className="relative mt-2 rounded-md">
+            <div className="relative">
+              <input
+                id="amount"
+                name="amount"
+                type="number"
+                step="0.01"
+                placeholder="Enter USD amount"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                aria-describedby="amount-error"
+              />
+              <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+            </div>
+          </div> */}
           <div className="relative mt-2 rounded-md">
             <div className="relative">
               <input
                 id="description"
                 name="description"
                 type="text"
-                defaultValue={news.description}
                 placeholder="Digite a Descrição"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                 aria-describedby="description-error"
@@ -249,6 +287,17 @@ export default function EditNewsForm({ news, departaments }: any) {
               <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
+          {/* {state.errors?.amount ? (
+            <div
+              id="amount-error"
+              aria-live="polite"
+              className="mt-2 text-sm text-red-500"
+            >
+              {state.errors.amount.map((error: string) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          ) : null} */}
           {state.errors?.description ? (
             <div
               id="description-error"
@@ -280,19 +329,7 @@ export default function EditNewsForm({ news, departaments }: any) {
               <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
-          {/* {state.errors?.image ? (
-            <div
-              id="image-error"
-              aria-live="polite"
-              className="mt-2 text-sm text-red-500"
-            >
-              {state.errors.image.map((error: string) => (
-                <p key={error}>{error}</p>
-              ))}
-            </div>
-          ) : null} */}
         </div>
-
 
 
         {/* Departamento da Notícia */}
@@ -304,8 +341,8 @@ export default function EditNewsForm({ news, departaments }: any) {
             <select
               id="department"
               name="department"
+              defaultValue=""
               className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-              defaultValue={news.department}
             >
               <option value="" disabled>
                 Selecione o departamento
@@ -321,17 +358,12 @@ export default function EditNewsForm({ news, departaments }: any) {
         </div>
 
 
-        
 
 
 
 
 
 
-
-
-
-        
         {/* Conteudo da Notícia */}
         <div className="mb-4 prose prose-green prose-zinc marker:text-[#178415] max-w-none">
           <label htmlFor="content" className="mb-2 block text-sm font-medium">
@@ -676,20 +708,75 @@ export default function EditNewsForm({ news, departaments }: any) {
 
 
 
-
-
-
-
-
-
         
 
+
+
+
+        {/* Invoice Status */}
+        {/* <fieldset aria-describedby="status-error">
+          <legend className="mb-2 block text-sm font-medium">
+            Set the invoice status
+          </legend>
+          <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
+            <div className="flex gap-4">
+              <div className="flex items-center">
+                <input
+                  id="pending"
+                  name="status"
+                  type="radio"
+                  value="pending"
+                  className="h-4 w-4 border-gray-300 bg-gray-100 text-gray-600 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-gray-600"
+                />
+                <label
+                  htmlFor="pending"
+                  className="ml-2 flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-300"
+                >
+                  Pending <ClockIcon className="h-4 w-4" />
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  id="paid"
+                  name="status"
+                  type="radio"
+                  value="paid"
+                  className="h-4 w-4 border-gray-300 bg-gray-100 text-gray-600 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-gray-600"
+                />
+                <label
+                  htmlFor="paid"
+                  className="ml-2 flex items-center gap-1.5 rounded-full bg-green-500 px-3 py-1.5 text-xs font-medium text-white dark:text-gray-300"
+                >
+                  Paid <CheckIcon className="h-4 w-4" />
+                </label>
+              </div>
+            </div>
+          </div>
+          {state.errors?.status ? (
+            <div
+              id="status-error"
+              aria-live="polite"
+              className="mt-2 text-sm text-red-500"
+            >
+              {state.errors.status.map((error: string) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          ) : null}
+        </fieldset>
+        {state.message ? (
+          <div
+            // id="customer-error"
+            aria-live="polite"
+            className="mt-2 text-sm text-red-500"
+          >
+            <p>{state.message}</p>
+          </div>
+        ) : null} */}
+
+
+
       </div>
-
-
-
-
-      
       <div className="mt-6 flex justify-end gap-4">
         <Link
           href="/dashboard/invoices/news"
@@ -697,17 +784,17 @@ export default function EditNewsForm({ news, departaments }: any) {
         >
           Cancelar
         </Link>
-        {/* <Button type="submit">Edit Invoice</Button> */}
-        <UpdateInvoiceButton />
+        {/* <Button type="submit">Create Invoice</Button> */}
+        <CreateInvoiceButton />
       </div>
     </form>
   );
 }
 
-function UpdateInvoiceButton() {
+function CreateInvoiceButton() {
   const { pending } = useFormStatus();
  
   return (
-    <Button type="submit" aria-disabled={pending}>Editar Notícia</Button>
+    <Button type="submit" aria-disabled={pending}>Criar Notícia</Button>
   );
 }

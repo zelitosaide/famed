@@ -15,7 +15,7 @@ export default function Breadcrumbs({
 }) {
   return (
     // <nav aria-label="Breadcrumb" className="mb-6 block">
-    <nav aria-label="Breadcrumb" style={{ marginTop: 16 }} className="mb-6 block bg-gray-50 pl-4 pt-1 pb-1">
+    <nav aria-label="Breadcrumb" className="mt-4 mb-6 block bg-gray-50 pl-4 pt-1 pb-1 md:mt-8">
       {/* <ol className={clsx(lusitana.className, 'flex text-xl md:text-2xl')}> */}
       <ol className={clsx(lusitana.className, 'flex text-base')}>
         {breadcrumbs.map((breadcrumb, index) => (
