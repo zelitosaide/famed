@@ -14,8 +14,10 @@ export default function Breadcrumbs({
   breadcrumbs: Breadcrumb[];
 }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 block">
-      <ol className={clsx(lusitana.className, 'flex text-xl md:text-2xl')}>
+    // <nav aria-label="Breadcrumb" className="mb-6 block">
+    <nav aria-label="Breadcrumb" style={{ marginTop: 16 }} className="mb-6 block bg-gray-50 pl-4 pt-1 pb-1">
+      {/* <ol className={clsx(lusitana.className, 'flex text-xl md:text-2xl')}> */}
+      <ol className={clsx(lusitana.className, 'flex text-base')}>
         {breadcrumbs.map((breadcrumb, index) => (
           <li
             key={breadcrumb.href}
@@ -34,3 +36,25 @@ export default function Breadcrumbs({
     </nav>
   );
 }
+
+
+
+// Título: Gestão e análise de dados quantitativos (RedCap)
+// Objetivo: coleta e gestão de dados de forma segura e padronizada, que permita assegurar a integridade, a reprodutibilidade e a segurança dessas informações?
+
+
+// Publico alvo: estudante universitário da área da saúde, docente e investigadores Palops.
+
+// Duração: 3 dias (5 horas)
+
+
+// Dia 30 de novembro (quinta-feira): 14h-16h (hora de Cabo Verde);
+// Tema/conteúdo: Criação de Instrumentos no REDCap
+
+ 
+// Dia 01 de Dezembro (sexta-feira): 18h-19h (hora de Cabo Verde);
+// Tema/conteúdo: Coleta de Dados no REDCap
+
+
+// Dia 07 de Dezembro (quinta-feira): 14h-16h (hora de Cabo Verde).
+// Tema/conteúdo: Exportação de Dados do REDCap

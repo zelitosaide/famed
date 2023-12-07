@@ -87,7 +87,7 @@ export default function Nav({ links }: any) {
               </>
             ) : (
               <>
-                <Menubar.Trigger>
+                <Menubar.Trigger asChild>
                   <Link className="MenubarTrigger" href={`/dashboard/customers/${link.segment}`}>{link.title}</Link>
                 </Menubar.Trigger>
                 <Menubar.Portal>

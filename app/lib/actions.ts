@@ -5,6 +5,7 @@ import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
+import { updateNews } from "./web/data";
  
 // const InvoiceSchema = z.object({
 //   id: z.string(),
@@ -26,6 +27,7 @@ const InvoiceSchema = z.object({
     invalid_type_error: "Please select an invoice status.",
   }),
   date: z.string(),
+  // title: z.string(),
 });
  
 const CreateInvoice = InvoiceSchema.omit({ id: true, date: true });
@@ -36,6 +38,10 @@ export type State = {
     customerId?: string[];
     amount?: string[];
     status?: string[];
+    title?: string[];
+    description?: string[];
+    // image?: string[];
+    content?: string[];
   };
   message?: string | null;
 };
@@ -101,36 +107,67 @@ export async function createInvoice(prevState: State, formData: FormData) {
 export async function updateInvoice(
   id: string,
   prevState: State,
-  formData: FormData,
+  formData: FormData | any,
 ) {
-  const validatedFields = UpdateInvoice.safeParse({
-    customerId: formData.get("customerId"),
-    amount: formData.get("amount"),
-    status: formData.get("status"),
-  });
+  // const data = new FormData();
+  // console.log(formData.get("title"));
+  // console.log(formData.get("description"));
+  // console.log(formData.get("department"));
+  // console.log(formData.get("image"));
+  // console.log(formData);
+
+
+  // data.set("title", formData.get("title"))
+  // console.log(formData.get("imagem")?.size);
+  // console.log(formData.get("content"));
+  // const validatedFields = UpdateInvoice.safeParse({
+  //   customerId: formData.get("customerId"),
+  //   amount: formData.get("amount"),
+  //   status: formData.get("status"),
+  // });
  
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Update Invoice.",
-    };
-  }
+  // if (!validatedFields.success) {
+  //   return {
+  //     errors: validatedFields.error.flatten().fieldErrors,
+  //     message: "Missing Fields. Failed to Update Invoice.",
+  //   };
+  // }
  
-  const { customerId, amount, status } = validatedFields.data;
-  const amountInCents = amount * 100;
+  // const { customerId, amount, status } = validatedFields.data;
+  // const amountInCents = amount * 100;
  
   try {
-    await sql`
-      UPDATE invoices
-      SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
-      WHERE id = ${id}
-    `;
+    // await sql`
+    //   UPDATE invoices
+    //   SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
+    //   WHERE id = ${id}
+    // `;
+    // console.log(formData.get("image").size);
+
+    if (formData.get("image").size === 0) {
+      formData.delete("image");
+    }
+
+    // console.log(formData);
+
+    // const data = new FormData();
+    // console.log(formData.get("title"));
+    // console.log(formData.get("description"));
+    // console.log(formData.get("department"));
+    // console.log(formData.get("image"));
+    // console.log(formData.delete("image"));
+
+    // const news = await updateNews(id, formData);
+    await updateNews(id, formData);
+    // console.log("Ollallalla");
+    // console.log(news);
   } catch (error) {
+    // console.log(error);
     return { message: "Database Error: Failed to Update Invoice." };
   }
  
-  revalidatePath("/dashboard/invoices");
-  redirect("/dashboard/invoices");
+  revalidatePath("/dashboard/invoices/news");
+  redirect("/dashboard/invoices/news");
 }
 
 export async function deleteInvoice(id: string) {

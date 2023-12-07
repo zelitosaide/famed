@@ -57,9 +57,17 @@ export async function getPublications() {
   return res.json();
 }
 
-export async function getNews() {
+export async function getNews(query: string, currentPage: number) {
   const res = await fetch(`${baseURL}/news`, {
     cache: "no-cache"
+  });
+  return res.json();
+}
+
+export async function updateNews(id: string, formData: FormData) {
+  const res = await fetch(`${baseURL}/news/${id}`, {
+    method: "PATCH",
+    body: formData,
   });
   return res.json();
 }

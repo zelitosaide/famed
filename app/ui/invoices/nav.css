@@ -1,0 +1,27 @@
+.MenubarRoot {
+  display: flex;
+  background-color: #2F6FEB;
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.MenubarTrigger {
+  padding: 8px 12px;
+  outline: none;
+  user-select: none;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 4px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+  font-size: 0.875rem;
+}
+
+.MenubarTrigger[data-highlighted],
+.MenubarTrigger[data-state="open"],
+.MenubarTrigger:hover {
+  background-color: #175de8;
+}
