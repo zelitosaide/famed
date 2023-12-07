@@ -36,12 +36,12 @@ import { createNews, removeNewsById, updateNews } from "./web/data";
 
 export type State = {
   errors?: {
-    // customerId?: string[];
-    // amount?: string[];
-    // status?: string[];
+    customerId?: string[];
+    amount?: string[];
+    status?: string[];
     title?: string[];
     description?: string[];
-    // image?: string[];
+    image?: string[];
     content?: string[];
   };
   message?: string | null;
