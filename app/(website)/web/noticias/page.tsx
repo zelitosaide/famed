@@ -3,7 +3,7 @@ import H1 from "@/app/ui/web/h1";
 import Noticias from "@/app/ui/web/noticias/noticias";
 
 export default async function Page() {
-  const noticias = await getNews();
+  const noticias = await getNews("", 0);
 
   return (
     <div className="pt-2.5 pr-3 pl-5 pb-5">
