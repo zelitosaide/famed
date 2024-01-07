@@ -121,4 +121,5 @@ export const departaments = [
   "Unidade de Trauma e Violência",
   "Unidade de Ciências de Implementação e Apoio à Pesquisa em Saúde",
   "Unidade de Saúde Sexual e Reprodutiva e HIV/SIDA",
+  "Direção da Faculdade",
 ];
