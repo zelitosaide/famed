@@ -2,8 +2,10 @@ import { getContent } from "@/app/lib/web/data";
 import Content from "@/app/ui/customers/content";
 
 export default async function Page({ params }: any) {
+  // console.log(params.id);
   const data = await getContent(params.id);
   const text = data.segment.split("-").join(" ");
+  // documentos-e-regumentos-da-faculdade
 
   return (
     <>

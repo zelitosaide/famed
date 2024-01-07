@@ -1,4 +1,5 @@
-export const baseURL = "https://api.med.uem.mz";
+// export const baseURL = "https://api.med.uem.mz";
+export const baseURL = "http://localhost:3002";
 
 export async function getLinks(category: string) {
   const res = await fetch(`${baseURL}/links/category/${category}`, {
