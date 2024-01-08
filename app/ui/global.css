@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+iframe {
+  width: 100%;
+  outline: 5px solid #E2F0E2;
+}
+
 input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
