@@ -27,9 +27,10 @@ export default function Controls({ list, videoId: vId }: { list: any; videoId: s
               href={createPageURL(videoId, title)}
               style={{ marginBottom: 1 }}
               className={clsx(
-                "block text-sm px-1 py-3 text-[#178415] bg-[#F2F8F2] border-b border-[#CDE5CD] hover:bg-[#CDE5CD] transition-all flex justify-start items-center gap-2",
+                "block text-sm px-1 py-3 text-[#178415] border-b border-[#CDE5CD] hover:bg-[#CDE5CD] transition-all flex justify-start items-center gap-2",
                 {
-                  "bg-[#CDE5CD]": videoId === vId
+                  "bg-[#CDE5CD]": videoId === vId,
+                  "bg-[#F2F8F2]": videoId !== vId
                 }
               )}
             >

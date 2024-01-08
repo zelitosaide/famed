@@ -36,10 +36,7 @@ export default async function Page({
           className="w-60 bg-[#F2F8F2] shadow" 
           style={{ outline: "5px solid #F2F8F2" }}
         >
-          <p 
-            className="py-3 px-2 block bg-[#E2F0E2] font-bold text-[#178415]"
-            style={{ outline: "5px solid #E2F0E2" }}
-          >
+          <p className="py-3 px-2 block bg-[#E2F0E2] font-bold text-[#178415]">
             Conteúdo do Curso
           </p>
           <Controls list={list} videoId={videoId} />
