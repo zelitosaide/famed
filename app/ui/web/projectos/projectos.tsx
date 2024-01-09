@@ -1,3 +1,4 @@
+import { formatDateToLocal } from "@/app/lib/utils";
 import { baseURL } from "@/app/lib/web/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +7,7 @@ export default function Projectos({ projectos }: any) {
   return (
     <ul className="grid grid-cols-1 gap-y-7">
       {projectos.map(function(project: any) {
+        console.log(project);
         return (
           <li 
             key={project._id}
@@ -32,7 +34,7 @@ export default function Projectos({ projectos }: any) {
                   {project.title}
                 </Link>
                 <p style={{ fontSize: 15 }} className="text-[#C7681C] pt-1">
-                  Início do Projecto: Fim do Projecto:
+                  Início do Projecto:{" "}{formatDateToLocal(project.projectStartDate)}{" | "}Fim do Projecto:{" "}{formatDateToLocal(project.projectEndDate)}
                 </p>
                 <p style={{ fontSize: 15 }} className="text-zinc-500 pt-2">
                   {project.description}

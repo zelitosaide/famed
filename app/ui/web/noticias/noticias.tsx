@@ -1,3 +1,4 @@
+import { formatDateToLocal } from "@/app/lib/utils";
 import Link from "next/link";
 
 export default function Noticias({ noticias }: any) {
@@ -19,7 +20,7 @@ export default function Noticias({ noticias }: any) {
                   {noticia.title}
                 </Link>
                 <p style={{ fontSize: 15 }} className="text-[#C7681C] pt-1">
-                  Data da Publicação: 
+                  Data da Publicação: {formatDateToLocal(noticia.createdAt, "pt-BR")}
                 </p>
                 <p style={{ fontSize: 15 }} className="text-zinc-500 pt-2">
                   {noticia.description}
