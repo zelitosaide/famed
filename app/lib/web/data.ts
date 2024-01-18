@@ -1,5 +1,5 @@
 export const baseURL = "https://api.med.uem.mz";
-// export const baseURL = "http://localhost:3002";
+// export const baseURL = "http://localhost:3001";
 
 export async function getLinks(category: string) {
   const res = await fetch(`${baseURL}/links/category/${category}`, {
@@ -37,7 +37,7 @@ export async function getCourseById(id: string) {
   return res.json();
 }
 
-export async function getProjects() {
+export async function getProjects(query: string, currentPage: number) {
   const res = await fetch(`${baseURL}/projects`, {
     cache: "no-cache"
   });
@@ -73,6 +73,17 @@ export async function updateNews(id: string, formData: FormData) {
   return res.json();
 }
 
+export async function updateProjectById(id: string, formData: FormData) {
+  const res = await fetch(`${baseURL}/projects/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(Object.fromEntries(formData)),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+  return res.json();
+}
+
 export async function createNews(formData: FormData) {
   const res = await fetch(`${baseURL}/news`, {
     method: "POST",
@@ -94,6 +105,15 @@ export async function removeNewsById(id: string) {
     cache: "no-cache",
   });
   return res.json();
+}
+
+export async function removeProjectById(id: string) {
+  // const res = await fetch(`${baseURL}/projects/${id}`, {
+  //   method: "DELETE",
+  //   cache: "no-cache",
+  // });
+  // return res.json();
+  return;
 }
 
 export async function updateContent(id: string, content: any) {

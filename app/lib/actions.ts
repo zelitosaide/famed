@@ -5,7 +5,7 @@ import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
-import { createNews, removeNewsById, updateNews } from "./web/data";
+import { createNews, removeNewsById, removeProjectById, updateNews, updateProjectById } from "./web/data";
 // import { showNotification } from "./utils";
  
 // const InvoiceSchema = z.object({
@@ -175,6 +175,52 @@ export async function updateInvoice(
   redirect("/dashboard/invoices/news");
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+export async function updateProject(
+  id: string,
+  prevState: State,
+  formData: FormData | any,
+) {
+  try {
+    // if (formData.get("image").size === 0) {
+    //   formData.delete("image");
+    // }
+
+    await updateProjectById(id, formData);
+  } catch (error) {
+    console.log(error);
+    return { message: "Database Error: Failed to Update Project." };
+  }
+ 
+  revalidatePath("/dashboard/invoices/projects");
+  redirect("/dashboard/invoices/projects");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export async function deleteInvoice(id: string) {
   // throw new Error("Failed to Delete Invoice");
   
@@ -185,6 +231,16 @@ export async function deleteInvoice(id: string) {
     return { message: "Deleted Invoice." };
   } catch (error) {
     return { message: "Database Error: Failed to Delete Invoice." };
+  }
+}
+
+export async function deleteProject(id: string) {
+  try {
+    await removeProjectById(id);
+    revalidatePath("/dashboard/invoices/projects");
+    return { message: "Deleted Project." };
+  } catch (error) {
+    return { message: "Database Error: Failed to Delete Project." };
   }
 }
 
