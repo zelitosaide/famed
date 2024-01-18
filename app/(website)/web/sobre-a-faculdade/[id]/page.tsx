@@ -20,15 +20,15 @@ function DepartamentosUnidades() {
       <ul className="grid grid-cols-3 gap-x-5 gap-y-7">
         {departaments.map(function(dept: any) {
           return (
-            <li key={dept} className="p-3 bg-[#ffffff] divide-y-4 divide-[#78ba78] rounded shadow-sm shadow-[#ddeedd] border border-[#ddeedd]">
+            <li key={dept} className="bg-[#ffffff] rounded shadow-sm shadow-[#ddeedd] border border-[#ddeedd] flex flex-col">
               <Link
-                className="text-base font-bold pb-3 block text-[#178415] hover:underline"
+                className="p-3 text-base font-bold block text-[#178415] hover:underline"
                 style={{ textDecorationThickness: 1.5 }}
                 href={""}
               >
                 {dept}
               </Link>
-              <p style={{ fontSize: 15 }} className="pt-2 pb-2 text-zinc-500">{dept}</p>
+              <p style={{ fontSize: 15 }} className="p-3 text-zinc-500 bg-gray-50 flex-1">{dept}</p>
             </li>
           );
         })}
