@@ -3,20 +3,13 @@
 import "./content.css";
 import "remixicon/fonts/remixicon.css";
 
-// import { CustomerField } from "@/app/lib/definitions";
+import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import {
-  BookmarkIcon,
-  // CheckIcon,
-  // ClockIcon,
-  // CurrencyDollarIcon,
-  // UserCircleIcon,
-} from "@heroicons/react/24/outline";
 import { Button } from "@/app/ui/button";
-import { createInvoice } from '@/app/lib/actions';
-import { useFormState, useFormStatus } from "react-dom";
-import { BubbleMenu, EditorContent, FloatingMenu, useEditor } from "@tiptap/react";
 
+import { useFormState, useFormStatus } from "react-dom";
+import { useCallback, useRef } from "react";
+import { BubbleMenu, EditorContent, FloatingMenu, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Document from "@tiptap/extension-document";
 import Heading from "@tiptap/extension-heading";
@@ -29,15 +22,15 @@ import TipTapLink from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
 import Placeholder from "@tiptap/extension-placeholder";
 import { baseURL } from "@/app/lib/web/data";
-import { useCallback, useRef } from "react";
+import { createProject } from "@/app/lib/actions";
 
 const CustomDocument = Document.extend({
   content: "heading block+",
 });
 
-export default function Form({ departaments }: any) {
+export default function CreateProjectForm({ departaments }: any) {
   const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(createInvoice, initialState);
+  const [state, dispatch] = useFormState(createProject, initialState);
 
   const imageRef: any = useRef(null);
   const fileRef: any = useRef(null);
@@ -192,30 +185,11 @@ export default function Form({ departaments }: any) {
     <form action={dispatch}>
       <input type="hidden" name="content" value={editor.getHTML()} />
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
-        {/* Titulo da Notícia */}
+        {/* Titulo do Projecto */}
         <div className="mb-4">
           <label htmlFor="title" className="mb-2 block text-sm font-medium">
-            Título da Notícia
+            Título do Projecto
           </label>
-          {/* <div className="relative">
-            <select
-              id="customer"
-              name="customerId"
-              className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-              defaultValue=""
-              aria-describedby="customer-error"
-            >
-              <option value="" disabled>
-                Select a customer
-              </option>
-              {customers.map((customer) => (
-                <option key={customer.id} value={customer.id}>
-                  {customer.name}
-                </option>
-              ))}
-            </select>
-            <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
-          </div> */}
           <div className="relative mt-2 rounded-md">
             <div className="relative">
               <input
@@ -229,17 +203,6 @@ export default function Form({ departaments }: any) {
               <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
-          {/* {state.errors?.customerId ? (
-            <div
-              id="customer-error"
-              aria-live="polite"
-              className="mt-2 text-sm text-red-500"
-            >
-              {state.errors.customerId.map((error: string) => (
-                <p key={error}>{error}</p>
-              ))}
-            </div>
-          ) : null} */}
           {state.errors?.title ? (
             <div
               id="title-error"
@@ -256,22 +219,8 @@ export default function Form({ departaments }: any) {
         {/* Description */}
         <div className="mb-4">
           <label htmlFor="description" className="mb-2 block text-sm font-medium">
-            Descrição da Notícia
+            Descrição do Projecto
           </label>
-          {/* <div className="relative mt-2 rounded-md">
-            <div className="relative">
-              <input
-                id="amount"
-                name="amount"
-                type="number"
-                step="0.01"
-                placeholder="Enter USD amount"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                aria-describedby="amount-error"
-              />
-              <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
-            </div>
-          </div> */}
           <div className="relative mt-2 rounded-md">
             <div className="relative">
               <input
@@ -285,17 +234,6 @@ export default function Form({ departaments }: any) {
               <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
-          {/* {state.errors?.amount ? (
-            <div
-              id="amount-error"
-              aria-live="polite"
-              className="mt-2 text-sm text-red-500"
-            >
-              {state.errors.amount.map((error: string) => (
-                <p key={error}>{error}</p>
-              ))}
-            </div>
-          ) : null} */}
           {state.errors?.description ? (
             <div
               id="description-error"
@@ -310,7 +248,7 @@ export default function Form({ departaments }: any) {
         </div>
 
         {/* Imagem da Notícia */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="image" className="mb-2 block text-sm font-medium">
             Imagem da Notícia
           </label>
@@ -327,57 +265,214 @@ export default function Form({ departaments }: any) {
               <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
-        </div>
+        </div> */}
+
 
 
         {/* Departamento da Notícia */}
         <div className="mb-4">
-          <label htmlFor="department" className="mb-2 block text-sm font-medium">
-            Escolha o Departamento
-          </label>
-          <div className="relative">
-            <select
-              id="department"
-              name="department"
-              defaultValue=""
-              className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-            >
-              <option value="" disabled>
-                Selecione o departamento
-              </option>
-              {departaments.map((depart: any) => (
-                <option key={depart} value={depart}>
-                  {depart}
-                </option>
-              ))}
-            </select>
-            <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+          <div className="flex gap-2">
+            <div className="flex-1">
+              <label htmlFor="department" className="mb-2 block text-sm font-medium">
+                Escolha o Departamento
+              </label>
+              <div className="relative">
+                <select
+                  id="department"
+                  name="department"
+                  className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                >
+                  <option value="" disabled>
+                    Selecione o departamento
+                  </option>
+                  {departaments.map((depart: any) => (
+                    <option key={depart} value={depart}>
+                      {depart}
+                    </option>
+                  ))}
+                </select>
+                <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <label htmlFor="regNumBioethic" className="mb-2 block text-sm font-medium">
+                Nº de Aprovação Ética
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="regNumBioethic"
+                    name="regNumBioethic"
+                    type="text"
+                    placeholder="Digite o Nº de Aprovação Ética"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    aria-describedby="regNumBioethic-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+              {state.errors?.regNumBioethic ? (
+                <div
+                  id="regNumBioethic-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.regNumBioethic.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="flex-1">
+              <label htmlFor="approvalDate" className="mb-2 block text-sm font-medium">
+                Data de Aprovação Ética
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="approvalDate"
+                    name="approvalDate"
+                    type="date"
+                    placeholder="Digite o Nº de Aprovação Ética"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    aria-describedby="approvalDate-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+              {state.errors?.approvalDate ? (
+                <div
+                  id="approvalDate-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.approvalDate.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
 
 
 
+        {/* Departamento da Notícia */}
+        <div className="mb-4">
+          <div className="flex gap-2">
+            <div className="flex-1">
+              <label htmlFor="thumbnail" className="mb-2 block text-sm font-medium">
+                Thumbnail do Projecto
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="thumbnail"
+                    name="thumbnail"
+                    type="file"
+                    placeholder="Carregue a Imagem"
+                    className={`
+                      block w-full text-sm text-slate-500 rounded-md
+                      file:pl-10
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-blue-50 file:text-blue-700
+                      hover:file:bg-blue-100
+                    `}
+                    aria-describedby="thumbnail-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <label htmlFor="projectStartDate" className="mb-2 block text-sm font-medium">
+                Data de Início do Projecto
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="projectStartDate"
+                    name="projectStartDate"
+                    type="date"
+                    // placeholder="Digite o Nº de Aprovação Ética"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    aria-describedby="projectStartDate-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+              {state.errors?.projectStartDate ? (
+                <div
+                  id="projectStartDate-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.projectStartDate.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="flex-1">
+              <label htmlFor="projectEndDate" className="mb-2 block text-sm font-medium">
+                Data de Fim do Projecto
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="projectEndDate"
+                    name="projectEndDate"
+                    type="date"
+                    // placeholder="Digite o Nº de Aprovação Ética"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    aria-describedby="projectEndDate-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+              {state.errors?.projectEndDate ? (
+                <div
+                  id="projectEndDate-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.projectEndDate.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+
+        
+
+
+
+        {/* thumbnail */}
 
 
 
 
 
-        {/* Conteudo da Notícia */}
+
+
+
+        
+        {/* Conteudo do Projecto */}
         <div className="mb-4 prose prose-green prose-zinc marker:text-[#178415] max-w-none">
           <label htmlFor="content" className="mb-2 block text-sm font-medium">
-            Conteúdo da Notícia
+            Conteúdo do Projecto
           </label>
           <div className="relative mt-2 rounded-md">
             <div className="relative">
-              {/* <input
-                id="content"
-                name="content"
-                type="text"
-                defaultValue={news.content}
-                placeholder="Digite o Título"
-                className="peer block w-full border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                aria-describedby="content-error"
-              /> */}
               <div className="TipTapContainer">
                 <EditorContent editor={editor} />
               </div>
@@ -706,93 +801,37 @@ export default function Form({ departaments }: any) {
 
 
 
+
+
+
+
+
+
         
 
-
-
-
-        {/* Invoice Status */}
-        {/* <fieldset aria-describedby="status-error">
-          <legend className="mb-2 block text-sm font-medium">
-            Set the invoice status
-          </legend>
-          <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
-            <div className="flex gap-4">
-              <div className="flex items-center">
-                <input
-                  id="pending"
-                  name="status"
-                  type="radio"
-                  value="pending"
-                  className="h-4 w-4 border-gray-300 bg-gray-100 text-gray-600 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-gray-600"
-                />
-                <label
-                  htmlFor="pending"
-                  className="ml-2 flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 dark:text-gray-300"
-                >
-                  Pending <ClockIcon className="h-4 w-4" />
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  id="paid"
-                  name="status"
-                  type="radio"
-                  value="paid"
-                  className="h-4 w-4 border-gray-300 bg-gray-100 text-gray-600 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-gray-600"
-                />
-                <label
-                  htmlFor="paid"
-                  className="ml-2 flex items-center gap-1.5 rounded-full bg-green-500 px-3 py-1.5 text-xs font-medium text-white dark:text-gray-300"
-                >
-                  Paid <CheckIcon className="h-4 w-4" />
-                </label>
-              </div>
-            </div>
-          </div>
-          {state.errors?.status ? (
-            <div
-              id="status-error"
-              aria-live="polite"
-              className="mt-2 text-sm text-red-500"
-            >
-              {state.errors.status.map((error: string) => (
-                <p key={error}>{error}</p>
-              ))}
-            </div>
-          ) : null}
-        </fieldset>
-        {state.message ? (
-          <div
-            // id="customer-error"
-            aria-live="polite"
-            className="mt-2 text-sm text-red-500"
-          >
-            <p>{state.message}</p>
-          </div>
-        ) : null} */}
-
-
-
       </div>
+
+
+
+
+      
       <div className="mt-6 flex justify-end gap-4">
         <Link
-          href="/dashboard/invoices/news"
+          href="/dashboard/invoices/projects"
           className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
         >
           Cancelar
         </Link>
-        {/* <Button type="submit">Create Invoice</Button> */}
-        <CreateInvoiceButton />
+        <UpdateInvoiceButton />
       </div>
     </form>
   );
 }
 
-function CreateInvoiceButton() {
+function UpdateInvoiceButton() {
   const { pending } = useFormStatus();
  
   return (
-    <Button type="submit" aria-disabled={pending}>Criar Notícia</Button>
+    <Button type="submit" aria-disabled={pending}>Salvar Projecto</Button>
   );
 }

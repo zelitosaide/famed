@@ -5,7 +5,7 @@ import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
-import { createNews, removeNewsById, removeProjectById, updateNews, updateProjectById } from "./web/data";
+import { createNews, createProject2131, removeNewsById, removeProjectById, updateNews, updateProjectById } from "./web/data";
 // import { showNotification } from "./utils";
  
 // const InvoiceSchema = z.object({
@@ -43,6 +43,11 @@ export type State = {
     description?: string[];
     image?: string[];
     content?: string[];
+    regNumBioethic?: string[];
+    approvalDate?: string[];
+    projectEndDate?: string[];
+    projectStartDate?: string[];
+    thumbnail?: string[];
   };
   message?: string | null;
 };
@@ -84,6 +89,18 @@ export async function createInvoice(prevState: State, formData: FormData) {
  
   revalidatePath("/dashboard/invoices/news");
   redirect("/dashboard/invoices/news");
+}
+
+export async function createProject(prevState: State, formData: FormData) {
+  try {
+    await createProject2131(formData);
+  } catch (error) {
+    return {
+      message: "Database Error: Failed to Create Project.",
+    };
+  }
+  revalidatePath("/dashboard/invoices/projects");
+  redirect("/dashboard/invoices/projects");
 }
 
 // export async function updateInvoice(id: string, formData: FormData) {
@@ -197,7 +214,6 @@ export async function updateProject(
     // if (formData.get("image").size === 0) {
     //   formData.delete("image");
     // }
-
     await updateProjectById(id, formData);
   } catch (error) {
     console.log(error);

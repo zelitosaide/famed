@@ -3,14 +3,13 @@
 import "./content.css";
 import "remixicon/fonts/remixicon.css";
 
-import { CustomerField, InvoiceForm } from "@/app/lib/definitions";
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
-// import { updateInvoice } from "@/app/lib/actions";
-import { updateInvoice, updateProject } from '@/app/lib/actions';
+
+import { updateProject } from '@/app/lib/actions';
 import { useFormState, useFormStatus } from "react-dom";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import { BubbleMenu, EditorContent, FloatingMenu, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Document from "@tiptap/extension-document";
@@ -277,32 +276,197 @@ export default function EditProjectForm({ project, departaments }: any) {
 
         {/* Departamento da Notícia */}
         <div className="mb-4">
-          <label htmlFor="department" className="mb-2 block text-sm font-medium">
-            Escolha o Departamento
-          </label>
-          <div className="relative">
-            <select
-              id="department"
-              name="department"
-              className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-              defaultValue={project.department}
-            >
-              <option value="" disabled>
-                Selecione o departamento
-              </option>
-              {departaments.map((depart: any) => (
-                <option key={depart} value={depart}>
-                  {depart}
-                </option>
-              ))}
-            </select>
-            <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+          <div className="flex gap-2">
+            <div className="flex-1">
+              <label htmlFor="department" className="mb-2 block text-sm font-medium">
+                Escolha o Departamento
+              </label>
+              <div className="relative">
+                <select
+                  id="department"
+                  name="department"
+                  className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  defaultValue={project.department}
+                >
+                  <option value="" disabled>
+                    Selecione o departamento
+                  </option>
+                  {departaments.map((depart: any) => (
+                    <option key={depart} value={depart}>
+                      {depart}
+                    </option>
+                  ))}
+                </select>
+                <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <label htmlFor="regNumBioethic" className="mb-2 block text-sm font-medium">
+                Nº de Aprovação Ética
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="regNumBioethic"
+                    name="regNumBioethic"
+                    type="text"
+                    defaultValue={project.regNumBioethic}
+                    placeholder="Digite o Nº de Aprovação Ética"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    aria-describedby="regNumBioethic-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+              {state.errors?.regNumBioethic ? (
+                <div
+                  id="regNumBioethic-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.regNumBioethic.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="flex-1">
+              <label htmlFor="approvalDate" className="mb-2 block text-sm font-medium">
+                Data de Aprovação Ética
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="approvalDate"
+                    name="approvalDate"
+                    type="date"
+                    defaultValue={project.approvalDate.split("T")[0]}
+                    placeholder="Digite o Nº de Aprovação Ética"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    aria-describedby="approvalDate-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+              {state.errors?.approvalDate ? (
+                <div
+                  id="approvalDate-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.approvalDate.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+
+
+        {/* Departamento da Notícia */}
+        <div className="mb-4">
+          <div className="flex gap-2">
+            <div className="flex-1">
+              <label htmlFor="thumbnail" className="mb-2 block text-sm font-medium">
+                Thumbnail do Projecto
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="thumbnail"
+                    name="thumbnail"
+                    type="file"
+                    placeholder="Carregue a Imagem"
+                    className={`
+                      block w-full text-sm text-slate-500 rounded-md
+                      file:pl-10
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-blue-50 file:text-blue-700
+                      hover:file:bg-blue-100
+                    `}
+                    aria-describedby="thumbnail-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <label htmlFor="projectStartDate" className="mb-2 block text-sm font-medium">
+                Data de Início do Projecto
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="projectStartDate"
+                    name="projectStartDate"
+                    type="date"
+                    defaultValue={project.projectStartDate.split("T")[0]}
+                    // placeholder="Digite o Nº de Aprovação Ética"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    aria-describedby="projectStartDate-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+              {state.errors?.projectStartDate ? (
+                <div
+                  id="projectStartDate-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.projectStartDate.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="flex-1">
+              <label htmlFor="projectEndDate" className="mb-2 block text-sm font-medium">
+                Data de Fim do Projecto
+              </label>
+              <div className="relative mt-2 rounded-md">
+                <div className="relative">
+                  <input
+                    id="projectEndDate"
+                    name="projectEndDate"
+                    type="date"
+                    defaultValue={project.projectEndDate.split("T")[0]}
+                    // placeholder="Digite o Nº de Aprovação Ética"
+                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                    aria-describedby="projectEndDate-error"
+                  />
+                  <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                </div>
+              </div>
+              {state.errors?.projectEndDate ? (
+                <div
+                  id="projectEndDate-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.projectEndDate.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
 
 
         
 
+
+
+        {/* thumbnail */}
 
 
 

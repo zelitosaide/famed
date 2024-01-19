@@ -74,14 +74,15 @@ export async function updateNews(id: string, formData: FormData) {
 }
 
 export async function updateProjectById(id: string, formData: FormData) {
-  const res = await fetch(`${baseURL}/projects/${id}`, {
-    method: "PATCH",
-    body: JSON.stringify(Object.fromEntries(formData)),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-  return res.json();
+  // const res = await fetch(`${baseURL}/projects/${id}`, {
+  //   method: "PATCH",
+  //   body: JSON.stringify(Object.fromEntries(formData)),
+  //   headers: {
+  //     "Content-type": "application/json; charset=UTF-8",
+  //   },
+  // });
+  // return res.json();
+  return;
 }
 
 export async function createNews(formData: FormData) {
@@ -90,6 +91,15 @@ export async function createNews(formData: FormData) {
     body: formData,
   });
   return res.json();
+}
+
+export async function createProject2131(formData: FormData) {
+  // const res = await fetch(`${baseURL}/projects`, {
+  //   method: "POST",
+  //   body: formData,
+  // });
+  // return res.json();
+  return;
 }
 
 export async function getNewsById(id: string) {
