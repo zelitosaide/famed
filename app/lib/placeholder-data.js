@@ -180,9 +180,26 @@ const revenue = [
   { month: 'Dec', revenue: 4800 },
 ];
 
+const departaments = [
+  "Dep. Ciências Fisiológicas",
+  "Dep. Ciências Morfológicas",
+  "Dep. Microbiologia",
+  "Dep. Patologia",
+  "Dep. Saúde da Comunidade",
+  "Dep. Pediatria",
+  "Dep. Medicina",
+  "Dep. Cirurgia",
+  "Dep. Ginecologia e Obstetrícia",
+  "Unidade de Trauma e Violência",
+  "Unidade de Ciências de Implementação e Apoio à Pesquisa em Saúde",
+  "Unidade de Saúde Sexual e Reprodutiva e HIV/SIDA",
+  "Direcção da Faculdade de Medicina",
+];
+
 module.exports = {
   users,
   customers,
   invoices,
   revenue,
+  departaments
 };

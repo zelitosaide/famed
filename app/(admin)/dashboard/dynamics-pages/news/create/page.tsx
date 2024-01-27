@@ -1,8 +1,10 @@
 import Breadcrumbs from "@/app/ui/breadcrumbs";
-import { departaments } from "@/app/lib/web/data";
+import { getDepartments } from "@/app/lib/web/data";
 import CreateNewsForm from "@/app/ui/news/create-form";
  
 export default async function Page() {
+  const departaments = await getDepartments("", 1, 50);
+  
   return (
     <main>
       <Breadcrumbs

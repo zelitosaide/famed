@@ -103,8 +103,8 @@ export default function CreatePublicationForm({ departaments }: any) {
                     Selecione o departamento
                   </option>
                   {departaments.map((depart: any) => (
-                    <option key={depart} value={depart}>
-                      {depart}
+                    <option key={depart._id} value={depart.title}>
+                      {depart.title}
                     </option>
                   ))}
                 </select>

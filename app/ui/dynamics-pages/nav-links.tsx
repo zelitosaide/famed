@@ -7,7 +7,7 @@ export default async function NavLinks() {
     { title: "Publicações", segment: "/publications" },
     { title: "Cursos de curta duração", segment: "/courses" },
     { title: "Departamentos e Unidades", segment: "/departments" },
-    { title: "Consultas de Bioestatística", segment: "/consultations" },
+    // { title: "Consultas de Bioestatística", segment: "/consultations" },
   ];
 
   return (

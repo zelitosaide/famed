@@ -1,10 +1,13 @@
 import Breadcrumbs from "@/app/ui/breadcrumbs";
-import { departaments, getPublicationById } from "@/app/lib/web/data";
+import { getDepartments, getPublicationById } from "@/app/lib/web/data";
 import EditPublicationForm from "@/app/ui/publications/edit-form";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;
-  const publication = await getPublicationById(params.id);
+  const [publication, departaments] = await Promise.all([
+    getPublicationById(id),
+    getDepartments("", 1, 50),
+  ]);
 
   return (
     <main>

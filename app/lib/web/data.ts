@@ -227,8 +227,8 @@ export async function removeDepartmentById(id: string) {
   return res.json();
 }
 
-export async function getDepartments(query: string, currentPage: number) {
-  const res = await fetch(`${baseURL}/departments?query=${query}&page=${currentPage}`, {
+export async function getDepartments(query: string, currentPage: number, limit?: number) {
+  const res = await fetch(`${baseURL}/departments?query=${query}&page=${currentPage}&limit=${limit}`, {
     cache: "no-cache"
   });
   return res.json();
@@ -391,19 +391,3 @@ export async function updateContent(id: string, content: any) {
   });
   return res.json();
 }
-
-export const departaments = [
-  "Dep. Ciências Fisiológicas",
-  "Dep. Ciências Morfológicas",
-  "Dep. Microbiologia",
-  "Dep. Patologia",
-  "Dep. Saúde da Comunidade",
-  "Dep. Pediatria",
-  "Dep. Medicina",
-  "Dep. Cirurgia",
-  "Dep. Ginecologia e Obstetrícia",
-  "Unidade de Trauma e Violência",
-  "Unidade de Ciências de Implementação e Apoio à Pesquisa em Saúde",
-  "Unidade de Saúde Sexual e Reprodutiva e HIV/SIDA",
-  "Direcção da Faculdade de Medicina",
-];

@@ -1,13 +1,16 @@
 import Breadcrumbs from "@/app/ui/breadcrumbs";
 // import { notFound } from "next/navigation";
-import { departaments, getNewsById } from "@/app/lib/web/data";
+import { getDepartments, getNewsById } from "@/app/lib/web/data";
 import EditNewsForm from "@/app/ui/news/edit-form";
 
 
- 
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;
-  const news = await getNewsById(id);
+  const [news, departaments] = await Promise.all([
+    getNewsById(id),
+    getDepartments("", 1, 50),
+  ]);
+
   // const [invoice, customers] = await Promise.all([
   //   fetchInvoiceById(id),
   //   fetchCustomers(),
