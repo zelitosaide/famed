@@ -3,7 +3,7 @@ import H1 from "@/app/ui/web/h1";
 import Projectos from "@/app/ui/web/projectos/projectos";
 
 export default async function Page() {
-  const projectos = await getProjects("", 100);
+  const projectos = await getProjects("", 1);
   
   return (
     <div className="pt-2.5 pr-3 pl-5 pb-5">

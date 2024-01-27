@@ -51,7 +51,7 @@ export default function Nav({ links }: any) {
                                           display: "flex",
                                           alignItems: "center",
                                         }} 
-                                        href={`/dashboard/customers/${i.segment}`}
+                                        href={`/dashboard/static-pages/${i.segment}`}
                                       >
                                         {i.title}
                                       </Link>
@@ -74,7 +74,7 @@ export default function Nav({ links }: any) {
                                 display: "flex",
                                 alignItems: "center",
                               }} 
-                              href={`/dashboard/customers/${child.segment}`}
+                              href={`/dashboard/static-pages/${child.segment}`}
                             >
                               {child.title}
                             </Link>
@@ -88,7 +88,7 @@ export default function Nav({ links }: any) {
             ) : (
               <>
                 <Menubar.Trigger asChild>
-                  <Link className="MenubarTrigger" href={`/dashboard/customers/${link.segment}`}>{link.title}</Link>
+                  <Link className="MenubarTrigger" href={`/dashboard/static-pages/${link.segment}`}>{link.title}</Link>
                 </Menubar.Trigger>
                 <Menubar.Portal>
                 <Menubar.Content></Menubar.Content>

@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
   DocumentTextIcon
@@ -16,10 +15,10 @@ const links = [
   { name: "Home", href: "/dashboard", icon: HomeIcon },
   {
     name: "Páginas Dinámicas",
-    href: "/dashboard/invoices",
+    href: "/dashboard/dynamics-pages",
     icon: DocumentTextIcon,
   },
-  { name: "Páginas Estáticas", href: "/dashboard/customers", icon: DocumentDuplicateIcon },
+  { name: "Páginas Estáticas", href: "/dashboard/static-pages", icon: DocumentDuplicateIcon },
 ];
 
 export default function NavLinks() {

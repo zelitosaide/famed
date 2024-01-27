@@ -1,6 +1,6 @@
-import { DeleteProject, UpdateProject } from '@/app/ui/invoices/buttons';
 import { formatDateToLocal } from '@/app/lib/utils';
 import { getProjects } from "@/app/lib/web/data";
+import { DeleteProject, UpdateProject } from "./buttons";
 
 export default async function ProjectsTable({ query, currentPage }: {
   query: string;

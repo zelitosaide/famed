@@ -118,3 +118,7 @@ ul[data-type="taskList"] li ul[data-type="taskList"] > li {
   background-color: #E2F0E2;
 }
 
+.MuiFormControl-root {
+  background-color: white;
+}
+

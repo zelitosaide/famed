@@ -3,9 +3,12 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "api.med.uem.mz",
-        port: "",
+        // protocol: "https",
+        protocol: "http",
+        // hostname: "api.med.uem.mz",
+        hostname: "localhost",
+        // port: "",
+        port: "3001",
         pathname: "/**",
         // pathname: '/account123/**',
       },

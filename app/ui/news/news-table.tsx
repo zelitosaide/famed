@@ -1,6 +1,6 @@
-import { DeleteInvoice, UpdateNews } from '@/app/ui/invoices/buttons';
-import { formatDateToLocal } from '@/app/lib/utils';
+import { formatDateToLocal } from "@/app/lib/utils";
 import { getNews } from "@/app/lib/web/data";
+import { DeleteNews, UpdateNews } from "./buttons";
 
 export default async function NewsTable({ query, currentPage }: {
   query: string;
@@ -24,7 +24,6 @@ export default async function NewsTable({ query, currentPage }: {
                       <p>{news.title}</p>
                     </div>
                   </div>
-                  {/* <InvoiceStatus status={invoice.status} /> */}
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
                   <div>
@@ -32,7 +31,7 @@ export default async function NewsTable({ query, currentPage }: {
                   </div>
                   <div className="flex justify-end gap-2">
                     <UpdateNews id={news._id} />
-                    <DeleteInvoice id={news._id} />
+                    <DeleteNews id={news._id} />
                   </div>
                 </div>
               </div>
@@ -47,9 +46,6 @@ export default async function NewsTable({ query, currentPage }: {
                 <th scope="col" className="px-3 py-5 font-medium">
                   Data de Publicação
                 </th>
-                {/* <th scope="col" className="px-3 py-5 font-medium">
-                  Status
-                </th> */}
                 <th scope="col" className="relative py-3 pl-6 pr-3">
                   <span className="sr-only">Edit</span>
                 </th>
@@ -69,13 +65,10 @@ export default async function NewsTable({ query, currentPage }: {
                   <td className="whitespace-nowrap px-3 py-3">
                     {formatDateToLocal(news.createdAt)}
                   </td>
-                  {/* <td className="whitespace-nowrap px-3 py-3">
-                    <InvoiceStatus status={news.status} />
-                  </td> */}
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                       <UpdateNews id={news._id} />
-                      <DeleteInvoice id={news._id} />
+                      <DeleteNews id={news._id} />
                     </div>
                   </td>
                 </tr>
@@ -87,24 +80,3 @@ export default async function NewsTable({ query, currentPage }: {
     </div>
   );
 }
-
-
-{/* <thead className="rounded-lg text-left text-sm font-normal">
-  <tr>
-    <th scope="col" className="px-4 py-5 font-medium sm:pl-6 bg-blue-600">
-      Título da Notícia
-    </th>
-    <th scope="col" className="px-3 py-5 font-medium">
-      Data de Publicação
-    </th>
-    <th scope="col" className="px-3 py-5 font-medium">
-      Status
-    </th>
-    <th
-      scope="col"
-      className="relative pb-4 pl-3 pr-6 pt-2 sm:pr-6"
-    >
-      <span className="sr-only">Edit</span>
-    </th>
-  </tr>
-</thead> */}

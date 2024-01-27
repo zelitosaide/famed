@@ -2,7 +2,7 @@
 
 import "./content.css";
 
-import { EditorContent, FloatingMenu, useEditor } from "@tiptap/react";
+import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Document from "@tiptap/extension-document";
 import Heading from "@tiptap/extension-heading";

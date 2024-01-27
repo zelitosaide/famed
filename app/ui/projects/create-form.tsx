@@ -22,7 +22,7 @@ import TipTapLink from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
 import Placeholder from "@tiptap/extension-placeholder";
 import { baseURL } from "@/app/lib/web/data";
-import { createProject } from "@/app/lib/actions";
+import { createProjectAction } from "@/app/lib/actions";
 
 const CustomDocument = Document.extend({
   content: "heading block+",
@@ -30,7 +30,7 @@ const CustomDocument = Document.extend({
 
 export default function CreateProjectForm({ departaments }: any) {
   const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useFormState(createProject, initialState);
+  const [state, dispatch] = useFormState(createProjectAction, initialState);
 
   const imageRef: any = useRef(null);
   const fileRef: any = useRef(null);
@@ -246,30 +246,8 @@ export default function CreateProjectForm({ departaments }: any) {
             </div>
           ) : null}
         </div>
-
-        {/* Imagem da Notícia */}
-        {/* <div className="mb-4">
-          <label htmlFor="image" className="mb-2 block text-sm font-medium">
-            Imagem da Notícia
-          </label>
-          <div className="relative mt-2 rounded-md">
-            <div className="relative">
-              <input
-                id="image"
-                name="image"
-                type="file"
-                placeholder="Carregue a Imagem"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                aria-describedby="image-error"
-              />
-              <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
-            </div>
-          </div>
-        </div> */}
-
-
-
-        {/* Departamento da Notícia */}
+             
+        {/* Departamento, Nº de Aprovação Ética e Data de Aprovação Ética */}
         <div className="mb-4">
           <div className="flex gap-2">
             <div className="flex-1">
@@ -280,6 +258,7 @@ export default function CreateProjectForm({ departaments }: any) {
                 <select
                   id="department"
                   name="department"
+                  defaultValue=""
                   className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                 >
                   <option value="" disabled>
@@ -293,6 +272,17 @@ export default function CreateProjectForm({ departaments }: any) {
                 </select>
                 <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
               </div>
+              {state.errors?.department ? (
+                <div
+                  id="description-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.department.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
             </div>
 
             <div className="flex-1">
@@ -358,8 +348,7 @@ export default function CreateProjectForm({ departaments }: any) {
         </div>
 
 
-
-        {/* Departamento da Notícia */}
+        {/* Thumbnail, Data de Início do Projecto e Data de Fim do Projecto */}
         <div className="mb-4">
           <div className="flex gap-2">
             <div className="flex-1">
@@ -372,21 +361,23 @@ export default function CreateProjectForm({ departaments }: any) {
                     id="thumbnail"
                     name="thumbnail"
                     type="file"
-                    placeholder="Carregue a Imagem"
-                    className={`
-                      block w-full text-sm text-slate-500 rounded-md
-                      file:pl-10
-                      file:mr-4 file:py-2 file:px-4
-                      file:rounded-full file:border-0
-                      file:text-sm file:font-semibold
-                      file:bg-blue-50 file:text-blue-700
-                      hover:file:bg-blue-100
-                    `}
+                    className="block w-full text-sm text-slate-500 rounded-md file:pl-10 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                     aria-describedby="thumbnail-error"
                   />
                   <BookmarkIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
                 </div>
               </div>
+              {state.errors?.thumbnailSize ? (
+                <div
+                  id="description-error"
+                  aria-live="polite"
+                  className="mt-2 text-sm text-red-500"
+                >
+                  {state.errors.thumbnailSize.map((error: string) => (
+                    <p key={error}>{error}</p>
+                  ))}
+                </div>
+              ) : null}
             </div>
 
             <div className="flex-1">
@@ -399,7 +390,6 @@ export default function CreateProjectForm({ departaments }: any) {
                     id="projectStartDate"
                     name="projectStartDate"
                     type="date"
-                    // placeholder="Digite o Nº de Aprovação Ética"
                     className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                     aria-describedby="projectStartDate-error"
                   />
@@ -429,7 +419,6 @@ export default function CreateProjectForm({ departaments }: any) {
                     id="projectEndDate"
                     name="projectEndDate"
                     type="date"
-                    // placeholder="Digite o Nº de Aprovação Ética"
                     className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                     aria-describedby="projectEndDate-error"
                   />
@@ -452,20 +441,6 @@ export default function CreateProjectForm({ departaments }: any) {
         </div>
 
 
-        
-
-
-
-        {/* thumbnail */}
-
-
-
-
-
-
-
-
-        
         {/* Conteudo do Projecto */}
         <div className="mb-4 prose prose-green prose-zinc marker:text-[#178415] max-w-none">
           <label htmlFor="content" className="mb-2 block text-sm font-medium">
@@ -478,6 +453,23 @@ export default function CreateProjectForm({ departaments }: any) {
               </div>
               <BookmarkIcon className="pointer-events-none absolute left-3 top-6 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
+            {state.errors?.content ? (
+              <div
+                id="description-error"
+                aria-live="polite"
+                className="mt-2 text-sm text-red-500"
+              >
+                {state.errors.content.map((error: string) => (
+                  <p key={error}>{error}</p>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
+          <div aria-live="polite" aria-atomic="true">
+            {state.message && (
+              <p className="mt-2 text-sm text-red-500">{state.message}</p>
+            )}
           </div>
 
           <FloatingMenu className="floating-menu" tippyOptions={{ duration: 100, placement: "top-start" }} editor={editor}>
@@ -797,27 +789,11 @@ export default function CreateProjectForm({ departaments }: any) {
           ) : null}
         </div>
 
-
-
-
-
-
-
-
-
-
-
-        
-
       </div>
 
-
-
-
-      
       <div className="mt-6 flex justify-end gap-4">
         <Link
-          href="/dashboard/invoices/projects"
+          href="/dashboard/dynamics-pages/projects"
           className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
         >
           Cancelar
@@ -830,7 +806,6 @@ export default function CreateProjectForm({ departaments }: any) {
 
 function UpdateInvoiceButton() {
   const { pending } = useFormStatus();
- 
   return (
     <Button type="submit" aria-disabled={pending}>Salvar Projecto</Button>
   );
