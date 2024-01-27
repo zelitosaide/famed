@@ -39,8 +39,8 @@ export async function getLinkByTitle(title: string) {
  * @zelito_saide
  */
 
-export async function getNews(query: string, currentPage: number) {
-  const res = await fetch(`${baseURL}/news?query=${query}&page=${currentPage}`, {
+export async function getNews(query: string, currentPage: number, limit?: number) {
+  const res = await fetch(`${baseURL}/news?query=${query}&page=${currentPage}&limit=${limit}`, {
     cache: "no-cache"
   });
   return res.json();
