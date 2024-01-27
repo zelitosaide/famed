@@ -3,7 +3,7 @@ import H1 from "@/app/ui/web/h1";
 import Link from "next/link";
 
 export default async function Page() {
-  const cursosCurtaDuracao = await getCourses();
+  const cursosCurtaDuracao = await getCourses("", 1);
 
   return (
     <div className="pt-2.5 pr-3 pl-5 pb-5">
