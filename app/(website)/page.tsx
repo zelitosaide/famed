@@ -3,7 +3,7 @@ import Carousel from "../ui/web/carousel/carousel";
 
 export default async function Page() {
   const news = await getNews("", 1, 20);
-  
+
   return (
     <main className="pl-28 pr-28">
       <div className="mt-8">
