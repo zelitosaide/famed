@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "./carousel.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Keyboard } from "swiper/modules";
+import { Autoplay, Navigation, Pagination, Keyboard } from "swiper/modules";
 
 import Link from "next/link";
 import { DoubleArrowRightIcon } from "@radix-ui/react-icons";
@@ -30,8 +30,13 @@ export default function Carousel({ news }: any) {
     <Swiper
       cssMode={true}
       navigation={true}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+      loop={true}
       keyboard={true}
-      modules={[Navigation, Pagination, Keyboard]}
+      modules={[Autoplay, Navigation, Pagination, Keyboard]}
       pagination={pagination}
     >
       {noticias.map(function(news: any) {
