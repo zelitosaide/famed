@@ -1,6 +1,13 @@
+import { getPublications } from "@/app/lib/web/data";
 import Link from "next/link";
 
-export default function Publicacoes({ publicacoes }: any) {
+// export default async function Publicacoes({ publicacoes }: any) {
+export default async function Publicacoes({ query, currentPage }: {
+  query: string;
+  currentPage: number;
+}) {
+  const publicacoes = await getPublications(query, currentPage);
+
   return (
     <ul className="grid grid-cols-1 gap-y-7">
       {publicacoes.map(function(pub: any) {
@@ -29,5 +36,5 @@ export default function Publicacoes({ publicacoes }: any) {
         );
       })}
     </ul>
-  )
+  );
 }
