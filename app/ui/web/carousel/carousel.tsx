@@ -31,7 +31,7 @@ export default function Carousel({ news }: any) {
       cssMode={true}
       navigation={true}
       autoplay={{
-        delay: 5000,
+        delay: 25000,
         disableOnInteraction: false,
       }}
       loop={true}
@@ -48,15 +48,21 @@ export default function Carousel({ news }: any) {
               className="shadow-sm shadow-[#ddeedd] border border-[#E2F0E2]"
             />
             <div>
-              <Link 
+              {/* <Link 
                 className="carousel-title hover:underline" 
                 href={`/web/noticias/${news._id}`}
               >
                 {news.title}
+              </Link> */}
+              <Link 
+                className="carousel-content"
+                href={`/web/noticias/${news._id}`}
+              >
+                {news.title}
               </Link>
-              <p className="carousel-content">
-                {news.description.length <= 200 ? news.description : `${news.description.slice(0, 200)}...`}
-              </p>
+              {/* <p className="carousel-content">
+                {news.description.length <= 100 ? news.description : `${news.description.slice(0, 100)}...`}
+              </p> */}
               <Link className="carousel-button" href={`/web/noticias/${news._id}`}>
                 Ver mais <DoubleArrowRightIcon />
               </Link>

@@ -42,10 +42,14 @@ export default async function Footer() {
                     ? "instagram-line"
                     : link.iconName === "LinkedInLogoIcon"
                       ? "linkedin-box-fill" : "twitter-fill";
-
+                      
                   return (
                     <Link className="footer-social-network" href={link.href} key={link.href} target="_blank">
-                      <i className={"ri-" + icon} />
+                      {link.iconName === "TwitterLogoIcon" ? (
+                        <i className="ri-twitter-x-fill" />
+                      ): (
+                        <i className={"ri-" + icon} />
+                      )}
                     </Link>
                   );
                 })}
