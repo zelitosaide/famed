@@ -31,7 +31,7 @@ export default function Carousel({ news }: any) {
       cssMode={true}
       navigation={true}
       autoplay={{
-        delay: 25000,
+        delay: 8000,
         disableOnInteraction: false,
       }}
       loop={true}
