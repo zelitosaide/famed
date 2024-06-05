@@ -1,7 +1,14 @@
 import { formatDateToLocal } from "@/app/lib/utils";
+import { getNews } from "@/app/lib/web/data";
 import Link from "next/link";
 
-export default function Noticias({ noticias }: any) {
+// export default function Noticias({ noticias }: any) {
+export default async function Noticias({ query, currentPage }: {
+  query: string;
+  currentPage: number;
+}) {
+  const noticias = await getNews(query, currentPage);
+
   return (
     <ul className="grid grid-cols-1 gap-y-7">
       {noticias.map(function(noticia: any) {
