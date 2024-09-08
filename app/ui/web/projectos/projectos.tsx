@@ -7,17 +7,12 @@ export default function Projectos({ projectos }: any) {
   return (
     <ul className="grid grid-cols-1 gap-y-7">
       {projectos.map(function(project: any) {
-        console.log(project);
         return (
           <li 
             key={project._id}
             className="overflow-hidden bg-[#ffffff] rounded shadow-sm shadow-[#ddeedd] border border-[#ddeedd]"
           >
             <div className="flex">
-              {/* <img 
-                className="shrink-0 w-40"
-                src={`${baseURL}/${project.thumbnail}`}
-              /> */}
               <Image
                 className="shrink-0 w-40"
                 src={`${baseURL}/${project.thumbnail}`}
