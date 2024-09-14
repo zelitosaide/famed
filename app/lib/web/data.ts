@@ -2,14 +2,13 @@ export const baseURL = "https://api.med.uem.mz";
 // export const baseURL = "http://localhost:3001";
 
 export async function getLinks(category: string) {
-  // console.log(category);
-  // const res = await fetch(`${baseURL}/links/category/${category}`, {
-  //   cache: "no-cache"
-  // });
-  const res = await fetch(`${baseURL}/links/category/${category}`);
-  console.log(category);
+  const res = await fetch(`${baseURL}/links/category/${category}`, {
+    cache: "no-cache"
+  });
   return res.json();
 }
+
+// https://api.med.uem.mz/links/category/cabecalho
 
 export async function getContent(segment: string) {
   const res = await fetch(`${baseURL}/contents/segment/${segment}`, {
