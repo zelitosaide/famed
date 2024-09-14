@@ -2,6 +2,7 @@ export const baseURL = "https://api.med.uem.mz";
 // export const baseURL = "http://localhost:3001";
 
 export async function getLinks(category: string) {
+  console.log(category);
   const res = await fetch(`${baseURL}/links/category/${category}`, {
     cache: "no-cache"
   });
