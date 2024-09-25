@@ -5,7 +5,8 @@ const nextConfig = {
       {
         protocol: "https",
         // protocol: "http",
-        hostname: "api.med.uem.mz",
+        // hostname: "api.med.uem.mz",
+        hostname: "med.uem.mz",
         // hostname: "localhost",
         port: "",
         // port: "3001",

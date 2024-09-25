@@ -1,5 +1,6 @@
 import Link from "next/link";
 import H1 from "../ui/web/h1";
+import { DoubleArrowRightIcon } from "@radix-ui/react-icons";
 
 export default function CaixinhasPublicacoes({ publications }: any) {
   const formattedPublications = publications.map((p: any) => {
@@ -15,7 +16,26 @@ export default function CaixinhasPublicacoes({ publications }: any) {
 
   return (
     <div className="pt-6 pr-7 pl-7 pb-10 mt-7 mb-10 bg-gray-50">
-      <H1>Últimas Publicaçōes</H1>
+      <div className="flex gap-2">
+        <H1>Últimas Publicaçōes</H1> 
+        <Link
+          // href="/web/investigacao/projects"
+          href="/web/investigacao/publications"
+          style={{
+            textTransform: "uppercase",
+            lineHeight: "2.1rem",
+            fontWeight: 700,
+            color: "#178415",
+          }}
+          className="hover:underline"
+        >
+          <span style={{ paddingRight: 8, display: "inline-block" }}>|</span>Mais Publicaçōes <DoubleArrowRightIcon style={{
+            display: "inline-block",
+            marginBottom: 3
+          }} />
+        </Link>
+        
+      </div>
       <ul className="grid grid-cols-2 gap-x-7 gap-y-7">
         {formattedPublications.map(function(pub: any) {
           return (

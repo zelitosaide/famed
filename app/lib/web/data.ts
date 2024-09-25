@@ -1,4 +1,5 @@
-export const baseURL = "https://api.med.uem.mz";
+// export const baseURL = "https://api.med.uem.mz";
+export const baseURL = "https://med.uem.mz/api"; 
 // export const baseURL = "http://localhost:3001";
 
 export async function getLinks(category: string) {
