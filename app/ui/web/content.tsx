@@ -174,7 +174,7 @@ export default function Content({ content, id }: any) {
   }
 
   return (
-    <div className="prose prose-green prose-zinc marker:text-[#178415] max-w-none relative">
+    <div className="bg-gray-50 prose prose-green prose-zinc marker:text-[#178415] max-w-none relative">
       {/* {editor && <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
