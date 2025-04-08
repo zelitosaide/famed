@@ -14,9 +14,9 @@ export const contentType = "image/png"
 export default async function Image({ 
   params 
 }: { 
-  params: Promise<{ id: string }>
+  params: { id: string }
 }) {
-  const { id } = await params
+  const { id } = params
   const news = await getNewsById(id)
 
   if (!news) {

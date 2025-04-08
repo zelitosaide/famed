@@ -7,9 +7,9 @@ import { notFound } from "next/navigation";
 export async function generateMetadata({ 
   params 
 }: { 
-  params: Promise<{ id: string }>
+  params: { id: string }
 }): Promise<Metadata> {
-  const { id } = await params;
+  const { id } = params;
   const noticia = await getNewsById(id);
 
   if (!noticia) {
@@ -43,15 +43,20 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function Page({ params }: { params: Promise<{ id: string }>}) {
-  const { id } = await params;
+export default async function Page({ params }: { params: { id: string }}) {
+  const { id } = params;
   const noticia = await getNewsById(id);
 
   if (!noticia) {
     notFound();
   }
 
+  // const url = `https://med.uem.mz/web/noticias/${id}`
+  // const url = `https://med.uem.mz`
+  
+  // const url = `${process.env.NEXT_PUBLIC_SITE_URL || "https://med.uem.mz"}/web/noticias/${id}`
   const url = `https://med.uem.mz/web/noticias/${id}`
+
 
   return (
     <div className="pt-2.5 pr-3 pl-5 pb-5">

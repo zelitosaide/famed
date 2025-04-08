@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     default: "FAMED",
   },
   description: "Website da faculdade de Medicina - UEM.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://med.uem.mz"),
 };
 
 export default function RootLayout({
