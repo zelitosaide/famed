@@ -1,10 +1,10 @@
 import { ImageResponse } from "next/og"
-import { getNewsById } from "@/app/lib/web/data"
+import { getProjectById } from "@/app/lib/web/data"
 import { formatDateToLocal } from "@/app/lib/utils"
 
 export const runtime = "edge"
 
-export const alt = "News thumbnail"
+export const alt = "Project thumbnail"
 export const size = {
   width: 1200,
   height: 630,
@@ -16,10 +16,10 @@ export default async function Image({
 }: { 
   params: { id: string }
 }) {
-  const { id } = params
-  const news = await getNewsById(id)
+  const { id } = params;
+  const project = await getProjectById(id);
 
-  if (!news) {
+  if (!project) {
     return new ImageResponse(
       <div
         style={{
@@ -33,7 +33,7 @@ export default async function Image({
           color: "#333",
         }}
       >
-        News Not Found
+        Project Not Found
       </div>,
       {
         ...size,
@@ -63,7 +63,7 @@ export default async function Image({
           color: "#666",
         }}
       >
-        Faculdade de Medicina UEM | Notícia
+        Faculdade de Medicina UEM | Projecto
       </div>
       <div
         style={{
@@ -82,7 +82,7 @@ export default async function Image({
             lineHeight: 1.2,
           }}
         >
-          {news.title}
+          {project.title}
         </div>
         <div
           style={{
@@ -90,8 +90,8 @@ export default async function Image({
             color: "#666",
           }}
         >
-          {/* {news.description} */}
-          {news.description.length < 160 ? news.description : news.description.slice(0, 160) + "..."}
+          {/* {project.description} */}
+          {project.description.length < 160 ? project.description : project.description.slice(0, 160) + "..."}
         </div>
       </div>
       <div
@@ -101,7 +101,7 @@ export default async function Image({
           color: "#666",
         }}
       >
-        {formatDateToLocal(news.createdAt)}
+        {formatDateToLocal(project.createdAt)}
       </div>
     </div>,
     {
@@ -109,4 +109,3 @@ export default async function Image({
     },
   )
 }
-

@@ -21,15 +21,17 @@ export async function generateMetadata({
     description: noticia.description,
     openGraph: {
       title: noticia.title,
-      description: noticia.description,
+      // description: noticia.description,
+      description: noticia.description.length < 160 ? noticia.description : noticia.description.slice(0, 160) + "...",
       type: "article",
-      publishedTime: noticia.date,
+      publishedTime: noticia.createdAt,
       authors: ["Blog Author"],
     },
     twitter: {
       card: "summary_large_image",
       title: noticia.title,
-      description: noticia.description,
+      // description: noticia.description,
+      description: noticia.description.length < 160 ? noticia.description : noticia.description.slice(0, 160) + "..."
     },
   }
 }
