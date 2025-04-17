@@ -31,7 +31,8 @@ export default function CaixinhasProjectos({ projects }: any) {
         return (
           <li key={project._id} className="bg-[#ffffff] rounded shadow-sm shadow-[#ddeedd] border border-[#ddeedd] flex flex-col">
             <img 
-              style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "top" }} 
+              // style={{ width: "100%", height: 160, objectFit: "cover", objectPosition: "top" }} 
+              style={{ width: "100%", height: 160, objectFit: "contain" }} 
               src={`${baseURL}/${project.thumbnail}`} 
               alt=""  
             />
