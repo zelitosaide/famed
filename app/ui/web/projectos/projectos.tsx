@@ -13,8 +13,10 @@ export default function Projectos({ projectos }: any) {
             className="overflow-hidden bg-[#ffffff] rounded shadow-sm shadow-[#ddeedd] border border-[#ddeedd]"
           >
             <div className="flex">
-              <Image
+              {/* <Image */}
+              <img
                 className="shrink-0 w-40"
+                style={{ objectFit: "contain" }} 
                 src={`${baseURL}/${project.thumbnail}`}
                 width={100}
                 height={100}
