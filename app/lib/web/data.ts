@@ -1,10 +1,10 @@
 // export const baseURL = "https://api.med.uem.mz";
-export const baseURL = "https://med.uem.mz/api"; 
+export const baseURL = "https://med.uem.mz/api";
 // export const baseURL = "http://localhost:3001";
 
 export async function getLinks(category: string) {
   const res = await fetch(`${baseURL}/links/category/${category}`, {
-    cache: "no-cache"
+    cache: "no-cache",
   });
   return res.json();
 }
@@ -13,7 +13,7 @@ export async function getLinks(category: string) {
 
 export async function getContent(segment: string) {
   const res = await fetch(`${baseURL}/contents/segment/${segment}`, {
-    cache: "no-cache"
+    cache: "no-cache",
   });
 
   return res.json();
@@ -21,31 +21,25 @@ export async function getContent(segment: string) {
 
 export async function getLinkByTitle(title: string) {
   const res = await fetch(`${baseURL}/links/title/${title}`, {
-    cache: "no-cache"
+    cache: "no-cache",
   });
   return res.json();
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * All about NEWS
  * @zelito_saide
  */
 
-export async function getNews(query: string, currentPage: number, limit?: number) {
-  const res = await fetch(`${baseURL}/news?query=${query}&page=${currentPage}&limit=${limit}`, {
-    cache: "no-cache"
-  });
+export async function getNews(
+  query: string,
+  currentPage: number,
+  limit?: number
+) {
+  const res = await fetch(
+    `${baseURL}/news?query=${query}&page=${currentPage}&limit=${limit}`,
+    { cache: "no-cache" }
+  );
   return res.json();
 }
 
@@ -61,15 +55,13 @@ export async function updateNews(id: string, formData: FormData) {
   const res = await fetch(`${baseURL}/news/${id}`, {
     method: "PATCH",
     body: formData,
-    cache: "no-cache"
+    cache: "no-cache",
   });
   return res.json();
 }
 
 export async function getNewsById(id: string) {
-  const res = await fetch(`${baseURL}/news/${id}`, {
-    cache: "no-cache"
-  });
+  const res = await fetch(`${baseURL}/news/${id}`, { cache: "no-cache" });
   return res.json();
 }
 
@@ -84,7 +76,7 @@ export async function removeNewsById(id: string) {
 export async function fetchNewsPages(query: string) {
   try {
     const res = await fetch(`${baseURL}/news/news-pages?query=${query}`, {
-      cache: "no-cache"
+      cache: "no-cache",
     });
     return res.json();
   } catch (error) {
@@ -93,24 +85,25 @@ export async function fetchNewsPages(query: string) {
   }
 }
 
-
 /**
  * All about PROJECTS
  * @zelito_saide
  */
 
 export async function getProjects(query: string, currentPage: number) {
-  const res = await fetch(`${baseURL}/projects?query=${query}&page=${currentPage}`, {
-    cache: "no-cache"
-  });
+  const res = await fetch(
+    `${baseURL}/projects?query=${query}&page=${currentPage}`,
+    { cache: "no-cache" }
+  );
   return res.json();
 }
 
 export async function fetchProjectsPages(query: string) {
   try {
-    const res = await fetch(`${baseURL}/projects/project-pages?query=${query}`, {
-      cache: "no-cache"
-    });
+    const res = await fetch(
+      `${baseURL}/projects/project-pages?query=${query}`,
+      { cache: "no-cache" }
+    );
     return res.json();
   } catch (error) {
     console.error("Database Error:", error);
@@ -138,38 +131,51 @@ export async function updateProject(id: string, formData: FormData) {
   const res = await fetch(`${baseURL}/projects/${id}`, {
     method: "PATCH",
     body: formData,
-    cache: "no-cache"
+    cache: "no-cache",
   });
   return res.json();
 }
 
 export async function getProjectById(id: string) {
-  const res = await fetch(`${baseURL}/projects/${id}`, {
-    cache: "no-cache"
-  });
+  const res = await fetch(`${baseURL}/projects/${id}`, { cache: "no-cache" });
   return res.json();
 }
-
-
-
 
 /**
  * All about PUBLICATIONS
  * @zelito_saide
  */
 
-export async function getPublications(query: string, currentPage: number, limit?: number) {
-  const res = await fetch(`${baseURL}/publications?query=${query}&page=${currentPage}&limit=${limit}`, {
-    cache: "no-cache"
-  });
+export async function getPublications(
+  query: string,
+  currentPage: number,
+  limit?: number
+) {
+  const res = await fetch(
+    `${baseURL}/publications?query=${query}&page=${currentPage}&limit=${limit}`,
+    { cache: "no-cache" }
+  );
+  return res.json();
+}
+
+export async function getPublicationsByYear(
+  query: string,
+  currentPage: number,
+  year?: string
+) {
+  const res = await fetch(
+    `${baseURL}/publications?query=${query}&page=${currentPage}&year=${year}`,
+    { cache: "no-cache" }
+  );
   return res.json();
 }
 
 export async function fetchPublicationsPages(query: string) {
   try {
-    const res = await fetch(`${baseURL}/publications/publication-pages?query=${query}`, {
-      cache: "no-cache"
-    });
+    const res = await fetch(
+      `${baseURL}/publications/publication-pages?query=${query}`,
+      { cache: "no-cache" }
+    );
     return res.json();
   } catch (error) {
     console.error("Database Error:", error);
@@ -181,9 +187,7 @@ export async function createPublication(data: any) {
   const res = await fetch(`${baseURL}/publications`, {
     method: "POST",
     body: JSON.stringify(data),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
+    headers: { "Content-type": "application/json; charset=UTF-8" },
   });
   return res.json();
 }
@@ -193,16 +197,14 @@ export async function updatePublication(id: string, data: any) {
     method: "PATCH",
     body: JSON.stringify(data),
     cache: "no-cache",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
+    headers: { "Content-type": "application/json; charset=UTF-8" },
   });
   return res.json();
 }
 
 export async function getPublicationById(id: string) {
   const res = await fetch(`${baseURL}/publications/${id}`, {
-    cache: "no-cache"
+    cache: "no-cache",
   });
   return res.json();
 }
@@ -214,8 +216,6 @@ export async function removePublicationById(id: string) {
   });
   return res.json();
 }
-
-
 
 /**
  * All about DEPARTMENTS
@@ -230,10 +230,15 @@ export async function removeDepartmentById(id: string) {
   return res.json();
 }
 
-export async function getDepartments(query: string, currentPage: number, limit?: number) {
-  const res = await fetch(`${baseURL}/departments?query=${query}&page=${currentPage}&limit=${limit}`, {
-    cache: "no-cache"
-  });
+export async function getDepartments(
+  query: string,
+  currentPage: number,
+  limit?: number
+) {
+  const res = await fetch(
+    `${baseURL}/departments?query=${query}&page=${currentPage}&limit=${limit}`,
+    { cache: "no-cache" }
+  );
   return res.json();
 }
 
@@ -247,9 +252,10 @@ export async function createDepartment(formData: FormData) {
 
 export async function fetchDepartmentsPages(query: string) {
   try {
-    const res = await fetch(`${baseURL}/departments/department-pages?query=${query}`, {
-      cache: "no-cache"
-    });
+    const res = await fetch(
+      `${baseURL}/departments/department-pages?query=${query}`,
+      { cache: "no-cache" }
+    );
     return res.json();
   } catch (error) {
     console.error("Database Error:", error);
@@ -259,21 +265,19 @@ export async function fetchDepartmentsPages(query: string) {
 
 export async function getDepartmentById(id: string) {
   const res = await fetch(`${baseURL}/departments/${id}`, {
-    cache: "no-cache"
+    cache: "no-cache",
   });
   return res.json();
 }
-
 
 export async function updateDepartment(id: string, formData: FormData) {
   const res = await fetch(`${baseURL}/departments/${id}`, {
     method: "PATCH",
     body: formData,
-    cache: "no-cache"
+    cache: "no-cache",
   });
   return res.json();
 }
-
 
 /**
  * All about COURSES
@@ -289,16 +293,17 @@ export async function removeCourseById(id: string) {
 }
 
 export async function getCourses(query: string, currentPage: number) {
-  const res = await fetch(`${baseURL}/courses?query=${query}&page=${currentPage}`, {
-    cache: "no-cache"
-  });
+  const res = await fetch(
+    `${baseURL}/courses?query=${query}&page=${currentPage}`,
+    { cache: "no-cache" }
+  );
   return res.json();
 }
 
 export async function fetchCoursesPages(query: string) {
   try {
     const res = await fetch(`${baseURL}/courses/course-pages?query=${query}`, {
-      cache: "no-cache"
+      cache: "no-cache",
     });
     return res.json();
   } catch (error) {
@@ -311,17 +316,13 @@ export async function createCourse(data: any) {
   const res = await fetch(`${baseURL}/courses`, {
     method: "POST",
     body: JSON.stringify(data),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
+    headers: { "Content-type": "application/json; charset=UTF-8" },
   });
   return res.json();
 }
 
 export async function getCourseById(id: string) {
-  const res = await fetch(`${baseURL}/courses/${id}`, {
-    cache: "no-cache"
-  });
+  const res = await fetch(`${baseURL}/courses/${id}`, { cache: "no-cache" });
   return res.json();
 }
 
@@ -330,58 +331,10 @@ export async function updateCourse(id: string, data: any) {
     method: "PATCH",
     body: JSON.stringify(data),
     cache: "no-cache",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
+    headers: { "Content-type": "application/json; charset=UTF-8" },
   });
   return res.json();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export async function updateContent(id: string, content: any) {
   const res = await fetch(`${baseURL}/contents/${id}`, {
@@ -389,7 +342,7 @@ export async function updateContent(id: string, content: any) {
     body: JSON.stringify({ content }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
     },
   });
   return res.json();

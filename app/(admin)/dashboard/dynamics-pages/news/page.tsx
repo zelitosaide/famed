@@ -8,10 +8,7 @@ import Search from "@/app/ui/search";
 export default async function Page({
   searchParams,
 }: {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
+  searchParams?: { query?: string; page?: string };
 }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
@@ -23,11 +20,14 @@ export default async function Page({
         <Search placeholder="Pesquisar notícia..." />
         <CreateNews />
       </div>
-      <Suspense key={query + currentPage} fallback={
-        <p style={{ marginTop: 16 }} className="bg-gray-50 pl-4 pt-1 pb-1">
-          Loading...
-        </p>
-      }>
+      <Suspense
+        key={query + currentPage}
+        fallback={
+          <p style={{ marginTop: 16 }} className="bg-gray-50 pl-4 pt-1 pb-1">
+            Loading...
+          </p>
+        }
+      >
         <NewsTable query={query} currentPage={currentPage} />
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
