@@ -3,7 +3,11 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
-export default function PublicationFilter() {
+export default function PublicationFilter({
+  totalFound,
+}: {
+  totalFound?: number;
+}) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -26,7 +30,12 @@ export default function PublicationFilter() {
   }, 300);
 
   return (
-    <div>
+    <div className="flex items-center">
+      {typeof totalFound === "number" && (
+        <span className="mr-3 text-sm text-gray-700">
+          {totalFound} resultados
+        </span>
+      )}
       <label htmlFor="search" className="sr-only">
         Search
       </label>

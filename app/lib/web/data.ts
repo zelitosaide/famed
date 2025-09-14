@@ -170,16 +170,47 @@ export async function getPublicationsByYear(
   return res.json();
 }
 
-export async function fetchPublicationsPages(query: string) {
+export async function fetchPublicationsPages(query: string, year?: string) {
   try {
-    const res = await fetch(
-      `${baseURL}/publications/publication-pages?query=${query}`,
-      { cache: "no-cache" }
-    );
+    let res;
+    // if query logic
+    if (query) {
+      res = await fetch(
+        `${baseURL}/publications/publication-pages?query=${query}`,
+        { cache: "no-cache" }
+      );
+      return res.json();
+    }
+    // if year logic
+    if (year) {
+      res = await fetch(
+        `${baseURL}/publications/publication-pages?year=${year}`,
+        { cache: "no-cache" }
+      );
+      return res.json();
+    }
+
+    res = await fetch(`${baseURL}/publications/publication-pages`, {
+      cache: "no-cache",
+    });
     return res.json();
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch total number of publications.");
+  }
+}
+
+export async function fetchPublicationsCounter(year: string) {
+  try {
+    const res = await fetch(`${baseURL}/publications/count?year=${year}`, {
+      cache: "no-cache",
+    });
+    return res.json();
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error(
+      "Failed to fetch total number of publications counter by year."
+    );
   }
 }
 

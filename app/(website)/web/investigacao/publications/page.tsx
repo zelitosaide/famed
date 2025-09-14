@@ -1,4 +1,7 @@
-import { fetchPublicationsPages } from "@/app/lib/web/data";
+import {
+  fetchPublicationsCounter,
+  fetchPublicationsPages,
+} from "@/app/lib/web/data";
 import Pagination from "@/app/ui/pagination";
 import H1 from "@/app/ui/web/h1";
 import Publicacoes from "@/app/ui/web/publicacoes/publicacoes";
@@ -13,13 +16,16 @@ export default async function Page({
   const query = searchParams?.query || "";
   const year = searchParams?.year || "";
   const currentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchPublicationsPages(query);
+  const totalPages = await fetchPublicationsPages(query, year);
+
+  // const totalPublications = await fetchPublicationsCounter(year);
+  const totalPublications = totalPages * 7; // assuming 7 items per page
 
   return (
     <div className="pt-2.5 pr-3 pl-5 pb-5">
       <div className="justify-between mb-4 flex flex-col sm:flex-row sm:items-center">
         <H1>Publicações da Faculdade</H1>
-        <PublicationFilter />
+        <PublicationFilter totalFound={totalPublications} />
       </div>
 
       <Suspense
